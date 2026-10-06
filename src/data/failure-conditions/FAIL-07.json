@@ -1,0 +1,16 @@
+{
+  "failureId": "FAIL-07",
+  "name": "supplier-entry",
+  "category": "Supplier entry",
+  "description": "Supplier collusion, boycotts, or refusal to acknowledge voluntary buyer formations.",
+  "status": "monitored",
+  "relatedModules": [
+    3,
+    6
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

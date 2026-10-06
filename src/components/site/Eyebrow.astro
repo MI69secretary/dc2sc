@@ -1,0 +1,9 @@
+---
+interface Props {
+  text: string;
+  class?: string;
+  as?: string;
+}
+const { text, class: className = '', as: Tag = 'p' } = Astro.props;
+---
+<Tag class={['dc-eyebrow', className].filter(Boolean).join(' ')}>{text}</Tag>

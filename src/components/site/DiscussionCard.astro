@@ -1,0 +1,24 @@
+---
+import Pill from './Pill.astro';
+interface Props {
+  type: string;
+  topic: string;
+  body: string;
+  isDemo: boolean;
+  featured?: boolean;
+}
+const { type, topic, body, isDemo, featured = false } = Astro.props;
+const typeLabels: Record<string, string> = {
+  research_question: 'Research question',
+  counterexample: 'Counterexample',
+  methodological_objection: 'Methodological objection',
+  editorial_note: 'Editorial note',
+};
+const typeLabel = typeLabels[type] || type;
+---
+<article class={featured ? 'dc-discussion-card-featured' : 'dc-discussion-card'}>
+  {isDemo && <div class="dc-discussion-card__demo-label"><Pill variant="demo" text="Demo discussion format" /></div>}
+  <span class="dc-discussion-card__type">{typeLabel}</span>
+  <span class="dc-discussion-card__topic">{topic}</span>
+  <p class="dc-discussion-card__body">{body}</p>
+</article>

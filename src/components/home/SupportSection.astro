@@ -1,0 +1,37 @@
+---
+import Container from '../site/Container.astro'
+import Section from '../site/Section.astro'
+import Callout from '../site/Callout.astro'
+---
+
+<Section background="white">
+  <Container>
+    <div class="dc-grid dc-grid--2" style="margin-bottom: 3rem;">
+      <!-- Left Column -->
+      <div>
+        <h2 class="dc-h3" style="margin-bottom: 1rem;">Follow the research</h2>
+        <p class="dc-body" style="margin-bottom: 2rem; color: var(--dc-text-secondary);">
+          Research notes, method updates and open questions. No deal alerts. No booking funnel. No hidden conversion path.
+        </p>
+        <button class="dc-btn dc-btn--disabled" disabled>
+          Newsletter infrastructure in preparation
+        </button>
+      </div>
+      
+      <!-- Right Column -->
+      <div>
+        <h2 class="dc-h3" style="margin-bottom: 1rem;">Support independent research</h2>
+        <p class="dc-body" style="margin-bottom: 2rem; color: var(--dc-text-secondary);">
+          Support infrastructure is not enabled in this prototype. Any future support will not purchase access, priority, participation or influence.
+        </p>
+        <a href="/support" class="dc-btn dc-btn--ghost">
+          Support framework
+        </a>
+      </div>
+    </div>
+    
+    <Callout type="boundary">
+      Support does not purchase access, priority, participation, favorable coverage or influence over research outcomes.
+    </Callout>
+  </Container>
+</Section>

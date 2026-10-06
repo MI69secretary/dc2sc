@@ -1,0 +1,16 @@
+{
+  "failureId": "FAIL-06",
+  "name": "privacy",
+  "category": "Privacy",
+  "description": "Unwarranted exposure of individual reservation prices, constraints, or travel telemetry to suppliers.",
+  "status": "monitored",
+  "relatedModules": [
+    5,
+    6
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

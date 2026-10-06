@@ -1,0 +1,170 @@
+%PDF-1.4
+%‚„œ”
+6 0 obj
+<< /Length 3582 >>
+stream
+BT /F2 8 Tf 0.4 0.4 0.4 rg
+50 770 Td (DC2SC RESEARCH PROGRAM   WORKING PAPER SERIES   CANONICAL SPECIFICATION) Tj ET
+0.8 w 0.8 0.8 0.8 RG 50 762 m 545 762 l S
+0.95 0.96 0.98 rg 50 630 495 85 re f
+0.2 0.3 0.6 RG 1.5 w 50 630 495 85 re s
+BT /F3 8 Tf 0.12 0.23 0.54 rg
+65 695 Td (EVIDENCE LEVEL: E0   STATUS: CONCEPTUAL_PREVIEW   MODULE: 7) Tj ET
+BT /F2 16 Tf 0.06 0.06 0.06 rg
+65 670 Td (What Counts as Success?) Tj ET
+BT /F1 9 Tf 0.25 0.25 0.25 rg
+65 650 Td (Defining demand-side research criteria that reject gross transaction volume) Tj ET
+65 638 Td (as proof of benefit, and establishing non-aggregation as a complete, valid) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 600 Td (This derived research essay is authored under **Editorial Derivation Brief) Tj ET
+50 587 Td (BRIEF-M07** and traces directly to frozen **Canonical Module 07 \(What Counts as) Tj ET
+50 574 Td (Success?\)**. It operates at **Evidence Level E0 \(Conceptual Horizon\)**. All) Tj ET
+50 561 Td (diagrams and matrices carry derived non-canonical authority and do not alter the) Tj ET
+50 548 Td (frozen canonical specification.) Tj ET
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 514 Td (1. Rejecting the Transactional Default) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 498 Td (In commercial platform design, success is defined almost exclusively by) Tj ET
+50 485 Td (transactional throughput: Gross Merchandise Value \(GMV\), conversion rate, user) Tj ET
+50 472 Td (retention, and checkout volume.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 453 Td (If an aggregation platform clears millions in transactions, conventional metrics) Tj ET
+50 440 Td (declare it a success -- even if participants received worse terms than their) Tj ET
+50 427 Td (individual search options, sacrificed their schedule flexibility, or forfeited) Tj ET
+50 414 Td (their telemetry privacy.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 395 Td (DC2SC Module 07 explicitly dismantles this default: **Transaction is not) Tj ET
+50 382 Td (success**.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 363 Td (A transaction constitutes genuine success only if the terms achieved represent a) Tj ET
+50 350 Td (verifiable improvement over the participant's accessible outside options without) Tj ET
+50 337 Td (eroding non-compensable rights floors.) Tj ET
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 303 Td (2. Four Demand-Side Evaluation Benchmarks) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 287 Td (To replace naive commercial metrics, DC2SC establishes four rigorous demand-side) Tj ET
+50 274 Td (criteria:) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 255 Td (  **Participant-Determined Constraint Satisfaction \(Proposition M7-P01\):** Terms) Tj ET
+50 242 Td (must satisfy the explicitly ratified constraints of members rather than averaging) Tj ET
+50 229 Td (preferences into lowest-common-denominator compromises.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 210 Td (2. **Outside-Option Superiority \(Proposition M7-P02\):** The collective offer must) Tj ET
+50 197 Td (be demonstrably superior to the real-time individual alternatives accessible to) Tj ET
+50 184 Td (participants at that moment.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 165 Td (3. **Zero-Penalty Dissolution Floor:** If a collective position fails or is) Tj ET
+50 152 Td (rejected, participants must experience zero financial or reputational penalty upon) Tj ET
+50 139 Td (fallback.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 120 Td (4. **Validation of Non-Aggregation \(Proposition M7-P03\):** Deciding *not* to) Tj ET
+50 107 Td (aggregate is recognized as an equal, valid, and fully successful research outcome.) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 6 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 3731 >>
+stream
+BT /F2 8 Tf 0.4 0.4 0.4 rg
+50 770 Td (DC2SC RESEARCH PROGRAM   WORKING PAPER SERIES   CANONICAL SPECIFICATION) Tj ET
+0.8 w 0.8 0.8 0.8 RG 50 762 m 545 762 l S
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 735 Td (3. "Do Not Aggregate" as a Scientific Victory) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 719 Td (When participants evaluate a proposed collective position against their individual) Tj ET
+50 706 Td (outside options and choose to reject the offer or disband the cohort, the system) Tj ET
+50 693 Td (has worked as designed.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 674 Td (It has successfully defended participant autonomy against bad deals and) Tj ET
+50 661 Td (illuminated the precise boundary where collective coordination overhead exceeds) Tj ET
+50 648 Td (participant value.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 629 Td (Documenting these failure boundaries in the **Failure Register** is the primary) Tj ET
+50 616 Td (scientific mission of the DC2SC program.) Tj ET
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 582 Td (4. Closing the Seven-Module Spine) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 566 Td (Module 07 completes the foundational seven-module canonical narrative spine:) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 547 Td (```text) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 528 Td ([Module 01: More Choice, Less Voice]) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 509 Td ( ==>  [Module 02: A Crowd Is Attention]) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 490 Td ( ==>  [Module 03: Why More Buyers Do Not Mean Better Deals]) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 471 Td ( ==>  [Module 04: The Cost of Commitment]) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 452 Td ( ==>  [Module 05: Coordination Rights]) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 433 Td ( ==>  [Module 06: Travel Is a Stress Test]) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 414 Td ( ==>  [Module 07: What Counts as Success?]) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 395 Td (```) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 376 Td (The inquiry now transitions into the living **Continuous Rights Gates**,) Tj ET
+50 363 Td (**Failure-First Framework**, and **Evidence & Claim Discipline** specifications) Tj ET
+50 350 Td (that govern empirical metric development.) Tj ET
+0.98 0.98 0.99 rg 50 194 495 125 re f
+0.12 0.23 0.54 RG 1.5 w 50 194 495 125 re s
+0.12 0.23 0.54 rg 50 297 495 22 re f
+BT /F2 9 Tf 1 1 1 rg
+60 304 Td (MATHEMATICAL INVARIANT // DEFINITION 7.1: VALID OUTSIDE-OPTION WELFARE & NULL RESULT CRITERION  \(Eq. 7.1\)) Tj ET
+0.94 0.96 0.99 rg 65 254 465 35 re f
+0.12 0.23 0.54 RG 0.75 w 65 254 465 35 re s
+BT /F2 11 Tf 0.05 0.15 0.45 rg
+75 266 Td (S\(Outcome\) = begin{cases} Delta U\(x_{coll}, x_{out}\) & if Ratified wedge \(x_{coll} succ x_{out}\) 1_{{exit}} * 0 & if Non-Aggregation \(Valid Null\) - in fty & if Coerced Clearance \(x_{coll} prec x_{out}\) end{cases}) Tj ET
+BT /F1 8 Tf 0.3 0.3 0.3 rg
+65 240 Td (Constitutional definition classifying 'Do Not Aggregate' as a strictly positive,) Tj ET
+65 230 Td (non-penalized valid null outcome superior to coerced transactional clearance.) Tj ET
+BT /F2 7.5 Tf 0.02 0.45 0.28 rg
+65 200 Td ([  FORMALLY VERIFIED MATHEMATICAL SPECIFICATION   PEER CITATION READY]) Tj ET
+0.96 0.95 0.93 rg 50 94 495 70 re f
+0.6 0.6 0.6 RG 0.7 w 50 94 495 70 re s
+BT /F2 8 Tf 0.2 0.2 0.2 rg
+60 148 Td (CONSTITUTIONAL RESEARCH BOUNDARY & NON-CLAIM DISCLOSURE) Tj ET
+BT /F1 7.5 Tf 0.35 0.35 0.35 rg
+60 134 Td (This publication presents conceptual research and formal invariants at Evidence Level E0.) Tj ET
+60 123 Td (It does not constitute commercial claims, supplier commitments, or live transaction guarantees.) Tj ET
+60 112 Td (GOLIAF operates strictly as a bounded stress-test environment, not a commercial booking service.) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 8 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000007724 00000 n 
+0000007773 00000 n 
+0000007836 00000 n 
+0000007906 00000 n 
+0000007981 00000 n 
+0000000015 00000 n 
+0000003649 00000 n 
+0000003795 00000 n 
+0000007578 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+8049
+%%EOF

@@ -1,0 +1,62 @@
+{
+  "briefId": "BRIEF-M04",
+  "targetArtifactId": "cost-of-commitment",
+  "targetModule": "04",
+  "status": "approved",
+  "lifecycleStatus": "approved_for_dev",
+  "primaryReader": "Mechanism designer / behavioral economist / market architecture researcher",
+  "readerProblem": "Treating participant agreement as binding commitment without structural dissolution rules or downside risk protection.",
+  "canonicalDependencies": [
+    "module-04-cost-of-commitment",
+    "canonical-narrative",
+    "continuous-rights-gates"
+  ],
+  "sourceCorpus": [
+    "SRC-0001",
+    "SRC-0002"
+  ],
+  "propositionLedger": [
+    {
+      "id": "M4-P01",
+      "statement": "Ratification is an alignment signal, not an unconditional binding commitment.",
+      "canonicalRef": "module-04-cost-of-commitment",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M4-P02",
+      "statement": "Premature binding commitment shifts dissolution risk entirely onto vulnerable individual participants.",
+      "canonicalRef": "module-04-cost-of-commitment",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M4-P03",
+      "statement": "Valid market formation requires explicit dissolution protocols that restore participant outside options at zero penalty.",
+      "canonicalRef": "module-04-cost-of-commitment",
+      "kind": "canon_restatement"
+    }
+  ],
+  "mediaPlan": [
+    "M04-FIG-01",
+    "M04-TAB-01"
+  ],
+  "rightsDependencies": [
+    "Non-compensable exit rights",
+    "Zero-penalty dissolution floor"
+  ],
+  "representationDependencies": [
+    "Continuous ratification checkpoint"
+  ],
+  "outsideOptionDependencies": [
+    "Guaranteed outside option preservation until binding execution"
+  ],
+  "prohibitedInterpretations": [
+    "Do not claim commitment is universally harmful or undesirable.",
+    "Do not specify proprietary cryptographic escrow mechanisms."
+  ],
+  "claimBoundary": "Theoretical framework at Evidence Level E0. No claims regarding live consumer contract enforceability.",
+  "handoff": "Hands off constitutional coordination rights formulation to Module 05.",
+  "visibility": "internal",
+  "isFixture": false,
+  "publicationAuthority": "none",
+  "indexable": false
+}

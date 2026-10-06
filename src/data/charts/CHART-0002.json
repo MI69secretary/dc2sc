@@ -1,0 +1,16 @@
+{
+  "chartId": "CHART-0002",
+  "title": "Coordination Overhead vs Participant Payoff Threshold",
+  "chartType": "flow",
+  "dataSource": "Theoretical formulation (Module 04)",
+  "derivation": "Analytical threshold modeling",
+  "empiricalContext": "Exemplary analytical function",
+  "methodology": "Microeconomic threshold boundary",
+  "epistemicBasis": "analytical",
+  "evidenceLevel": "E0",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

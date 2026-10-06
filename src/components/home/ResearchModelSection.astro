@@ -1,0 +1,32 @@
+---
+import Container from '../site/Container.astro'
+import Section from '../site/Section.astro'
+import SectionHeading from '../site/SectionHeading.astro'
+import Callout from '../site/Callout.astro'
+import { researchModelSteps } from '../../data/research.ts'
+---
+
+<Section>
+  <Container>
+    <SectionHeading headline="A research model, not a user funnel" />
+    
+    <div style="margin-bottom: 3rem;">
+      <Callout type="boundary" title="Constitutional research sequence">
+        This is a constitutional research sequence. It is not a live product flow or onboarding process.
+      </Callout>
+    </div>
+    
+    <div class="dc-sequence">
+      {researchModelSteps.map((step, index) => (
+        <div class={[
+          'dc-sequence__step',
+          ('accent' in step && step.accent) ? 'dc-sequence__step--accent' : '',
+          ('final' in step && step.final) ? 'dc-sequence__step--final' : '',
+        ].filter(Boolean).join(' ')}>
+          <span class="dc-sequence__index">{step.index}</span>
+          <span class="dc-sequence__name">{step.label}</span>
+        </div>
+      ))}
+    </div>
+  </Container>
+</Section>

@@ -1,0 +1,11 @@
+{
+  "citationId": "CIT-0001",
+  "sourceId": "SRC-0001",
+  "apa": "Li, T., & Zheng, X. (2011). Entry and Competition Effects in First-Price Auctions. IFS Working Papers, W11/11.",
+  "bibtex": "@article{li2011entry, title={Entry and Competition Effects in First-Price Auctions}, author={Li, Tong and Zheng, Xiaoyong}, journal={IFS Working Papers}, number={W11/11}, year={2011} }",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

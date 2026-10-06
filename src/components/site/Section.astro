@@ -1,0 +1,18 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+  background?: 'default' | 'raised' | 'accent' | 'white';
+  as?: string;
+}
+const { class: className = '', id, background = 'default', as: Tag = 'section' } = Astro.props;
+const bgClass: Record<string, string> = {
+  default: '',
+  raised: 'dc-section--raised',
+  accent: 'dc-section--accent',
+  white: 'dc-section--white',
+};
+---
+<Tag id={id} class={['dc-section', bgClass[background], className].filter(Boolean).join(' ')}>
+  <slot />
+</Tag>

@@ -1,0 +1,66 @@
+---
+import Container from '../site/Container.astro'
+import Section from '../site/Section.astro'
+import SectionHeading from '../site/SectionHeading.astro'
+---
+
+<Section background="raised">
+  <Container>
+    <div data-i18n="problem.headline">
+      <SectionHeading headline="Markets see separate sessions. People live overlapping conditions." />
+    </div>
+    
+    <div class="dc-grid dc-grid--2" style="margin-top: 3rem; margin-bottom: 2rem; align-items: center;">
+      <div>
+        <p class="dc-body-lg" data-i18n="problem.body">
+          People may search, compare and decide efficiently while still carrying the work, risk and uncertainty of market participation alone. Shared circumstances do not automatically become shared authority, shared representation or collective action.
+        </p>
+      </div>
+      <div>
+        <svg viewBox="0 0 300 200" aria-hidden="true" style="width: 100%; height: auto;">
+          <!-- Separate sessions grid -->
+          <g fill="none" stroke="#0f0f0f" stroke-width="1.5" stroke-opacity="0.3">
+            <rect x="20" y="30" width="20" height="20" />
+            <rect x="50" y="30" width="20" height="20" />
+            <rect x="80" y="30" width="20" height="20" />
+            
+            <rect x="20" y="60" width="20" height="20" />
+            <rect x="50" y="60" width="20" height="20" />
+            <rect x="80" y="60" width="20" height="20" />
+            
+            <rect x="20" y="90" width="20" height="20" />
+            <rect x="50" y="90" width="20" height="20" />
+            <rect x="80" y="90" width="20" height="20" />
+            
+            <rect x="20" y="120" width="20" height="20" />
+            <rect x="50" y="120" width="20" height="20" />
+            <rect x="80" y="120" width="20" height="20" />
+            
+            <rect x="20" y="150" width="20" height="20" />
+            <rect x="50" y="150" width="20" height="20" />
+            <rect x="80" y="150" width="20" height="20" />
+            
+            <text x="50" y="185" font-family="Space Mono, monospace" font-size="8" fill="#0f0f0f" text-anchor="middle" stroke="none" opacity="0.6">SESSIONS</text>
+          </g>
+          
+          <!-- Transition line -->
+          <line x1="120" y1="100" x2="160" y2="100" stroke="#0f0f0f" stroke-width="1" stroke-dasharray="3,3" stroke-opacity="0.3" />
+          
+          <!-- Overlapping conditions -->
+          <g fill="none" stroke="#1e3a8a" stroke-width="2">
+            <circle cx="210" cy="85" r="35" opacity="0.8" />
+            <circle cx="240" cy="115" r="35" opacity="0.6" />
+            <circle cx="185" cy="120" r="35" opacity="0.4" />
+            <text x="215" y="185" font-family="Space Mono, monospace" font-size="8" fill="#0f0f0f" text-anchor="middle" stroke="none" opacity="0.6">SHARED CONDITION</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    
+    <div style="border-top: 1px solid var(--dc-border); padding-top: 2rem;">
+      <p class="dc-body" style="font-weight: 500;" data-i18n="problem.footer">
+        Digital markets optimize for individual sessions. They do not observe shared conditions.
+      </p>
+    </div>
+  </Container>
+</Section>

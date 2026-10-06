@@ -1,0 +1,43 @@
+---
+import type { MediaPassport as PassportType } from '../../types/media-passport';
+import MediaPassport from './MediaPassport.astro';
+import FigureCaption from './FigureCaption.astro';
+
+interface Props {
+  passport: PassportType;
+  figureNumber?: string | number;
+  class?: string;
+  textSequence?: string[];
+}
+
+const { passport, figureNumber, class: className = '', textSequence } = Astro.props;
+---
+
+<figure class={`dc-media-block dc-media-block--conceptual ${className}`} id={passport.id} aria-labelledby={`${passport.id}-title`}>
+  <div class="dc-media-block__banner">
+    <span class="dc-media-block__badge-dot" aria-hidden="true"></span>
+    <span class="dc-label">Conceptual Diagram &middot; No Empirical Data &middot; Illustrates a Research Distinction</span>
+  </div>
+
+  <div class="dc-media-block__header">
+    <h3 class="dc-media-block__title" id={`${passport.id}-title`}>{passport.title}</h3>
+  </div>
+
+  <div class="dc-media-block__surface" role="img" aria-label={passport.altText}>
+    <slot />
+  </div>
+
+  {textSequence && textSequence.length > 0 && (
+    <div class="dc-media-block__text-equiv">
+      <span class="dc-label dc-label--subtle">Textual structure:</span>
+      <ol class="dc-media-block__seq-list">
+        {textSequence.map((step, idx) => (
+          <li><strong>Step {idx + 1}:</strong> {step}</li>
+        ))}
+      </ol>
+    </div>
+  )}
+
+  <FigureCaption passport={passport} figureNumber={figureNumber} />
+  <MediaPassport passport={passport} />
+</figure>

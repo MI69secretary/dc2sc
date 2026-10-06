@@ -1,0 +1,54 @@
+---
+interface Props {
+  targetModule: string;
+  targetUrl: string;
+  handoffQuestion?: string;
+}
+
+const {
+  targetModule,
+  targetUrl,
+  handoffQuestion,
+} = Astro.props;
+---
+
+<div class="dc-research-handoff-block">
+  <div class="dc-handoff-header">
+    <span class="dc-pill dc-pill--accent">DOWNSTREAM RESEARCH HANDOFF</span>
+    <span class="dc-pill dc-pill--conceptual">{targetModule}</span>
+  </div>
+  {handoffQuestion && (
+    <p class="dc-handoff-question">
+      <strong>Leading Research Question:</strong> {handoffQuestion}
+    </p>
+  )}
+  <div class="dc-handoff-action">
+    <a href={targetUrl} class="dc-btn dc-btn--primary">
+      Explore {targetModule} →
+    </a>
+  </div>
+</div>
+
+<style>
+  .dc-research-handoff-block {
+    margin: 3rem 0;
+    padding: 2rem;
+    border: 2px solid var(--dc-ink);
+    background: var(--dc-raised);
+  }
+  .dc-handoff-header {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .dc-handoff-question {
+    font-size: var(--dc-text-body-lg);
+    line-height: 1.6;
+    color: var(--dc-ink);
+    margin-bottom: 1.5rem;
+  }
+  .dc-handoff-action {
+    display: flex;
+  }
+</style>

@@ -1,0 +1,68 @@
+---
+import type { MediaPassport as PassportType, ArgumentTableColumn } from '../../types/media-passport';
+import MediaPassport from './MediaPassport.astro';
+import FigureCaption from './FigureCaption.astro';
+
+interface Props {
+  passport: PassportType;
+  columns: ArgumentTableColumn[];
+  rows: Record<string, string>[];
+  figureNumber?: string | number;
+  class?: string;
+}
+
+const { passport, columns, rows, figureNumber, class: className = '' } = Astro.props;
+---
+
+<figure class={`dc-media-block dc-media-block--table ${className}`} id={passport.id} aria-labelledby={`${passport.id}-title`}>
+  <div class="dc-media-block__banner">
+    <span class="dc-media-block__badge-dot" aria-hidden="true"></span>
+    <span class="dc-label">Argument Table &middot; Non-Numerical &middot; Conceptual Comparison</span>
+  </div>
+
+  <div class="dc-media-block__header">
+    <h3 class="dc-media-block__title" id={`${passport.id}-title`}>{passport.title}</h3>
+  </div>
+
+  <div class="dc-argument-table-container">
+    <!-- Desktop Table View -->
+    <table class="dc-argument-table dc-table-desktop">
+      <thead>
+        <tr>
+          {columns.map(col => (
+            <th scope="col">{col.header}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row, idx) => (
+          <tr class={idx % 2 === 1 ? 'dc-table-row--alt' : ''}>
+            {columns.map(col => (
+              <td>{row[col.key] || ''}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    <!-- Mobile Card View -->
+    <div class="dc-table-mobile-cards">
+      {rows.map((row, idx) => (
+        <div class="dc-table-card">
+          <div class="dc-table-card__header">
+            <span class="dc-label">Item {idx + 1}</span>
+          </div>
+          {columns.map(col => (
+            <div class="dc-table-card__row">
+              <span class="dc-table-card__label">{col.header}:</span>
+              <span class="dc-table-card__value">{row[col.key] || ''}</span>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <FigureCaption passport={passport} figureNumber={figureNumber} />
+  <MediaPassport passport={passport} />
+</figure>

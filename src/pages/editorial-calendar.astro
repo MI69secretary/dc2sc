@@ -1,0 +1,33 @@
+---
+import SiteShell from '../layouts/SiteShell.astro';
+import Container from '../components/site/Container.astro';
+import Section from '../components/site/Section.astro';
+import Callout from '../components/site/Callout.astro';
+import EditorialCalendarView from '../components/editorial/EditorialCalendarView.astro';
+---
+
+<SiteShell title="Editorial & Publication Calendar" description="Tracking canonical milestones, editorial reviews, site releases, and external media republications across DC2SC.">
+  <div class="dc-page-hero">
+    <Container>
+      <div style="font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--dc-muted); margin-bottom: 1rem;">
+        DC2SC Editorial Control Plane
+      </div>
+      <h1 class="dc-page-hero__headline">Editorial & Publication Calendar</h1>
+      <p class="dc-page-hero__body">
+        Live schedule of frozen canon milestones, editorial reviews, derived essay publications, and authorized external republications.
+      </p>
+    </Container>
+  </div>
+
+  <Section background="white">
+    <Container>
+      <div style="margin-bottom: 2.5rem;">
+        <Callout type="boundary" title="Editorial posture & synchronization">
+          All publications and external media cross-posts (Medium, Substack, LinkedIn) must carry verified canonical backlinks and clear media passport clearances. Google Calendar users can subscribe via the standard iCalendar (.ics) feed below.
+        </Callout>
+      </div>
+
+      <EditorialCalendarView showInternal={true} />
+    </Container>
+  </Section>
+</SiteShell>

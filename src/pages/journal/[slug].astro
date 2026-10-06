@@ -1,0 +1,146 @@
+---
+import SiteShell from '../../layouts/SiteShell.astro'
+import Container from '../../components/site/Container.astro'
+import Section from '../../components/site/Section.astro'
+import Pill from '../../components/site/Pill.astro'
+import Callout from '../../components/site/Callout.astro'
+import EvidenceBadge from '../../components/site/EvidenceBadge.astro'
+import ClaimStatusBadge from '../../components/site/ClaimStatusBadge.astro'
+import ContentStatusBadge from '../../components/site/ContentStatusBadge.astro'
+import ModuleBadge from '../../components/site/ModuleBadge.astro'
+import TopicTag from '../../components/site/TopicTag.astro'
+import ArticleDisclosure from '../../components/site/ArticleDisclosure.astro'
+import ResearchStatusPanel from '../../components/site/ResearchStatusPanel.astro'
+import OpenQuestionBlock from '../../components/site/OpenQuestionBlock.astro'
+import TableOfContents from '../../components/site/TableOfContents.astro'
+import ReadingProgress from '../../components/site/ReadingProgress.astro'
+import CopyLinkButton from '../../components/site/CopyLinkButton.astro'
+import NativeShareButton from '../../components/site/NativeShareButton.astro'
+import RelatedContentGrid from '../../components/site/RelatedContentGrid.astro'
+import LiveTelemetryBar from '../../components/site/LiveTelemetryBar.astro'
+import DonationTerminal from '../../components/site/DonationTerminal.astro'
+import DownloadPdfButton from '../../components/site/DownloadPdfButton.astro'
+import CitationBox from '../../components/site/CitationBox.astro'
+import { getCollection, render } from 'astro:content'
+import { estimateReadingTime } from '../../utils/readingTime.ts'
+
+export async function getStaticPaths() {
+  const entries = await getCollection('journal', ({ data }) =>
+    data.visibility !== 'internal' &&
+    data.lifecycleStatus !== 'paused' &&
+    data.lifecycleStatus !== 'draft' &&
+    data.lifecycleStatus !== 'in_review'
+  );
+  return entries.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const readingTime = estimateReadingTime(entry.body || '');
+---
+
+<SiteShell title={entry.data.title} description={entry.data.dek}>
+  <LiveTelemetryBar />
+  <ReadingProgress />
+  
+  <!-- BREADCRUMB -->
+  <div class="dc-breadcrumb-wrapper">
+    <Container>
+      <nav class="dc-breadcrumb">
+        <span class="dc-breadcrumb__item">
+          <a href="/journal" class="dc-breadcrumb__link">Journal</a>
+          <span class="dc-breadcrumb__sep">›</span>
+        </span>
+        <span class="dc-breadcrumb__current">{entry.data.title}</span>
+      </nav>
+    </Container>
+  </div>
+  
+  <!-- ARTICLE HERO -->
+  <header class="dc-article-hero">
+    <Container>
+      <div class="dc-article-hero__meta">
+        <ContentStatusBadge status={entry.data.status} />
+        <EvidenceBadge level={entry.data.evidenceLevel} />
+        {entry.data.canonicalModules?.map(n => <ModuleBadge moduleNumber={n} />)}
+        <span class="dc-label" style="color: var(--dc-muted);">Not a live-market claim</span>
+      </div>
+      <h1 class="dc-article-hero__title">{entry.data.title}</h1>
+      <p class="dc-article-hero__dek">{entry.data.dek}</p>
+      <div class="dc-article-hero__reading-meta" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+          <span class="dc-article-hero__reading-time">{readingTime}</span>
+          <div class="dc-article-hero__topics">
+            {entry.data.topics.map(t => <TopicTag topic={t} />)}
+          </div>
+        </div>
+        <DownloadPdfButton slug={entry.id} title={entry.data.title} />
+      </div>
+    </Container>
+  </header>
+  
+  <!-- ARTICLE BODY + SIDEBAR -->
+  <Section background="white">
+    <div class="dc-article-layout">
+      
+      <!-- MAIN CONTENT -->
+      <article class="dc-article-main">
+        <div class="dc-prose-article">
+          <Content />
+        </div>
+        
+        <!-- ARTICLE DISCLOSURE -->
+        <ArticleDisclosure
+          whatItIs={`A conceptual research module on ${entry.data.topics.join(' and ').toLowerCase()}.`}
+          whatItDoesNotClaim={entry.data.whatThisDoesNotClaim}
+          openQuestion={entry.data.researchQuestions?.[0]}
+        />
+        
+        <!-- GOLIAF BOUNDARY (if applicable) -->
+        {entry.data.goliafBoundary && (
+          <Callout type="boundary" title="GOLIAF boundary">
+            {entry.data.goliafBoundary}
+          </Callout>
+        )}
+        
+        <!-- OPEN QUESTIONS -->
+        {entry.data.researchQuestions && entry.data.researchQuestions.length > 0 && (
+          <OpenQuestionBlock questions={entry.data.researchQuestions} />
+        )}
+        
+        <!-- ACADEMIC CITATION BOX -->
+        <CitationBox title={entry.data.title} slug={entry.id} collection="journal" />
+
+        <!-- SHARE & PDF -->
+        <div class="dc-share-group" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--dc-border); display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+          <DownloadPdfButton slug={entry.id} title={entry.data.title} />
+          <CopyLinkButton />
+          <NativeShareButton title={entry.data.title} />
+          <a href="/journal" class="dc-btn dc-btn--ghost" style="margin-left: auto;">← Back to Journal</a>
+        </div>
+      </article>
+      
+      <!-- SIDEBAR -->
+      <aside class="dc-article-sidebar">
+        <!-- TABLE OF CONTENTS -->
+        {headings.length > 0 && <TableOfContents headings={headings} />}
+        
+        <!-- RESEARCH STATUS PANEL -->
+        <ResearchStatusPanel
+          evidenceLevel={entry.data.evidenceLevel}
+          claimStatus={entry.data.claimLevel}
+          researchState="Architecture in development"
+          productClaim="None"
+          goliafRelation={entry.data.goliafBoundary ? 'Stress-test context only' : undefined}
+        />
+      </aside>
+    </div>
+
+    <div style="margin-top: 4rem;">
+      <DonationTerminal />
+    </div>
+  </Section>
+</SiteShell>

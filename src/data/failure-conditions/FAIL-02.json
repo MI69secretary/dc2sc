@@ -1,0 +1,17 @@
+{
+  "failureId": "FAIL-02",
+  "name": "representation",
+  "category": "Representation",
+  "description": "Unauthorized代理 or divergence between participant mandate and representative bargaining position.",
+  "status": "monitored",
+  "relatedModules": [
+    1,
+    3,
+    5
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

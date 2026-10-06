@@ -1,0 +1,69 @@
+---
+import ResearchCanvasHeader from './ResearchCanvasHeader.astro';
+import ResearchStatusRail from './ResearchStatusRail.astro';
+import ResearchCanvasFooter from './ResearchCanvasFooter.astro';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  moduleNumber?: string;
+  evidenceLevel?: string;
+  contentKind?: string;
+  canonicalState?: string;
+  claimState?: string;
+  researchRole?: string;
+  sourceOfTruth?: string;
+  limitations?: string[];
+  whatThisDoesNotEstablish?: string[];
+  class?: string;
+}
+
+const {
+  title,
+  subtitle,
+  moduleNumber,
+  evidenceLevel = 'E0',
+  contentKind = 'canonical_module',
+  canonicalState = 'frozen',
+  claimState = 'active',
+  researchRole = 'analytical_framework',
+  sourceOfTruth,
+  limitations = [],
+  whatThisDoesNotEstablish = [],
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`dc-research-canvas ${className}`}>
+  <ResearchCanvasHeader
+    moduleNumber={moduleNumber}
+    title={title}
+    subtitle={subtitle}
+    evidenceLevel={evidenceLevel}
+  />
+
+  <div class="dc-research-canvas__grid">
+    <div class="dc-research-canvas__primary">
+      <slot />
+    </div>
+
+    <aside class="dc-research-canvas__rail" aria-label="Research Status and Epistemic Metadata">
+      <ResearchStatusRail
+        contentKind={contentKind}
+        canonicalState={canonicalState}
+        claimState={claimState}
+        researchRole={researchRole}
+        evidenceLevel={evidenceLevel}
+        sourceOfTruth={sourceOfTruth}
+        limitations={limitations}
+        whatThisDoesNotEstablish={whatThisDoesNotEstablish}
+      />
+    </aside>
+  </div>
+
+  <ResearchCanvasFooter
+    moduleNumber={moduleNumber}
+    title={title}
+    canonicalState={canonicalState}
+  />
+</div>

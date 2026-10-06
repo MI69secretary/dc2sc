@@ -1,0 +1,148 @@
+---
+import { navLinks } from '../../data/site';
+import LanguageSelect from './LanguageSelect.astro';
+
+const currentPath = Astro.url.pathname;
+
+function isCurrent(href: string) {
+  if (href === '/') {
+    return currentPath === href;
+  }
+  return currentPath.startsWith(href);
+}
+---
+
+<div class="dc-meta-topbar">
+  <div class="dc-container">
+    <div class="dc-meta-topbar__inner">
+      <div class="dc-meta-topbar__item">
+        <span data-i18n="topbar.directory">DC2SC // INSTITUTIONAL RESEARCH DIRECTORY</span>
+        <span>•</span>
+        <span>ISSN 2956-4821</span>
+      </div>
+      <div class="dc-meta-topbar__item">
+        <span class="dc-status-dot"></span>
+        <span data-i18n="topbar.status">STATUS: CONSENSUS VALIDATED</span>
+        <span>•</span>
+        <span data-i18n="topbar.nodes">12 NODES ONLINE</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header id="site-header" class="dc-header">
+  <div class="dc-header__inner">
+    <a href="/" class="dc-wordmark">
+      <span>DC2SC</span>
+      <span style="font-family: var(--dc-font-mono); font-size: 0.6875rem; color: var(--dc-navy); margin-left: 6px; font-weight: 700; letter-spacing: 0.05em;">// PROTOCOL</span>
+    </a>
+    
+    <nav class="dc-nav" aria-label="Main Navigation">
+      <ul id="dc-nav-menu" class="dc-nav__list" role="list">
+        {navLinks.map((link) => {
+          const active = isCurrent(link.href);
+          const i18nKey = link.href === '/research' ? 'nav.research'
+            : link.href === '/journal' ? 'nav.journal'
+            : link.href === '/goliaf' ? 'nav.goliaf'
+            : link.href === '/community' ? 'nav.community'
+            : link.href === '/about' ? 'nav.about'
+            : undefined;
+          return (
+            <li>
+              <a 
+                href={link.href} 
+                class={`dc-nav__link ${active ? 'dc-nav__link--active' : ''}`}
+                aria-current={active ? 'page' : undefined}
+                data-i18n={i18nKey}
+              >
+                {link.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      
+      <div class="dc-header__actions">
+        <button
+          class="dc-header__search-btn"
+          id="header-search-btn"
+          aria-label="Search (Ctrl+K)"
+          onclick="window.__dcOpenSearch?.()"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="7" cy="7" r="5"/><path d="M10.5 10.5L14 14"/>
+          </svg>
+          <span class="dc-header__search-label" data-i18n="nav.search">Пошук</span>
+        </button>
+        <LanguageSelect />
+        <a href="/support" class="dc-header__action-link" data-i18n="nav.donate">ДОНАТ</a>
+        <a href="/research" class="dc-header__action-link" style="background: var(--dc-navy); color: var(--dc-white); border-color: var(--dc-navy);" data-i18n="nav.specification">СПЕЦИФІКАЦІЯ</a>
+        
+        <button 
+          id="nav-toggle" 
+          class="dc-nav__toggle" 
+          aria-label="Open navigation" 
+          aria-expanded="false" 
+          aria-controls="dc-nav-menu"
+        >
+          <span class="dc-nav__hamburger"></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggleBtn = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('dc-nav-menu');
+  
+  // Handle scroll class
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) {
+      header?.classList.add('dc-header--scrolled');
+    } else {
+      header?.classList.remove('dc-header--scrolled');
+    }
+  });
+
+  // Handle initial scroll state
+  if (window.scrollY > 0) {
+    header?.classList.add('dc-header--scrolled');
+  }
+
+  // Handle mobile menu
+  if (toggleBtn && navMenu) {
+    const toggleMenu = () => {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+      if (isExpanded) {
+        navMenu.classList.remove('dc-nav__list--open');
+        toggleBtn.setAttribute('aria-label', 'Open navigation');
+      } else {
+        navMenu.classList.add('dc-nav__list--open');
+        toggleBtn.setAttribute('aria-label', 'Close navigation');
+      }
+    };
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
+        toggleMenu();
+        toggleBtn.focus();
+      }
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (toggleBtn.getAttribute('aria-expanded') === 'true' && !header?.contains(e.target as Node)) {
+        toggleMenu();
+      }
+    });
+  }
+</script>

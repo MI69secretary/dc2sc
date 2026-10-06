@@ -1,0 +1,75 @@
+---
+interface Props {
+  tableId: string;
+  title?: string;
+  kind?: 'argument_table' | 'tension_matrix' | 'comparison_matrix' | 'data_table';
+  caption?: string;
+}
+
+const {
+  tableId,
+  title,
+  kind = 'argument_table',
+  caption,
+} = Astro.props;
+
+const kindLabel = kind.replace(/_/g, ' ').toUpperCase();
+---
+
+<div class="dc-typed-media-container dc-table-matrix-container" data-table-id={tableId} data-kind={kind}>
+  <div class="dc-media-passport-header">
+    <div class="dc-media-passport-badges">
+      <span class="dc-pill dc-pill--accent">{tableId}</span>
+      <span class="dc-pill dc-pill--conceptual">{kindLabel}</span>
+      <span class="dc-pill dc-pill--default">DERIVED NON-CANONICAL</span>
+    </div>
+  </div>
+
+  {title && <h3 class="dc-table-title">{title}</h3>}
+
+  <div class="dc-table-matrix-body">
+    <slot />
+  </div>
+
+  {caption && (
+    <div class="dc-media-caption">
+      <p class="dc-caption-text"><strong>Table {tableId}:</strong> {caption}</p>
+    </div>
+  )}
+</div>
+
+<style>
+  .dc-typed-media-container {
+    margin: 2.5rem 0;
+    border: 1px solid var(--dc-border);
+    background: var(--dc-white);
+    padding: 1.5rem;
+  }
+  .dc-media-passport-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--dc-border);
+  }
+  .dc-media-passport-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .dc-table-title {
+    font-family: var(--dc-font-display);
+    font-size: var(--dc-text-h3);
+    margin-bottom: 1rem;
+    color: var(--dc-ink);
+  }
+  .dc-table-matrix-body {
+    overflow-x: auto;
+  }
+  .dc-media-caption {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--dc-border);
+    font-size: var(--dc-text-body-sm);
+    color: var(--dc-ink-2);
+  }
+</style>

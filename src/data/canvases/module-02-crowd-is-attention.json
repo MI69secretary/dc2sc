@@ -1,0 +1,17 @@
+{
+  "moduleId": "module-02-crowd-is-attention",
+  "moduleNumber": "02",
+  "title": "A Crowd Is Attention. A Market Position Is Agency.",
+  "subtitle": "Distinguishing between aggregated platform attention and collective authority over market terms.",
+  "authority": "derived_noncanonical",
+  "canvasStatus": "scaffolded",
+  "visibility": "internal",
+  "indexable": false,
+  "canonicalRefs": [
+    "module-02-crowd-is-attention"
+  ],
+  "evidenceLevel": "E0",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "publicationAuthority": "none"
+}

@@ -1,0 +1,64 @@
+---
+import type { MediaPassport as PassportType, TensionMatrixItem } from '../../types/media-passport';
+import MediaPassport from './MediaPassport.astro';
+import FigureCaption from './FigureCaption.astro';
+
+interface Props {
+  passport: PassportType;
+  items: TensionMatrixItem[];
+  leftTitle?: string;
+  rightTitle?: string;
+  figureNumber?: string | number;
+  class?: string;
+}
+
+const {
+  passport,
+  items = [],
+  leftTitle = 'Dimension / Axis A',
+  rightTitle = 'Dimension / Axis B',
+  figureNumber,
+  class: className = '',
+} = Astro.props;
+---
+
+<figure class={`dc-media-block dc-media-block--tension ${className}`} id={passport.id} aria-labelledby={`${passport.id}-title`}>
+  <div class="dc-media-block__banner">
+    <span class="dc-media-block__badge-dot" aria-hidden="true"></span>
+    <span class="dc-label">Tension Matrix &middot; Irreducible Trade-off &middot; Non-Compensable Axes</span>
+  </div>
+
+  <div class="dc-media-block__header">
+    <h3 class="dc-media-block__title" id={`${passport.id}-title`}>{passport.title}</h3>
+  </div>
+
+  <div class="dc-tension-matrix">
+    <div class="dc-tension-matrix__headers">
+      <div class="dc-tension-matrix__th dc-tension-matrix__th--dim">Dimension</div>
+      <div class="dc-tension-matrix__th dc-tension-matrix__th--left">{leftTitle}</div>
+      <div class="dc-tension-matrix__th dc-tension-matrix__th--right">{rightTitle}</div>
+    </div>
+
+    <div class="dc-tension-matrix__rows">
+      {items.map((item, idx) => (
+        <div class="dc-tension-matrix__row">
+          <div class="dc-tension-matrix__cell dc-tension-matrix__cell--dim">
+            <span class="dc-label dc-label--subtle">0{idx + 1}</span>
+            <strong>{item.dimension}</strong>
+          </div>
+          <div class="dc-tension-matrix__cell dc-tension-matrix__cell--left">
+            <span class="dc-tension-label-mobile">{leftTitle}:</span>
+            {item.leftValue}
+          </div>
+          <div class="dc-tension-matrix__cell dc-tension-matrix__cell--right">
+            <span class="dc-tension-label-mobile">{rightTitle}:</span>
+            {item.rightValue}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <FigureCaption passport={passport} figureNumber={figureNumber} />
+  <MediaPassport passport={passport} />
+</figure>

@@ -1,0 +1,11 @@
+{
+  "id": "commitment",
+  "status": "demo",
+  "isDemo": true,
+  "type": "methodological_objection",
+  "topic": "Commitment",
+  "body": "Conditional commitment may be indistinguishable from cheap talk preference unless the conditions are independently verifiable and the binding window is strictly time-delimited.",
+  "source": "site",
+  "consentStatus": "demo",
+  "featured": true
+}

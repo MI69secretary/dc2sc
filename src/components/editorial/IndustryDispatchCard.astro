@@ -1,0 +1,43 @@
+---
+// IndustryDispatchCard.astro — Regulatory bulletin & research dispatch card
+interface Props {
+  category: string;
+  date: string;
+  title: string;
+  snippet: string;
+  citationId: string;
+  href?: string;
+  status?: string;
+}
+
+const {
+  category,
+  date,
+  title,
+  snippet,
+  citationId,
+  href = '#',
+  status = 'VERIFIED PROCEEDING',
+} = Astro.props;
+---
+
+<article class="dc-dispatch-card">
+  <div class="dc-dispatch-card__header">
+    <span class="dc-pill dc-pill--accent">{category}</span>
+    <span class="dc-label" style="color: var(--dc-muted);">{date}</span>
+  </div>
+
+  <h3 class="dc-dispatch-card__title">
+    <a href={href}>{title}</a>
+  </h3>
+
+  <p class="dc-dispatch-card__snippet">{snippet}</p>
+
+  <div class="dc-dispatch-card__footer">
+    <span><strong>CITATION:</strong> {citationId}</span>
+    <span class="dc-pill dc-pill--default">
+      <span class="dc-status-dot" style="margin-right: 4px;"></span>
+      {status}
+    </span>
+  </div>
+</article>

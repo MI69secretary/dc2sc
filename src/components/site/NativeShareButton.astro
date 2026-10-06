@@ -1,0 +1,21 @@
+---
+interface Props { title: string; url?: string; }
+const { title, url } = Astro.props;
+---
+<button class="dc-share-btn" id="native-share-btn" aria-label="Share this article" style="display:none">
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+    <path d="M8 2L10 4L8 6"/><path d="M10 4H5a3 3 0 0 0 0 6h1"/>
+  </svg>
+  Share
+</button>
+<script define:vars={{ title, url }}>
+  const btn = document.getElementById('native-share-btn');
+  if (btn && navigator.share) {
+    btn.style.display = 'inline-flex';
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.share({ title, url: url || window.location.href });
+      } catch { /* user cancelled or not supported */ }
+    });
+  }
+</script>

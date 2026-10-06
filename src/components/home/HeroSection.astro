@@ -1,0 +1,111 @@
+---
+import Container from '../site/Container.astro'
+import Eyebrow from '../site/Eyebrow.astro'
+---
+
+<section class="dc-hero">
+  <Container class="dc-hero__inner">
+    <div class="dc-hero__content">
+      <Eyebrow text="DC2SC / Buyer-side market formation research" class="dc-eyebrow" data-i18n="hero.eyebrow" />
+      <h1 class="dc-hero__headline" data-i18n="hero.headline">More choice.<br />Less voice.</h1>
+      <p class="dc-hero__body" data-i18n="hero.body">
+        Digital markets are good at matching individual clicks to existing offers. They are much worse at helping independent people express, coordinate and contest the terms of demand they may share.
+      </p>
+      <div class="dc-hero__signature">
+        <p><span data-i18n="hero.sig1">A crowd is attention.</span><br /><span data-i18n="hero.sig2">A market position is agency.</span></p>
+      </div>
+      <div class="dc-btn-group">
+        <a href="/research" class="dc-btn dc-btn--primary" data-i18n="hero.btn.explore">Explore the research</a>
+        <a href="/journal" class="dc-btn dc-btn--secondary" data-i18n="hero.btn.journal">Read the journal</a>
+      </div>
+    </div>
+    <div class="dc-hero__visual">
+      <svg viewBox="0 0 560 400" aria-hidden="true" style="width: 100%; height: auto;">
+        <style>
+          @media (prefers-reduced-motion: no-preference) {
+            .dc-hero-pulse { animation: dc-hero-fade 3s infinite alternate ease-in-out; }
+            .dc-hero-pulse-2 { animation: dc-hero-fade 4s infinite alternate ease-in-out reverse; }
+          }
+          @keyframes dc-hero-fade { from { opacity: 0.12; } to { opacity: 0.35; } }
+        </style>
+        
+        <!-- Fragmented individual positions (Left Side) -->
+        <g fill="#0f0f0f">
+          <circle cx="40" cy="150" r="2.5" class="dc-hero-pulse" />
+          <circle cx="60" cy="120" r="2" class="dc-hero-pulse-2" />
+          <circle cx="80" cy="180" r="3" opacity="0.2" />
+          <circle cx="100" cy="130" r="2.5" opacity="0.3" />
+          <circle cx="120" cy="200" r="2" class="dc-hero-pulse" />
+          <circle cx="50" cy="230" r="2.5" opacity="0.15" />
+          <circle cx="90" cy="260" r="2.5" class="dc-hero-pulse-2" />
+          <circle cx="130" cy="240" r="2" opacity="0.2" />
+          <circle cx="150" cy="160" r="3" class="dc-hero-pulse" />
+          <circle cx="170" cy="190" r="2.5" opacity="0.25" />
+          <circle cx="140" cy="280" r="2" opacity="0.3" />
+          <circle cx="180" cy="220" r="2.5" class="dc-hero-pulse-2" />
+          <circle cx="210" cy="170" r="2" opacity="0.15" />
+          <circle cx="230" cy="210" r="2.5" class="dc-hero-pulse" />
+          <circle cx="250" cy="250" r="2" opacity="0.35" />
+          <circle cx="220" cy="290" r="3" opacity="0.2" />
+          <circle cx="70" cy="310" r="2.5" class="dc-hero-pulse" />
+          <circle cx="110" cy="330" r="2" opacity="0.25" />
+          <circle cx="160" cy="340" r="2.5" opacity="0.15" />
+          <circle cx="200" cy="320" r="2" class="dc-hero-pulse-2" />
+          <circle cx="260" cy="140" r="2.5" opacity="0.2" />
+          <circle cx="280" cy="180" r="2" opacity="0.3" />
+          <circle cx="290" cy="230" r="2.5" class="dc-hero-pulse" />
+          <circle cx="310" cy="270" r="2" opacity="0.2" />
+          <circle cx="320" cy="310" r="2.5" opacity="0.35" />
+          <circle cx="270" cy="350" r="2" class="dc-hero-pulse-2" />
+          <circle cx="30" cy="190" r="2.5" opacity="0.25" />
+          <circle cx="90" cy="90" r="2" opacity="0.15" />
+          <circle cx="140" cy="110" r="2.5" class="dc-hero-pulse" />
+          <circle cx="190" cy="120" r="2" opacity="0.2" />
+          <circle cx="240" cy="100" r="2.5" opacity="0.3" />
+          <circle cx="280" cy="80" r="2" class="dc-hero-pulse-2" />
+          <circle cx="330" cy="150" r="2.5" opacity="0.25" />
+          <circle cx="340" cy="200" r="2" opacity="0.15" />
+          <circle cx="180" cy="290" r="2.5" class="dc-hero-pulse" />
+          <circle cx="240" cy="330" r="2" opacity="0.2" />
+          <circle cx="120" cy="370" r="2.5" opacity="0.3" />
+        </g>
+        
+        <!-- Pathways (Loose relationships) -->
+        <g stroke="#0f0f0f" stroke-width="0.5" stroke-opacity="0.15">
+          <line x1="80" y1="180" x2="150" y2="160" />
+          <line x1="150" y1="160" x2="210" y2="170" />
+          <line x1="120" y1="200" x2="170" y2="190" />
+          <line x1="170" y1="190" x2="230" y2="210" />
+          <line x1="130" y1="240" x2="180" y2="220" />
+          <line x1="180" y1="220" x2="250" y2="250" />
+          <line x1="140" y1="280" x2="220" y2="290" />
+          <line x1="230" y1="210" x2="290" y2="230" />
+          <line x1="250" y1="250" x2="310" y2="270" />
+          <line x1="210" y1="170" x2="280" y2="180" />
+        </g>
+        
+        <!-- Arrow -->
+        <line x1="190" y1="260" x2="320" y2="260" stroke="#0f0f0f" stroke-width="1.5" stroke-opacity="0.25" stroke-dasharray="4,4" />
+        <polygon points="320,256 328,260 320,264" fill="#0f0f0f" opacity="0.25" />
+        
+        <!-- Bounded Collective Position -->
+        <rect x="350" y="200" width="180" height="140" fill="none" stroke="#0f0f0f" stroke-width="2" opacity="0.85" />
+        
+        <!-- Label -->
+        <text x="362" y="322" font-family="Space Mono, monospace" font-size="7" fill="#0f0f0f" opacity="0.45" font-weight="bold">
+          COLLECTIVE
+          <tspan x="362" y="332">POSITION</tspan>
+        </text>
+        
+        <!-- Inside participants (Cobalt Blue) -->
+        <g fill="#1e3a8a">
+          <circle cx="410" cy="240" r="3.5" opacity="0.65" />
+          <circle cx="450" cy="260" r="3.5" opacity="0.5" />
+          <circle cx="430" cy="280" r="3.5" opacity="0.6" />
+          <circle cx="480" cy="235" r="3.5" opacity="0.55" />
+          <circle cx="495" cy="270" r="3.5" opacity="0.65" />
+        </g>
+      </svg>
+    </div>
+  </Container>
+</section>

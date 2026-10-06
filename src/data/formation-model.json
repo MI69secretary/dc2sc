@@ -1,0 +1,70 @@
+{
+  "steps": [
+    {
+      "index": "01",
+      "label": "Private intent",
+      "accent": false,
+      "final": false
+    },
+    {
+      "index": "02",
+      "label": "Expressed constraints",
+      "accent": false,
+      "final": false
+    },
+    {
+      "index": "03",
+      "label": "Proposed collective position",
+      "accent": false,
+      "final": false
+    },
+    {
+      "index": "04",
+      "label": "Inspect / contest / revise",
+      "accent": true,
+      "final": false
+    },
+    {
+      "index": "05",
+      "label": "Ratification",
+      "accent": true,
+      "final": false
+    },
+    {
+      "index": "06",
+      "label": "Conditional commitment",
+      "accent": false,
+      "final": false
+    },
+    {
+      "index": "07",
+      "label": "Collective market position",
+      "accent": true,
+      "final": false
+    },
+    {
+      "index": "08",
+      "label": "Supplier response, if any",
+      "accent": false,
+      "final": false
+    },
+    {
+      "index": "09",
+      "label": "Informed decision",
+      "accent": false,
+      "final": false
+    },
+    {
+      "index": "10",
+      "label": "Compare with individual alternative",
+      "accent": false,
+      "final": false
+    },
+    {
+      "index": "11",
+      "label": "Continue / redesign / stop / do not aggregate",
+      "accent": false,
+      "final": true
+    }
+  ]
+}

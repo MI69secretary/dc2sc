@@ -1,0 +1,13 @@
+{
+  "datasetId": "DATASET-0002",
+  "title": "GOLIAF Simulated Travel Coordination Traces",
+  "description": "Simulated constraint profiles across multi-leg travel journeys testing failure injection response.",
+  "status": "synthetic_benchmarking",
+  "evidenceLevel": "E0",
+  "license": "CC-BY-4.0",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

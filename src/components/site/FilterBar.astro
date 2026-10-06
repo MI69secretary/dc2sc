@@ -1,0 +1,20 @@
+---
+interface Props {
+  filters: { label: string; value: string }[];
+  activeValue?: string;
+  label?: string;
+  id?: string;
+}
+const { filters, activeValue = 'all', label = 'Filter', id = 'filter-bar' } = Astro.props;
+---
+<div class="dc-filter-bar" id={id} role="group" aria-label={label}>
+  {filters.map(f => (
+    <button
+      class={`dc-filter-chip${f.value === activeValue ? ' dc-filter-chip--active' : ''}`}
+      data-filter={f.value}
+      aria-pressed={f.value === activeValue ? 'true' : 'false'}
+    >
+      {f.label}
+    </button>
+  ))}
+</div>

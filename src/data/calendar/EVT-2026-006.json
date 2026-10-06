@@ -1,0 +1,14 @@
+{
+  "eventId": "EVT-2026-006",
+  "title": "Module 02 Attention vs Agency Briefing & File Revisions",
+  "eventType": "revision_audit",
+  "scheduledDate": "2026-10-02",
+  "targetArtifactId": "module-02-crowd-is-attention",
+  "channel": "internal_archive",
+  "status": "scheduled",
+  "description": "Review structural distinctions between aggregated attention and collective market agency.",
+  "isFixture": false,
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

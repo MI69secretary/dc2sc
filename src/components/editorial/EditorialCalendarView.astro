@@ -1,0 +1,96 @@
+---
+import { getAllCalendarEvents, type EditorialCalendarEvent } from '../../data/calendar';
+import Pill from '../site/Pill.astro';
+
+interface Props {
+  showInternal?: boolean;
+}
+
+const { showInternal = true } = Astro.props;
+const allEvents = getAllCalendarEvents();
+const events = showInternal ? allEvents : allEvents.filter(e => e.visibility !== 'internal');
+
+const eventTypeLabels: Record<string, string> = {
+  canonical_milestone: 'Canonical Milestone',
+  editorial_review: 'Editorial Review / Audit',
+  site_publication: 'Website Publication',
+  media_republication: 'External Republication',
+  revision_audit: 'Revision & Audit Deadline',
+};
+
+const channelLabels: Record<string, string> = {
+  dc2sc_site: 'DC2SC Main Site',
+  medium: 'Medium',
+  substack: 'Substack',
+  linkedin: 'LinkedIn',
+  x: 'X (Twitter)',
+  internal_archive: 'Internal Archive',
+};
+
+const statusPillVariants: Record<string, 'default' | 'accent' | 'conceptual' | 'demo' | 'in-progress' | 'warning'> = {
+  scheduled: 'default',
+  in_progress: 'in-progress',
+  completed: 'accent',
+  postponed: 'warning',
+  cancelled: 'warning',
+};
+---
+
+<div class="dc-calendar-view">
+  <!-- HEADER ACTIONS & GOOGLE CALENDAR SYNC -->
+  <div style="background: var(--dc-surface); border: 2px solid var(--dc-ink); padding: 1.5rem; margin-bottom: 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem;">
+    <div>
+      <h3 class="dc-display-sm" style="margin-bottom: 0.25rem;">Publication & Revision Timeline</h3>
+      <p class="dc-body-sm" style="color: var(--dc-ink-2); margin: 0;">
+        Tracking frozen canonical milestones, media republications, and revision audits.
+      </p>
+    </div>
+    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+      <a href="/calendar.ics" class="dc-btn dc-btn--primary" style="font-size: 0.75rem; padding: 0.5rem 1rem;">
+        📅 Google Calendar Feed (.ics)
+      </a>
+      <a href="/keystatic/collection/editorial-calendar" class="dc-btn dc-btn--ghost" style="font-size: 0.75rem; padding: 0.5rem 1rem;">
+        ⚙ Manage in Keystatic
+      </a>
+    </div>
+  </div>
+
+  <!-- CALENDAR TIMELINE LIST -->
+  <div class="dc-calendar-timeline" style="display: flex; flex-direction: column; gap: 1.5rem;">
+    {events.map(evt => (
+      <article class="dc-card" style={`border-left: 6px solid ${evt.status === 'completed' ? 'var(--dc-signal, #059669)' : 'var(--dc-accent, #1e3a8a)'}; padding: 1.5rem;`}>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem;">
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <span style="font-family: var(--dc-font-mono); font-size: 0.8125rem; font-weight: 700; background: var(--dc-raised); padding: 0.2rem 0.6rem; border: 1px solid var(--dc-border);">
+              {evt.scheduledDate}
+            </span>
+            <span class="dc-pill dc-pill--default">
+              {channelLabels[evt.channel] || evt.channel}
+            </span>
+            <span style="font-family: var(--dc-font-mono); font-size: 0.75rem; color: var(--dc-muted); text-transform: uppercase;">
+              {eventTypeLabels[evt.eventType] || evt.eventType}
+            </span>
+          </div>
+          <div>
+            <Pill variant={statusPillVariants[evt.status] || 'default'} text={evt.status} />
+          </div>
+        </div>
+
+        <h4 style="font-family: var(--dc-font-display); font-size: 1.25rem; margin: 0 0 0.5rem 0; color: var(--dc-ink);">
+          {evt.title}
+        </h4>
+
+        {evt.description && (
+          <p class="dc-body" style="color: var(--dc-ink-2); margin: 0 0 1rem 0;">
+            {evt.description}
+          </p>
+        )}
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--dc-border); padding-top: 0.75rem; font-family: var(--dc-font-mono); font-size: 0.75rem; color: var(--dc-muted);">
+          <span>Target: <strong style="color: var(--dc-ink);">{evt.targetArtifactId || 'General Program'}</strong></span>
+          <span>Event ID: {evt.eventId}</span>
+        </div>
+      </article>
+    ))}
+  </div>
+</div>

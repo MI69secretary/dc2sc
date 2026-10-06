@@ -1,0 +1,54 @@
+---
+import type { MediaPassport as PassportType } from '../../types/media-passport';
+import MediaPassport from './MediaPassport.astro';
+import FigureCaption from './FigureCaption.astro';
+
+interface Props {
+  passport?: PassportType;
+  title?: string;
+  notes?: string[] | string;
+  methodType?: string;
+  epistemicCaveat?: string;
+  figureNumber?: string | number;
+  type?: 'default' | 'boundary' | 'warning';
+  class?: string;
+}
+
+const {
+  passport,
+  title = passport?.title || 'Methodological Note',
+  notes,
+  methodType,
+  epistemicCaveat,
+  figureNumber,
+  type = 'boundary',
+  class: className = '',
+} = Astro.props;
+
+const noteList = Array.isArray(notes) ? notes : notes ? [notes] : [];
+---
+
+<figure class={`dc-media-block dc-media-block--method ${className}`} id={passport?.id} role="note" aria-labelledby={passport?.id ? `${passport.id}-title` : undefined}>
+  <div class="dc-media-block__banner">
+    <span class="dc-media-block__badge-dot" aria-hidden="true"></span>
+    <span class="dc-label">Method Note &middot; Research Disclosure & Constitutional Boundary</span>
+  </div>
+
+  <div class={`dc-callout dc-callout--${type}`} style="border-width: 2px; margin: 0;">
+    <strong class="dc-callout__title" id={passport?.id ? `${passport.id}-title` : undefined} style="font-size: 1.0625rem;">{title}</strong>
+    {methodType && <div class="dc-label dc-label--subtle" style="margin-bottom: 0.5rem;">Standard: {methodType}</div>}
+    {epistemicCaveat && <p class="dc-body-sm" style="font-style: italic; color: var(--dc-muted); margin-bottom: 0.5rem;">{epistemicCaveat}</p>}
+    {noteList.length > 0 ? (
+      <div style="margin-top: 0.5rem;">
+        {noteList.map(n => <p class="dc-body-sm" style="margin-bottom: 0.5rem;">{n}</p>)}
+      </div>
+    ) : (
+      <div style="margin-top: 0.5rem;">
+        <slot />
+      </div>
+    )}
+  </div>
+
+  {passport && <FigureCaption passport={passport} figureNumber={figureNumber} />}
+  {passport && <MediaPassport passport={passport} />}
+</figure>

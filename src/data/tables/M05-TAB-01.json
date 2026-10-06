@@ -1,0 +1,67 @@
+{
+  "tableId": "M05-TAB-01",
+  "title": "Five Non-Compensable Rights Floors in Market Coordination",
+  "kind": "comparison_matrix",
+  "columns": [
+    { "key": "market", "label": "Coordination Right & Operational Floor", "description": "Mandatory constitutional guarantee" },
+    { "key": "person", "label": "Prohibited Trade-off / Coercive Distortion", "description": "Compromise forbidden under DC2SC principles" }
+  ],
+  "rows": [
+    {
+      "rowId": "r1",
+      "cells": {
+        "market": "1. Unconditional Exit Right (Zero-penalty pre-execution walkaway)",
+        "person": "Cannot be waived in exchange for tier discounts or loyalty points"
+      }
+    },
+    {
+      "rowId": "r2",
+      "cells": {
+        "market": "2. Continuous Contestability (Right to challenge representative mandates)",
+        "person": "Cannot be superseded by platform terms of service or binding arbitration"
+      }
+    },
+    {
+      "rowId": "r3",
+      "cells": {
+        "market": "3. Constraint Intelligibility (Transparent representation of pooled needs)",
+        "person": "Cannot be obscured behind proprietary algorithmic black boxes"
+      }
+    },
+    {
+      "rowId": "r4",
+      "cells": {
+        "market": "4. Telemetry Privacy (Zero behavioral tracking outside declared constraints)",
+        "person": "Cannot be traded for subsidized search access or personalized ads"
+      }
+    },
+    {
+      "rowId": "r5",
+      "cells": {
+        "market": "5. Outside Option Parity (Do not aggregate is a protected, valid result)",
+        "person": "Cannot impose structural penalties on participants choosing independent alternatives"
+      }
+    }
+  ],
+  "caption": "Constitutional definition of mandatory rights floors in voluntary market formations.",
+  "scopeLimits": [
+    "Conceptual specification. Does not constitute formal legal counsel."
+  ],
+  "limitations": [
+    "Theoretical rights architecture; non-statutory."
+  ],
+  "canonicalRefs": [
+    "module-05-coordination-rights"
+  ],
+  "sourceRefs": [
+    "canonical-narrative"
+  ],
+  "accessibility": {
+    "textEquivalent": "Matrix outlining 5 non-compensable rights floors (Exit, Contestability, Intelligibility, Privacy, Outside Option Parity) and their strictly prohibited commercial compromises.",
+    "dataTableFallback": true
+  },
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

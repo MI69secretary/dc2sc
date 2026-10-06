@@ -1,0 +1,79 @@
+---
+import Container from '../site/Container.astro'
+import Section from '../site/Section.astro'
+import SectionHeading from '../site/SectionHeading.astro'
+import { principles } from '../../data/research.ts'
+
+// Ensure we have exactly 6 principles mapping to our custom SVG logic below
+// If the array size differs, it will safely render just the text.
+---
+
+<Section background="white">
+  <Container>
+    <div data-i18n="principles.headline">
+      <SectionHeading headline="What the research refuses to assume" />
+    </div>
+    
+    <div class="dc-principles-grid" style="margin-top: 3rem;">
+      {principles.map((p, i) => (
+        <div class="dc-card dc-card--principle">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem;">
+            <span class="dc-card__number">{String(p.number).padStart(2, '0')}</span>
+            
+            <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" stroke="#1e3a8a" stroke-width="1.5" fill="none" stroke-linecap="square">
+              {i === 0 && (
+                <g>
+                  <line x1="8" y1="20" x2="16" y2="20" />
+                  <line x1="24" y1="20" x2="32" y2="20" />
+                  <line x1="8" y1="14" x2="32" y2="14" opacity="0.3" />
+                  <line x1="8" y1="26" x2="32" y2="26" opacity="0.3" />
+                </g>
+              )}
+              {i === 1 && (
+                <g>
+                  <circle cx="16" cy="20" r="8" />
+                  <circle cx="32" cy="20" r="2" fill="#1e3a8a" />
+                </g>
+              )}
+              {i === 2 && (
+                <g>
+                  <line x1="6" y1="20" x2="22" y2="20" />
+                  <polyline points="18,16 22,20 18,24" />
+                  <circle cx="32" cy="20" r="3" />
+                </g>
+              )}
+              {i === 3 && (
+                <g>
+                  <polyline points="10,20 16,26 28,14" opacity="0.4" />
+                  <line x1="14" y1="14" x2="26" y2="26" />
+                  <line x1="26" y1="14" x2="14" y2="26" />
+                </g>
+              )}
+              {i === 4 && (
+                <g>
+                  <line x1="8" y1="28" x2="32" y2="28" stroke-width="2" />
+                  <line x1="12" y1="16" x2="12" y2="28" />
+                  <line x1="28" y1="16" x2="28" y2="28" />
+                </g>
+              )}
+              {i === 5 && (
+                <g>
+                  <path d="M12,20 A8,8 0 1,1 28,20 A8,8 0 0,1 20,28 L20,34" />
+                  <polyline points="16,30 20,34 24,30" />
+                </g>
+              )}
+              {i >= 6 && (
+                <g>
+                  <circle cx="20" cy="20" r="8" />
+                </g>
+              )}
+            </svg>
+          </div>
+          
+          <h3 class="dc-card__title" data-i18n={`p${p.number}.title`}>{p.title}</h3>
+          <p class="dc-card__body" data-i18n={`p${p.number}.desc`}>{p.explanation}</p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</Section>

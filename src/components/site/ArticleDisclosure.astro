@@ -1,0 +1,35 @@
+---
+interface Props {
+  whatItIs: string;
+  whatItDoesNotClaim: string[];
+  openQuestion?: string;
+}
+const { whatItIs, whatItDoesNotClaim, openQuestion } = Astro.props;
+---
+<div class="dc-article-disclosure">
+  <div class="dc-article-disclosure__section">
+    <strong class="dc-article-disclosure__label">What this is</strong>
+    <p class="dc-article-disclosure__body">{whatItIs}</p>
+  </div>
+  <div class="dc-article-disclosure__section">
+    <strong class="dc-article-disclosure__label">What this does not claim</strong>
+    <ul class="dc-article-disclosure__list">
+      {whatItDoesNotClaim.map(claim => <li>{claim}</li>)}
+    </ul>
+  </div>
+  {openQuestion && (
+    <div class="dc-article-disclosure__section">
+      <strong class="dc-article-disclosure__label">Open question</strong>
+      <p class="dc-article-disclosure__body">{openQuestion}</p>
+    </div>
+  )}
+</div>
+
+<style is:global>
+.dc-article-disclosure { border: 1px solid var(--dc-border); background: var(--dc-raised); padding: var(--dc-space-8); display: flex; flex-direction: column; gap: var(--dc-space-6); margin: var(--dc-space-12) 0; }
+.dc-article-disclosure__label { display: block; font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--dc-muted); margin-bottom: var(--dc-space-3); }
+.dc-article-disclosure__body { font-size: var(--dc-text-body); color: var(--dc-ink-2); line-height: 1.65; margin: 0; }
+.dc-article-disclosure__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--dc-space-2); }
+.dc-article-disclosure__list li { font-size: var(--dc-text-body); color: var(--dc-ink-2); line-height: 1.6; padding-left: var(--dc-space-5); position: relative; }
+.dc-article-disclosure__list li::before { content: '—'; position: absolute; left: 0; color: var(--dc-muted); }
+</style>

@@ -1,0 +1,40 @@
+---
+interface Props {
+  moduleNumber?: string;
+  title: string;
+  eyebrow?: string;
+  subtitle?: string;
+  evidenceLevel?: string;
+  statusLabel?: string;
+  class?: string;
+}
+
+const {
+  moduleNumber,
+  title,
+  eyebrow = 'DC2SC Research Canvas',
+  subtitle,
+  evidenceLevel = 'E0',
+  statusLabel = 'Conceptual Module Preview',
+  class: className = '',
+} = Astro.props;
+---
+
+<header class={`dc-canvas-header ${className}`}>
+  <div class="dc-canvas-header__top-meta">
+    <div style="display:flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+      {moduleNumber && (
+        <span class="dc-module-badge">Module {moduleNumber}</span>
+      )}
+      <span class="dc-eyebrow">{eyebrow}</span>
+      <span class="dc-pill dc-pill--conceptual">{statusLabel}</span>
+      <span class="dc-pill dc-pill--accent">{evidenceLevel}</span>
+    </div>
+  </div>
+
+  <h1 class="dc-canvas-header__headline">{title}</h1>
+
+  {subtitle && (
+    <p class="dc-canvas-header__subtitle">{subtitle}</p>
+  )}
+</header>

@@ -1,0 +1,12 @@
+{
+  "protocolId": "PROT-GOLIAF-02",
+  "name": "Shared vs Private Constraints Separation Protocol",
+  "scope": "Cryptographic and procedural isolation separating shared public coordination parameters from private reservation data.",
+  "status": "reviewed",
+  "boundaryNotice": "Strict privacy floor: reservation prices and private preferences remain client-isolated.",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

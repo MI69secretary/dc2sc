@@ -1,0 +1,102 @@
+{
+  "briefId": "BRIEF-M01-v1.0",
+  "targetArtifactId": "module-01-more-choice-less-voice",
+  "targetModule": "01",
+  "status": "approved",
+  "lifecycleStatus": "in_review",
+  "publicationAuthority": "none",
+  "visibility": "internal",
+  "isFixture": false,
+  "indexable": false,
+  "includeInSitemap": false,
+  "includeInRss": false,
+  "primaryReader": "Market design and coordination researcher, institutional economist, or demand-side platform designer",
+  "readerProblem": "Understanding why individual access to expanded search queries does not generate bargaining leverage or influence over market terms, but instead deepens participant isolation.",
+  "canonicalDependencies": [
+    "module-01-more-choice-less-voice",
+    "canonical-narrative",
+    "failure-first-framework"
+  ],
+  "sourceCorpus": [
+    "SRC-0001"
+  ],
+  "propositionLedger": [
+    {
+      "id": "M1-P01",
+      "statement": "Choice is search among existing offers; voice is influence over the terms and structures of offers.",
+      "canonicalRef": "module-01-more-choice-less-voice",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M1-P02",
+      "statement": "Individual decision journeys in search-driven markets isolate participants into unilateral price-taking paths.",
+      "canonicalRef": "module-01-more-choice-less-voice",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M1-P03",
+      "statement": "Marketplace observation sees narrow transaction signals while participants carry complex household constraints.",
+      "canonicalRef": "module-01-more-choice-less-voice",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M1-P04",
+      "statement": "Overlapping circumstances can exist without creating shared authority, representation or collective action.",
+      "canonicalRef": "module-01-more-choice-less-voice",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M1-P05",
+      "statement": "Similarity of consumer constraints does not constitute authority to represent or aggregate.",
+      "canonicalRef": "module-01-more-choice-less-voice",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M1-P06",
+      "statement": "Market isolation is identified as a research problem, not an empirical proof of collective superiority.",
+      "canonicalRef": "module-01-more-choice-less-voice",
+      "kind": "canon_restatement"
+    }
+  ],
+  "forbiddenInterpretations": [
+    "Do not claim that all digital marketplaces operate under identical isolation patterns.",
+    "Do not imply that collective buyer coordination is unconditionally superior to individual market search.",
+    "Do not present unobserved or simulated consumer metrics as empirical evidence.",
+    "Do not infer supplier compliance without explicit bilateral terms or constitutional commitment.",
+    "Do not suggest algorithmic aggregation can bypass participant ratification or exit rights."
+  ],
+  "legacyFragmentsAllowedAsIllustrations": [
+    "Isolated search scenario (Aspiration to Transaction pipeline)",
+    "Comparison table of marketplace query telemetry versus participant situational load"
+  ],
+  "requiredMediaPassportObjects": [
+    "M01-FIG-01",
+    "M01-DIST-01",
+    "M01-TAB-01",
+    "M01-SCEN-01",
+    "M01-FIG-02",
+    "M01-NOTE-01",
+    "M01-HANDOFF-01"
+  ],
+  "rightsDependencies": [
+    "Original DC2SC conceptual visuals and analytical frameworks",
+    "Reference-only citation to Li & Zheng (2011) without full text reproduction"
+  ],
+  "representationDependencies": [
+    "Principle 1: Similarity is not authority; shared constraint tags do not constitute a collective position"
+  ],
+  "outsideOptionDependencies": [
+    "Independent fallback to individual unilateral search remains valid and active"
+  ],
+  "evidenceBoundary": "Level E0 Conceptual Horizon / Analytical Framework. No empirical field proof claimed.",
+  "counterargumentTracking": [
+    "Counterargument 1: Search algorithms already optimize price dispersion. (Answer: Price optimization within pre-set supplier terms is not voice over term formation).",
+    "Counterargument 2: Buyers with heterogeneous preferences cannot form stable coalitions. (Answer: DC2SC investigates bounded overlap under non-compensable constraint floors, not global consensus)."
+  ],
+  "failureConditionsTracked": [
+    "FAIL-01: Demand Formation Failure",
+    "Representation Failure",
+    "Exit Cost Asymmetry"
+  ],
+  "handoff": "If multiple participants share circumstances, what constitutional mechanism distinguishes mere attention from collective agency? (Bridge to Module 02)"
+}

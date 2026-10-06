@@ -1,0 +1,47 @@
+{
+  "mediaId": "M06-FIG-01",
+  "title": "Travel Domain Stress-Test Stressors & Boundary Filters",
+  "mediaKind": "structural_model_diagram",
+  "epistemicBasis": "conceptual",
+  "representationRole": "structural_model",
+  "provenanceMode": "canonical_derived",
+  "artifactRole": "diagram",
+  "authority": "derived_noncanonical",
+  "evidenceLevel": "E0",
+  "claimState": "active",
+  "reviewStatus": "reviewed",
+  "canonicalRefs": [
+    "module-06-travel-is-a-stress-test"
+  ],
+  "sourceRefs": [
+    "SRC-0001"
+  ],
+  "scopeLimits": [
+    "Models the 4 extreme friction dimensions of travel as an analytical stress-test for collective market formation."
+  ],
+  "limitations": [
+    "Conceptual environment model; does not reflect live consumer bookings."
+  ],
+  "accessibility": {
+    "decorative": false,
+    "altText": "A diagram contrasting trivial commodity aggregation with the high-heterogeneity, high-perishability stress testing of the travel domain.",
+    "textEquivalent": "Commodity aggregation vs. Travel stress testing: Travel tests non-linear dates, family constraints, zero-refund perishability, and severe dissolution costs to expose mechanism limits.",
+    "colorIndependent": true
+  },
+  "commercialIntent": "none",
+  "containsTransactionalCTA": false,
+  "containsLeadCapture": false,
+  "containsBookingControl": false,
+  "containsPricePromise": false,
+  "containsUnsupportedBenefitClaim": false,
+  "asset": {
+    "type": "svg",
+    "file": "/images/diagrams/travel-stress-test-matrix.svg",
+    "license": "Original DC2SC visual",
+    "rightsStatus": "owned"
+  },
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

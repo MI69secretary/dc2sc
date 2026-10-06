@@ -1,0 +1,14 @@
+{
+  "title": "Subadditivity of Buyer Utility Under Heterogeneous Search Constraints",
+  "author": "Dr. Sarah Lin et al. (Stanford HAI / arXiv:2609.11029)",
+  "sourcePlatform": "arxiv",
+  "originalUrl": "https://arxiv.org/abs/2609.11029",
+  "publishedDate": "28 ВЕРЕСНЯ 2026",
+  "summary": "Академічний препринт, що математично доводить швидкість колапсу спільних туристичних бронювань при зростанні дисперсії дат вильоту та вимог до доступності.",
+  "keyQuote": "«Гетерогенність індивідуальних обмежень не є шумом: спроба їх усереднення в один каталог зменшує сукупну корисність експоненційно до кількості учасників.»",
+  "relatedModule": 6,
+  "curatorTags": ["Travel Stress Test", "Constraint Variance", "Mechanism Infeasibility"],
+  "republicationStatus": "approved",
+  "featuredOnHomepage": true,
+  "aiDiscoveredBy": "Perplexity ArXiv Monitor"
+}

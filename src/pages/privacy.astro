@@ -1,0 +1,61 @@
+---
+import SiteShell from '../layouts/SiteShell.astro'
+import Container from '../components/site/Container.astro'
+import Callout from '../components/site/Callout.astro'
+---
+
+<SiteShell title="Privacy" description="Privacy policy">
+
+  <div class="dc-page-hero">
+    <Container>
+      <h1 class="dc-page-hero__headline">Privacy</h1>
+      <p class="dc-page-hero__body">
+        Phase 1 prototype — no personal data is intentionally collected.
+      </p>
+    </Container>
+  </div>
+
+  <Container class="dc-prose" style="max-width: 800px; padding-top: 3rem; padding-bottom: 6rem;">
+    
+    <Callout type="boundary">
+      This prototype policy must be reviewed and updated before production data collection or third-party integrations are enabled. This is not legal advice.
+    </Callout>
+
+    <div style="margin-top: 3rem;">
+      <h2>What this prototype does not do</h2>
+      <ul>
+        <li>No social login is enabled</li>
+        <li>No public comments are collected</li>
+        <li>No newsletter form is active</li>
+        <li>No payments are processed</li>
+        <li>No analytics are intentionally enabled by this prototype</li>
+        <li>No social embeds are loaded by this prototype</li>
+        <li>No tracking pixels, session recording or behavioral analytics are present</li>
+      </ul>
+
+      <h2>What may be collected automatically</h2>
+      <p>Basic server logs (IP addresses, request timestamps) may be recorded by the web server. These are not processed for analytics in this prototype.</p>
+
+      <h2>Fonts</h2>
+      <p>This prototype loads fonts from Google Fonts. Google Fonts may log request metadata. See Google's privacy policy.</p>
+
+      <h2>Third-party services</h2>
+      <p>No third-party services are integrated in this prototype. This section will be updated when any service is integrated.</p>
+
+      <h2>Future updates</h2>
+      <p>Before any of the following are enabled, this policy will be updated and the update disclosed:</p>
+      <ul>
+        <li>Analytics</li>
+        <li>Comments</li>
+        <li>Newsletter</li>
+        <li>Social authentication</li>
+        <li>Payment processing</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>For privacy enquiries: [placeholder — contact information not yet published]</p>
+    </div>
+
+  </Container>
+
+</SiteShell>

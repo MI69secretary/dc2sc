@@ -1,0 +1,68 @@
+---
+import type { MediaPassport as PassportType } from '../../types/media-passport';
+import MediaPassport from './MediaPassport.astro';
+import FigureCaption from './FigureCaption.astro';
+
+interface Props {
+  passport: PassportType;
+  figureNumber?: string | number;
+  sourceFinding?: string;
+  dc2scInference?: string;
+  imageSrc?: string;
+  class?: string;
+}
+
+const {
+  passport,
+  figureNumber,
+  sourceFinding,
+  dc2scInference,
+  imageSrc,
+  class: className = '',
+} = Astro.props;
+---
+
+<figure class={`dc-media-block dc-media-block--source ${className}`} id={passport.id} aria-labelledby={`${passport.id}-title`}>
+  <div class="dc-media-block__banner">
+    <span class="dc-media-block__badge-dot" aria-hidden="true"></span>
+    <span class="dc-label">Source-Derived Figure &middot; External Literature Adaptation</span>
+  </div>
+
+  <div class="dc-media-block__header">
+    <h3 class="dc-media-block__title" id={`${passport.id}-title`}>{passport.title}</h3>
+  </div>
+
+  <div class="dc-source-figure__surface">
+    {imageSrc ? (
+      <img src={imageSrc} alt={passport.altText} class="dc-source-figure__img" />
+    ) : (
+      <div class="dc-source-figure__slot" role="img" aria-label={passport.altText}>
+        <slot />
+      </div>
+    )}
+  </div>
+
+  {(sourceFinding || dc2scInference) && (
+    <div class="dc-source-figure__analysis">
+      {sourceFinding && (
+        <div class="dc-source-figure__finding">
+          <strong class="dc-label dc-label--subtle">Source Finding:</strong>
+          <p class="dc-body-sm">{sourceFinding}</p>
+        </div>
+      )}
+      {dc2scInference && (
+        <div class="dc-source-figure__inference">
+          <strong class="dc-label dc-label--subtle">DC2SC Inference:</strong>
+          <p class="dc-body-sm">{dc2scInference}</p>
+        </div>
+      )}
+    </div>
+  )}
+
+  <FigureCaption 
+    figureNumber={figureNumber}
+    passport={passport}
+  />
+
+  <MediaPassport passport={passport} />
+</figure>

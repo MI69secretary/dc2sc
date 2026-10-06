@@ -1,0 +1,56 @@
+{
+  "tableId": "M06-TAB-01",
+  "title": "Four Stress Vectors of the Travel Domain in Mechanism Testing",
+  "kind": "argument_table",
+  "columns": [
+    { "key": "market", "label": "Stress Vector & Domain Property", "description": "Hostile condition tested in GOLIAF" },
+    { "key": "person", "label": "Analytical Challenge for Collective Formation", "description": "Why standard aggregation fails under this condition" }
+  ],
+  "rows": [
+    {
+      "rowId": "r1",
+      "cells": {
+        "market": "1. Severe Constraint Variance (Exact dates, visas, child seats, mobility)",
+        "person": "Preferences cannot be averaged; single constraint failure invalidates the position"
+      }
+    },
+    {
+      "rowId": "r2",
+      "cells": {
+        "market": "2. Temporal Perishability (Fixed departure dates, inventory expiration)",
+        "person": "Waiting for group consensus creates severe opportunity cost vs individual booking"
+      }
+    },
+    {
+      "rowId": "r3",
+      "cells": {
+        "market": "3. Multi-Leg Interdependency (Flight + lodging + transit cascade)",
+        "person": "Supplier rejection on one leg collapses the entire multi-participant itinerary"
+      }
+    },
+    {
+      "rowId": "r4",
+      "cells": {
+        "market": "4. Catastrophic Dissolution Impact (Stranded families, lost vacations)",
+        "person": "Zero tolerance for loose commitment; requires bulletproof dissolution floors"
+      }
+    }
+  ],
+  "caption": "Why the travel domain functions as the ultimate proving ground for collective market formation.",
+  "scopeLimits": [
+    "Conceptual analysis. GOLIAF is a research environment, not a commercial travel platform."
+  ],
+  "limitations": [
+    "Theoretical stress vectors; empirical metrics in development."
+  ],
+  "canonicalRefs": ["module-06-travel-is-a-stress-test"],
+  "sourceRefs": ["canonical-narrative"],
+  "accessibility": {
+    "textEquivalent": "Table mapping 4 stress vectors of travel (Constraint Variance, Temporal Perishability, Multi-Leg Interdependency, Catastrophic Dissolution Impact) against their analytical challenge.",
+    "dataTableFallback": true
+  },
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

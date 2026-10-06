@@ -1,0 +1,186 @@
+---
+import SiteShell from '../layouts/SiteShell.astro';
+import Container from '../components/site/Container.astro';
+import Section from '../components/site/Section.astro';
+import SectionHeading from '../components/site/SectionHeading.astro';
+import Pill from '../components/site/Pill.astro';
+import Callout from '../components/site/Callout.astro';
+import EvidenceBadge from '../components/site/EvidenceBadge.astro';
+import ContentStatusBadge from '../components/site/ContentStatusBadge.astro';
+import EmptyState from '../components/site/EmptyState.astro';
+import ModuleBadge from '../components/site/ModuleBadge.astro';
+import LiveTelemetryBar from '../components/site/LiveTelemetryBar.astro';
+import EditorialHero from '../components/editorial/EditorialHero.astro';
+import { getCollection } from 'astro:content';
+import { failureCategories } from '../data/research.ts';
+
+const allResearch = await getCollection('research', ({ data }) =>
+  data.visibility !== 'internal' &&
+  data.lifecycleStatus !== 'paused' &&
+  data.lifecycleStatus !== 'draft' &&
+  data.lifecycleStatus !== 'in_review'
+);
+
+const canonicalModules = allResearch
+  .filter(r => r.data.contentKind === 'canonical_module')
+  .sort((a, b) => (a.data.moduleNumber || 0) - (b.data.moduleNumber || 0));
+
+const canonicalReferences = allResearch.filter(r => r.data.contentKind === 'canonical_reference');
+const researchArtifacts = allResearch.filter(r => r.data.contentKind === 'research_artifact' || r.data.contentKind === 'research_spec');
+---
+
+<SiteShell title="Реєстр канонічних досліджень" description="Канонічний корпус, 7 дослідницьких модулів та конституційні специфікації DC2SC.">
+  <LiveTelemetryBar />
+  
+  <EditorialHero 
+    eyebrow="OPEN ACCESS // КАНОНІЧНИЙ СПАЙН ДОСЛІДЖЕНЬ"
+    title="Канонічний реєстр досліджень: 7 модулів ринкової структури та ескроу-координації"
+    lead="Заморожений канонічний корпус досліджень DC2SC, матриця формальних інваріантів, аналіз умов відмови та верифікація зворотного попиту."
+    arxivId="CANON-V1.0-FROZEN"
+    sha256="4a89fb31...902f"
+  />
+
+  <Section background="white">
+    <Container>
+      <Callout type="boundary" title="Research posture">
+        DC2SC does not assume aggregation is beneficial. This research program tracks failure explicitly. 'Do not aggregate' is a valid and complete research outcome.
+      </Callout>
+
+      <!-- CANONICAL NARRATIVE BODY & SPINE -->
+      <div style="margin-top: 4rem;">
+        <SectionHeading 
+          title="Canonical Reference Body" 
+          description="Foundational constitutional documents (Frozen v1.0)." 
+        />
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 1.5rem; margin-top: 2rem;">
+          {canonicalReferences.map(item => {
+            const slug = item.id.split('/').pop() || item.id;
+            return (
+              <a href={`/research/${slug}`} class="dc-article-card-link">
+                <article class="dc-card" style="border: 2px solid var(--dc-ink); height: 100%; display: flex; flex-direction: column;">
+                  <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center; margin-bottom: 1rem;">
+                    <span class="dc-pill dc-pill--accent">FROZEN CANON</span>
+                    <EvidenceBadge level={item.data.evidenceLevel} />
+                  </div>
+                  <h3 class="dc-display-sm" style="margin-bottom: 0.75rem;">{item.data.title}</h3>
+                  <p class="dc-body-sm" style="color: var(--dc-ink-2); flex-grow: 1; margin-bottom: 1.5rem;">{item.data.scope}</p>
+                  <div style="padding-top: 1rem; border-top: 1px solid var(--dc-border); font-family: var(--dc-font-mono); font-size: 0.75rem; color: var(--dc-accent);">
+                    Read canonical document →
+                  </div>
+                </article>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- SEVEN CANONICAL RESEARCH MODULES -->
+      <div style="margin-top: 4rem;">
+        <SectionHeading 
+          title="Seven-Module Research Spine" 
+          description="The 7 canonical research modules representing the analytical architecture of buyer coordination." 
+        />
+        
+        <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
+          {canonicalModules.map(module => {
+            const slug = module.id.split('/').pop() || module.id;
+            return (
+              <a href={`/research/${slug}`} class="dc-article-card-link">
+                <article class="dc-card" style="border: 1px solid var(--dc-border); display: flex; flex-direction: column; gap: 0.75rem;">
+                  <div style="display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+                    {module.data.moduleNumber && <ModuleBadge moduleNumber={module.data.moduleNumber} />}
+                    <span class="dc-pill dc-pill--conceptual">Canonical module architecture</span>
+                    <EvidenceBadge level={module.data.evidenceLevel} />
+                    <span class="dc-label" style="color: var(--dc-muted); margin-left: auto;">Long-form editorial prose not yet released</span>
+                  </div>
+                  <h3 class="dc-display-sm" style="margin: 0.25rem 0;">{module.data.title}</h3>
+                  <p class="dc-body" style="color: var(--dc-ink-2); margin: 0;">{module.data.scope}</p>
+                  <div style="margin-top: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
+                    <span class="dc-link" style="color: var(--dc-accent); font-family: var(--dc-font-mono); font-size: var(--dc-text-mono);">Inspect module specification →</span>
+                  </div>
+                </article>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- RESEARCH SPECIFICATIONS & GOVERNANCE -->
+      {researchArtifacts.length > 0 && (
+        <div style="margin-top: 4rem;">
+          <SectionHeading 
+            title="Governance & Methodology Specifications" 
+            description="Constitutional models governing rights, evidence discipline, and failure analysis." 
+          />
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 1.5rem; margin-top: 2rem;">
+            {researchArtifacts.map(art => {
+              const slug = art.id.split('/').pop() || art.id;
+              return (
+                <a href={`/research/${slug}`} class="dc-article-card-link">
+                  <article class="dc-card" style="border: 1px solid var(--dc-border); height: 100%; display: flex; flex-direction: column;">
+                    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center; margin-bottom: 0.75rem;">
+                      <span class="dc-pill dc-pill--default">Governance Framework</span>
+                      <EvidenceBadge level={art.data.evidenceLevel} />
+                    </div>
+                    <h3 class="dc-title" style="margin-bottom: 0.5rem;">{art.data.title}</h3>
+                    <p class="dc-body-sm" style="color: var(--dc-ink-2); flex-grow: 1; margin-bottom: 1rem;">{art.data.scope}</p>
+                    <div style="padding-top: 0.75rem; border-top: 1px solid var(--dc-border); font-family: var(--dc-font-mono); font-size: 0.75rem; color: var(--dc-accent);">
+                      View specification →
+                    </div>
+                  </article>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      <div style="margin-top: 4rem;">
+        <SectionHeading 
+          title="Evidence Levels" 
+          description="The hierarchy of proof required." 
+        />
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 1.5rem; margin-top: 2rem;">
+          {[
+            { level: 'E0', name: 'Conceptual', desc: 'Theoretical formulation without implementation.' },
+            { level: 'E1', name: 'Contextual theory', desc: 'Theory applied to specific domain constraints.' },
+            { level: 'E2', name: 'Internal observation', desc: 'Tested in isolated, simulated environments.' },
+            { level: 'E3', name: 'External evidence', desc: 'Bounded tests with external participants.' },
+            { level: 'E4', name: 'Field evidence', desc: 'Live market application with real constraints.' },
+            { level: 'E5', name: 'Replication', desc: 'Independent verification in multiple contexts.' }
+          ].map(e => (
+            <div class="dc-card" style="border: 1px solid var(--dc-border);">
+              <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                <EvidenceBadge level={e.level} />
+                <h4 class="dc-title" style="margin:0;">{e.name}</h4>
+              </div>
+              <p class="dc-body-sm" style="color: var(--dc-ink-2); margin:0;">{e.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <SectionHeading 
+          title="Failure Categories" 
+          description="How we classify and learn from negative results." 
+        />
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 1.5rem; margin-top: 2rem;">
+          {failureCategories.map(cat => (
+            <div class="dc-card" style="border: 1px solid var(--dc-border); background: var(--dc-raised); display: flex; flex-direction: column; justify-content: space-between; gap: 1rem;">
+              <h4 class="dc-title" style="margin: 0;">{cat.label}</h4>
+              <div><Pill variant="conceptual" text="E0 — Conceptual" /></div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--dc-border);">
+        <p class="dc-body" style="color: var(--dc-ink-2);">
+          For details on the governance model, see <a href="/research/continuous-rights-gates" class="dc-link" style="color: var(--dc-action);">Continuous Rights Gates</a>.
+        </p>
+      </div>
+      
+    </Container>
+  </Section>
+</SiteShell>

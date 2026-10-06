@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="100%" height="100%" style="background:#f8f7f4; font-family:'Work Sans', -apple-system, sans-serif;">
+  <!-- Header -->
+  <text x="40" y="38" font-family="'Space Mono', monospace" font-size="11" font-weight="700" fill="#71717a" letter-spacing="0.1em">DC2SC // MODULE 06 // GOLIAF RESEARCH ENVIRONMENT</text>
+  <text x="40" y="62" font-size="16" font-weight="700" fill="#0f0f0f">Travel Domain Stress Vectors & Analytical Filters</text>
+
+  <!-- Box 1 -->
+  <rect x="40" y="95" width="165" height="145" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="55" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#1e3a8a">VECTOR 01</text>
+  <text x="55" y="146" font-size="13" font-weight="700" fill="#0f0f0f">Constraint</text>
+  <text x="55" y="164" font-size="13" font-weight="700" fill="#0f0f0f">Variance</text>
+  <line x1="55" y1="178" x2="190" y2="178" stroke="#f0ede8" stroke-width="1" />
+  <text x="55" y="198" font-size="11" fill="#71717a">Dates, visas, health</text>
+  <text x="55" y="214" font-size="10" font-family="'Space Mono', monospace" fill="#dc2626">Non-averagable</text>
+
+  <!-- Box 2 -->
+  <rect x="225" y="95" width="165" height="145" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="240" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#1e3a8a">VECTOR 02</text>
+  <text x="240" y="146" font-size="13" font-weight="700" fill="#0f0f0f">Temporal</text>
+  <text x="240" y="164" font-size="13" font-weight="700" fill="#0f0f0f">Perishability</text>
+  <line x1="240" y1="178" x2="375" y2="178" stroke="#f0ede8" stroke-width="1" />
+  <text x="240" y="198" font-size="11" fill="#71717a">Fixed flight windows</text>
+  <text x="240" y="214" font-size="10" font-family="'Space Mono', monospace" fill="#dc2626">Opportunity cost</text>
+
+  <!-- Box 3 -->
+  <rect x="410" y="95" width="165" height="145" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="425" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#1e3a8a">VECTOR 03</text>
+  <text x="425" y="146" font-size="13" font-weight="700" fill="#0f0f0f">Multi-Leg</text>
+  <text x="425" y="164" font-size="13" font-weight="700" fill="#0f0f0f">Dependency</text>
+  <line x1="425" y1="178" x2="560" y2="178" stroke="#f0ede8" stroke-width="1" />
+  <text x="425" y="198" font-size="11" fill="#71717a">Flight + Hotel link</text>
+  <text x="425" y="214" font-size="10" font-family="'Space Mono', monospace" fill="#dc2626">Cascade risk</text>
+
+  <!-- Box 4 -->
+  <rect x="595" y="95" width="165" height="145" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="610" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#1e3a8a">VECTOR 04</text>
+  <text x="610" y="146" font-size="13" font-weight="700" fill="#0f0f0f">Dissolution</text>
+  <text x="610" y="164" font-size="13" font-weight="700" fill="#0f0f0f">Severity</text>
+  <line x1="610" y1="178" x2="745" y2="178" stroke="#f0ede8" stroke-width="1" />
+  <text x="610" y="198" font-size="11" fill="#71717a">High personal cost</text>
+  <text x="610" y="214" font-size="10" font-family="'Space Mono', monospace" fill="#dc2626">Zero tolerance</text>
+
+  <!-- Bottom Notice -->
+  <rect x="40" y="260" width="720" height="45" fill="#f0ede8" stroke="#d4d4d8" stroke-width="1" />
+  <text x="55" y="287" font-family="'Space Mono', monospace" font-size="11" font-weight="700" fill="#0f0f0f">GOLIAF BOUNDARY:</text>
+  <text x="180" y="287" font-size="11" fill="#27272a">Bounded travel stress-test environment. Not a booking service, discount club, or pool.</text>
+</svg>

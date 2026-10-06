@@ -1,0 +1,146 @@
+---
+import SiteShell from '../layouts/SiteShell.astro';
+import LiveTelemetryBar from '../components/site/LiveTelemetryBar.astro';
+import EditorialHero from '../components/editorial/EditorialHero.astro';
+import IndustryDispatchCard from '../components/editorial/IndustryDispatchCard.astro';
+import AcademicXStream from '../components/editorial/AcademicXStream.astro';
+import PeerReviewPoll from '../components/editorial/PeerReviewPoll.astro';
+import CodeSchemaSection from '../components/editorial/CodeSchemaSection.astro';
+import DonationTerminal from '../components/site/DonationTerminal.astro';
+import SignalsTeaserStream from '../components/home/SignalsTeaserStream.astro';
+
+import ProblemSection from '../components/home/ProblemSection.astro';
+import ResearchModelSection from '../components/home/ResearchModelSection.astro';
+import PrinciplesSection from '../components/home/PrinciplesSection.astro';
+import GoliafSection from '../components/home/GoliafSection.astro';
+
+const dispatches = [
+  {
+    category: 'FTC // ANTITRUST REGULATION',
+    date: '14 ВЕР 2026',
+    title: 'Федеральний позов проти алгоритмічних координаторів динамічного ціноутворення',
+    snippet: 'Аналіз судових прецедентів щодо штучного обмеження випуску продукції через спільні консалтингові алгоритми та єдині масиви цінових сигналів.',
+    citationId: 'FTC-DOC-2026-894',
+    href: '/journal'
+  },
+  {
+    category: 'GAME THEORY // REVERSE AUCTION',
+    date: '08 ВЕР 2026',
+    title: 'Парето-оптимальність децентралізованих пулів попиту в умовах інформаційної асиметрії',
+    snippet: 'Математичний доказ стійкості ескроу-протоколів: синхронізація розрахунків за формулою Неша нівелює монопольну премію маркетплейсів.',
+    citationId: 'DC2SC-WP-2026-07',
+    href: '/research'
+  },
+  {
+    category: 'EU DG COMP // DIGITAL MARKETS ACT',
+    date: '29 СЕР 2026',
+    title: 'Процедура перевірки алгоритмічних рекомендаційних інтерфейсів на предмет темних патернів',
+    snippet: 'Вимоги до аудиту коду рекомендацій та архітектури користувацького вибору в межах антимонопольного нагляду за цифровими платформами.',
+    citationId: 'EU-COMP-2026-112',
+    href: '/journal'
+  }
+];
+---
+
+<SiteShell title="Хроніка алгоритмічної координації" description="Курований науково-редакційний дайджест DC2SC — аналіз алгоритмічних ринків, ескроу-протоколів та архітектури зворотного попиту.">
+  <LiveTelemetryBar />
+
+  <EditorialHero 
+    eyebrow="EDITORIAL DISPATCH #01–07 // РЕАКЦІЯ НА ДИСПЕРСІЮ ВИБОРУ"
+    title="Хроніка алгоритмічної координації: Протокол прямого попиту від споживача до суверенного творця"
+    lead="Курований науково-редакційний дайджест консорціуму DC2SC: формальні математичні інваріанти, ZK-ескроу координація, аналіз антимонопольних прецедентів та відкриті архітектури ринків без посередницької ренти."
+    arxivId="arXiv:2409.12948"
+    sha256="7f83b165a2d8e921...c81b"
+  />
+
+  <section class="dc-section">
+    <div class="dc-container">
+      <div class="dc-cols-2" style="align-items: start; gap: 3rem;">
+        
+        <!-- LEFT COLUMN: Dispatches & Schemas -->
+        <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+          <div>
+            <div class="dc-eyebrow" style="margin-bottom: 0.75rem;">ГРЕБІНКА ДЕПЕШ // REGULATORY & RESEARCH DISPATCHES</div>
+            <h2 class="dc-display-lg" style="font-size: 1.75rem; margin-bottom: 1.5rem;">Свіжі публікації та аналітичні бюлетені</h2>
+            
+            <div class="dc-dispatch-feed">
+              {dispatches.map(d => (
+                <IndustryDispatchCard {...d} />
+              ))}
+            </div>
+          </div>
+
+          <CodeSchemaSection />
+
+          <PeerReviewPoll />
+        </div>
+
+        <!-- RIGHT COLUMN: Principles & Telemetry Widgets -->
+        <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+          
+          <!-- Scientific Referent Card -->
+          <div class="dc-card" style="border-left: 4px solid var(--dc-navy); background: var(--dc-raised);">
+            <span class="dc-label" style="color: var(--dc-navy); font-weight: 700;">РЕФЕРЕНТ // NATURE ECONOMICS</span>
+            <p style="font-family: var(--dc-font-display); font-size: 1.0625rem; line-height: 1.5; color: var(--dc-ink); margin-top: 0.5rem;">
+              «Концепція "Dispersion Trap" наочно пояснює, чому штучна волатильність та збільшення вибору товарів парадоксально позбавляє покупця реального впливу на ціноутворення.»
+            </p>
+            <span class="dc-label" style="color: var(--dc-muted); margin-top: 0.5rem;">ID: PEER-REV-2024-OX</span>
+          </div>
+
+          <!-- Colloquium Referent Card -->
+          <div class="dc-card" style="border-left: 4px solid var(--dc-signal); background: var(--dc-raised);">
+            <span class="dc-label" style="color: var(--dc-ink-2); font-weight: 700;">СТЕНФОРДСЬКИЙ КОЛОКВІУМ</span>
+            <p style="font-family: var(--dc-font-display); font-size: 1.0625rem; line-height: 1.5; color: var(--dc-ink); margin-top: 0.5rem;">
+              «Ми переходимо від ери пасивного захисту прав споживачів до ери криптографічних контр-протоколів прямого попиту.»
+            </p>
+            <span class="dc-label" style="color: var(--dc-muted); margin-top: 0.5rem;">Панель: Антитраст в епоху LLM-агентів</span>
+          </div>
+
+          <!-- Quick Navigation to Research Matrix -->
+          <div class="dc-card" style="background: var(--dc-white);">
+            <div class="dc-eyebrow">МОДУЛІ ДОСЛІДЖЕНЬ // 01–07</div>
+            <h3 class="dc-h3" style="margin-top: 0.5rem;">Канонічні специфікації</h3>
+            <p class="dc-body-sm" style="color: var(--dc-ink-2); margin-top: 0.5rem;">
+              7 фундаментальних есеїв про динаміку ринку покупця, координацію уваги, цінову дисперсію та математичні інваріанти ескроу.
+            </p>
+            <div style="margin-top: 1.25rem;">
+              <a href="/research" class="dc-btn dc-btn--primary" style="width: 100%; justify-content: center;">
+                ПЕРЕГЛЯНУТИ РЕЄСТР
+              </a>
+            </div>
+          </div>
+
+          <!-- Goliaf Engine Info -->
+          <div class="dc-card" style="background: var(--dc-white);">
+            <div class="dc-eyebrow">GOLIAF ENGINE</div>
+            <h3 class="dc-h3" style="margin-top: 0.5rem;">Симулятор ринкових стрес-тестів</h3>
+            <p class="dc-body-sm" style="color: var(--dc-ink-2); margin-top: 0.5rem;">
+              Агентно-орієнтоване моделювання поведінки 10,000+ покупців проти картельних цінових алгоритмів.
+            </p>
+            <div style="margin-top: 1.25rem;">
+              <a href="/goliaf" class="dc-btn dc-btn--secondary" style="width: 100%; justify-content: center;">
+                ВІДКРИТИ GOLIAF ENGINE
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <AcademicXStream />
+
+  <SignalsTeaserStream />
+
+  <ProblemSection />
+  <ResearchModelSection />
+  <PrinciplesSection />
+  <GoliafSection />
+
+  <div class="dc-container" style="padding-block: var(--dc-space-12);">
+    <DonationTerminal />
+  </div>
+</SiteShell>
+

@@ -1,0 +1,43 @@
+---
+import Container from '../site/Container.astro'
+import Eyebrow from '../site/Eyebrow.astro'
+---
+
+<section class="dc-goliaf-feature">
+  <Container>
+    <div style="max-width: 800px; margin-bottom: 4rem;">
+      <Eyebrow text="GOLIAF / Travel stress test" style="color: rgba(248,247,244,0.7); margin-bottom: 1rem;" data-i18n="goliaf.eyebrow" />
+      <h2 class="dc-display-lg" style="color: #f8f7f4; margin-bottom: 1.5rem;" data-i18n="goliaf.headline">
+        Travel is not the promise.<br />
+        It is the stress test.
+      </h2>
+      <p class="dc-body-lg" style="color: rgba(248,247,244,0.85);" data-i18n="goliaf.body">
+        GOLIAF is a bounded research environment for asking whether collective market agency can survive volatile availability, different dates and budgets, household needs, cancellation conditions, privacy boundaries and strong individual alternatives.
+      </p>
+    </div>
+    
+    <div class="dc-journey" style="margin-bottom: 3rem;">
+      {[
+        'Aspiration', 'Scenario', 'Constraints', 'Search',
+        'Comparison', 'Decision', 'Booking', 'Fulfilment'
+      ].map((stage, i) => (
+        <div class="dc-journey__stage">
+          <div class="dc-journey__index">{String(i + 1).padStart(2, '0')}</div>
+          <div class="dc-journey__dot"></div>
+          <div class="dc-journey__name" style="color: rgba(248,247,244,0.9);">{stage}</div>
+        </div>
+      ))}
+    </div>
+    
+    <aside style="border: 2px solid rgba(248,247,244,0.2); padding: 1.5rem; margin-top: 4rem; margin-bottom: 3rem; background: rgba(248,247,244,0.05); max-width: 800px;">
+      <strong style="font-family: 'Archivo Black', sans-serif; color: #f8f7f4; display: block; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.875rem; letter-spacing: 0.05em;" data-i18n="goliaf.boundary.title">Research boundary</strong>
+      <p style="font-size: 0.875rem; color: rgba(248,247,244,0.75); margin: 0; line-height: 1.6;" data-i18n="goliaf.boundary.body">
+        GOLIAF is a research environment. It is not presented as a live booking service, discount program, travel pool, supplier network or proven market mechanism.
+      </p>
+    </aside>
+    
+    <a href="/goliaf" class="dc-btn dc-btn--secondary" style="border-color: rgba(248,247,244,0.4); color: #f8f7f4;" data-i18n="goliaf.btn">
+      Explore GOLIAF research
+    </a>
+  </Container>
+</section>

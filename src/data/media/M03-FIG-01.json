@@ -1,0 +1,47 @@
+{
+  "mediaId": "M03-FIG-01",
+  "title": "The Volume-to-Authority Transformation Pipeline",
+  "mediaKind": "structural_model_diagram",
+  "epistemicBasis": "conceptual",
+  "representationRole": "structural_model",
+  "provenanceMode": "canonical_derived",
+  "artifactRole": "diagram",
+  "authority": "derived_noncanonical",
+  "evidenceLevel": "E0",
+  "claimState": "active",
+  "reviewStatus": "reviewed",
+  "canonicalRefs": [
+    "module-03-why-more-buyers"
+  ],
+  "sourceRefs": [
+    "SRC-0001"
+  ],
+  "scopeLimits": [
+    "Illustrates how unorganized buyer volume fails to generate bargaining power without representational and exit gates."
+  ],
+  "limitations": [
+    "Conceptual model; not empirical econometric data."
+  ],
+  "accessibility": {
+    "decorative": false,
+    "altText": "A pipeline showing raw buyer volume passing through representation, ratification, and exit gates to achieve a genuine market position.",
+    "textEquivalent": "Unstructured volume without gates remains an atomized queue. When filtered through representational mandate, ratification, and credible exit floors, it converts into a countervailing market position.",
+    "colorIndependent": true
+  },
+  "commercialIntent": "none",
+  "containsTransactionalCTA": false,
+  "containsLeadCapture": false,
+  "containsBookingControl": false,
+  "containsPricePromise": false,
+  "containsUnsupportedBenefitClaim": false,
+  "asset": {
+    "type": "svg",
+    "file": "/images/diagrams/volume-authority-pipeline.svg",
+    "license": "Original DC2SC visual",
+    "rightsStatus": "owned"
+  },
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

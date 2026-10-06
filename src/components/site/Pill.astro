@@ -1,0 +1,8 @@
+---
+interface Props {
+  variant?: 'default' | 'accent' | 'conceptual' | 'demo' | 'in-progress' | 'warning';
+  text: string;
+}
+const { variant = 'default', text } = Astro.props;
+---
+<span class={`dc-pill dc-pill--${variant}`}>{text}</span>

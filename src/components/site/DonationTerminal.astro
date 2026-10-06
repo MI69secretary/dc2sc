@@ -1,0 +1,60 @@
+---
+// DonationTerminal.astro — Institutional Endowment Terminal matching Figma node 53:2
+interface Props {
+  safeAddress?: string;
+}
+
+const {
+  safeAddress = '0x71C...849B3',
+} = Astro.props;
+---
+
+<section class="dc-donation-terminal" id="donation-terminal">
+  <div class="dc-donation-terminal__header">
+    <div class="dc-pill dc-pill--accent" style="background: rgba(255,255,255,0.1); color: #00d4b7; border-color: #00d4b7;">
+      OPEN ACCESS & PUBLIC GOODS // НЕЗАЛЕЖНИЙ РЕПОЗИТОРІЙ
+    </div>
+    <span class="dc-label" style="color: #c4c4d4;">CC BY-NC 4.0 INTERNATIONAL</span>
+  </div>
+
+  <h2 class="dc-donation-terminal__title">
+    Фонд незалежних академічних досліджень та відкритого коду
+  </h2>
+
+  <p class="dc-donation-terminal__text">
+    Лабораторія DC2SC не приймає венчурне фінансування та комерційні внески від монопольних платформ. 
+    Наші математичні інваріанти, симуляції стрес-тестів та рецензовані монографії публікуються у відкритому доступі без пейволів. 
+    Ми функціонуємо завдяки університетським грантам та вашим інституційним внескам.
+  </p>
+
+  <div class="dc-donation-terminal__tiers">
+    <div class="dc-tier-card">
+      <div class="dc-tier-card__amount">$50</div>
+      <div class="dc-tier-card__desc">Академічний репозиторій & DOI індексація</div>
+    </div>
+    <div class="dc-tier-card dc-tier-card--active">
+      <div class="dc-tier-card__amount">$250</div>
+      <div class="dc-tier-card__desc">Місячне утримання верифікаційного вузла</div>
+    </div>
+    <div class="dc-tier-card">
+      <div class="dc-tier-card__amount">$1,000</div>
+      <div class="dc-tier-card__desc">Спонсорство відкритого дослідницького препринту</div>
+    </div>
+  </div>
+
+  <div class="dc-donation-terminal__action">
+    <div class="dc-multisig-box">
+      <span>SAFE MULTISIG VAULT:</span>
+      <strong style="color: #fff;">{safeAddress}</strong>
+    </div>
+
+    <div class="dc-btn-group">
+      <a href="/support" class="dc-btn dc-btn--primary" style="background: var(--dc-signal); color: var(--dc-navy); border-color: var(--dc-signal); font-weight: 700;">
+        ПІДТРИМАТИ ДОСЛІДЖЕННЯ
+      </a>
+      <a href="https://github.com/dc2sc" target="_blank" rel="noopener noreferrer" class="dc-btn dc-btn--secondary" style="color: #fff; border-color: #fff;">
+        GITHUB REPO
+      </a>
+    </div>
+  </div>
+</section>

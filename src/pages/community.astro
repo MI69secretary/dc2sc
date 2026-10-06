@@ -1,0 +1,105 @@
+---
+import SiteShell from '../layouts/SiteShell.astro'
+import Container from '../components/site/Container.astro'
+import Section from '../components/site/Section.astro'
+import SectionHeading from '../components/site/SectionHeading.astro'
+import Callout from '../components/site/Callout.astro'
+import EmptyState from '../components/site/EmptyState.astro'
+import DiscussionCard from '../components/site/DiscussionCard.astro'
+import DiscussionFilterBar from '../components/site/DiscussionFilterBar.astro'
+import { getCollection } from 'astro:content'
+
+const discussions = await getCollection('discussions');
+
+// Filter active discussions if needed, or just show all
+const activeDiscussions = discussions;
+---
+
+<SiteShell title="Community Discussion" description="Selected commentary and structural critiques regarding the DC2SC framework.">
+  
+  <div class="dc-page-hero">
+    <Container>
+      <h1 class="dc-page-hero__headline">Community Discussion</h1>
+      <p class="dc-page-hero__body">
+        Selected commentary, critical responses and structural critiques regarding the DC2SC framework.
+      </p>
+    </Container>
+  </div>
+
+  <Section background="white">
+    <Container>
+      
+      <div style="margin-bottom: 3rem;">
+        <p class="dc-body" style="color: var(--dc-ink-1); max-width: 65ch;">
+          Future discussion will be moderated as research material. The site will distinguish original comments, editorial excerpts, external-source discussion and conceptual demonstrations.
+        </p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div style="margin-bottom: 2rem;">
+        <DiscussionFilterBar />
+      </div>
+
+      <!-- Discussions List -->
+      <div id="discussion-list" style="display: flex; flex-direction: column; gap: 2rem;">
+        {activeDiscussions.length === 0 ? (
+          <EmptyState
+            title="No discussions available"
+            body="Community discussions are currently in development."
+            label="Demo discussion format"
+          />
+        ) : (
+          activeDiscussions.map(d => (
+            <div data-discussion-type={d.data.type}>
+              <DiscussionCard
+                type={d.data.type as any}
+                topic={d.data.topic}
+                body={d.data.body}
+                source={d.data.source}
+                consentStatus={d.data.consentStatus}
+              />
+            </div>
+          ))
+        )}
+      </div>
+
+      <script>
+        const list = document.getElementById('discussion-list');
+        const filterBar = document.getElementById('discussion-filter-bar'); // Assuming DiscussionFilterBar uses this ID
+        
+        if (list && filterBar) {
+          let activeFilter = 'all';
+          
+          function applyFilter() {
+            const items = list!.querySelectorAll<HTMLElement>('[data-discussion-type]');
+            items.forEach(item => {
+              const type = item.getAttribute('data-discussion-type');
+              if (activeFilter === 'all' || type === activeFilter) {
+                item.style.display = '';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+          }
+
+          filterBar.addEventListener('click', e => {
+            const btn = (e.target as HTMLElement).closest('[data-type]') as HTMLButtonElement | null;
+            if (!btn) return;
+            
+            filterBar.querySelectorAll('[data-type]').forEach(b => {
+              b.classList.remove('dc-filter-chip--active');
+              b.setAttribute('aria-pressed', 'false');
+            });
+            
+            btn.classList.add('dc-filter-chip--active');
+            btn.setAttribute('aria-pressed', 'true');
+            activeFilter = btn.getAttribute('data-type') || 'all';
+            
+            applyFilter();
+          });
+        }
+      </script>
+
+    </Container>
+  </Section>
+</SiteShell>

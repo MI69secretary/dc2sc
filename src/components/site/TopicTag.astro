@@ -1,0 +1,13 @@
+---
+interface Props {
+  topic: string;
+  active?: boolean;
+}
+const { topic, active } = Astro.props;
+---
+<span class={`dc-topic-tag${active ? ' dc-topic-tag--active' : ''}`}>{topic}</span>
+
+<style is:global>
+.dc-topic-tag { display: inline-flex; font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); padding: 0.2rem 0.625rem; border: 1px solid var(--dc-border); color: var(--dc-muted); background: transparent; text-transform: uppercase; letter-spacing: 0.06em; }
+.dc-topic-tag--active { background: var(--dc-ink); border-color: var(--dc-ink); color: var(--dc-surface); }
+</style>

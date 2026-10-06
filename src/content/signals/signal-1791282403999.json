@@ -1,0 +1,23 @@
+{
+  "title": "Decentralized Commitment Escrow in Consumer Networks",
+  "author": "Test Researcher",
+  "sourcePlatform": "substack",
+  "originalUrl": "https://substack.com/test",
+  "publishedDate": "06.10.2026",
+  "summary": "Analyzing deposit lock-in and adverse selection in multi-agent market coalitions.",
+  "keyQuote": "A commitment without escrow creates adverse dissolution risks.",
+  "relatedModule": 4,
+  "relevanceScore": 1,
+  "curatorTags": [
+    "Ingestion",
+    "Commitment",
+    "Escrow",
+    "Adverse",
+    "Dissolution",
+    "Lock-in",
+    "Deposit"
+  ],
+  "republicationStatus": "inbox",
+  "featuredOnHomepage": true,
+  "aiDiscoveredBy": "Perplexity Ingestion Webhook"
+}

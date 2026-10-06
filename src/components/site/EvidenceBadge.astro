@@ -1,0 +1,24 @@
+---
+interface Props {
+  level: 'E0' | 'E1' | 'E2' | 'E3' | 'E4' | 'E5';
+}
+const { level } = Astro.props;
+
+const labels: Record<string, string> = {
+  E0: 'E0 — Conceptual',
+  E1: 'E1 — Contextual theory',
+  E2: 'E2 — Internal observation',
+  E3: 'E3 — External evidence',
+  E4: 'E4 — Field evidence',
+  E5: 'E5 — Replication'
+};
+const label = labels[level] || level;
+---
+<span class={`dc-evidence-badge dc-evidence-badge--${level}`}>{label}</span>
+
+<style>
+.dc-evidence-badge { display: inline-flex; align-items: center; font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); padding: 0.2rem 0.625rem; border: 1px solid; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.5; white-space: nowrap; }
+.dc-evidence-badge--E0 { border-color: var(--dc-border); color: var(--dc-muted); background: var(--dc-raised); }
+.dc-evidence-badge--E1 { border-color: var(--dc-signal); color: var(--dc-signal); background: transparent; }
+.dc-evidence-badge--E2, .dc-evidence-badge--E3, .dc-evidence-badge--E4, .dc-evidence-badge--E5 { border-color: var(--dc-accent); color: var(--dc-accent); background: var(--dc-accent-low); }
+</style>

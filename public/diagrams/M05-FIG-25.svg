@@ -1,0 +1,30 @@
+<svg viewBox="0 0 540 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8f7f4" stroke="#d4d4d8" stroke-width="1"/>
+  <!-- Step 1 -->
+  <rect x="15" y="65" width="90" height="60" fill="#f0ede8" stroke="#0f0f0f" stroke-width="1.5"/>
+  <text x="60" y="90" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#0f0f0f">01. INTENT</text>
+  <text x="60" y="108" font-family="'Work Sans', sans-serif" font-size="8" text-anchor="middle" fill="#71717a">Private State</text>
+
+  <line x1="105" y1="95" x2="135" y2="95" stroke="#0f0f0f" stroke-width="1.5"/>
+
+  <!-- Step 2: Ratification Gate -->
+  <rect x="135" y="55" width="115" height="80" fill="#dbeafe" stroke="#1e3a8a" stroke-width="2"/>
+  <text x="192" y="85" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#1e3a8a">04. GATE 1</text>
+  <text x="192" y="102" font-family="'Work Sans', sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#1e3a8a">Ratification</text>
+  <text x="192" y="118" font-family="'Work Sans', sans-serif" font-size="7.5" text-anchor="middle" fill="#71717a">Contestable Mandate</text>
+
+  <line x1="250" y1="95" x2="280" y2="95" stroke="#0f0f0f" stroke-width="1.5"/>
+
+  <!-- Step 3: Collective Position -->
+  <rect x="280" y="65" width="105" height="60" fill="#f0ede8" stroke="#0f0f0f" stroke-width="1.5"/>
+  <text x="332" y="90" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#0f0f0f">07. COALITION</text>
+  <text x="332" y="108" font-family="'Work Sans', sans-serif" font-size="8" text-anchor="middle" fill="#71717a">Demand Vector</text>
+
+  <line x1="385" y1="95" x2="415" y2="95" stroke="#0f0f0f" stroke-width="1.5"/>
+
+  <!-- Step 4: Outcome Evaluation -->
+  <rect x="415" y="55" width="110" height="80" fill="#f8f7f4" stroke="#059669" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="470" y="85" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#059669">11. EVALUATION</text>
+  <text x="470" y="102" font-family="'Work Sans', sans-serif" font-size="8" font-weight="700" text-anchor="middle" fill="#059669">Pareto vs Null</text>
+  <text x="470" y="118" font-family="'Work Sans', sans-serif" font-size="7.5" text-anchor="middle" fill="#71717a">Zero-Penalty Exit</text>
+</svg>

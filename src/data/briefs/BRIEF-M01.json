@@ -1,0 +1,82 @@
+{
+  "briefId": "BRIEF-M01",
+  "targetArtifactId": "module-01-more-choice-less-voice",
+  "targetModule": "01",
+  "status": "approved",
+  "primaryReader": "Market design and coordination researcher",
+  "readerProblem": "Understanding why expanding individual search surfaces does not automatically yield market influence or participant power.",
+  "canonicalDependencies": [
+    "module-01-more-choice-less-voice",
+    "canonical-narrative"
+  ],
+  "sourceCorpus": [
+    "SRC-0001"
+  ],
+  "propositionLedger": [
+    {
+      "id": "PROP-01",
+      "statement": "M1-P01",
+      "canonicalRef": "module-01-more-choice-less-voice",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "PROP-02",
+      "statement": "M1-P02",
+      "canonicalRef": "module-01-more-choice-less-voice",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "PROP-03",
+      "statement": "M1-P03",
+      "canonicalRef": "module-01-more-choice-less-voice",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "PROP-04",
+      "statement": "M1-P04",
+      "canonicalRef": "module-01-more-choice-less-voice",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "PROP-05",
+      "statement": "M1-P05",
+      "canonicalRef": "module-01-more-choice-less-voice",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "PROP-06",
+      "statement": "M1-P06",
+      "canonicalRef": "module-01-more-choice-less-voice",
+      "kind": "canon_restatement"
+    }
+  ],
+  "mediaPlan": [
+    "M01-FIG-01",
+    "M01-DIST-01",
+    "M01-TAB-01",
+    "M01-SCEN-01",
+    "M01-FIG-02",
+    "M01-NOTE-01",
+    "M01-HANDOFF-01"
+  ],
+  "rightsDependencies": [
+    "none"
+  ],
+  "representationDependencies": [
+    "none"
+  ],
+  "outsideOptionDependencies": [
+    "Individual search fallback"
+  ],
+  "prohibitedInterpretations": [
+    "Do not claim all markets isolate consumers in identical ways",
+    "Do not imply collective coordination is unconditionally superior"
+  ],
+  "claimBoundary": "Conceptual research framework at Level E0.",
+  "handoff": "Bridge to Module 2 agency and crowd distinctions.",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

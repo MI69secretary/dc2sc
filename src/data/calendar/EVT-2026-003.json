@@ -1,0 +1,14 @@
+{
+  "eventId": "EVT-2026-003",
+  "title": "Module 01 Derived Essay Web Publication",
+  "eventType": "site_publication",
+  "scheduledDate": "2026-09-22",
+  "targetArtifactId": "more-choice-less-voice",
+  "channel": "dc2sc_site",
+  "status": "scheduled",
+  "description": "Release first long-form derived research essay on market isolation with Research Canvas integration.",
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

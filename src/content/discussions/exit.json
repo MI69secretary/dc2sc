@@ -1,0 +1,11 @@
+{
+  "id": "exit",
+  "status": "demo",
+  "isDemo": true,
+  "type": "counterexample",
+  "topic": "Exit",
+  "body": "A participant may find that the individual decentralized alternative is strictly superior after the collective position forms. The research mechanism must accommodate costless unilateral exit without treating it as system failure.",
+  "source": "site",
+  "consentStatus": "demo",
+  "featured": true
+}

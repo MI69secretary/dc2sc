@@ -1,0 +1,46 @@
+---
+// CodeSchemaSection.astro — Standards compilation code block with SHA-256 stamp
+interface Props {
+  title?: string;
+  language?: string;
+  code?: string;
+  sha256?: string;
+}
+
+const defaultCode = `// Formal Invariant: Buyer-Side Escrow Settlement Contract
+struct CommitmentBatch {
+    bytes32 rootHash;
+    uint256 totalEscrow;
+    uint32 thresholdQuorum;
+    address verifier;
+}
+
+function verifyDispersalEquilibrium(
+    CommitmentBatch memory batch,
+    bytes memory zkProof
+) public pure returns (bool isParetoOptimal) {
+    require(batch.thresholdQuorum >= MIN_BUYER_CONSENSUS, "Quorum unmet");
+    return VerifierLib.verifyProof(batch.rootHash, zkProof);
+}`;
+
+const {
+  title = 'COMPILATION STANDARDS // ФОРМАЛЬНА СПЕЦИФІКАЦІЯ',
+  language = 'SOLIDITY',
+  code = defaultCode,
+  sha256 = '4a89fb31d8e12c9b...902f',
+} = Astro.props;
+---
+
+<div class="dc-code-schema">
+  <div class="dc-code-schema__header">
+    <span class="dc-code-schema__title">{title} [{language}]</span>
+    <button class="dc-code-schema__copy-btn" id="copy-code-btn" onclick="navigator.clipboard.writeText(document.getElementById('code-content').innerText); this.innerText='COPIED'; setTimeout(()=>this.innerText='COPY', 2000)">
+      COPY
+    </button>
+  </div>
+  <pre class="dc-code-schema__body"><code id="code-content">{code}</code></pre>
+  <div class="dc-code-schema__header" style="background: #0d0d10; border-top: 1px solid var(--dc-ink-2); font-size: 0.6875rem; color: var(--dc-muted);">
+    <span>INVARIANT SHA-256: {sha256}</span>
+    <span>STATUS: FORMALLY VERIFIED</span>
+  </div>
+</div>

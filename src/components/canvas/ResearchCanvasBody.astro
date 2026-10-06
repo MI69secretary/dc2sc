@@ -1,0 +1,13 @@
+---
+import type { MediaPassport as PassportType } from '../../types/media-passport';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`dc-canvas-body ${className}`}>
+  <slot />
+</div>

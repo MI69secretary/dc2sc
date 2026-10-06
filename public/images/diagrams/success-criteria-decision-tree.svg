@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="100%" style="background:#f8f7f4; font-family:'Work Sans', -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e3a8a" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+  </defs>
+
+  <!-- Header -->
+  <text x="40" y="38" font-family="'Space Mono', monospace" font-size="11" font-weight="700" fill="#71717a" letter-spacing="0.1em">DC2SC // MODULE 07 SPECIFICATION</text>
+  <text x="40" y="62" font-size="16" font-weight="700" fill="#0f0f0f">Failure-First Evaluation Decision Tree</text>
+
+  <!-- Node 0: Proposal Evaluated -->
+  <rect x="40" y="100" width="160" height="80" fill="#ffffff" stroke="#1e3a8a" stroke-width="2" />
+  <text x="55" y="130" font-size="13" font-weight="700" fill="#1e3a8a">Collective Offer</text>
+  <text x="55" y="150" font-size="11" fill="#27272a">Formed & Ratified</text>
+
+  <!-- Branch 1: Constraint Check -->
+  <line x1="200" y1="140" x2="260" y2="140" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arrow)" />
+
+  <polygon points="330,100 400,140 330,180 260,140" fill="#ffffff" stroke="#1e3a8a" stroke-width="1.5" />
+  <text x="295" y="138" font-size="10" font-weight="700" fill="#0f0f0f">Constraints</text>
+  <text x="300" y="150" font-size="10" font-weight="700" fill="#0f0f0f">Met?</text>
+
+  <!-- NO branch to Do Not Aggregate -->
+  <line x1="330" y1="180" x2="330" y2="240" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arrow-red)" />
+  <text x="340" y="215" font-family="'Space Mono', monospace" font-size="10" fill="#dc2626">NO</text>
+
+  <rect x="250" y="245" width="160" height="75" fill="#f0ede8" stroke="#71717a" stroke-width="1.5" />
+  <text x="265" y="272" font-size="12" font-weight="700" fill="#0f0f0f">Do Not Aggregate</text>
+  <text x="265" y="292" font-size="10" font-family="'Space Mono', monospace" fill="#059669">VALID SUCCESS</text>
+  <text x="265" y="307" font-size="10" fill="#71717a">Outside option fallback</text>
+
+  <!-- YES branch to Outside Option Comparison -->
+  <line x1="400" y1="140" x2="470" y2="140" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="420" y="130" font-family="'Space Mono', monospace" font-size="10" fill="#1e3a8a">YES</text>
+
+  <polygon points="540,100 610,140 540,180 470,140" fill="#ffffff" stroke="#1e3a8a" stroke-width="1.5" />
+  <text x="495" y="138" font-size="10" font-weight="700" fill="#0f0f0f">Superior to</text>
+  <text x="490" y="150" font-size="10" font-weight="700" fill="#0f0f0f">Outside Opt?</text>
+
+  <!-- NO branch from outside option -->
+  <line x1="540" y1="180" x2="540" y2="240" stroke="#dc2626" stroke-width="1.5" marker-end="url(#arrow-red)" />
+  <text x="550" y="215" font-family="'Space Mono', monospace" font-size="10" fill="#dc2626">NO</text>
+
+  <rect x="460" y="245" width="160" height="75" fill="#f0ede8" stroke="#71717a" stroke-width="1.5" />
+  <text x="475" y="272" font-size="12" font-weight="700" fill="#0f0f0f">Reject Offer</text>
+  <text x="475" y="292" font-size="10" font-family="'Space Mono', monospace" fill="#059669">VALID SUCCESS</text>
+  <text x="475" y="307" font-size="10" fill="#71717a">Preserves autonomy</text>
+
+  <!-- YES branch to Legitimate Execution -->
+  <line x1="610" y1="140" x2="660" y2="140" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)" />
+  <text x="625" y="130" font-family="'Space Mono', monospace" font-size="10" fill="#059669">YES</text>
+
+  <rect x="660" y="100" width="115" height="80" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="1.5" />
+  <text x="672" y="132" font-size="11" font-weight="700" fill="#ffffff">Legitimate</text>
+  <text x="672" y="148" font-size="11" font-weight="700" fill="#ffffff">Execution</text>
+  <text x="672" y="168" font-size="9" fill="#dbeafe">True Value</text>
+</svg>

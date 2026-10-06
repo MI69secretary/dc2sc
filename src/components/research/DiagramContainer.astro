@@ -1,0 +1,234 @@
+---
+// DiagramContainer.astro — Publication-grade Vector Diagram Container for DC2SC
+interface Props {
+  mediaId: string;
+  caption?: string;
+  altText?: string;
+  authority?: 'canonical' | 'derived_noncanonical' | 'historical_contrast';
+  epistemicBasis?: 'conceptual' | 'analytical' | 'empirical' | 'methodological' | 'editorial_context';
+  representationRole?: string;
+}
+
+const {
+  mediaId,
+  caption,
+  altText,
+  authority = 'derived_noncanonical',
+  epistemicBasis = 'conceptual',
+  representationRole = 'structural_model',
+} = Astro.props;
+
+const authorityLabel = authority === 'canonical' 
+  ? 'DC2SC CANONICAL SPECIFICATION'
+  : authority === 'historical_contrast'
+  ? 'HISTORICAL CONTRAST (NON-AUTHORITATIVE)'
+  : 'DERIVED NON-CANONICAL EXPLANATORY VISUAL';
+---
+
+<figure class="dc-typed-media-container dc-diagram-container" data-media-id={mediaId} data-authority={authority}>
+  <div class="dc-media-passport-header">
+    <div class="dc-media-passport-badges">
+      <span class="dc-pill dc-pill--accent">{mediaId}</span>
+      <span class={`dc-pill ${authority === 'canonical' ? 'dc-pill--accent' : 'dc-pill--conceptual'}`}>
+        {authorityLabel}
+      </span>
+      <span class="dc-pill dc-pill--default">{epistemicBasis.toUpperCase()}</span>
+    </div>
+  </div>
+
+  <div class="dc-diagram-body" role="img" aria-label={altText || caption || mediaId}>
+    <slot>
+      <!-- CANONICAL ARCHETYPE 1: Continuous Rights Gates -->
+      {mediaId === 'M01-FIG-01' && (
+        <svg viewBox="0 0 540 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="max-height: 220px;">
+          <rect x="10" y="55" width="90" height="50" fill="#f0ede8" stroke="#0f0f0f" stroke-width="1.5" />
+          <text x="55" y="77" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#0f0f0f">01. INTENT</text>
+          <text x="55" y="93" font-family="'Work Sans', sans-serif" font-size="8" text-anchor="middle" fill="#71717a">Private State</text>
+
+          <path d="M 100 80 L 130 80" stroke="#0f0f0f" stroke-width="1.5" />
+          <polygon points="130,80 124,76 124,84" fill="#0f0f0f" />
+
+          <rect x="135" y="50" width="105" height="60" fill="#dbeafe" stroke="#1e3a8a" stroke-width="2" />
+          <text x="187" y="74" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#1e3a8a">04. GATE 1</text>
+          <text x="187" y="92" font-family="'Work Sans', sans-serif" font-size="8" text-anchor="middle" fill="#1e3a8a">Ratification Floor</text>
+
+          <path d="M 240 80 L 270 80" stroke="#0f0f0f" stroke-width="1.5" />
+          <polygon points="270,80 264,76 264,84" fill="#0f0f0f" />
+
+          <rect x="275" y="55" width="105" height="50" fill="#f0ede8" stroke="#0f0f0f" stroke-width="1.5" />
+          <text x="327" y="77" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#0f0f0f">07. COALITION</text>
+          <text x="327" y="93" font-family="'Work Sans', sans-serif" font-size="8" text-anchor="middle" fill="#71717a">Demand Vector</text>
+
+          <path d="M 380 80 L 410 80" stroke="#0f0f0f" stroke-width="1.5" />
+          <polygon points="410,80 404,76 404,84" fill="#0f0f0f" />
+
+          <rect x="415" y="45" width="115" height="70" fill="#f8f7f4" stroke="#059669" stroke-width="2" stroke-dasharray="3,3" />
+          <text x="472" y="72" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#059669">11. EVALUATION</text>
+          <text x="472" y="90" font-family="'Work Sans', sans-serif" font-size="8" text-anchor="middle" fill="#0f0f0f">Pareto vs Null Result</text>
+        </svg>
+      )}
+
+      <!-- CANONICAL ARCHETYPE 2: GOLIAF Decision Journey Map -->
+      {mediaId === 'M06-FIG-02' && (
+        <svg viewBox="0 0 540 160" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="max-height: 200px;">
+          <line x1="30" y1="80" x2="510" y2="80" stroke="#d4d4d8" stroke-width="3" />
+          <circle cx="50" cy="80" r="10" fill="#1e3a8a" />
+          <text x="50" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#0f0f0f">01.Asp</text>
+          <circle cx="115" cy="80" r="10" fill="#1e3a8a" />
+          <text x="115" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#0f0f0f">02.Scen</text>
+          <circle cx="180" cy="80" r="10" fill="#dc2626" />
+          <text x="180" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#dc2626">03.Const</text>
+          <circle cx="245" cy="80" r="10" fill="#1e3a8a" />
+          <text x="245" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#0f0f0f">04.Srch</text>
+          <circle cx="310" cy="80" r="10" fill="#1e3a8a" />
+          <text x="310" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#0f0f0f">05.Comp</text>
+          <circle cx="375" cy="80" r="10" fill="#1e3a8a" />
+          <text x="375" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#0f0f0f">06.Dec</text>
+          <circle cx="440" cy="80" r="10" fill="#1e3a8a" />
+          <text x="440" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#0f0f0f">07.Escrow</text>
+          <circle cx="495" cy="80" r="12" fill="#059669" />
+          <text x="495" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#059669">08.Exec</text>
+        </svg>
+      )}
+
+      <!-- CANONICAL ARCHETYPE 3: Isolated Sessions vs Collective Coalition -->
+      {mediaId === 'M01-FIG-03' && (
+        <svg viewBox="0 0 540 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="max-height: 200px;">
+          <rect x="20" y="20" width="220" height="140" fill="#f8f7f4" stroke="#d4d4d8" stroke-dasharray="3,3" />
+          <text x="130" y="40" font-family="'Work Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle" fill="#71717a">ATOMIZED SESSIONS</text>
+          <circle cx="60" cy="80" r="5" fill="#0f0f0f" opacity="0.3" />
+          <circle cx="100" cy="110" r="5" fill="#0f0f0f" opacity="0.4" />
+          <circle cx="150" cy="70" r="5" fill="#0f0f0f" opacity="0.3" />
+          <circle cx="180" cy="120" r="5" fill="#0f0f0f" opacity="0.5" />
+          
+          <text x="270" y="95" font-family="'Space Mono', monospace" font-size="16" text-anchor="middle" fill="#1e3a8a">VS</text>
+
+          <rect x="300" y="20" width="220" height="140" fill="#dbeafe" stroke="#1e3a8a" stroke-width="2" />
+          <text x="410" y="40" font-family="'Work Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle" fill="#1e3a8a">COLLECTIVE COALITION</text>
+          <circle cx="350" cy="80" r="6" fill="#1e3a8a" />
+          <circle cx="410" cy="110" r="6" fill="#1e3a8a" />
+          <circle cx="470" cy="80" r="6" fill="#1e3a8a" />
+          <line x1="350" y1="80" x2="410" y2="110" stroke="#1e3a8a" stroke-width="2" />
+          <line x1="410" y1="110" x2="470" y2="80" stroke="#1e3a8a" stroke-width="2" />
+        </svg>
+      )}
+
+      <!-- CANONICAL ARCHETYPE 4: Shared vs Individual Constraint Matrix -->
+      {mediaId === 'M04-FIG-01' && (
+        <svg viewBox="0 0 540 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="max-height: 200px;">
+          <rect x="20" y="20" width="240" height="140" fill="#f0ede8" stroke="#1e3a8a" stroke-width="1.5" />
+          <text x="140" y="45" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#1e3a8a">DISCUSSABLE / POOLABLE</text>
+          <text x="40" y="75" font-family="'Work Sans', sans-serif" font-size="9" fill="#0f0f0f">• Budget brackets</text>
+          <text x="40" y="100" font-family="'Work Sans', sans-serif" font-size="9" fill="#0f0f0f">• Date windows (±3d)</text>
+          <text x="40" y="125" font-family="'Work Sans', sans-serif" font-size="9" fill="#0f0f0f">• Destination corridor</text>
+
+          <rect x="280" y="20" width="240" height="140" fill="#f8f7f4" stroke="#dc2626" stroke-width="1.5" />
+          <text x="400" y="45" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#dc2626">STRICTLY INDIVIDUAL</text>
+          <text x="300" y="75" font-family="'Work Sans', sans-serif" font-size="9" fill="#0f0f0f">• Accessibility & Medical</text>
+          <text x="300" y="100" font-family="'Work Sans', sans-serif" font-size="9" fill="#0f0f0f">• Visa & Legal status</text>
+          <text x="300" y="125" font-family="'Work Sans', sans-serif" font-size="9" fill="#0f0f0f">• Irreversible exit rights</text>
+        </svg>
+      )}
+
+      <!-- CANONICAL ARCHETYPE 5: Choice vs Voice Decay Curve -->
+      {mediaId === 'M03-FIG-02' && (
+        <svg viewBox="0 0 540 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="max-height: 200px;">
+          <line x1="40" y1="150" x2="500" y2="150" stroke="#0f0f0f" stroke-width="1.5" />
+          <line x1="40" y1="150" x2="40" y2="20" stroke="#0f0f0f" stroke-width="1.5" />
+          <text x="500" y="165" font-family="'Space Mono', monospace" font-size="8" text-anchor="end" fill="#71717a">Catalog Dispersion |C| → ∞</text>
+          <text x="35" y="15" font-family="'Space Mono', monospace" font-size="8" text-anchor="start" fill="#71717a">Buyer Voice E[Voice]</text>
+          
+          <path d="M 40 30 Q 160 130 500 145" fill="none" stroke="#dc2626" stroke-width="2.5" />
+          <text x="270" y="115" font-family="'Work Sans', sans-serif" font-size="9" fill="#dc2626">Decay with uncoordinated search</text>
+
+          <line x1="40" y1="60" x2="500" y2="60" stroke="#059669" stroke-width="2" stroke-dasharray="4,4" />
+          <circle cx="290" cy="60" r="5" fill="#059669" />
+          <text x="300" y="55" font-family="'Work Sans', sans-serif" font-size="9" font-weight="700" fill="#059669">Pareto Recovery via ZK-Escrow</text>
+        </svg>
+      )}
+
+      <!-- CANONICAL ARCHETYPE 6: Game-Theoretic Payoff Tree -->
+      {mediaId === 'M05-FIG-03' && (
+        <svg viewBox="0 0 540 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="max-height: 200px;">
+          <circle cx="50" cy="90" r="8" fill="#1e3a8a" />
+          <text x="50" y="70" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#1e3a8a">Quorum</text>
+
+          <path d="M 58 90 L 190 40" stroke="#0f0f0f" stroke-width="1.5" />
+          <path d="M 58 90 L 190 90" stroke="#0f0f0f" stroke-width="1.5" />
+          <path d="M 58 90 L 190 140" stroke="#0f0f0f" stroke-width="1.5" />
+
+          <rect x="190" y="25" width="300" height="30" fill="#f8f7f4" stroke="#059669" stroke-width="1.5" />
+          <text x="200" y="45" font-family="'Space Mono', monospace" font-size="9" fill="#059669">1. RATIFIED: ΔU(x_coll, x_out) > 0</text>
+
+          <rect x="190" y="75" width="300" height="30" fill="#f8f7f4" stroke="#1e3a8a" stroke-width="1.5" />
+          <text x="200" y="95" font-family="'Space Mono', monospace" font-size="9" fill="#1e3a8a">2. VALID NULL: 1_{exit} · 0 (Zero Penalty)</text>
+
+          <rect x="190" y="125" width="300" height="30" fill="#f8f7f4" stroke="#dc2626" stroke-width="1.5" />
+          <text x="200" y="145" font-family="'Space Mono', monospace" font-size="9" fill="#dc2626">3. FAIL-04: Coerced Lock-in Decay</text>
+        </svg>
+      )}
+    </slot>
+  </div>
+
+  {(caption || altText) && (
+    <figcaption class="dc-media-caption">
+      {caption && <p class="dc-caption-text"><strong>Figure {mediaId}:</strong> {caption}</p>}
+      {altText && <p class="dc-accessible-description"><em>Visual description:</em> {altText}</p>}
+    </figcaption>
+  )}
+</figure>
+
+<style>
+  .dc-typed-media-container {
+    margin: 2.5rem 0;
+    border: 1px solid var(--dc-border);
+    background: var(--dc-white);
+    padding: 1.5rem;
+  }
+  .dc-media-passport-header {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--dc-border);
+  }
+  .dc-media-passport-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .dc-diagram-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 0;
+    background: var(--dc-surface);
+    border: 1px solid var(--dc-border);
+    overflow-x: auto;
+  }
+  .dc-media-caption {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--dc-border);
+    font-size: var(--dc-text-body-sm);
+    color: var(--dc-ink-2);
+  }
+  .dc-caption-text {
+    margin-bottom: 0.35rem;
+  }
+  .dc-accessible-description {
+    font-size: 0.8125rem;
+    color: var(--dc-muted);
+  }
+
+  @media print {
+    .dc-typed-media-container {
+      border: 1pt solid #1e3a8a !important;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+    .dc-diagram-body {
+      background: #ffffff !important;
+      border: none !important;
+    }
+  }
+</style>

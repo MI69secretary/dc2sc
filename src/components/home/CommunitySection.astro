@@ -1,0 +1,38 @@
+---
+import Container from '../site/Container.astro'
+import Section from '../site/Section.astro'
+import SectionHeading from '../site/SectionHeading.astro'
+import Pill from '../site/Pill.astro'
+import { discussions } from '../../data/discussions.ts'
+---
+
+<Section background="raised">
+  <Container>
+    <SectionHeading headline="Questions, objections and counterexamples" />
+    
+    <p class="dc-body" style="margin-top: 1.5rem; margin-bottom: 3rem; max-width: 800px; color: var(--dc-text-secondary);">
+      Informed disagreement is research material. The discussion layer will surface questions and counterexamples, not manufactured endorsement.
+    </p>
+    
+    <div class="dc-discussion-grid" style="margin-bottom: 3rem;">
+      {discussions.slice(0, 3).map((d) => (
+        <div class="dc-discussion-card dc-card">
+          <div style="margin-bottom: 1.25rem;">
+            <Pill variant="demo" text="Demo discussion format" />
+          </div>
+          
+          <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem; align-items: baseline;">
+            <span class="dc-discussion-card__type dc-label">{d.type}</span>
+            <span class="dc-discussion-card__topic dc-mono">{d.topic}</span>
+          </div>
+          
+          <p class="dc-discussion-card__body">{d.body}</p>
+        </div>
+      ))}
+    </div>
+    
+    <div>
+      <a href="/community" class="dc-btn dc-btn--secondary">Community framework</a>
+    </div>
+  </Container>
+</Section>

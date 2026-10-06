@@ -1,0 +1,101 @@
+---
+import SiteShell from '../layouts/SiteShell.astro';
+import Container from '../components/site/Container.astro';
+import Section from '../components/site/Section.astro';
+import SectionHeading from '../components/site/SectionHeading.astro';
+import Pill from '../components/site/Pill.astro';
+import Callout from '../components/site/Callout.astro';
+import EvidenceBadge from '../components/site/EvidenceBadge.astro';
+import EmptyState from '../components/site/EmptyState.astro';
+import LiveTelemetryBar from '../components/site/LiveTelemetryBar.astro';
+import EditorialHero from '../components/editorial/EditorialHero.astro';
+import GoliafStressTestSimulator from '../components/editorial/GoliafStressTestSimulator.astro';
+import DonationTerminal from '../components/site/DonationTerminal.astro';
+import { getCollection } from 'astro:content';
+
+const goliafEntries = await getCollection('goliaf', ({ data }) =>
+  data.status !== 'draft' && data.status !== 'in_review'
+);
+---
+
+<SiteShell title="GOLIAF Engine — Симулятор ринкових стрес-тестів" description="Контрольоване дослідницьке середовище для тестування колективної координації покупців.">
+  <LiveTelemetryBar />
+  
+  <EditorialHero 
+    eyebrow="GOLIAF ENGINE // BOUNDED STRESS-TEST ENVIRONMENT"
+    title="GOLIAF: Симулятор стрес-тестів колективної координації покупців"
+    lead="Контрольоване аналітичне та агентне середовище для моделювання контр-стратегій зворотного попиту проти штучної цінової дисперсії та алгоритмічних монополій."
+    arxivId="GOLIAF-SIM-V1"
+    sha256="98c412ae...4401"
+  />
+
+  <Section background="white">
+    <Container>
+      
+      <!-- INTERACTIVE SIMULATOR -->
+      <GoliafStressTestSimulator />
+
+      <!-- Constraints Section -->
+      <div style="margin: 4rem 0;">
+        <SectionHeading 
+          title="Обмеження тестового середовища" 
+          description="Фіксовані граничні параметри моделювання поточної фази." 
+        />
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 1.5rem; margin-top: 2rem;">
+          <div class="dc-card" style="border: 1px solid var(--dc-border); border-left: 3px solid var(--dc-navy);">
+            <strong style="display:block; margin-bottom:0.5rem; color:var(--dc-ink);">Географія</strong>
+            <span style="color:var(--dc-ink-2); font-size: 0.875rem;">Фіксований маршрут та точки відправлення/прибуття</span>
+          </div>
+          <div class="dc-card" style="border: 1px solid var(--dc-border); border-left: 3px solid var(--dc-navy);">
+            <strong style="display:block; margin-bottom:0.5rem; color:var(--dc-ink);">Таймфрейм</strong>
+            <span style="color:var(--dc-ink-2); font-size: 0.875rem;">Жорсткі вікна бронювання та синхронізації ескроу</span>
+          </div>
+          <div class="dc-card" style="border: 1px solid var(--dc-border); border-left: 3px solid var(--dc-navy);">
+            <strong style="display:block; margin-bottom:0.5rem; color:var(--dc-ink);">Інтенція</strong>
+            <span style="color:var(--dc-ink-2); font-size: 0.875rem;">Високий рівень невідкладного зобов'язання (High-Commitment)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Materials Section -->
+      <div style="margin-bottom: 4rem;">
+        <SectionHeading 
+          title="Дослідницькі матеріали GOLIAF" 
+          description="Артефакти симуляцій, протоколи та аналітичні звіти середовища." 
+        />
+        
+        <div style="margin: 2rem 0;">
+          <Callout type="boundary" title="Важливе регуляторне застереження">
+            GOLIAF є виключно науковою моделлю та середовищем симуляції стрес-тестів. Він не є комерційним агрегатором, сервісом бронювання, знижковою програмою чи живою торговою платформою.
+          </Callout>
+        </div>
+
+        {goliafEntries.length === 0 ? (
+          <EmptyState
+            title="Матеріали відсутні"
+            body="Дослідницькі артефакти знаходяться на етапі калібрування."
+            label="Conceptual preview"
+          />
+        ) : (
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 1.5rem; margin-top: 2rem;">
+            {goliafEntries.map(entry => (
+              <a href={`/goliaf/${entry.id}`} class="dc-article-card-link">
+                <article class="dc-card" style="border: 1px solid var(--dc-border); display: flex; flex-direction: column; gap: 1rem; height: 100%;">
+                  <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center;">
+                    <span class="dc-pill dc-pill--default">{entry.data.artifactType.replace('_', ' ')}</span>
+                    <EvidenceBadge level={entry.data.evidenceLevel} />
+                  </div>
+                  <h3 class="dc-title" style="margin: 0; font-size: 1.125rem;">{entry.data.title}</h3>
+                  <p class="dc-body-sm" style="color: var(--dc-ink-2); flex-grow: 1; margin: 0;">{entry.data.scope}</p>
+                </article>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <DonationTerminal />
+      
+    </Container>
+  </Section>
+</SiteShell>

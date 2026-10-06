@@ -1,0 +1,47 @@
+{
+  "mediaId": "M05-FIG-01",
+  "title": "The Non-Compensable Rights Floors Architecture",
+  "mediaKind": "structural_model_diagram",
+  "epistemicBasis": "conceptual",
+  "representationRole": "structural_model",
+  "provenanceMode": "canonical_derived",
+  "artifactRole": "diagram",
+  "authority": "derived_noncanonical",
+  "evidenceLevel": "E0",
+  "claimState": "active",
+  "reviewStatus": "reviewed",
+  "canonicalRefs": [
+    "module-05-coordination-rights"
+  ],
+  "sourceRefs": [
+    "SRC-0001"
+  ],
+  "scopeLimits": [
+    "Illustrates the 5 essential rights floors that cannot be traded away for price or volume discounts."
+  ],
+  "limitations": [
+    "Conceptual model; non-statutory design framework."
+  ],
+  "accessibility": {
+    "decorative": false,
+    "altText": "A foundational diagram showing five non-compensable rights pillars: Exit, Contestability, Intelligibility, Privacy, and Outside Option Fallback supporting legitimate collective market formation.",
+    "textEquivalent": "Five non-compensable pillars: 1. Unconditional Exit, 2. Continuous Contestability, 3. Constraint Intelligibility, 4. Telemetry Privacy, 5. Outside Option Equivalence. These underpin voluntary market formation.",
+    "colorIndependent": true
+  },
+  "commercialIntent": "none",
+  "containsTransactionalCTA": false,
+  "containsLeadCapture": false,
+  "containsBookingControl": false,
+  "containsPricePromise": false,
+  "containsUnsupportedBenefitClaim": false,
+  "asset": {
+    "type": "svg",
+    "file": "/images/diagrams/coordination-rights-floors.svg",
+    "license": "Original DC2SC visual",
+    "rightsStatus": "owned"
+  },
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

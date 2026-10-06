@@ -1,0 +1,30 @@
+---
+interface Props { url?: string; }
+const { url } = Astro.props;
+---
+<button class="dc-share-btn" id="copy-link-btn" aria-label="Copy link to this article">
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+    <rect x="1" y="4" width="7" height="7" rx="0"/>
+    <path d="M4 4V3a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H9"/>
+  </svg>
+  Copy link
+</button>
+<script define:vars={{ url }}>
+  const btn = document.getElementById('copy-link-btn');
+  if (btn) {
+    btn.addEventListener('click', async () => {
+      const copyUrl = url || window.location.href;
+      try {
+        await navigator.clipboard.writeText(copyUrl);
+        btn.textContent = 'Copied';
+        btn.classList.add('dc-share-btn--copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy link';
+          btn.classList.remove('dc-share-btn--copied');
+        }, 2000);
+      } catch {
+        btn.textContent = 'Not supported';
+      }
+    });
+  }
+</script>

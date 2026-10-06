@@ -1,0 +1,22 @@
+---
+interface Props {
+  questions?: string[];
+}
+const { questions = [] } = Astro.props;
+---
+{questions.length > 0 && (
+  <div class="dc-open-question-block">
+    <strong class="dc-open-question-block__title">Open questions</strong>
+    <ul class="dc-open-question-block__list">
+      {questions.map(q => <li>{q}</li>)}
+    </ul>
+  </div>
+)}
+
+<style is:global>
+.dc-open-question-block { border-left: 4px solid var(--dc-muted); padding: var(--dc-space-6) var(--dc-space-8); background: var(--dc-raised); margin: var(--dc-space-8) 0; }
+.dc-open-question-block__title { font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--dc-muted); margin-bottom: var(--dc-space-4); display: block; }
+.dc-open-question-block__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--dc-space-3); }
+.dc-open-question-block__list li { font-size: var(--dc-text-body); font-style: italic; color: var(--dc-ink-2); line-height: 1.65; padding-left: var(--dc-space-5); position: relative; }
+.dc-open-question-block__list li::before { content: '?'; position: absolute; left: 0; color: var(--dc-muted); font-style: normal; font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); }
+</style>

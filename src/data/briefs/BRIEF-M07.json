@@ -1,0 +1,64 @@
+{
+  "briefId": "BRIEF-M07",
+  "targetArtifactId": "what-counts-as-success",
+  "targetModule": "07",
+  "status": "approved",
+  "lifecycleStatus": "approved_for_dev",
+  "primaryReader": "Epistemologist of economics / market design evaluator / research program lead",
+  "readerProblem": "Confusing transactional gross merchandise volume (GMV) with genuine participant welfare and demand-side agency.",
+  "canonicalDependencies": [
+    "module-07-what-counts-as-success",
+    "canonical-narrative",
+    "failure-first-framework",
+    "evidence-and-claim-discipline"
+  ],
+  "sourceCorpus": [
+    "SRC-0001",
+    "SRC-0002",
+    "SRC-0003"
+  ],
+  "propositionLedger": [
+    {
+      "id": "M7-P01",
+      "statement": "Transaction is not success: completed transactions without constraint satisfaction or outside-option superiority are false positives.",
+      "canonicalRef": "module-07-what-counts-as-success",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M7-P02",
+      "statement": "The decision to not aggregate is an equal, valid, and informative research result.",
+      "canonicalRef": "module-07-what-counts-as-success",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M7-P03",
+      "statement": "Scientific success is defined by mapping precise failure boundaries rather than maximizing clearing volume.",
+      "canonicalRef": "module-07-what-counts-as-success",
+      "kind": "canon_restatement"
+    }
+  ],
+  "mediaPlan": [
+    "M07-FIG-01",
+    "M07-TAB-01"
+  ],
+  "rightsDependencies": [
+    "Continuous Rights Gates closure",
+    "Evidence Level E0 boundary"
+  ],
+  "representationDependencies": [
+    "Participant-evaluated welfare benchmarks"
+  ],
+  "outsideOptionDependencies": [
+    "Independent outside-option superiority requirement"
+  ],
+  "prohibitedInterpretations": [
+    "Do not claim specific benchmarks represent universal welfare improvements.",
+    "Do not present unobserved metrics as empirical validation."
+  ],
+  "claimBoundary": "Conceptual research framework at Evidence Level E0.",
+  "handoff": "Closes the 7-module narrative spine into Continuous Rights Gates and Evidence Discipline specifications.",
+  "visibility": "internal",
+  "isFixture": false,
+  "publicationAuthority": "none",
+  "indexable": false
+}

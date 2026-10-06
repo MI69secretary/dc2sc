@@ -1,0 +1,15 @@
+{
+  "hypothesisId": "HYP-006",
+  "title": "Travel Stress Testing Exposes Constraint Divergence",
+  "statement": "Time-compressed travel logistics with asymmetric supplier power provide an effective stress-test boundary for buyer coordination mechanics.",
+  "status": "active",
+  "evidenceLevel": "E0",
+  "relatedModules": [
+    6
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

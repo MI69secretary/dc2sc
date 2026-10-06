@@ -1,0 +1,15 @@
+{
+  "editionId": "ED-M01-SUBSTACK",
+  "artifactId": "module-01-more-choice-less-voice",
+  "platform": "substack",
+  "status": "not_linked",
+  "url": "",
+  "canonicalUrl": "https://dc2sc.org/research/module-01-more-choice-less-voice",
+  "titleAtPublication": "More Choice, Less Voice (DC2SC Research)",
+  "notes": "Planned Substack cross-posting reference mapping. No automated publishing API active.",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

@@ -1,0 +1,37 @@
+---
+import type { MediaPassport as PassportType } from '../../types/media-passport';
+import MediaPassport from './MediaPassport.astro';
+
+interface Props {
+  passport?: PassportType;
+  question: string;
+  context?: string;
+  class?: string;
+}
+
+const {
+  passport,
+  question,
+  context,
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`dc-media-block dc-media-block--prompt ${className}`} id={passport?.id}>
+  <div class="dc-media-block__banner">
+    <span class="dc-media-block__badge-dot" aria-hidden="true"></span>
+    <span class="dc-label">Reader Inquiry &middot; Open Conceptual Question</span>
+  </div>
+
+  <div class="dc-reader-prompt">
+    <div class="dc-reader-prompt__badge">
+      <span class="dc-label dc-label--subtle">Research Prompt for the Reader:</span>
+    </div>
+    <h3 class="dc-reader-prompt__question">
+      &ldquo;{question}&rdquo;
+    </h3>
+    {context && <p class="dc-reader-prompt__context">{context}</p>}
+  </div>
+
+  {passport && <MediaPassport passport={passport} compact={true} />}
+</div>

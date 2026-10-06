@@ -1,0 +1,130 @@
+---
+// CitationBox.astro — Publication & Academic Citation Generator
+interface Props {
+  title: string;
+  slug: string;
+  author?: string;
+  collection?: 'journal' | 'research';
+  year?: number;
+  doi?: string;
+}
+
+const {
+  title,
+  slug,
+  author = 'DC2SC Research Program',
+  collection = 'journal',
+  year = 2026,
+  doi = `10.5281/zenodo.dc2sc.${slug}`
+} = Astro.props;
+
+const currentUrl = `https://dc2sc.org/${collection}/${slug}`;
+
+const bibtex = `@article{dc2sc_${slug.replace(/[^a-zA-Z0-9]/g, '_')},
+  title = {${title}},
+  author = {${author}},
+  journal = {DC2SC Research Working Papers},
+  year = {${year}},
+  volume = {1},
+  url = {${currentUrl}},
+  doi = {${doi}},
+  note = {Evidence Level: E0 (Conceptual / Pre-field)}
+}`;
+
+const apa = `${author}. (${year}). ${title}. DC2SC Research Working Papers, 1. https://doi.org/${doi}`;
+
+const ris = `TY  - JOUR
+TI  - ${title}
+AU  - ${author}
+JO  - DC2SC Research Working Papers
+PY  - ${year}
+VL  - 1
+UR  - ${currentUrl}
+DO  - ${doi}
+N1  - Evidence Level: E0 (Conceptual / Pre-field)
+ER  -`;
+
+const boxId = `citation-${slug.replace(/[^a-zA-Z0-9]/g, '-')}`;
+---
+
+<div class="dc-citation-box dc-card" id={boxId} style="border: 2px solid var(--dc-ink); padding: 1.5rem; margin-top: 3rem; background: var(--dc-surface);">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--dc-border); padding-bottom: 0.75rem;">
+    <div>
+      <span class="dc-pill dc-pill--accent" style="font-size: 0.6875rem; margin-bottom: 0.25rem;">ACADEMIC CITATION // ЦИТУВАННЯ</span>
+      <h3 style="font-family: var(--dc-font-display); font-size: 1.125rem; margin: 0; color: var(--dc-ink);">Експорт академічного цитування</h3>
+    </div>
+    <div class="dc-citation-tabs" style="display: flex; gap: 0.35rem;">
+      <button type="button" class="dc-citation-tab active" data-format="bibtex" style="font-family: var(--dc-font-mono); font-size: 0.75rem; padding: 0.3rem 0.6rem; border: 1px solid var(--dc-ink); background: var(--dc-ink); color: var(--dc-surface); cursor: pointer;">BibTeX</button>
+      <button type="button" class="dc-citation-tab" data-format="apa" style="font-family: var(--dc-font-mono); font-size: 0.75rem; padding: 0.3rem 0.6rem; border: 1px solid var(--dc-border); background: var(--dc-white); color: var(--dc-ink); cursor: pointer;">APA 7</button>
+      <button type="button" class="dc-citation-tab" data-format="ris" style="font-family: var(--dc-font-mono); font-size: 0.75rem; padding: 0.3rem 0.6rem; border: 1px solid var(--dc-border); background: var(--dc-white); color: var(--dc-ink); cursor: pointer;">RIS / Zotero</button>
+    </div>
+  </div>
+
+  <div class="dc-citation-content" style="position: relative;">
+    <!-- BIBTEX VIEW -->
+    <pre class="dc-citation-panel dc-code-schema" id={`${boxId}-bibtex`} style="display: block; margin: 0; padding: 1rem; font-size: 0.75rem; line-height: 1.5; background: #0f172a; color: #38bdf8; overflow-x: auto; max-height: 180px;">{bibtex}</pre>
+
+    <!-- APA VIEW -->
+    <pre class="dc-citation-panel dc-code-schema" id={`${boxId}-apa`} style="display: none; margin: 0; padding: 1rem; font-size: 0.75rem; line-height: 1.5; background: #0f172a; color: #a5f3fc; overflow-x: auto; white-space: pre-wrap;">{apa}</pre>
+
+    <!-- RIS VIEW -->
+    <pre class="dc-citation-panel dc-code-schema" id={`${boxId}-ris`} style="display: none; margin: 0; padding: 1rem; font-size: 0.75rem; line-height: 1.5; background: #0f172a; color: #cbd5e1; overflow-x: auto; max-height: 180px;">{ris}</pre>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; flex-wrap: wrap; gap: 0.75rem;">
+      <span class="dc-label" style="color: var(--dc-muted); font-size: 0.6875rem;">DOI: <code style="color: var(--dc-navy);">{doi}</code></span>
+      <button type="button" class="dc-btn dc-btn--primary dc-citation-copy-btn" style="font-size: 0.75rem; padding: 0.4rem 0.85rem;">
+        📋 СКОПІЮВАТИ ЦИТУВАННЯ
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ boxId }}>
+  (() => {
+    const root = document.getElementById(boxId);
+    if (!root) return;
+
+    const tabs = root.querySelectorAll('.dc-citation-tab');
+    const panels = {
+      bibtex: root.querySelector(`#${boxId}-bibtex`),
+      apa: root.querySelector(`#${boxId}-apa`),
+      ris: root.querySelector(`#${boxId}-ris`)
+    };
+    const copyBtn = root.querySelector('.dc-citation-copy-btn');
+    let activeFormat = 'bibtex';
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.style.background = 'var(--dc-white)';
+          t.style.color = 'var(--dc-ink)';
+          t.style.borderColor = 'var(--dc-border)';
+        });
+
+        tab.classList.add('active');
+        tab.style.background = 'var(--dc-ink)';
+        tab.style.color = 'var(--dc-surface)';
+        tab.style.borderColor = 'var(--dc-ink)';
+
+        activeFormat = tab.getAttribute('data-format') || 'bibtex';
+
+        Object.entries(panels).forEach(([fmt, el]) => {
+          if (el) el.style.display = (fmt === activeFormat) ? 'block' : 'none';
+        });
+      });
+    });
+
+    copyBtn?.addEventListener('click', () => {
+      const activePanel = panels[activeFormat];
+      if (activePanel) {
+        navigator.clipboard.writeText(activePanel.innerText);
+        const prev = copyBtn.innerText;
+        copyBtn.innerText = 'СКОПІЙОВАНО! ✓';
+        setTimeout(() => {
+          copyBtn.innerText = prev;
+        }, 2000);
+      }
+    });
+  })();
+</script>

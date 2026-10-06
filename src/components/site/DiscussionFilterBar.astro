@@ -1,0 +1,42 @@
+---
+const types = [
+  { label: 'All', value: 'all' },
+  { label: 'Research questions', value: 'research_question' },
+  { label: 'Counterexamples', value: 'counterexample' },
+  { label: 'Methodological objections', value: 'methodological_objection' },
+];
+---
+<div class="dc-filter-bar" id="discussion-filter-bar" role="group" aria-label="Filter by discussion type">
+  {types.map((t, i) => (
+    <button
+      class={`dc-filter-chip${i === 0 ? ' dc-filter-chip--active' : ''}`}
+      data-type-filter={t.value}
+      aria-pressed={i === 0 ? 'true' : 'false'}
+    >
+      {t.label}
+    </button>
+  ))}
+</div>
+<script>
+  const bar = document.getElementById('discussion-filter-bar');
+  if (bar) {
+    bar.addEventListener('click', e => {
+      const btn = (e.target as HTMLElement).closest('[data-type-filter]') as HTMLButtonElement | null;
+      if (!btn) return;
+      bar.querySelectorAll('[data-type-filter]').forEach(b => {
+        b.classList.remove('dc-filter-chip--active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('dc-filter-chip--active');
+      btn.setAttribute('aria-pressed', 'true');
+      const filterValue = btn.getAttribute('data-type-filter');
+      document.querySelectorAll<HTMLElement>('[data-discussion-type]').forEach(card => {
+        if (filterValue === 'all' || card.getAttribute('data-discussion-type') === filterValue) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  }
+</script>

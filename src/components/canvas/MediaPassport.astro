@@ -1,0 +1,149 @@
+---
+import type { MediaPassport as PassportType } from '../../types/media-passport';
+
+interface Props {
+  passport: PassportType;
+  class?: string;
+  compact?: boolean;
+}
+
+const { passport, class: className = '', compact = false } = Astro.props;
+
+const epistemicColorMap: Record<string, { bg: string; text: string; border: string }> = {
+  conceptual: { bg: 'var(--dc-raised)', text: 'var(--dc-ink)', border: 'var(--dc-border)' },
+  analytical: { bg: 'var(--dc-accent-low)', text: 'var(--dc-accent)', border: 'var(--dc-accent)' },
+  empirical: { bg: '#dcfce7', text: '#166534', border: '#bbf7d0' },
+  methodological: { bg: '#fef3c7', text: '#92400e', border: '#fde68a' },
+  editorial_context: { bg: 'var(--dc-surface)', text: 'var(--dc-muted)', border: 'var(--dc-border)' },
+};
+
+const colors = epistemicColorMap[passport.epistemicBasis] || epistemicColorMap.conceptual;
+---
+
+<div class={`dc-media-passport ${compact ? 'dc-media-passport--compact' : ''} ${className}`}>
+  <!-- AUTHORITY & AXES HEADER -->
+  <div class="dc-media-passport__header" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:0.375rem;">
+      {passport.authority === 'derived_noncanonical' && (
+        <span class="dc-pill dc-pill--conceptual" style="font-weight:700; border-color:var(--dc-ink); color:var(--dc-ink);">
+          Derived research representation
+        </span>
+      )}
+      {passport.authority === 'canonical' && (
+        <span class="dc-pill dc-pill--accent" style="font-weight:700;">
+          Direct canonical specification
+        </span>
+      )}
+      {passport.authority === 'historical_contrast' && (
+        <span class="dc-pill dc-pill--warning" style="font-weight:700;">
+          Historical contrast
+        </span>
+      )}
+
+      <div class="dc-media-passport__badge" style={`background: ${colors.bg}; color: ${colors.text}; border: 1px solid ${colors.border}; padding: 0.2rem 0.5rem; font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); text-transform: uppercase;`}>
+        <span>{passport.epistemicBasis}</span>
+        <span style="opacity: 0.5; margin: 0 0.25rem;">/</span>
+        <span>{(passport.representationRole || '').replace(/_/g, ' ')}</span>
+      </div>
+
+      <span class="dc-pill dc-pill--default" style="font-size: 0.6875rem;">
+        {passport.evidenceLevel}
+      </span>
+    </div>
+
+    <span class="dc-media-passport__id" style="font-family: var(--dc-font-mono); font-size: 0.75rem; color: var(--dc-muted);" title="Media Passport ID">
+      {passport.id}
+    </span>
+  </div>
+
+  {passport.caption && (
+    <div class="dc-media-passport__caption" style="font-size: var(--dc-text-body-sm); color: var(--dc-ink-2); margin-bottom: 0.5rem;">
+      <strong>Purpose:</strong> {passport.caption}
+    </div>
+  )}
+
+  <details class="dc-media-passport__details" style="margin-top: 0.5rem; border-top: 1px solid var(--dc-border); padding-top: 0.5rem;">
+    <summary class="dc-media-passport__summary" style="cursor: pointer; font-size: var(--dc-text-mono); font-family: var(--dc-font-mono); color: var(--dc-muted);">
+      <span>Media Passport Metadata & Epistemic Specification</span>
+    </summary>
+
+    <div class="dc-media-passport__grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.75rem; font-size: var(--dc-text-mono); font-family: var(--dc-font-mono);">
+      <div class="dc-media-passport__row">
+        <span style="color: var(--dc-muted); display: block;">Epistemic Basis:</span>
+        <span style="color: var(--dc-ink);">{passport.epistemicBasis}</span>
+      </div>
+
+      <div class="dc-media-passport__row">
+        <span style="color: var(--dc-muted); display: block;">Representation Role:</span>
+        <span style="color: var(--dc-ink);">{(passport.representationRole || '').replace(/_/g, ' ')}</span>
+      </div>
+
+      <div class="dc-media-passport__row">
+        <span style="color: var(--dc-muted); display: block;">Provenance Mode:</span>
+        <span style="color: var(--dc-ink);">{(passport.provenanceMode || '').replace(/_/g, ' ')}</span>
+      </div>
+
+      <div class="dc-media-passport__row">
+        <span style="color: var(--dc-muted); display: block;">Artifact Role:</span>
+        <span style="color: var(--dc-ink);">{passport.artifactRole}</span>
+      </div>
+
+      <div class="dc-media-passport__row">
+        <span style="color: var(--dc-muted); display: block;">Authority:</span>
+        <span style="color: var(--dc-ink); font-weight: 700;">{passport.authority}</span>
+      </div>
+
+      <div class="dc-media-passport__row">
+        <span style="color: var(--dc-muted); display: block;">Evidence Level:</span>
+        <span style="color: var(--dc-ink);">{passport.evidenceLevel}</span>
+      </div>
+
+      <div class="dc-media-passport__row">
+        <span style="color: var(--dc-muted); display: block;">Claim State:</span>
+        <span style="color: var(--dc-ink);">{passport.claimState}</span>
+      </div>
+
+      <div class="dc-media-passport__row">
+        <span style="color: var(--dc-muted); display: block;">Review Status:</span>
+        <span style="color: var(--dc-ink);">{passport.reviewStatus}</span>
+      </div>
+
+      {passport.canonicalRefs && passport.canonicalRefs.length > 0 && (
+        <div class="dc-media-passport__row" style="grid-column: 1 / -1;">
+          <span style="color: var(--dc-muted); display: block;">Canonical References:</span>
+          <span style="color: var(--dc-ink);">{passport.canonicalRefs.join(', ')}</span>
+        </div>
+      )}
+
+      {passport.sourceReference && (
+        <div class="dc-media-passport__row" style="grid-column: 1 / -1;">
+          <span style="color: var(--dc-muted); display: block;">Source Reference:</span>
+          <span style="color: var(--dc-ink);">{passport.sourceReference}</span>
+        </div>
+      )}
+
+      {passport.scopeLimit && (
+        <div class="dc-media-passport__row" style="grid-column: 1 / -1;">
+          <span style="color: var(--dc-muted); display: block;">Scope Limit:</span>
+          <span style="color: var(--dc-ink);">{passport.scopeLimit}</span>
+        </div>
+      )}
+
+      {passport.accessibleEquiv && (
+        <div class="dc-media-passport__row" style="grid-column: 1 / -1;">
+          <span style="color: var(--dc-muted); display: block;">Accessible Text Equivalent:</span>
+          <span style="color: var(--dc-ink-2); font-family: var(--dc-font-body); font-size: var(--dc-text-body-sm); display: block; margin-top: 0.25rem;">
+            {passport.accessibleEquiv.summary}
+          </span>
+        </div>
+      )}
+
+      <div class="dc-media-passport__row" style="grid-column: 1 / -1;">
+        <span style="color: var(--dc-muted); display: block;">Alt Text:</span>
+        <span style="color: var(--dc-ink-2); font-family: var(--dc-font-body); font-size: var(--dc-text-body-sm); display: block; margin-top: 0.25rem;">
+          {passport.altText}
+        </span>
+      </div>
+    </div>
+  </details>
+</div>

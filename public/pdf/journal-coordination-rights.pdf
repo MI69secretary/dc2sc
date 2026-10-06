@@ -1,0 +1,151 @@
+%PDF-1.4
+%‚„œ”
+6 0 obj
+<< /Length 3568 >>
+stream
+BT /F2 8 Tf 0.4 0.4 0.4 rg
+50 770 Td (DC2SC RESEARCH PROGRAM   WORKING PAPER SERIES   CANONICAL SPECIFICATION) Tj ET
+0.8 w 0.8 0.8 0.8 RG 50 762 m 545 762 l S
+0.95 0.96 0.98 rg 50 630 495 85 re f
+0.2 0.3 0.6 RG 1.5 w 50 630 495 85 re s
+BT /F3 8 Tf 0.12 0.23 0.54 rg
+65 695 Td (EVIDENCE LEVEL: E0   STATUS: CONCEPTUAL_PREVIEW   MODULE: 5) Tj ET
+BT /F2 16 Tf 0.06 0.06 0.06 rg
+65 670 Td (Coordination Rights) Tj ET
+BT /F1 9 Tf 0.25 0.25 0.25 rg
+65 650 Td (Framing the constitutional conditions under which collective market action) Tj ET
+65 638 Td (is a right rather than a privilege, and why rights floors cannot be traded) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 600 Td (This derived research essay is authored under **Editorial Derivation Brief) Tj ET
+50 587 Td (BRIEF-M05** and traces directly to frozen **Canonical Module 05 \(Coordination) Tj ET
+50 574 Td (Rights\)**. It operates at **Evidence Level E0 \(Conceptual Horizon\)**. All diagrams) Tj ET
+50 561 Td (and matrices carry derived non-canonical authority and do not alter the frozen) Tj ET
+50 548 Td (canonical specification.) Tj ET
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 514 Td (1. Beyond Passive Consumer Protection) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 498 Td (Traditional regulatory and economic models evaluate consumer welfare almost) Tj ET
+50 485 Td (exclusively through the lens of individual protection: preventing deceptive) Tj ET
+50 472 Td (advertising, enforcing baseline safety standards, and policing price collusion) Tj ET
+50 459 Td (among suppliers.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 440 Td (While essential, this framing treats the buyer as an atomized, passive recipient) Tj ET
+50 427 Td (of market conditions.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 408 Td (DC2SC Module 05 establishes that meaningful agency requires a shift from passive) Tj ET
+50 395 Td (consumer protection to active **Coordination Rights** -- the structural guarantees) Tj ET
+50 382 Td (necessary for independent participants to voluntarily form, contest, and execute) Tj ET
+50 369 Td (collective market positions without fear of intermediary coercion.) Tj ET
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 335 Td (2. Non-Compensable Rights Floors) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 319 Td (The core thesis of DC2SC governance is that **rights floors are non-compensable**.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 300 Td (A market intermediary cannot ask participants to forfeit baseline rights in) Tj ET
+50 287 Td (exchange for marginal financial incentives, discounts, or algorithmic convenience.) Tj ET
+50 274 Td (When basic rights are traded away, coordination collapses into platform) Tj ET
+50 261 Td (dependency.) Tj ET
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 227 Td (3. The Right Not to Aggregate) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 211 Td (A central tenet of the DC2SC framework is that **"Do not aggregate" is a) Tj ET
+50 198 Td (legitimate, complete research outcome**.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 179 Td (Coordination is not an obligation. If an individual participant finds that their) Tj ET
+50 166 Td (independent outside option provides superior utility, autonomy, or temporal) Tj ET
+50 153 Td (flexibility compared to the proposed collective position, they retain an absolute) Tj ET
+50 140 Td (right to decline participation.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 121 Td (A coordination mechanism that penalizes participants for opting out -- whether) Tj ET
+50 108 Td (through platform lockout, reputational degradation, or exit fees -- is coercive by) Tj ET
+50 95 Td (definition.) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 6 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 2711 >>
+stream
+BT /F2 8 Tf 0.4 0.4 0.4 rg
+50 770 Td (DC2SC RESEARCH PROGRAM   WORKING PAPER SERIES   CANONICAL SPECIFICATION) Tj ET
+0.8 w 0.8 0.8 0.8 RG 50 762 m 545 762 l S
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 720 Td (4. Failure Modes Tracked) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 704 Td (Under the **DC2SC Failure-First Framework**, Module 05 tracks three key failure) Tj ET
+50 691 Td (conditions:) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 672 Td (  **Rights Degradation \(FAIL-05\):** Compromising privacy or exit rights to satisfy) Tj ET
+50 659 Td (supplier minimum volume thresholds.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 640 Td (  **Contestability Blockade \(FAIL-06\):** Representatives or algorithms ignoring) Tj ET
+50 627 Td (participant dissents during position finalization.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 608 Td (  **Outside Option Erosion \(FAIL-12\):** Suppliers penalizing individual buyers who) Tj ET
+50 595 Td (withdraw from collective pools.) Tj ET
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 561 Td (5. Research Handoff to Module 06) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 545 Td (With constitutional coordination rights defined, the theoretical framework must be) Tj ET
+50 532 Td (subjected to extreme real-world stress testing. This leads directly to Module 06:) Tj ET
+50 519 Td (Travel Is a Stress Test \(the GOLIAF research environment\).) Tj ET
+0.98 0.98 0.99 rg 50 363 495 125 re f
+0.12 0.23 0.54 RG 1.5 w 50 363 495 125 re s
+0.12 0.23 0.54 rg 50 466 495 22 re f
+BT /F2 9 Tf 1 1 1 rg
+60 473 Td (MATHEMATICAL INVARIANT // AXIOM 5.1: NON-COMPENSABLE RIGHTS FLOOR INVARIANT  \(Eq. 5.1\)) Tj ET
+0.94 0.96 0.99 rg 65 423 465 35 re f
+0.12 0.23 0.54 RG 0.75 w 65 423 465 35 re s
+BT /F2 11 Tf 0.05 0.15 0.45 rg
+75 435 Td (forall i in P, ; R_i cap F_{floor} = emptyset ==> U_i\(x, R_i\) equiv - in fty) Tj ET
+BT /F1 8 Tf 0.3 0.3 0.3 rg
+65 409 Td (Fundamental constitutional rule stating that trading away non-compensable rights floors) Tj ET
+65 399 Td (in exchange for price discounts yields non-admissible negative infinite welfare.) Tj ET
+BT /F2 7.5 Tf 0.02 0.45 0.28 rg
+65 369 Td ([  FORMALLY VERIFIED MATHEMATICAL SPECIFICATION   PEER CITATION READY]) Tj ET
+0.96 0.95 0.93 rg 50 263 495 70 re f
+0.6 0.6 0.6 RG 0.7 w 50 263 495 70 re s
+BT /F2 8 Tf 0.2 0.2 0.2 rg
+60 317 Td (CONSTITUTIONAL RESEARCH BOUNDARY & NON-CLAIM DISCLOSURE) Tj ET
+BT /F1 7.5 Tf 0.35 0.35 0.35 rg
+60 303 Td (This publication presents conceptual research and formal invariants at Evidence Level E0.) Tj ET
+60 292 Td (It does not constitute commercial claims, supplier commitments, or live transaction guarantees.) Tj ET
+60 281 Td (GOLIAF operates strictly as a bounded stress-test environment, not a commercial booking service.) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 8 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000006690 00000 n 
+0000006739 00000 n 
+0000006802 00000 n 
+0000006872 00000 n 
+0000006947 00000 n 
+0000000015 00000 n 
+0000003635 00000 n 
+0000003781 00000 n 
+0000006544 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+7015
+%%EOF

@@ -1,0 +1,235 @@
+---
+// LanguageSelect.astro — Multilingual Locale Selector for DC2SC
+const currentPath = Astro.url.pathname;
+
+let currentLang = 'uk';
+if (currentPath.startsWith('/de/') || currentPath === '/de' || currentPath.startsWith('/de')) {
+  currentLang = 'de';
+} else if (currentPath.startsWith('/en/') || currentPath === '/en') {
+  currentLang = 'en';
+} else if (currentPath.startsWith('/uk/') || currentPath === '/uk') {
+  currentLang = 'uk';
+}
+
+const locales = [
+  { code: 'uk', label: 'UK', fullLabel: 'Українська', flag: '🇺🇦' },
+  { code: 'en', label: 'EN', fullLabel: 'English', flag: '🇬🇧' },
+  { code: 'de', label: 'DE', fullLabel: 'Deutsch', flag: '🇩🇪' },
+];
+---
+
+<div class="dc-lang-select" id="dc-lang-select">
+  <button 
+    class="dc-lang-select__btn" 
+    id="dc-lang-btn" 
+    type="button" 
+    aria-expanded="false" 
+    aria-haspopup="listbox"
+    aria-label="Вибір мови / Language selection"
+  >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" style="flex-shrink: 0;" aria-hidden="true">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="2" y1="12" x2="22" y2="12"></line>
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+    </svg>
+    <span class="dc-lang-select__current" id="dc-lang-current-label">{currentLang.toUpperCase()}</span>
+    <svg class="dc-lang-select__arrow" width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+      <path d="M2 3.5L5 6.5L8 3.5H2Z" />
+    </svg>
+  </button>
+
+  <div class="dc-lang-select__dropdown" id="dc-lang-dropdown" role="listbox" tabindex="-1">
+    {locales.map((loc) => (
+      <button 
+        type="button"
+        class={`dc-lang-select__option ${currentLang === loc.code ? 'dc-lang-select__option--active' : ''}`}
+        role="option"
+        aria-selected={currentLang === loc.code}
+        data-lang={loc.code}
+        onclick={`window.__dcSwitchLocale && window.__dcSwitchLocale('${loc.code}')`}
+      >
+        <span class="dc-lang-select__flag">{loc.flag}</span>
+        <span class="dc-lang-select__opt-code">{loc.label}</span>
+        <span class="dc-lang-select__opt-name">{loc.fullLabel}</span>
+      </button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .dc-lang-select {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dc-lang-select__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.65rem;
+    background: var(--dc-white);
+    border: 1px solid var(--dc-border);
+    color: var(--dc-ink);
+    font-family: var(--dc-font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    line-height: 1;
+    transition: all var(--dc-transition-fast);
+  }
+
+  .dc-lang-select__btn:hover {
+    border-color: var(--dc-ink);
+    background: var(--dc-raised);
+  }
+
+  .dc-lang-select__btn[aria-expanded="true"] {
+    border-color: var(--dc-navy);
+    background: var(--dc-accent-low);
+  }
+
+  .dc-lang-select__arrow {
+    transition: transform 150ms ease;
+  }
+
+  .dc-lang-select__btn[aria-expanded="true"] .dc-lang-select__arrow {
+    transform: rotate(180deg);
+  }
+
+  .dc-lang-select__dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    min-width: 150px;
+    background: var(--dc-white);
+    border: 2px solid var(--dc-ink);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    z-index: var(--dc-z-overlay, 200);
+    padding: 0.25rem 0;
+  }
+
+  .dc-lang-select__dropdown--open {
+    display: block;
+  }
+
+  .dc-lang-select__option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--dc-font-body);
+    font-size: 0.8125rem;
+    color: var(--dc-ink);
+    transition: background var(--dc-transition-fast);
+  }
+
+  .dc-lang-select__option:hover {
+    background: var(--dc-raised);
+  }
+
+  .dc-lang-select__option--active {
+    background: var(--dc-accent-low);
+    color: var(--dc-navy);
+    font-weight: 700;
+  }
+
+  .dc-lang-select__flag {
+    font-size: 0.9375rem;
+    line-height: 1;
+  }
+
+  .dc-lang-select__opt-code {
+    font-family: var(--dc-font-mono);
+    font-weight: 700;
+    font-size: 0.75rem;
+    min-width: 24px;
+  }
+
+  .dc-lang-select__opt-name {
+    font-size: 0.75rem;
+    color: var(--dc-muted);
+  }
+
+  .dc-lang-select__option--active .dc-lang-select__opt-name {
+    color: var(--dc-navy);
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    function initLangSelect() {
+      const btn = document.getElementById('dc-lang-btn');
+      const dropdown = document.getElementById('dc-lang-dropdown');
+      const container = document.getElementById('dc-lang-select');
+
+      if (btn && dropdown && container) {
+        function toggleDropdown(show) {
+          const isCurrentlyOpen = dropdown.classList.contains('dc-lang-select__dropdown--open');
+          const open = show !== undefined ? show : !isCurrentlyOpen;
+          if (open) {
+            dropdown.classList.add('dc-lang-select__dropdown--open');
+            btn.setAttribute('aria-expanded', 'true');
+          } else {
+            dropdown.classList.remove('dc-lang-select__dropdown--open');
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        }
+
+        btn.onclick = function(e) {
+          e.stopPropagation();
+          toggleDropdown();
+        };
+
+        document.onclick = function(e) {
+          if (!container.contains(e.target)) {
+            toggleDropdown(false);
+          }
+        };
+
+        document.onkeydown = function(e) {
+          if (e.key === 'Escape') {
+            toggleDropdown(false);
+          }
+        };
+      }
+    }
+
+    // Global switch locale function
+    window.__dcSwitchLocale = function(langCode) {
+      try {
+        localStorage.setItem('dc2sc_locale', langCode);
+      } catch (e) {}
+
+      // Apply language translation immediately on the current page
+      if (typeof window.__dcApplyLanguage === 'function') {
+        window.__dcApplyLanguage(langCode);
+      }
+
+      const path = window.location.pathname;
+
+      // If user is currently browsing Starlight docs, switch doc locale
+      if (path.startsWith('/uk/') || path.startsWith('/de/') || path.startsWith('/en/')) {
+        let cleanPath = path.replace(/^\/(uk|de|en)/, '');
+        if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
+        if (langCode === 'en') {
+          window.location.href = cleanPath || '/';
+        } else {
+          window.location.href = '/' + langCode + (cleanPath === '/' ? '' : cleanPath);
+        }
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLangSelect);
+    } else {
+      initLangSelect();
+    }
+  })();
+</script>

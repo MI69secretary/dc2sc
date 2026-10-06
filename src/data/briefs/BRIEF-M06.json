@@ -1,0 +1,62 @@
+{
+  "briefId": "BRIEF-M06",
+  "targetArtifactId": "travel-is-a-stress-test",
+  "targetModule": "06",
+  "status": "approved",
+  "lifecycleStatus": "approved_for_dev",
+  "primaryReader": "Market design stress-tester / systems engineer / experimental economics researcher",
+  "readerProblem": "Assuming collective mechanisms can be proven on trivial commodity goods without testing severe perishability and heterogeneous constraint friction.",
+  "canonicalDependencies": [
+    "module-06-travel-is-a-stress-test",
+    "canonical-narrative",
+    "failure-first-framework"
+  ],
+  "sourceCorpus": [
+    "SRC-0001",
+    "SRC-0002"
+  ],
+  "propositionLedger": [
+    {
+      "id": "M6-P01",
+      "statement": "Travel maximizes non-compensable constraint variance (dates, health, family, mobility), serving as an ideal failure-discovery stress test.",
+      "canonicalRef": "module-06-travel-is-a-stress-test",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M6-P02",
+      "statement": "GOLIAF is a bounded analytical research environment, not a commercial booking service or discount club.",
+      "canonicalRef": "module-06-travel-is-a-stress-test",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M6-P03",
+      "statement": "Failure to coordinate complex travel positions is a primary, valid research finding that maps the boundaries of demand-side agency.",
+      "canonicalRef": "module-06-travel-is-a-stress-test",
+      "kind": "canon_restatement"
+    }
+  ],
+  "mediaPlan": [
+    "M06-FIG-01",
+    "M06-TAB-01"
+  ],
+  "rightsDependencies": [
+    "Strict GOLIAF boundary notice",
+    "Non-transactional research disclaimer"
+  ],
+  "representationDependencies": [
+    "Individual constraint floor inviolability"
+  ],
+  "outsideOptionDependencies": [
+    "Highly optimized individual retail travel fallback"
+  ],
+  "prohibitedInterpretations": [
+    "Do not claim GOLIAF is a live booking tool, club, or waitlist.",
+    "Do not promise travel discounts or supplier agreements."
+  ],
+  "claimBoundary": "Conceptual research framework at Evidence Level E0. GOLIAF stress-test environment.",
+  "handoff": "Supplies empirical and analytical failure criteria to Module 07 (What Counts as Success).",
+  "visibility": "internal",
+  "isFixture": false,
+  "publicationAuthority": "none",
+  "indexable": false
+}

@@ -1,0 +1,12 @@
+---
+interface Props {
+  moduleNumber: number;
+}
+const { moduleNumber } = Astro.props;
+const formatted = String(moduleNumber).padStart(2, '0');
+---
+<span class="dc-module-badge">Module {formatted}</span>
+
+<style is:global>
+.dc-module-badge { display: inline-flex; font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); padding: 0.2rem 0.625rem; border: 1px solid var(--dc-accent); color: var(--dc-accent); background: var(--dc-accent-low); letter-spacing: 0.06em; text-transform: uppercase; }
+</style>

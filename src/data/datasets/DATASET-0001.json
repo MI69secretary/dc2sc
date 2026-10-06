@@ -1,0 +1,15 @@
+{
+  "datasetId": "DATASET-0001",
+  "title": "Simulated Demand Coordination Benchmarks",
+  "description": "Baseline theoretical parameter spaces for simulated demand-side coordination models.",
+  "status": "internal_reference",
+  "evidenceLevel": "E0",
+  "license": "Internal Research Use",
+  "sourceUrl": "",
+  "relatedModules": [1, 3],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

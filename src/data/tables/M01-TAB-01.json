@@ -1,0 +1,35 @@
+{
+  "tableId": "M01-TAB-01",
+  "title": "What the market sees versus what the person carries",
+  "kind": "argument_table",
+  "columns": [
+    { "key": "market", "label": "What the market may see", "description": "Observable telemetry on supplier interfaces" },
+    { "key": "person", "label": "What a person may carry", "description": "Unobserved situational constraints and household needs" }
+  ],
+  "rows": [
+    { "rowId": "r1", "cells": { "market": "query", "person": "time constraints" } },
+    { "rowId": "r2", "cells": { "market": "filter", "person": "budget uncertainty" } },
+    { "rowId": "r3", "cells": { "market": "click", "person": "household coordination" } },
+    { "rowId": "r4", "cells": { "market": "basket", "person": "risk tolerance" } },
+    { "rowId": "r5", "cells": { "market": "price", "person": "cancellation needs" } },
+    { "rowId": "r6", "cells": { "market": "transaction", "person": "comparison work" } }
+  ],
+  "caption": "A conceptual contrast between transaction-level signals and the wider conditions that can shape an individual decision.",
+  "scopeLimits": [
+    "The table does not claim that all markets see only these signals, or that an individual path is inadequate."
+  ],
+  "limitations": [
+    "Qualitative conceptual contrast; not an empirical study of consumer telemetry."
+  ],
+  "canonicalRefs": ["module-01-more-choice-less-voice"],
+  "sourceRefs": ["canonical-narrative"],
+  "accessibility": {
+    "textEquivalent": "Contrast table comparing observable marketplace telemetry with unobserved participant constraints.",
+    "dataTableFallback": true
+  },
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

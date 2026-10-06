@@ -1,0 +1,62 @@
+---
+// PeerReviewPoll.astro — Community Consensus & Peer Review Poll
+interface Option {
+  id: string;
+  label: string;
+  votes: number;
+  percentage: number;
+}
+
+interface Props {
+  title?: string;
+  question?: string;
+  options?: Option[];
+  totalVotes?: number;
+}
+
+const defaultOptions: Option[] = [
+  { id: '1', label: 'Обов’язковий ончейн ZK-аудит алгоритмів ціноутворення', votes: 1420, percentage: 58 },
+  { id: '2', label: 'Судова заборона багатовимірної цінової дискримінації', votes: 610, percentage: 25 },
+  { id: '3', label: 'Автономні покупні пули як єдиний ефективний контр-баланс', votes: 318, percentage: 13 },
+  { id: '4', label: 'Збереження статус-кво з ринковим саморегулюванням', votes: 98, percentage: 4 },
+];
+
+const {
+  title = 'РЕЦЕНЗЕНТСЬКА МАРГІНАЛІЯ // PEER-REVIEW CONSENSUS',
+  question = 'Чи повинні рекомендаційні та цінові алгоритми підлягати криптографічній верифікації для запобігання штучній волатильності?',
+  options = defaultOptions,
+  totalVotes = 2446,
+} = Astro.props;
+---
+
+<div class="dc-consensus-poll">
+  <div class="dc-consensus-poll__title">{title}</div>
+  <div class="dc-consensus-poll__question">{question}</div>
+
+  <div class="dc-consensus-poll__options" id="poll-container">
+    {options.map((opt) => (
+      <div class="dc-poll-option" data-option-id={opt.id}>
+        <div class="dc-poll-option__bar" style={`width: ${opt.percentage}%`}></div>
+        <div class="dc-poll-option__content">
+          <span>{opt.label}</span>
+          <span class="dc-poll-option__pct">{opt.percentage}%</span>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="dc-consensus-poll__footer">
+    <span>Всього верифікованих голосів: <strong>{totalVotes}</strong></span>
+    <span class="dc-pill dc-pill--in-progress">STATUS: OPEN FOR CONSENSUS</span>
+  </div>
+</div>
+
+<script>
+  const options = document.querySelectorAll('.dc-poll-option');
+  options.forEach(opt => {
+    opt.addEventListener('click', () => {
+      options.forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+    });
+  });
+</script>

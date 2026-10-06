@@ -1,0 +1,55 @@
+---
+interface Props {
+  evidenceLevel: string;
+  claimStatus?: string;
+  researchState?: string;
+  productClaim?: string;
+  goliafRelation?: string;
+}
+const { 
+  evidenceLevel, 
+  claimStatus, 
+  researchState = 'Architecture in development', 
+  productClaim = 'None', 
+  goliafRelation 
+} = Astro.props;
+---
+<div class="dc-research-status-panel">
+  <div class="dc-research-status-panel__header">Research status</div>
+  <div class="dc-research-status-panel__body">
+    <div class="dc-research-status-panel__row">
+      <span class="dc-research-status-panel__key">Evidence</span>
+      <span class="dc-research-status-panel__val">{evidenceLevel}</span>
+    </div>
+    {claimStatus && (
+    <div class="dc-research-status-panel__row">
+      <span class="dc-research-status-panel__key">Claim Status</span>
+      <span class="dc-research-status-panel__val">{claimStatus}</span>
+    </div>
+    )}
+    <div class="dc-research-status-panel__row">
+      <span class="dc-research-status-panel__key">State</span>
+      <span class="dc-research-status-panel__val">{researchState}</span>
+    </div>
+    <div class="dc-research-status-panel__row">
+      <span class="dc-research-status-panel__key">Product Claim</span>
+      <span class="dc-research-status-panel__val">{productClaim}</span>
+    </div>
+    {goliafRelation && (
+    <div class="dc-research-status-panel__row">
+      <span class="dc-research-status-panel__key">GOLIAF</span>
+      <span class="dc-research-status-panel__val">{goliafRelation}</span>
+    </div>
+    )}
+  </div>
+</div>
+
+<style is:global>
+.dc-research-status-panel { border: 2px solid var(--dc-border); background: var(--dc-raised); }
+.dc-research-status-panel__header { background: var(--dc-ink); color: var(--dc-surface); padding: var(--dc-space-3) var(--dc-space-5); font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); text-transform: uppercase; letter-spacing: 0.08em; }
+.dc-research-status-panel__body { padding: var(--dc-space-5); display: flex; flex-direction: column; gap: var(--dc-space-3); }
+.dc-research-status-panel__row { display: grid; grid-template-columns: 10ch 1fr; gap: var(--dc-space-3); align-items: baseline; border-bottom: 1px solid var(--dc-border); padding-bottom: var(--dc-space-3); }
+.dc-research-status-panel__row:last-child { border-bottom: none; padding-bottom: 0; }
+.dc-research-status-panel__key { font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); color: var(--dc-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.dc-research-status-panel__val { font-size: var(--dc-text-body-sm); color: var(--dc-ink-2); line-height: 1.4; }
+</style>

@@ -1,0 +1,62 @@
+{
+  "briefId": "BRIEF-M03",
+  "targetArtifactId": "why-more-buyers",
+  "targetModule": "03",
+  "status": "approved",
+  "lifecycleStatus": "approved_for_dev",
+  "primaryReader": "Economic theorist / antitrust researcher",
+  "readerProblem": "Assuming buyer volume automatically translates into favorable terms without representational governance or exit rights.",
+  "canonicalDependencies": [
+    "module-03-why-more-buyers",
+    "canonical-narrative",
+    "failure-first-framework"
+  ],
+  "sourceCorpus": [
+    "SRC-0001",
+    "SRC-0002"
+  ],
+  "propositionLedger": [
+    {
+      "id": "M3-P01",
+      "statement": "Volume without ratification creates intermediary lock-in rather than buyer leverage.",
+      "canonicalRef": "module-03-why-more-buyers",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M3-P02",
+      "statement": "Suppliers capture volume concessions when buyer exit rights are restricted.",
+      "canonicalRef": "module-03-why-more-buyers",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M3-P03",
+      "statement": "Scale without structural authority is an atomized queue, not a market position.",
+      "canonicalRef": "module-03-why-more-buyers",
+      "kind": "canon_restatement"
+    }
+  ],
+  "mediaPlan": [
+    "M03-FIG-01",
+    "M03-TAB-01"
+  ],
+  "rightsDependencies": [
+    "Ratification",
+    "Exit"
+  ],
+  "representationDependencies": [
+    "Explicit representational mandate"
+  ],
+  "outsideOptionDependencies": [
+    "Independent fallback outside option"
+  ],
+  "prohibitedInterpretations": [
+    "Do not claim that large groups cannot benefit from scale under proper governance.",
+    "Do not claim that aggregation is universally harmful."
+  ],
+  "claimBoundary": "Theoretical framework at Evidence Level E0. No price assertions on commercial goods.",
+  "handoff": "Prepares the commitment asymmetry analysis for Module 04.",
+  "visibility": "internal",
+  "isFixture": false,
+  "publicationAuthority": "none",
+  "indexable": false
+}

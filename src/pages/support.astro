@@ -1,0 +1,60 @@
+---
+import SiteShell from '../layouts/SiteShell.astro';
+import Container from '../components/site/Container.astro';
+import Section from '../components/site/Section.astro';
+import EditorialHero from '../components/editorial/EditorialHero.astro';
+import DonationTerminal from '../components/site/DonationTerminal.astro';
+---
+
+<SiteShell title="Інституційний ендаумент та підтримка" description="Фонд незалежних академічних досліджень DC2SC — відкритий доступ без пейволів та венчурного впливу.">
+  
+  <EditorialHero 
+    eyebrow="OPEN ACCESS & PUBLIC GOODS // НЕЗАЛЕЖНИЙ РЕПОЗИТОРІЙ"
+    title="Фонд незалежних академічних досліджень та відкритого коду"
+    lead="Консорціум DC2SC функціонує виключно як некомерційна наукова ініціатива. Ми гарантуємо 100% відкритий доступ до всіх специфікацій, формальних доказів та препринтів без пейволів."
+    arxivId="ENDOWMENT-2026-VAULT"
+    sha256="7f83b165...e921"
+    license="CC BY-NC 4.0"
+  />
+
+  <Section>
+    <Container>
+      
+      <div style="margin-bottom: 3rem;">
+        <DonationTerminal />
+      </div>
+
+      <div class="dc-grid dc-grid--3" style="margin-top: 3rem;">
+        <div class="dc-card" style="border-top: 4px solid var(--dc-navy);">
+          <span class="dc-label" style="color: var(--dc-navy); font-weight: 700;">ПРИНЦИП 1</span>
+          <h3 class="dc-h3" style="margin-top: 0.5rem;">0% Венчурного капіталу</h3>
+          <p class="dc-body-sm" style="color: var(--dc-ink-2); margin-top: 0.5rem;">
+            Ми не залучаємо капітал від венчурних фондів та технологічних гігантів для захисту академічної об’єктивності рецензентів.
+          </p>
+        </div>
+
+        <div class="dc-card" style="border-top: 4px solid var(--dc-signal);">
+          <span class="dc-label" style="color: var(--dc-signal); font-weight: 700;">ПРИНЦИП 2</span>
+          <h3 class="dc-h3" style="margin-top: 0.5rem;">100% Відкритий код</h3>
+          <p class="dc-body-sm" style="color: var(--dc-ink-2); margin-top: 0.5rem;">
+            Усі математичні формули, симуляції стрес-тестів та смарт-контракти ліцензовані під CC BY-NC 4.0 та MIT License.
+          </p>
+        </div>
+
+        <div class="dc-card" style="border-top: 4px solid var(--dc-ink);">
+          <span class="dc-label" style="color: var(--dc-ink); font-weight: 700;">ПРИНЦИП 3</span>
+          <h3 class="dc-h3" style="margin-top: 0.5rem;">Ончейн-верифікація Safe</h3>
+          <p class="dc-body-sm" style="color: var(--dc-ink-2); margin-top: 0.5rem;">
+            Усі внески спрямовуються на прозорий Safe Multisig Vault з публічним аудитом використання коштів.
+          </p>
+        </div>
+      </div>
+
+      <blockquote style="border-left: 4px solid var(--dc-navy); padding: 1.5rem 2rem; background: var(--dc-raised); margin: 3rem 0; font-family: var(--dc-font-display); font-size: 1.125rem; line-height: 1.6;">
+        «Внески до фонду ендаументу не надають комерційних привілеїв, пріоритетного доступу чи права впливу на висновки рецензованих монографій.»
+      </blockquote>
+
+    </Container>
+  </Section>
+
+</SiteShell>

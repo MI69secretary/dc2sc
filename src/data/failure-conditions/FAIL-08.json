@@ -1,0 +1,16 @@
+{
+  "failureId": "FAIL-08",
+  "name": "competition",
+  "category": "Competition",
+  "description": "Formation of monopolistic or monopsonistic anti-competitive cartels harming overall welfare.",
+  "status": "monitored",
+  "relatedModules": [
+    2,
+    3
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

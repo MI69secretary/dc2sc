@@ -1,0 +1,13 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  label?: string;
+}
+const { title, body, label } = Astro.props;
+---
+<div class="dc-empty-state">
+  {label && <span class="dc-pill dc-pill--conceptual dc-empty-state__badge">{label}</span>}
+  <h3 class="dc-empty-state__title">{title}</h3>
+  <p class="dc-empty-state__body">{body}</p>
+</div>

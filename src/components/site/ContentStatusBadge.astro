@@ -1,0 +1,18 @@
+---
+interface Props {
+  status: string;
+}
+const { status } = Astro.props;
+
+const map: Record<string, {label: string, class: string}> = {
+  'conceptual_preview': { label: 'Conceptual preview', class: 'dc-pill--conceptual' },
+  'draft': { label: 'Draft', class: 'dc-pill--default' },
+  'in_review': { label: 'In review', class: 'dc-pill--in-progress' },
+  'published': { label: 'Published', class: 'dc-pill--accent' },
+  'paused': { label: 'Paused', class: 'dc-pill--default' },
+  'archived': { label: 'Archived', class: 'dc-pill--default' }
+};
+
+const pillData = map[status] || { label: status, class: 'dc-pill--default' };
+---
+<span class={`dc-pill ${pillData.class}`}>{pillData.label}</span>

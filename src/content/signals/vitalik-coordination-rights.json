@@ -1,0 +1,14 @@
+{
+  "title": "On Coordination Rights and Voluntary Escrow in Decentralized Markets",
+  "author": "Vitalik Buterin (@VitalikButerin)",
+  "sourcePlatform": "twitter",
+  "originalUrl": "https://x.com/VitalikButerin/status/1839201948192841",
+  "publishedDate": "02 ЖОВТНЯ 2026",
+  "summary": "Тред про необхідність криптографічних контр-протоколів для покупців: захист приватних обмежень до моменту формування кворуму та право на нульовий вихід.",
+  "keyQuote": "«Право не об'єднуватися і право на безкоштовний вихід є фундаментальними для будь-якого стійкого ринкового пулу. Без них координація стає примусом.»",
+  "relatedModule": 5,
+  "curatorTags": ["Coordination Rights", "ZK-Escrow", "Decentralized Mechanism"],
+  "republicationStatus": "approved",
+  "featuredOnHomepage": true,
+  "aiDiscoveredBy": "Perplexity Monitor Task"
+}

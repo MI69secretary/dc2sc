@@ -1,0 +1,47 @@
+---
+// LiveTelemetryBar.astro — Telemetry and simulation ticker matching Figma node 53:2
+interface Props {
+  btcPrice?: string;
+  ethGas?: string;
+  volatilityIndex?: string;
+  dispersionTrap?: string;
+}
+
+const {
+  btcPrice = '$64,820.50',
+  ethGas = '14.2 Gwei',
+  volatilityIndex = '72.4 (Elevated)',
+  dispersionTrap = 'γ = 0.842 (Active)',
+} = Astro.props;
+---
+
+<div class="dc-telemetry-bar" aria-label="Live Market & Protocol Telemetry">
+  <div class="dc-container">
+    <div class="dc-telemetry-bar__grid">
+      <div class="dc-telemetry-item">
+        <span class="dc-status-dot"></span>
+        <span class="dc-telemetry-item__label">BTC/USDT:</span>
+        <span class="dc-telemetry-item__value">{btcPrice}</span>
+        <span class="dc-telemetry-item__delta dc-telemetry-item__delta--up">+2.4%</span>
+      </div>
+      
+      <div class="dc-telemetry-item">
+        <span class="dc-telemetry-item__label">ETH GAS:</span>
+        <span class="dc-telemetry-item__value">{ethGas}</span>
+        <span class="dc-telemetry-item__delta dc-telemetry-item__delta--down">-1.8 Gwei</span>
+      </div>
+
+      <div class="dc-telemetry-item">
+        <span class="dc-telemetry-item__label">VOLATILITY:</span>
+        <span class="dc-telemetry-item__value">{volatilityIndex}</span>
+        <span class="dc-telemetry-item__delta dc-telemetry-item__delta--up">+4.1%</span>
+      </div>
+
+      <div class="dc-telemetry-item">
+        <span class="dc-telemetry-item__label">DISPERSION TRAP:</span>
+        <span class="dc-telemetry-item__value">{dispersionTrap}</span>
+        <span class="dc-telemetry-item__delta dc-telemetry-item__delta--up">CRITICAL</span>
+      </div>
+    </div>
+  </div>
+</div>

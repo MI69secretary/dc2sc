@@ -1,0 +1,1373 @@
+---
+// admin.astro — DC2SC Administrative Control Plane & LaTeX Formula Hub
+import SiteShell from '../layouts/SiteShell.astro';
+import Container from '../components/site/Container.astro';
+import Section from '../components/site/Section.astro';
+import LiveTelemetryBar from '../components/site/LiveTelemetryBar.astro';
+import EditorialHero from '../components/editorial/EditorialHero.astro';
+import FormulaBlock from '../components/research/FormulaBlock.astro';
+import driveManifest from '../data/drive-repository-manifest.json';
+---
+
+<SiteShell title="Адміністративна панель управління" description="DC2SC Administrative Control Plane — Keystatic CMS, LaTeX Formula Publishing, and Translation Hub.">
+  <LiveTelemetryBar />
+
+  <EditorialHero 
+    eyebrow="DC2SC ADMIN & CONTROL PLANE // ПАНЕЛЬ УПРАВЛІННЯ"
+    title="Центр управління контентом, LaTeX-формулами та автоперекладами"
+    lead="Інтегрована панель для редагування канонічних досліджень у Keystatic CMS, компіляції та перевірки математичних формул у стандарті LaTeX/KaTeX і синхронізації мовних локалей."
+    arxivId="ADMIN-CONTROL-V1"
+    sha256="ec81a9f0...991c"
+  />
+
+  <Section background="white">
+    <Container>
+
+      <!-- ADMIN SUB-NAV JUMP BAR -->
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--dc-border);">
+        <a href="/keystatic" class="dc-btn dc-btn--primary" target="_blank">📝 Keystatic CMS ↗</a>
+        <a href="#gemini-studio" class="dc-btn dc-btn--primary" style="background: linear-gradient(135deg, #1e3a8a, #6366f1); border: none; color: white;">✨ Gemini AI Генератор</a>
+        <a href="#formula-lab" class="dc-btn dc-btn--secondary">📐 Пісочниця LaTeX</a>
+        <a href="#signals-hub" class="dc-btn dc-btn--secondary" style="background: #ecfdf5; border-color: #059669; color: #059669;">📡 Perplexity & Сигнали</a>
+        <a href="#mcp-guide" class="dc-btn dc-btn--secondary" style="background: var(--dc-accent-low); border-color: var(--dc-accent);">🔌 AI & MCP Інтеграція</a>
+        <a href="#diagrams-studio" class="dc-btn dc-btn--ghost">📊 diagrams.md & design.md</a>
+        <button class="dc-btn dc-btn--ghost" onclick="triggerUpdateAll()">⚡ Оновити все</button>
+      </div>
+
+      <!-- 1. QUICK LAUNCH ACTIONS & ONE-CLICK UPDATE SUITE -->
+      <div class="dc-grid dc-grid--3" style="margin-bottom: 2rem;">
+        
+        <div class="dc-card" style="border: 2px solid var(--dc-navy); background: var(--dc-raised); display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="dc-pill dc-pill--accent" style="margin-bottom: 0.75rem;">CMS CONTROL</div>
+            <h3 class="dc-h3">Keystatic CMS</h3>
+            <p class="dc-body-sm" style="color: var(--dc-ink-2); margin-top: 0.5rem;">
+              Редагування 24 колекцій: модулі досліджень, депеші журналу, гіпотези, автори та протоколи GOLIAF.
+            </p>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <a href="/keystatic" class="dc-btn dc-btn--primary" style="width: 100%; justify-content: center;" target="_blank">
+              ВІДКРИТИ KEYSTATIC →
+            </a>
+          </div>
+        </div>
+
+        <div class="dc-card" style="border: 2px solid var(--dc-accent); background: var(--dc-accent-low); display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="dc-pill dc-pill--accent" style="margin-bottom: 0.75rem; background: var(--dc-white);">ONE-CLICK UPDATE</div>
+            <h3 class="dc-h3" style="color: var(--dc-navy);">Оновити PDF та Переклади</h3>
+            <p class="dc-body-sm" style="color: var(--dc-ink-2); margin-top: 0.5rem;">
+              Генерація PDF-видань для всіх 7 модулів, оновлення мовних локалей (`uk`, `en`, `de`) та перерахунок Drive маніфесту.
+            </p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            <button class="dc-btn dc-btn--primary" style="width: 100%; justify-content: center;" id="btn-update-all" onclick="triggerUpdateAll()">
+              ⚡ ОНОВИТИ ВСЕ (UPDATE ALL)
+            </button>
+            <button class="dc-btn dc-btn--ghost" style="width: 100%; justify-content: center; background: var(--dc-white);" id="btn-generate-pdfs" onclick="triggerGeneratePdfs()">
+              📄 Тільки згенерувати PDF
+            </button>
+          </div>
+        </div>
+
+        <div class="dc-card" style="border: 2px solid var(--dc-ink); background: var(--dc-raised); display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="dc-pill dc-pill--default" style="margin-bottom: 0.75rem;">INTEGRITY TELEMETRY</div>
+            <h3 class="dc-h3">Репозиторій та Маніфест</h3>
+            <p class="dc-body-sm" style="color: var(--dc-ink-2); margin-top: 0.5rem;">
+              Файлів у Google Drive маніфесті: <strong>{driveManifest.totalFiles}</strong> ({driveManifest.totalSizeBytes} байт). 
+              PDF видань у Git: <strong>7/7 READY</strong>.
+            </p>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; gap: 0.5rem;">
+            <a href="/search-index.json" class="dc-btn dc-btn--ghost" style="flex: 1; justify-content: center;" target="_blank">
+              SEARCH INDEX
+            </a>
+            <a href="/calendar.ics" class="dc-btn dc-btn--ghost" style="flex: 1; justify-content: center;" target="_blank">
+              CALENDAR .ICS
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- LIVE UPDATE CONSOLE (Hidden by default, shows upon clicking Update) -->
+      <div id="admin-update-console" class="dc-card" style="display: none; border: 2px solid var(--dc-accent); background: #0f172a; color: #f8fafc; padding: 1.5rem; margin-bottom: 3rem; font-family: var(--dc-font-mono); font-size: 0.8125rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">
+          <span style="color: #38bdf8; font-weight: 700;">● SYSTEM MAINTENANCE LOG</span>
+          <span id="console-status-badge" style="color: #4ade80;">RUNNING...</span>
+        </div>
+        <pre id="console-output" style="margin: 0; white-space: pre-wrap; line-height: 1.5; color: #cbd5e1; max-height: 250px; overflow-y: auto;">Ініціалізація процесу оновлення...</pre>
+      </div>
+
+      <!-- 2. INTERACTIVE LATEX FORMULA PLAYGROUND -->
+      <div id="formula-lab" class="dc-card" style="border: 2px solid var(--dc-navy); padding: 2.5rem; margin-bottom: 3.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--dc-border); padding-bottom: 1rem;">
+          <div>
+            <span class="dc-pill dc-pill--accent" style="margin-bottom: 0.5rem; display: inline-block;">LATEX PUBLISHING LAB // ПІСОЧНИЦЯ ФОРМУЛ</span>
+            <h2 class="dc-h2" style="margin: 0;">Інтерактивний компілятор та валідатор LaTeX формул</h2>
+          </div>
+          <span class="dc-label" style="color: var(--dc-signal); font-weight: 700;">● KATEX ACADEMIC ENGINE READY</span>
+        </div>
+
+        <p class="dc-body" style="color: var(--dc-ink-2); margin-bottom: 1.5rem;">
+          Введіть формулу у форматі LaTeX для миттєвої візуалізації, перевірки синтаксису та копіювання коду тегу Markdoc для вставки у статті.
+        </p>
+
+        <div class="dc-grid dc-grid--2" style="gap: 2rem; align-items: start;">
+          
+          <!-- FORMULA INPUTS -->
+          <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+            <div>
+              <label for="formula-presets" class="dc-label" style="display: block; margin-bottom: 0.4rem; color: var(--dc-muted);">Пресети академічних інваріантів:</label>
+              <select id="formula-presets" class="dc-card" style="width: 100%; padding: 0.6rem; font-family: var(--dc-font-body); font-size: 0.875rem; border: 1px solid var(--dc-border); cursor: pointer;">
+                <option value="pareto">Теорема 1: Парето-оптимальність пулу зворотного попиту</option>
+                <option value="dispersion">Рівняння 2: Коефіцієнт штучної дисперсії вибору</option>
+                <option value="escrow">Інваріант 3: Умова стійкості криптографічного ZK-ескроу</option>
+                <option value="entropy">Рівняння 4: Інформаційна ентропія рекомендаційного алгоритму</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="formula-title" class="dc-label" style="display: block; margin-bottom: 0.4rem; color: var(--dc-muted);">Назва теореми / формули:</label>
+              <input type="text" id="formula-title" value="Теорема 1: Парето-оптимальність пулу зворотного попиту" class="dc-card" style="width: 100%; padding: 0.6rem; font-family: var(--dc-font-body); font-size: 0.875rem; border: 1px solid var(--dc-border);" />
+            </div>
+
+            <div>
+              <label for="formula-latex" class="dc-label" style="display: block; margin-bottom: 0.4rem; color: var(--dc-muted);">Код LaTeX:</label>
+              <textarea id="formula-latex" rows="4" class="dc-card" style="width: 100%; padding: 0.75rem; font-family: var(--dc-font-mono); font-size: 0.875rem; border: 1px solid var(--dc-border); line-height: 1.5;"></textarea>
+            </div>
+
+            <div>
+              <label for="formula-variables" class="dc-label" style="display: block; margin-bottom: 0.4rem; color: var(--dc-muted);">Експлікація змінних:</label>
+              <input type="text" id="formula-variables" value="V(x) — гранична корисність покупця; p(x) — ціна пулу; MC — граничні витрати; epsilon — мінімальна маржа постачальника." class="dc-card" style="width: 100%; padding: 0.6rem; font-family: var(--dc-font-body); font-size: 0.875rem; border: 1px solid var(--dc-border);" />
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="dc-btn dc-btn--primary" id="btn-copy-markdoc">
+                СКОПІЮВАТИ MARKDOC ТЕГ
+              </button>
+            </div>
+          </div>
+
+          <!-- LIVE PREVIEW BOX -->
+          <div>
+            <span class="dc-label" style="display: block; margin-bottom: 0.4rem; color: var(--dc-muted);">Миттєве прев'ю (KaTeX):</span>
+            
+            <div id="live-formula-preview" class="dc-formula-block" style="margin: 0;">
+              <div class="dc-formula-block__header">
+                <span class="dc-pill dc-pill--accent" style="font-size: 0.6875rem;" id="prev-badge">ТЕОРЕМА / THEOREM</span>
+                <span class="dc-pill dc-pill--in-progress" style="font-size: 0.625rem;">
+                  <span class="dc-status-dot" style="margin-right: 4px;"></span>
+                  FORMALLY VERIFIED
+                </span>
+              </div>
+              <h4 class="dc-formula-block__title" id="prev-title">Теорема 1: Парето-оптимальність пулу зворотного попиту</h4>
+              <div class="dc-formula-block__equation" style="text-align: center;">
+                <div id="prev-math" style="overflow-x: auto; padding: 0.5rem 0;"></div>
+              </div>
+              <div class="dc-formula-block__variables" id="prev-vars-box">
+                <span class="dc-label" style="display: block; margin-bottom: 0.35rem; color: var(--dc-muted);">Експлікація змінних:</span>
+                <div id="prev-vars" style="font-family: var(--dc-font-mono); font-size: 0.75rem; color: var(--dc-ink-2); line-height: 1.5;">
+                  V(x) — гранична корисність покупця; p(x) — ціна пулу; MC — граничні витрати; epsilon — мінімальна маржа постачальника.
+                </div>
+              </div>
+              <div class="dc-formula-block__footer">
+                <span>STATUS: READY FOR PUBLICATION</span>
+              </div>
+            </div>
+
+            <!-- GENERATED MARKDOC CODE SNIPPET -->
+            <div style="margin-top: 1.5rem;">
+              <span class="dc-label" style="display: block; margin-bottom: 0.4rem; color: var(--dc-muted);">Код для вставки у статтю (.md / .mdoc):</span>
+              <pre class="dc-code-schema" style="padding: 1rem; font-size: 0.75rem; color: #a5f3fc; overflow-x: auto;" id="generated-snippet"></pre>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 3. PRE-COMPILED CANONICAL FORMULAS SHOWCASE -->
+      <div style="margin-bottom: 3.5rem;">
+        <div class="dc-eyebrow" style="margin-bottom: 0.75rem;">КАНОНІЧНІ МАТЕМАТИЧНІ ІНВАРІАНТИ // SPECIFICATIONS</div>
+        <h2 class="dc-display-lg" style="font-size: 1.75rem; margin-bottom: 1.5rem;">Опубліковані математичні докази платформи</h2>
+
+        <FormulaBlock 
+          formulaId="INV-01-PARETO"
+          title="Теорема 1: Стійкість пулу зворотного попиту за Нешем"
+          latex="\\min_{p \\in \\mathcal{P}} \\mathbb{E}[U(p)] = \\int_{\\Omega} \\left( V(x) - p(x) \\right) d\\mu(x) \\ge MC + \\epsilon"
+          equationNumber="(Eq. 1.1)"
+          theoremType="theorem"
+          description="Доводить, що координований пул покупців із сумарною ємністю попиту руйнує монопольну премію та встановлює ціну на рівні конкурентного оптимуму Парето."
+          variables="V(x) — гранична оцінка блага; p(x) — скоординована ціна пулу; d\mu(x) — розподіл інтенсивності потреби."
+        />
+
+        <FormulaBlock 
+          formulaId="INV-02-DISPERSION"
+          title="Рівняння 2: Індекс штучної волатильності цін (Dispersion Coefficient)"
+          latex="\\gamma(t) = \\frac{\\sigma_{p}(t)}{\\bar{p}(t)} \\cdot \\log_2 \\left( 1 + \\frac{\\mathcal{H}_{info}}{\\mathcal{H}_{search}} \\right)"
+          equationNumber="(Eq. 2.4)"
+          theoremType="invariant"
+          description="Кількісний показник екстракції ренти через штучну зашумленість пошукового простору покупця."
+          variables="\sigma_p — дисперсія цінових пропозицій; \mathcal{H}_{info} — ентропія алгоритму; \mathcal{H}_{search} — вартість пошуку."
+        />
+
+        <FormulaBlock 
+          formulaId="INV-03-ZK-ESCROW"
+          title="Лема 3: Кворум ZK-ескроу верифікації зобов'язання"
+          latex="\\sum_{i=1}^{N} c_i \\ge \\Theta_{quorum} \\implies \\Pr(\\text{Seller Collusion}) < 2^{-\\lambda}"
+          equationNumber="(Eq. 3.2)"
+          theoremType="lemma"
+          description="Криптографічний захист: при досягненні порогового кворуму \Theta_{quorum} ризик змови продавців експоненційно прямує до нуля."
+          variables="c_i — частка депозиту покупця; \Theta — пороговий кворум пулу; \lambda — параметр безпеки криптографічного доказу."
+        />
+      </div>
+
+      <!-- 4. MODEL CONTEXT PROTOCOL (MCP) AI INTEGRATION SUITE -->
+      <div id="mcp-guide" class="dc-card" style="border: 2px solid var(--dc-navy); padding: 2.5rem; margin-bottom: 3.5rem; background: var(--dc-raised);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--dc-border); padding-bottom: 1rem;">
+          <div>
+            <span class="dc-pill dc-pill--accent" style="margin-bottom: 0.5rem; display: inline-block;">AI & MCP SUITE // ІНТЕГРАЦІЯ З AI</span>
+            <h2 class="dc-h2" style="margin: 0;">Підключення Claude, ChatGPT та Cursor через MCP</h2>
+          </div>
+          <span class="dc-label" style="color: var(--dc-signal); font-weight: 700;">● MCP PROTOCOL v2024-11-05 ACTIVE</span>
+        </div>
+
+        <p class="dc-body" style="color: var(--dc-ink-2); margin-bottom: 2rem;">
+          Сервер <strong>DC2SC MCP</strong> дозволяє AI-асистентам (Claude Desktop, Claude Code, ChatGPT, Cursor, Windsurf) безпосередньо взаємодіяти з науковим репозиторієм: <strong>читати статті та формули</strong>, <strong>залишати рецензії та зауваження</strong>, <strong>публікувати нові дослідження</strong> та <strong>автоматично генерувати PDF</strong>.
+        </p>
+
+        <!-- MCP CLIENTS TABS / GRIDS -->
+        <div class="dc-grid dc-grid--3" style="margin-bottom: 2.5rem;">
+          
+          <!-- CLAUDE DESKTOP -->
+          <div class="dc-card" style="border: 1px solid var(--dc-border); background: var(--dc-white); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="dc-pill dc-pill--accent" style="margin-bottom: 0.5rem;">CLAUDE DESKTOP</div>
+              <h4 style="font-family: var(--dc-font-display); font-size: 1.125rem; margin-bottom: 0.5rem;">Claude Desktop & Code</h4>
+              <p class="dc-body-sm" style="color: var(--dc-ink-2); line-height: 1.5;">
+                Додайте налаштування у файл конфігурації Claude:
+              </p>
+              <div style="font-size: 0.6875rem; color: var(--dc-muted); margin: 0.4rem 0; font-family: var(--dc-font-mono);">
+                Windows: %APPDATA%\Claude\claude_desktop_config.json<br/>
+                macOS: ~/Library/Application Support/Claude/...
+              </div>
+            </div>
+            <div style="margin-top: 1rem;">
+              <button class="dc-btn dc-btn--secondary" style="width: 100%; justify-content: center; font-size: 0.75rem;" id="btn-copy-claude-mcp" onclick="copyClaudeMcpConfig()">
+                📋 СКОПІЮВАТИ JSON КОНФІГ
+              </button>
+            </div>
+          </div>
+
+          <!-- CURSOR & WINDSURF -->
+          <div class="dc-card" style="border: 1px solid var(--dc-border); background: var(--dc-white); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="dc-pill dc-pill--default" style="margin-bottom: 0.5rem;">IDE INTEGRATION</div>
+              <h4 style="font-family: var(--dc-font-display); font-size: 1.125rem; margin-bottom: 0.5rem;">Cursor & Windsurf</h4>
+              <p class="dc-body-sm" style="color: var(--dc-ink-2); line-height: 1.5;">
+                1. Відкрийте <code>Settings</code> ➔ <code>Features</code> ➔ <code>MCP</code>.<br/>
+                2. Натисніть <strong>Add New MCP Server</strong>.<br/>
+                3. Назва: <code>dc2sc-research</code>.<br/>
+                4. Команда: <code>node src/mcp/server.mjs</code>.
+              </p>
+            </div>
+            <div style="margin-top: 1rem;">
+              <button class="dc-btn dc-btn--ghost" style="width: 100%; justify-content: center; font-size: 0.75rem;" onclick="alert('Шлях до сервера: src/mcp/server.mjs')">
+                ℹ️ ПЕРЕВІРИТИ ПАРАМЕТРИ
+              </button>
+            </div>
+          </div>
+
+          <!-- CHATGPT ACTIONS -->
+          <div class="dc-card" style="border: 1px solid var(--dc-border); background: var(--dc-white); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="dc-pill dc-pill--in-progress" style="margin-bottom: 0.5rem;">REST API & GPTs</div>
+              <h4 style="font-family: var(--dc-font-display); font-size: 1.125rem; margin-bottom: 0.5rem;">ChatGPT (Custom GPTs)</h4>
+              <p class="dc-body-sm" style="color: var(--dc-ink-2); line-height: 1.5;">
+                Використовує вбудовані HTTP REST-ендпоінти:
+              </p>
+              <ul style="font-size: 0.75rem; color: var(--dc-ink-2); margin-top: 0.4rem; padding-left: 1.2rem;">
+                <li><code>POST /api/update-all</code></li>
+                <li><code>POST /api/generate-pdfs</code></li>
+                <li><code>GET /search-index.json</code></li>
+              </ul>
+            </div>
+            <div style="margin-top: 1rem;">
+              <a href="/search-index.json" class="dc-btn dc-btn--ghost" style="width: 100%; justify-content: center; font-size: 0.75rem;" target="_blank">
+                ПЕРЕГЛЯНУТИ SEARCH API
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CONFIG JSON PREVIEW BOX -->
+        <div style="margin-bottom: 2.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span class="dc-label" style="color: var(--dc-muted);">Вміст файлу claude_desktop_config.json (або dc2sc-mcp-config.json):</span>
+            <span class="dc-pill dc-pill--default" style="font-size: 0.625rem;">JSON CONFIG</span>
+          </div>
+          <pre id="mcp-config-code" style="background: #0f172a; color: #38bdf8; padding: 1.25rem; border: 1px solid #334155; font-family: var(--dc-font-mono); font-size: 0.8125rem; overflow-x: auto; margin: 0; line-height: 1.5;">&#123;
+  "mcpServers": &#123;
+    "dc2sc-research": &#123;
+      "command": "node",
+      "args": [
+        "C:\\Users\\mytha\\Documents\\Codex\\2026-09-17\\new-chat\\outputs\\dc2sc\\src\\mcp\\server.mjs"
+      ]
+    &#125;
+  &#125;
+&#125;</pre>
+        </div>
+
+        <!-- MCP TOOLS CATALOG TABLE -->
+        <div style="margin-bottom: 2rem;">
+          <h3 class="dc-h3" style="margin-bottom: 1rem;">Каталог інструментів MCP (Tools Catalog)</h3>
+          <div style="overflow-x: auto;">
+            <table class="dc-table" style="width: 100%; border-collapse: collapse; font-size: 0.875rem; text-align: left; background: var(--dc-white);">
+              <thead>
+                <tr style="background: var(--dc-navy); color: white; border-bottom: 2px solid var(--dc-ink);">
+                  <th style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono);">Інструмент</th>
+                  <th style="padding: 0.75rem 1rem;">Призначення</th>
+                  <th style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono);">Параметри</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--dc-border);">
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-weight: 700; color: var(--dc-navy);">list_articles</td>
+                  <td style="padding: 0.75rem 1rem;">Отримання списку статей журналу, модулів та нотаток з метаданими.</td>
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-size: 0.75rem;">collection: 'journal' | 'research' | 'all'</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--dc-border); background: var(--dc-surface);">
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-weight: 700; color: var(--dc-navy);">read_article</td>
+                  <td style="padding: 0.75rem 1rem;">Читання повного тексту статті, Markdoc-тегів та LaTeX-формул.</td>
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-size: 0.75rem;">slug: string, collection?: string</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--dc-border);">
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-weight: 700; color: var(--dc-navy);">publish_article</td>
+                  <td style="padding: 0.75rem 1rem;">Створення або редагування статті з конституційною валідацією меж та автогенерацією PDF.</td>
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-size: 0.75rem;">slug, title, dek, body, whatThisDoesNotClaim</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--dc-border); background: var(--dc-surface);">
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-weight: 700; color: var(--dc-navy);">add_discussion_or_comment</td>
+                  <td style="padding: 0.75rem 1rem;">Додавання наукового зауваження, контрприкладу чи запитання рецензента.</td>
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-size: 0.75rem;">id, type, topic, body, author</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--dc-border);">
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-weight: 700; color: var(--dc-navy);">list_mathematical_invariants</td>
+                  <td style="padding: 0.75rem 1rem;">Вивантаження всіх формальних LaTeX-інваріантів і теорем.</td>
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-size: 0.75rem;">-</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--dc-border); background: var(--dc-surface);">
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-weight: 700; color: var(--dc-navy);">sync_and_rebuild_artifacts</td>
+                  <td style="padding: 0.75rem 1rem;">Перегенерація PDF-документів, перекладів та Drive маніфесту.</td>
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-size: 0.75rem;">-</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--dc-border);">
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-weight: 700; color: var(--dc-navy);">verify_system_integrity</td>
+                  <td style="padding: 0.75rem 1rem;">Перевірка цілісності 24 колекцій Keystatic та негативних тестів безпеки.</td>
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-size: 0.75rem;">-</td>
+                </tr>
+                <tr style="background: #faf5ff;">
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-weight: 700; color: #4338ca;">generate_vector_diagram</td>
+                  <td style="padding: 0.75rem 1rem;">Генерація векторних SVG діаграм, паспортів медіа та Markdoc тегів через Gemini AI.</td>
+                  <td style="padding: 0.75rem 1rem; font-family: var(--dc-font-mono); font-size: 0.75rem;">moduleNumber, diagramType, prompt, title</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- EXAMPLE PROMPTS -->
+        <div class="dc-callout dc-callout--boundary">
+          <strong class="dc-callout__title">Приклади запитів для Claude або ChatGPT:</strong>
+          <p style="margin-bottom: 0.5rem;">
+            💬 <em>"Використовуючи інструмент <code>read_article</code>, прочитай статтю <code>cost-of-commitment</code> і виведи її математичний інваріант."</em>
+          </p>
+          <p style="margin-bottom: 0;">
+            💬 <em>"Використовуючи <code>add_discussion_or_comment</code>, додай заперечення до Модуля 03 щодо ризику інформаційної асиметрії."</em>
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 5. DIAGRAMS.MD & DESIGN.MD STUDIO // БІБЛІОТЕКА ГРАФІКІВ ТА ДІАГРАМ -->
+      <div id="diagrams-studio" class="dc-card" style="border: 2px solid var(--dc-navy); padding: 2.5rem; margin-bottom: 3.5rem; background: var(--dc-white);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--dc-border); padding-bottom: 1rem;">
+          <div>
+            <span class="dc-pill dc-pill--accent" style="margin-bottom: 0.5rem; display: inline-block;">DIAGRAMS.MD & DESIGN.MD // СТУДІЯ ДІАГРАМ ТА ГРАФІКІВ</span>
+            <h2 class="dc-h2" style="margin: 0;">Бібліотека візуалізацій та Дизайн-система графіків</h2>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <a href="/diagrams.md" target="_blank" class="dc-btn dc-btn--secondary" style="font-size: 0.75rem; padding: 0.4rem 0.75rem;">
+              📄 ВІДКРИТИ DIAGRAMS.MD ↗
+            </a>
+            <a href="/design.md" target="_blank" class="dc-btn dc-btn--ghost" style="font-size: 0.75rem; padding: 0.4rem 0.75rem;">
+              🎨 ВІДКРИТИ DESIGN.MD ↗
+            </a>
+          </div>
+        </div>
+
+        <p class="dc-body" style="color: var(--dc-ink-2); margin-bottom: 2rem;">
+          Канонічні архетипи діаграм та єдина дизайн-система для побудови економічних графіків, послідовностей верифікації прав, карт подорожей GOLIAF та матриць обмежень.
+        </p>
+
+        <!-- DIAGRAM ARCHETYPE SELECTOR -->
+        <div class="dc-grid dc-grid--2" style="gap: 2rem; align-items: start; margin-bottom: 2.5rem;">
+          
+          <div>
+            <label for="diagram-archetype-select" class="dc-label" style="display: block; margin-bottom: 0.4rem; color: var(--dc-muted);">Виберіть архетип діаграми (Diagram Archetype):</label>
+            <select id="diagram-archetype-select" class="dc-card" style="width: 100%; padding: 0.75rem; font-family: var(--dc-font-body); font-size: 0.9375rem; border: 2px solid var(--dc-navy); cursor: pointer; background: var(--dc-surface); font-weight: 600;">
+              <option value="rights-gates">Архетип 1: Послідовність неперервних гейтів прав (Continuous Rights Gates Sequence)</option>
+              <option value="journey-map">Архетип 2: 8-етапна карта рішень подорожі GOLIAF (Decision Journey Map)</option>
+              <option value="market-isolation">Архетип 3: Топологія ринкової асиметрії (Isolated Sessions vs Collective Coalition)</option>
+              <option value="constraint-matrix">Архетип 4: Матриця класифікації обмежень (Shared vs Individual Matrix)</option>
+              <option value="pareto-curve">Архетип 5: Економічна крива розпаду вибору (Choice vs Voice Decay Curve)</option>
+              <option value="payoff-tree">Архетип 6: Дерево виграшів ZK-Ескроу (Game-Theoretic Payoff Tree)</option>
+            </select>
+
+            <div style="margin-top: 1.5rem;">
+              <span class="dc-label" style="display: block; margin-bottom: 0.4rem; color: var(--dc-muted);">Опис та призначення архетипу:</span>
+              <div id="diagram-archetype-desc" class="dc-card" style="background: var(--dc-raised); padding: 1rem; font-size: 0.875rem; line-height: 1.6; color: var(--dc-ink-2);">
+                Послідовна валідація 11 конституційних гейтів: від приватного наміру через ратифікацію до порівняння з індивідуальною альтернативою.
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+              <button class="dc-btn dc-btn--primary" id="btn-copy-diagram-code" onclick="copyDiagramCode()">
+                📋 СКОПІЮВАТИ КОД ДІАГРАМИ
+              </button>
+            </div>
+          </div>
+
+          <!-- LIVE DIAGRAM VISUAL PREVIEW BOX -->
+          <div class="dc-card" style="border: 2px solid var(--dc-border); background: var(--dc-surface); padding: 1.5rem; min-height: 320px; display: flex; flex-direction: column; justify-content: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px dashed var(--dc-border); padding-bottom: 0.5rem;">
+              <span class="dc-label" style="color: var(--dc-navy); font-weight: 700;">● LIVE VECTOR PREVIEW</span>
+              <span id="diagram-preview-id" class="dc-pill dc-pill--accent" style="font-size: 0.625rem;">M01-FIG-01</span>
+            </div>
+
+            <div id="diagram-preview-canvas" style="display: flex; justify-content: center; align-items: center; width: 100%; min-height: 220px;">
+              <!-- Dynamic SVG / HTML Diagram Preview Injected Here -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- DIAGRAM CODE SNIPPET BOX -->
+        <div style="margin-bottom: 3rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span class="dc-label" style="color: var(--dc-muted);">Markdoc / SVG / Mermaid розмітка для вставки у статті:</span>
+            <span class="dc-pill dc-pill--default" style="font-size: 0.625rem;">MARKDOC & VECTOR</span>
+          </div>
+          <pre id="diagram-code-snippet" style="background: #0f172a; color: #38bdf8; padding: 1.25rem; border: 1px solid #334155; font-family: var(--dc-font-mono); font-size: 0.8125rem; overflow-x: auto; margin: 0; line-height: 1.5; max-height: 220px;"></pre>
+        </div>
+
+        <!-- DESIGN.MD COLOR & VISUAL SYSTEM TOKENS -->
+        <div id="design-tokens-section" style="border-top: 2px solid var(--dc-border); padding-top: 2rem;">
+          <div class="dc-eyebrow" style="margin-bottom: 0.5rem;">DESIGN.MD PALETTE // ПАЛІТРА ДЛЯ ГРАФІКІВ</div>
+          <h3 class="dc-h3" style="margin-bottom: 1.25rem;">Канонічні кольорові токени графіків та візуалізацій</h3>
+
+          <div class="dc-grid dc-grid--4" style="gap: 1rem; margin-bottom: 2rem;">
+            
+            <div class="dc-card" style="padding: 1rem; border: 2px solid #1e3a8a; background: var(--dc-white); cursor: pointer;" onclick="copyColorHex('#1e3a8a')">
+              <div style="height: 40px; background: #1e3a8a; margin-bottom: 0.75rem; border: 1px solid #1e3a8a;"></div>
+              <strong style="font-size: 0.8125rem; display: block;">--dc-navy / Accent</strong>
+              <code style="font-size: 0.75rem; color: #1e3a8a;">#1e3a8a</code>
+              <span style="display: block; font-size: 0.6875rem; color: var(--dc-muted); margin-top: 0.25rem;">Головні лінії інваріантів, пули</span>
+            </div>
+
+            <div class="dc-card" style="padding: 1rem; border: 2px solid #0f0f0f; background: var(--dc-white); cursor: pointer;" onclick="copyColorHex('#0f0f0f')">
+              <div style="height: 40px; background: #0f0f0f; margin-bottom: 0.75rem;"></div>
+              <strong style="font-size: 0.8125rem; display: block;">--dc-ink / Primary</strong>
+              <code style="font-size: 0.75rem; color: #0f0f0f;">#0f0f0f</code>
+              <span style="display: block; font-size: 0.6875rem; color: var(--dc-muted); margin-top: 0.25rem;">Осі координат, рамки, текст</span>
+            </div>
+
+            <div class="dc-card" style="padding: 1rem; border: 2px solid #059669; background: var(--dc-white); cursor: pointer;" onclick="copyColorHex('#059669')">
+              <div style="height: 40px; background: #059669; margin-bottom: 0.75rem;"></div>
+              <strong style="font-size: 0.8125rem; display: block;">--dc-signal / Success</strong>
+              <code style="font-size: 0.75rem; color: #059669;">#059669</code>
+              <span style="display: block; font-size: 0.6875rem; color: var(--dc-muted); margin-top: 0.25rem;">Парето-оптимум, валідний вихід</span>
+            </div>
+
+            <div class="dc-card" style="padding: 1rem; border: 2px solid #dc2626; background: var(--dc-white); cursor: pointer;" onclick="copyColorHex('#dc2626')">
+              <div style="height: 40px; background: #dc2626; margin-bottom: 0.75rem;"></div>
+              <strong style="font-size: 0.8125rem; display: block;">--dc-warning / Adverse</strong>
+              <code style="font-size: 0.75rem; color: #dc2626;">#dc2626</code>
+              <span style="display: block; font-size: 0.6875rem; color: var(--dc-muted); margin-top: 0.25rem;">Зони ренти, ризик змови</span>
+            </div>
+
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; background: var(--dc-raised); padding: 1rem 1.25rem; border: 1px solid var(--dc-border);">
+            <div style="font-size: 0.8125rem; color: var(--dc-ink-2);">
+              Шрифтова дисципліна: <strong>Archivo Black</strong> (заголовки), <strong>Work Sans</strong> (мітки та осі), <strong>Space Mono</strong> (формули, інваріанти, паспорти).
+            </div>
+            <a href="/design.md" target="_blank" class="dc-btn dc-btn--primary" style="font-size: 0.75rem;">
+              ЧИТАТИ ПОВНИЙ DESIGN.MD →
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- 6. PERPLEXITY AI SIGNALS INGESTION & DISCOVERY HUB -->
+      <div id="signals-hub" class="dc-card" style="border: 2px solid #059669; padding: 2.5rem; margin-bottom: 3.5rem; background: #f0fdf4;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #bbf7d0; padding-bottom: 1rem;">
+          <div>
+            <span class="dc-pill dc-pill--in-progress" style="margin-bottom: 0.5rem; display: inline-block; background: #dcfce7; color: #166534; border-color: #166534;">PERPLEXITY AI & AUTOMATED SIGNALS // МОНІТОРИНГ СИГНАЛІВ</span>
+            <h2 class="dc-h2" style="margin: 0; color: #166534;">Черга автоматичного пошуку та аналізу ринкових сигналів</h2>
+          </div>
+          <span class="dc-label" style="color: #166534; font-weight: 700;">● INGESTION PIPELINE READY (POST /api/ingest-signal)</span>
+        </div>
+
+        <p class="dc-body" style="color: var(--dc-ink-2); margin-bottom: 2rem;">
+          Регулярний фоновий процес Perplexity AI сканує наукові депеші, обговорення у Twitter/X, Substack та arXiv, проводить семантичне співставлення з 7 канонічними модулями DC2SC, розраховує <strong>relevanceScore</strong> та додає матеріали в чергу републікації Keystatic CMS.
+        </p>
+
+        <!-- DISPATCH TEST SIGNAL & QUEUE -->
+        <div class="dc-grid dc-grid--2" style="gap: 2rem; align-items: start; margin-bottom: 2.5rem;">
+          
+          <!-- FORM: SEND / SIMULATE PERPLEXITY SIGNAL -->
+          <div class="dc-card" style="background: var(--dc-white); border: 1px solid #bbf7d0; padding: 1.5rem;">
+            <h4 style="font-family: var(--dc-font-display); font-size: 1.125rem; margin-bottom: 1rem; color: #166534;">Симуляція надходження сигналу від Perplexity AI</h4>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div>
+                <label for="sig-source" class="dc-label" style="display: block; margin-bottom: 0.35rem; color: var(--dc-muted);">Джерело / Source Platform:</label>
+                <select id="sig-source" class="dc-card" style="width: 100%; padding: 0.5rem; font-size: 0.875rem; border: 1px solid var(--dc-border);">
+                  <option value="Twitter / X">Twitter / X (@vitalikbuterin)</option>
+                  <option value="Substack">Substack (Glen Weyl — Radical Markets)</option>
+                  <option value="arXiv">arXiv (Algorithmic Mechanism Design)</option>
+                  <option value="ResearchGate">ResearchGate (Buyer Collective Agency)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="sig-author" class="dc-label" style="display: block; margin-bottom: 0.35rem; color: var(--dc-muted);">Автор / Author Handle:</label>
+                <input type="text" id="sig-author" value="@vitalikbuterin" class="dc-card" style="width: 100%; padding: 0.5rem; font-size: 0.875rem; border: 1px solid var(--dc-border);" />
+              </div>
+
+              <div>
+                <label for="sig-topic" class="dc-label" style="display: block; margin-bottom: 0.35rem; color: var(--dc-muted);">Тема / Topic Concept:</label>
+                <input type="text" id="sig-topic" value="Quadratic Funding & Buyer Coordination Rights" class="dc-card" style="width: 100%; padding: 0.5rem; font-size: 0.875rem; border: 1px solid var(--dc-border);" />
+              </div>
+
+              <div>
+                <label for="sig-snippet" class="dc-label" style="display: block; margin-bottom: 0.35rem; color: var(--dc-muted);">Цитата / Текст сигналу:</label>
+                <textarea id="sig-snippet" rows="3" class="dc-card" style="width: 100%; padding: 0.5rem; font-size: 0.8125rem; font-family: var(--dc-font-body); border: 1px solid var(--dc-border);">Buyer-side market formation requires robust cryptographic commitments and non-compensable exit rights to avoid adversarial coordination collapse.</textarea>
+              </div>
+
+              <div>
+                <label for="sig-url" class="dc-label" style="display: block; margin-bottom: 0.35rem; color: var(--dc-muted);">URL посилання:</label>
+                <input type="text" id="sig-url" value="https://x.com/vitalikbuterin/status/1838920194829" class="dc-card" style="width: 100%; padding: 0.5rem; font-size: 0.875rem; border: 1px solid var(--dc-border);" />
+              </div>
+
+              <button type="button" class="dc-btn dc-btn--primary" id="btn-dispatch-signal" onclick="dispatchPerplexitySignal()" style="background: #166534; border-color: #166534; justify-content: center;">
+                🚀 НАДІСЛАТИ СИГНАЛ В API (/api/ingest-signal)
+              </button>
+            </div>
+          </div>
+
+          <!-- RECENT SIGNALS INGESTION LOG -->
+          <div class="dc-card" style="background: var(--dc-white); border: 1px solid #bbf7d0; padding: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <h4 style="font-family: var(--dc-font-display); font-size: 1.125rem; margin: 0; color: #166534;">Останні оброблені сигнали</h4>
+              <span class="dc-pill dc-pill--accent" style="font-size: 0.625rem;" id="sig-count-badge">4 SIGNALS IN QUEUE</span>
+            </div>
+
+            <div id="signals-queue-container" style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 380px; overflow-y: auto;">
+              
+              <div class="dc-card" style="padding: 0.85rem; border: 1px solid var(--dc-border); background: var(--dc-surface);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                  <span class="dc-label" style="color: var(--dc-navy); font-weight: 700;">@vitalikbuterin · Twitter</span>
+                  <span class="dc-pill dc-pill--in-progress" style="font-size: 0.625rem;">SCORE: 0.94 // M05</span>
+                </div>
+                <p style="font-size: 0.8125rem; line-height: 1.4; margin: 0 0 0.5rem; color: var(--dc-ink-2);">
+                  "Buyer-side market formation requires robust cryptographic commitments and non-compensable exit rights..."
+                </p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <a href="https://x.com" target="_blank" style="font-size: 0.6875rem; color: var(--dc-navy);">Відкрити першоджерело ↗</a>
+                  <span class="dc-label" style="font-size: 0.625rem; color: #166534;">✓ QUEUED IN KEYSTATIC</span>
+                </div>
+              </div>
+
+              <div class="dc-card" style="padding: 0.85rem; border: 1px solid var(--dc-border); background: var(--dc-surface);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                  <span class="dc-label" style="color: var(--dc-navy); font-weight: 700;">Glen Weyl · Substack</span>
+                  <span class="dc-pill dc-pill--in-progress" style="font-size: 0.625rem;">SCORE: 0.89 // M03</span>
+                </div>
+                <p style="font-size: 0.8125rem; line-height: 1.4; margin: 0 0 0.5rem; color: var(--dc-ink-2);">
+                  "Coordination without shared governance guarantees scale capture by dominant intermediaries."
+                </p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <a href="https://substack.com" target="_blank" style="font-size: 0.6875rem; color: var(--dc-navy);">Відкрити першоджерело ↗</a>
+                  <span class="dc-label" style="font-size: 0.625rem; color: #166534;">✓ QUEUED IN KEYSTATIC</span>
+                </div>
+              </div>
+
+              <div class="dc-card" style="padding: 0.85rem; border: 1px solid var(--dc-border); background: var(--dc-surface);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                  <span class="dc-label" style="color: var(--dc-navy); font-weight: 700;">Robin Hanson · Blog</span>
+                  <span class="dc-pill dc-pill--in-progress" style="font-size: 0.625rem;">SCORE: 0.82 // M04</span>
+                </div>
+                <p style="font-size: 0.8125rem; line-height: 1.4; margin: 0 0 0.5rem; color: var(--dc-ink-2);">
+                  "Prediction markets and conditional commitments solve the verification gap in demand pooling."
+                </p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <a href="https://overcomingbias.com" target="_blank" style="font-size: 0.6875rem; color: var(--dc-navy);">Відкрити першоджерело ↗</a>
+                  <span class="dc-label" style="font-size: 0.625rem; color: #166534;">✓ QUEUED IN KEYSTATIC</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- TELEMETRY & CRON INSTRUCTIONS -->
+        <div class="dc-callout dc-callout--boundary" style="border-color: #86efac; background: #f0fdf4;">
+          <strong class="dc-callout__title" style="color: #166534;">Інструкція для налаштування регулярного CRON-таску в Perplexity:</strong>
+          <p style="margin-bottom: 0.5rem; font-size: 0.8125rem; color: var(--dc-ink-2);">
+            1. Створіть у Perplexity або n8n/Make регулярний таск (кожні 6 годин) із запитом: <em>"Find new research papers, essays and tweets on buyer coordination, reverse demand pooling, choice vs voice, and mechanism design by key researchers"</em>.<br/>
+            2. Налаштуйте відправку знайдених результатів методом <code>POST https://dc2sc.org/api/ingest-signal</code> з JSON-тілом: <code>&#123; "author": "...", "source": "Twitter", "topic": "...", "snippet": "...", "url": "..." &#125;</code>.<br/>
+            3. Ендпоінт автоматично визначить споріднений модуль (M01-M07), вирахує коефіцієнт релевантності та створить запис у черзі модерації.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- 7. GEMINI AI VECTOR DIAGRAM & ILLUSTRATION STUDIO -->
+      <div id="gemini-studio" class="dc-card" style="border: 2px solid #6366f1; padding: 2.5rem; margin-bottom: 3.5rem; background: #faf5ff;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #e9d5ff; padding-bottom: 1rem;">
+          <div>
+            <span class="dc-pill dc-pill--accent" style="margin-bottom: 0.5rem; display: inline-block; background: #ede9fe; color: #6366f1; border-color: #6366f1;">✨ GEMINI AI & ACADEMIC SYNTHESIS // ГЕНЕРАТОР ВІЗУАЛІЗАЦІЙ</span>
+            <h2 class="dc-h2" style="margin: 0; color: #4338ca;">Генеративна студія векторних діаграм та ілюстрацій</h2>
+          </div>
+          <span class="dc-label" style="color: #6366f1; font-weight: 700;">● GEMINI 2.5 FLASH ENGINE CONNECTED</span>
+        </div>
+
+        <p class="dc-body" style="color: var(--dc-ink-2); margin-bottom: 2rem;">
+          Генеруйте чисті векторні SVG діаграми, інваріантні графіки, карти рішень теорії ігор та промпти для концептуальних ілюстрацій Imagen/Gemini, які 100% відповідають дизайн-системі <code>design.md</code> та кольоровим токенам DC2SC.
+        </p>
+
+        <!-- STUDIO WORKSPACE: CONTROLS & CANVAS -->
+        <div class="dc-grid dc-grid--2" style="gap: 2rem; align-items: start; margin-bottom: 2rem;">
+          
+          <!-- LEFT: GENERATION CONTROLS -->
+          <div class="dc-card" style="background: var(--dc-white); border: 1px solid #e9d5ff; padding: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <h4 style="font-family: var(--dc-font-display); font-size: 1.125rem; margin: 0; color: #4338ca;">Параметри генерації</h4>
+              <span class="dc-pill dc-pill--default" style="font-size: 0.625rem;">PROMPT STUDIO</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              
+              <div>
+                <label for="gemini-api-key" class="dc-label" style="display: block; margin-bottom: 0.35rem; color: var(--dc-muted);">Google Gemini API Key (опціонально):</label>
+                <input type="password" id="gemini-api-key" placeholder="AIzaSy... (якщо порожньо — діє вбудована Academic Synthesis)" class="dc-card" style="width: 100%; padding: 0.5rem; font-size: 0.8125rem; font-family: var(--dc-font-mono); border: 1px solid var(--dc-border);" />
+              </div>
+
+              <div class="dc-grid dc-grid--2" style="gap: 0.75rem;">
+                <div>
+                  <label for="gemini-module-select" class="dc-label" style="display: block; margin-bottom: 0.35rem; color: var(--dc-muted);">Цільовий модуль:</label>
+                  <select id="gemini-module-select" class="dc-card" style="width: 100%; padding: 0.5rem; font-size: 0.8125rem; border: 1px solid var(--dc-border);">
+                    <option value="1">M01: More Choice, Less Voice</option>
+                    <option value="2">M02: Crowd vs Market Position</option>
+                    <option value="3">M03: Why More Buyers (Scale)</option>
+                    <option value="4" selected>M04: The Cost of Commitment</option>
+                    <option value="5">M05: Coordination Rights</option>
+                    <option value="6">M06: Travel Stress Test (GOLIAF)</option>
+                    <option value="7">M07: What Counts as Success</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="gemini-diagram-type" class="dc-label" style="display: block; margin-bottom: 0.35rem; color: var(--dc-muted);">Архетип / Структура:</label>
+                  <select id="gemini-diagram-type" class="dc-card" style="width: 100%; padding: 0.5rem; font-size: 0.8125rem; border: 1px solid var(--dc-border);">
+                    <option value="rights-gates">Continuous Rights Gates Sequence</option>
+                    <option value="payoff-tree" selected>Game-Theoretic Payoff Tree (ZK Escrow)</option>
+                    <option value="pareto-curve">Choice vs Voice Decay Curve</option>
+                    <option value="market-isolation">Market Isolation vs Collective Vector</option>
+                    <option value="constraint-matrix">Shared vs Individual Matrix</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="gemini-custom-prompt" class="dc-label" style="display: block; margin-bottom: 0.35rem; color: var(--dc-muted);">Опис концепту або сценарію для Gemini:</label>
+                <textarea id="gemini-custom-prompt" rows="3" class="dc-card" style="width: 100%; padding: 0.5rem; font-size: 0.8125rem; font-family: var(--dc-font-body); border: 1px solid var(--dc-border);">Діаграма теорії ігор: 3 термінальні стани — успішна ратифікація пулу покупців (ΔU > 0), валідний нульовий результат (вихід без втрат) та примусовий лок-ін при змові постачальника.</textarea>
+              </div>
+
+              <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <button type="button" class="dc-btn dc-btn--primary" id="btn-generate-gemini-diagram" onclick="generateGeminiDiagram()" style="background: #4338ca; border-color: #4338ca; flex: 1; justify-content: center;">
+                  ⚡ ЗГЕНЕРУВАТИ ДІАГРАМУ
+                </button>
+                <button type="button" class="dc-btn dc-btn--ghost" id="btn-generate-illustration-prompt" onclick="generateIllustrationPrompt()" style="background: var(--dc-white); font-size: 0.75rem;">
+                  🎨 Промпт для Imagen / Обкладинок
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RIGHT: LIVE INTERACTIVE VECTOR CANVAS -->
+          <div class="dc-card" style="background: var(--dc-white); border: 1px solid #e9d5ff; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; border-bottom: 1px dashed var(--dc-border); padding-bottom: 0.5rem;">
+                <span class="dc-label" style="color: #4338ca; font-weight: 700;">● LIVE GENERATED VECTOR CANVAS</span>
+                <span id="gemini-generated-media-id" class="dc-pill dc-pill--accent" style="font-size: 0.625rem; background: #ede9fe; color: #4338ca;">M04-FIG-88</span>
+              </div>
+
+              <div id="gemini-canvas-container" style="display: flex; justify-content: center; align-items: center; width: 100%; min-height: 220px; background: var(--dc-surface); border: 1px solid var(--dc-border); padding: 0.5rem;">
+                <!-- Live SVG injected here -->
+                <svg viewBox="0 0 540 200" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="100%" height="100%" fill="#f8f7f4" stroke="#d4d4d8" stroke-width="1"/>
+                  <circle cx="60" cy="100" r="10" fill="#1e3a8a"/>
+                  <text x="60" y="75" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#1e3a8a">Quorum Q</text>
+                  <line x1="70" y1="100" x2="190" y2="45" stroke="#0f0f0f" stroke-width="1.5"/>
+                  <line x1="70" y1="100" x2="190" y2="100" stroke="#0f0f0f" stroke-width="1.5"/>
+                  <line x1="70" y1="100" x2="190" y2="155" stroke="#0f0f0f" stroke-width="1.5"/>
+                  <rect x="190" y="30" width="310" height="32" fill="#dbeafe" stroke="#059669" stroke-width="1.5"/>
+                  <text x="205" y="50" font-family="'Space Mono', monospace" font-size="9" font-weight="700" fill="#059669">1. RATIFICATION OPTIMUM: ΔU(x_coll, x_out) &gt; 0</text>
+                  <rect x="190" y="85" width="310" height="32" fill="#f0ede8" stroke="#1e3a8a" stroke-width="1.5"/>
+                  <text x="205" y="105" font-family="'Space Mono', monospace" font-size="9" font-weight="700" fill="#1e3a8a">2. VALID NULL RESULT: Zero-Penalty Exit Floor</text>
+                  <rect x="190" y="140" width="310" height="32" fill="#fff5f5" stroke="#dc2626" stroke-width="1.5"/>
+                  <text x="205" y="160" font-family="'Space Mono', monospace" font-size="9" font-weight="700" fill="#dc2626">3. FAIL-04: Coerced Lock-in (Adverse Selection)</text>
+                </svg>
+              </div>
+            </div>
+
+            <!-- ACTION TOOLBAR -->
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+              <button type="button" class="dc-btn dc-btn--primary" id="btn-save-generated-diagram" onclick="saveGeneratedDiagram()" style="font-size: 0.75rem; padding: 0.4rem 0.75rem; background: #059669; border-color: #059669;">
+                💾 ЗБЕРЕГТИ В РЕПОЗИТОРІЙ
+              </button>
+              <button type="button" class="dc-btn dc-btn--secondary" id="btn-copy-gemini-markdoc" onclick="copyGeminiMarkdoc()" style="font-size: 0.75rem; padding: 0.4rem 0.75rem;">
+                📋 СКОПІЮВАТИ MARKDOC
+              </button>
+              <button type="button" class="dc-btn dc-btn--ghost" id="btn-download-svg" onclick="downloadGeneratedSvg()" style="font-size: 0.75rem; padding: 0.4rem 0.75rem;">
+                📥 СКАЧАТИ .SVG
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- MARKDOC CODE & MEDIA PASSPORT JSON -->
+        <div class="dc-grid dc-grid--2" style="gap: 1.5rem;">
+          <div>
+            <span class="dc-label" style="display: block; margin-bottom: 0.4rem; color: var(--dc-muted);">Markdoc код для статті:</span>
+            <pre id="gemini-markdoc-snippet" style="background: #0f172a; color: #a5f3fc; padding: 1rem; border: 1px solid #334155; font-family: var(--dc-font-mono); font-size: 0.75rem; margin: 0; max-height: 140px; overflow-x: auto;">{`{% diagram 
+   mediaId="M04-FIG-88" 
+   caption="Payoff branches illustrating Nash equilibria, zero-penalty exit floors, and collective ratification states." 
+   authority="derived_noncanonical" 
+   epistemicBasis="analytical" /%}`}</pre>
+          </div>
+
+          <div>
+            <span class="dc-label" style="display: block; margin-bottom: 0.4rem; color: var(--dc-muted);">Media Passport метадані (src/data/media/):</span>
+            <pre id="gemini-passport-preview" style="background: #0f172a; color: #cbd5e1; padding: 1rem; border: 1px solid #334155; font-family: var(--dc-font-mono); font-size: 0.75rem; margin: 0; max-height: 140px; overflow-x: auto;">{`{
+  "mediaId": "M04-FIG-88",
+  "mediaType": "vector_diagram",
+  "authority": "derived_noncanonical",
+  "epistemicBasis": "conceptual",
+  "evidenceHorizon": "E0"
+}`}</pre>
+          </div>
+        </div>
+
+        <!-- IMAGEN / EDITORIAL ILLUSTRATION PROMPTS MODAL (Hidden by default) -->
+        <div id="illustration-prompts-card" class="dc-card" style="display: none; margin-top: 1.5rem; background: var(--dc-white); border: 2px solid #6366f1; padding: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <strong style="font-family: var(--dc-font-display); color: #4338ca; font-size: 0.9375rem;">🎨 Готовий промпт для генерації обкладинки через Google Imagen 3 / Midjourney:</strong>
+            <button type="button" class="dc-btn dc-btn--ghost" style="padding: 0.2rem 0.5rem; font-size: 0.6875rem;" onclick="document.getElementById('illustration-prompts-card').style.display = 'none'">✕ Закрити</button>
+          </div>
+          <p id="illustration-prompt-text" style="font-family: var(--dc-font-mono); font-size: 0.8125rem; color: var(--dc-ink-2); background: var(--dc-raised); padding: 0.75rem; border: 1px solid var(--dc-border); line-height: 1.5; margin: 0 0 0.75rem;"></p>
+          <button type="button" class="dc-btn dc-btn--primary" id="btn-copy-illustration-prompt" onclick="copyIllustrationPrompt()" style="font-size: 0.75rem; padding: 0.35rem 0.75rem; background: #4338ca; border-color: #4338ca;">
+            📋 СКОПІЮВАТИ ПРОМПТ
+          </button>
+        </div>
+
+      </div>
+
+    </Container>
+  </Section>
+
+</SiteShell>
+
+<script is:inline>
+  const presets = {
+    pareto: {
+      title: 'Теорема 1: Парето-оптимальність пулу зворотного попиту',
+      latex: '\\min_{p \\in \\mathcal{P}} \\mathbb{E}[U(p)] = \\int_{\\Omega} \\left( V(x) - p(x) \\right) d\\mu(x) \\ge MC + \\epsilon',
+      vars: 'V(x) — гранична корисність покупця; p(x) — ціна пулу; MC — граничні витрати; \\epsilon — мінімальна маржа постачальника.'
+    },
+    dispersion: {
+      title: 'Рівняння 2: Коефіцієнт штучної дисперсії вибору',
+      latex: '\\gamma(t) = \\frac{\\sigma_{p}(t)}{\\bar{p}(t)} \\cdot \\log_2 \\left( 1 + \\frac{\\mathcal{H}_{info}}{\\mathcal{H}_{search}} \\right)',
+      vars: '\\sigma_p — дисперсія цін; \\bar{p} — середня ціна; \\mathcal{H} — ентропія інформаційного середовища.'
+    },
+    escrow: {
+      title: 'Інваріант 3: Умова стійкості криптографічного ZK-ескроу',
+      latex: '\\sum_{i=1}^{N} c_i \\ge \\Theta_{quorum} \\implies \\Pr(\\text{Seller Collusion}) < 2^{-\\lambda}',
+      vars: 'c_i — коммітмент покупця; \\Theta — кворум пулу; \\lambda — біти безпеки ZK-ескроу.'
+    },
+    entropy: {
+      title: 'Рівняння 4: Інформаційна ентропія рекомендаційного алгоритму',
+      latex: 'S(\\rho) = -\\mathrm{Tr}(\\rho \\ln \\rho) + \\Delta_{bias}(A)',
+      vars: '\\rho — матриця переходів рекомендаційної системи; \\Delta_{bias} — монопольний зсув уваги.'
+    }
+  };
+
+  function updateFormulaLive() {
+    const title = document.getElementById('formula-title')?.value || '';
+    const latex = document.getElementById('formula-latex')?.value || '';
+    const vars = document.getElementById('formula-variables')?.value || '';
+
+    const prevTitle = document.getElementById('prev-title');
+    const prevMath = document.getElementById('prev-math');
+    const prevVars = document.getElementById('prev-vars');
+    const snippetEl = document.getElementById('generated-snippet');
+
+    if (prevTitle) prevTitle.innerText = title;
+    if (prevVars) prevVars.innerText = vars;
+
+    if (prevMath && window.katex) {
+      try {
+        window.katex.render(latex, prevMath, {
+          displayMode: true,
+          throwOnError: false
+        });
+      } catch (err) {
+        prevMath.innerText = latex;
+      }
+    }
+
+    if (snippetEl) {
+      snippetEl.innerText = '{% formula\n   title="' + title + '"\n   latex="' + latex + '"\n   variables="' + vars + '"\n   theoremType="theorem"\n   status="FORMALLY VERIFIED" %}';
+    }
+  }
+
+  function copyMarkdocSnippet() {
+    const snippetEl = document.getElementById('generated-snippet');
+    const btn = document.getElementById('btn-copy-markdoc');
+    if (snippetEl && btn) {
+      navigator.clipboard.writeText(snippetEl.innerText);
+      const prev = btn.innerText;
+      btn.innerText = 'СКОПІЙОВАНО!';
+      setTimeout(() => btn.innerText = prev, 2000);
+    }
+  }
+
+  document.getElementById('btn-copy-markdoc')?.addEventListener('click', copyMarkdocSnippet);
+
+  document.getElementById('formula-presets')?.addEventListener('change', (e) => {
+    const key = e.target.value;
+    const p = presets[key];
+    if (p) {
+      document.getElementById('formula-title').value = p.title;
+      document.getElementById('formula-latex').value = p.latex;
+      document.getElementById('formula-variables').value = p.vars;
+      updateFormulaLive();
+    }
+  });
+
+  ['formula-title', 'formula-latex', 'formula-variables'].forEach(id => {
+    document.getElementById(id)?.addEventListener('input', updateFormulaLive);
+  });
+
+  async function triggerUpdateAll() {
+    const consoleEl = document.getElementById('admin-update-console');
+    const outputEl = document.getElementById('console-output');
+    const badgeEl = document.getElementById('console-status-badge');
+    const btn = document.getElementById('btn-update-all');
+
+    if (consoleEl) consoleEl.style.display = 'block';
+    if (badgeEl) { badgeEl.style.color = '#38bdf8'; badgeEl.innerText = 'ВИКОНУЄТЬСЯ...'; }
+    if (outputEl) outputEl.innerText = '⚡ Запуск комплексної синхронізації...\n- Генерація PDF статей...\n- Синхронізація мовних локалей uk/en/de...\n- Оновлення Google Drive маніфесту...';
+    if (btn) btn.disabled = true;
+
+    try {
+      const res = await fetch('/api/update-all', { method: 'POST' });
+      const data = await res.json();
+
+      if (data.ok) {
+        if (badgeEl) { badgeEl.style.color = '#4ade80'; badgeEl.innerText = 'УСПІШНО ВИКОНАНО ✓'; }
+        if (outputEl) {
+          outputEl.innerText = `[${data.timestamp}] ${data.message}\n\n=== PDF ВИДАННЯ ===\n${data.pdfOutput}\n\n=== СИНХРОНІЗАЦІЯ ПЕРЕКЛАДІВ ===\n${data.translationOutput}\n\n=== GOOGLE DRIVE MANIFEST ===\n${data.driveOutput}`;
+        }
+      } else {
+        if (badgeEl) { badgeEl.style.color = '#f87171'; badgeEl.innerText = 'ПОМИЛКА ✗'; }
+        if (outputEl) outputEl.innerText = 'Помилка виконання: ' + (data.error || 'Невідома помилка');
+      }
+    } catch (err) {
+      if (badgeEl) { badgeEl.style.color = '#f87171'; badgeEl.innerText = 'ПОМИЛКА МЕРЕЖІ ✗'; }
+      if (outputEl) outputEl.innerText = 'Помилка запиту: ' + err.message;
+    } finally {
+      if (btn) btn.disabled = false;
+    }
+  }
+
+  async function triggerGeneratePdfs() {
+    const consoleEl = document.getElementById('admin-update-console');
+    const outputEl = document.getElementById('console-output');
+    const badgeEl = document.getElementById('console-status-badge');
+    const btn = document.getElementById('btn-generate-pdfs');
+
+    if (consoleEl) consoleEl.style.display = 'block';
+    if (badgeEl) { badgeEl.style.color = '#38bdf8'; badgeEl.innerText = 'ГЕНЕРАЦІЯ PDF...'; }
+    if (outputEl) outputEl.innerText = '📄 Генерація PDF документів для всіх модулів журналу...';
+    if (btn) btn.disabled = true;
+
+    try {
+      const res = await fetch('/api/generate-pdfs', { method: 'POST' });
+      const data = await res.json();
+
+      if (data.ok) {
+        if (badgeEl) { badgeEl.style.color = '#4ade80'; badgeEl.innerText = 'PDF ГОТОВІ ✓'; }
+        if (outputEl) {
+          outputEl.innerText = `${data.message}\n\n${data.output}`;
+        }
+      } else {
+        if (badgeEl) { badgeEl.style.color = '#f87171'; badgeEl.innerText = 'ПОМИЛКА ✗'; }
+        if (outputEl) outputEl.innerText = 'Помилка: ' + (data.error || 'Невідома помилка');
+      }
+    } catch (err) {
+      if (badgeEl) { badgeEl.style.color = '#f87171'; badgeEl.innerText = 'ПОМИЛКА МЕРЕЖІ ✗'; }
+      if (outputEl) outputEl.innerText = 'Помилка запиту: ' + err.message;
+    } finally {
+      if (btn) btn.disabled = false;
+    }
+  }
+
+  window.triggerUpdateAll = triggerUpdateAll;
+  window.triggerGeneratePdfs = triggerGeneratePdfs;
+
+  function copyClaudeMcpConfig() {
+    const configCode = document.getElementById('mcp-config-code')?.innerText || '';
+    const btn = document.getElementById('btn-copy-claude-mcp');
+    if (configCode && btn) {
+      navigator.clipboard.writeText(configCode);
+      const prev = btn.innerText;
+      btn.innerText = 'КОНФІГ СКОПІЙОВАНО! ✓';
+      setTimeout(() => btn.innerText = prev, 2000);
+    }
+  }
+  window.copyClaudeMcpConfig = copyClaudeMcpConfig;
+
+  // DIAGRAMS STUDIO PRESETS & DYNAMIC SWITCHER
+  const diagramPresets = {
+    'rights-gates': {
+      id: 'M01-FIG-01',
+      title: 'Архетип 1: Послідовність неперервних гейтів прав (Continuous Rights Gates Sequence)',
+      desc: 'Послідовна валідація 11 конституційних гейтів: від приватного наміру через ратифікацію до порівняння з індивідуальною альтернативою.',
+      snippet: `{% diagram 
+   mediaId="M01-FIG-01" 
+   caption="Figure 1: Continuous Rights Gates Sequence" 
+   authority="canonical" 
+   epistemicBasis="conceptual" /%}`,
+      svg: `<svg viewBox="0 0 520 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="max-height: 200px;">
+        <rect x="10" y="55" width="85" height="50" fill="#f0ede8" stroke="#0f0f0f" stroke-width="1.5" />
+        <text x="52" y="77" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#0f0f0f">01. INTENT</text>
+        <text x="52" y="93" font-family="'Work Sans', sans-serif" font-size="8" text-anchor="middle" fill="#71717a">Private State</text>
+
+        <path d="M 95 80 L 125 80" stroke="#0f0f0f" stroke-width="1.5" marker-end="url(#arrow)" />
+
+        <rect x="130" y="50" width="95" height="60" fill="#dbeafe" stroke="#1e3a8a" stroke-width="2" />
+        <text x="177" y="74" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#1e3a8a">04. GATE 1</text>
+        <text x="177" y="92" font-family="'Work Sans', sans-serif" font-size="8" text-anchor="middle" fill="#1e3a8a">Ratification</text>
+
+        <path d="M 225 80 L 255 80" stroke="#0f0f0f" stroke-width="1.5" />
+
+        <rect x="260" y="55" width="100" height="50" fill="#f0ede8" stroke="#0f0f0f" stroke-width="1.5" />
+        <text x="310" y="77" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#0f0f0f">07. COALITION</text>
+        <text x="310" y="93" font-family="'Work Sans', sans-serif" font-size="8" text-anchor="middle" fill="#71717a">Demand Vector</text>
+
+        <path d="M 360 80 L 390 80" stroke="#0f0f0f" stroke-width="1.5" />
+
+        <rect x="395" y="45" width="115" height="70" fill="#f8f7f4" stroke="#059669" stroke-width="2" stroke-dasharray="3,3" />
+        <text x="452" y="72" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#059669">11. EVALUATION</text>
+        <text x="452" y="90" font-family="'Work Sans', sans-serif" font-size="8" text-anchor="middle" fill="#0f0f0f">Pareto vs Null Result</text>
+      </svg>`
+    },
+    'journey-map': {
+      id: 'M06-FIG-02',
+      title: 'Архетип 2: 8-етапна карта рішень подорожі GOLIAF (Decision Journey Map)',
+      desc: '8 етапів подорожі від аспірації та сценарію через неперервні обмеження та розсіювання вибору до ескроу та виконання.',
+      snippet: `{% diagram 
+   mediaId="M06-FIG-02" 
+   caption="Figure 2: GOLIAF 8-Stage Decision Journey Map" 
+   authority="derived_noncanonical" 
+   epistemicBasis="analytical" /%}`,
+      svg: `<svg viewBox="0 0 520 160" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="max-height: 200px;">
+        <line x1="30" y1="80" x2="490" y2="80" stroke="#d4d4d8" stroke-width="3" />
+        <circle cx="50" cy="80" r="10" fill="#1e3a8a" />
+        <text x="50" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#0f0f0f">01.Asp</text>
+        <circle cx="110" cy="80" r="10" fill="#1e3a8a" />
+        <text x="110" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#0f0f0f">02.Scen</text>
+        <circle cx="170" cy="80" r="10" fill="#dc2626" />
+        <text x="170" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#dc2626">03.Const</text>
+        <circle cx="230" cy="80" r="10" fill="#1e3a8a" />
+        <text x="230" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#0f0f0f">04.Srch</text>
+        <circle cx="290" cy="80" r="10" fill="#1e3a8a" />
+        <text x="290" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#0f0f0f">05.Comp</text>
+        <circle cx="350" cy="80" r="10" fill="#1e3a8a" />
+        <text x="350" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#0f0f0f">06.Dec</text>
+        <circle cx="410" cy="80" r="10" fill="#1e3a8a" />
+        <text x="410" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#0f0f0f">07.Escrow</text>
+        <circle cx="470" cy="80" r="12" fill="#059669" />
+        <text x="470" y="110" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#059669">08.Exec</text>
+      </svg>`
+    },
+    'market-isolation': {
+      id: 'M01-FIG-03',
+      title: 'Архетип 3: Топологія ринкової асиметрії (Isolated Sessions vs Collective Coalition)',
+      desc: 'Порівняння розрізнених сесій пошуку (ліворуч) та скоординованого пулу покупців зі спільними інваріантами (праворуч).',
+      snippet: `{% diagram 
+   mediaId="M01-FIG-03" 
+   caption="Figure 3: Isolated Sessions vs Collective Coalition Topology" 
+   authority="canonical" 
+   epistemicBasis="conceptual" /%}`,
+      svg: `<svg viewBox="0 0 520 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="max-height: 200px;">
+        <rect x="20" y="20" width="210" height="140" fill="#f8f7f4" stroke="#d4d4d8" stroke-dasharray="3,3" />
+        <text x="125" y="40" font-family="'Work Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle" fill="#71717a">ATOMIZED SESSIONS</text>
+        <circle cx="60" cy="80" r="5" fill="#0f0f0f" opacity="0.3" />
+        <circle cx="100" cy="110" r="5" fill="#0f0f0f" opacity="0.4" />
+        <circle cx="150" cy="70" r="5" fill="#0f0f0f" opacity="0.3" />
+        <circle cx="180" cy="120" r="5" fill="#0f0f0f" opacity="0.5" />
+        
+        <text x="260" y="95" font-family="'Space Mono', monospace" font-size="16" text-anchor="middle" fill="#1e3a8a">VS</text>
+
+        <rect x="290" y="20" width="210" height="140" fill="#dbeafe" stroke="#1e3a8a" stroke-width="2" />
+        <text x="395" y="40" font-family="'Work Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle" fill="#1e3a8a">COLLECTIVE COALITION</text>
+        <circle cx="340" cy="80" r="6" fill="#1e3a8a" />
+        <circle cx="395" cy="110" r="6" fill="#1e3a8a" />
+        <circle cx="450" cy="80" r="6" fill="#1e3a8a" />
+        <line x1="340" y1="80" x2="395" y2="110" stroke="#1e3a8a" stroke-width="2" />
+        <line x1="395" y1="110" x2="450" y2="80" stroke="#1e3a8a" stroke-width="2" />
+      </svg>`
+    },
+    'constraint-matrix': {
+      id: 'M04-FIG-01',
+      title: 'Архетип 4: Матриця класифікації обмежень (Shared vs Individual Matrix)',
+      desc: 'Двовимірна класифікація обмежень: обговорювані (дати, бюджети, регіони) проти індивідуальних невідчужуваних прав (доступність, візи, медицина).',
+      snippet: `{% diagram 
+   mediaId="M04-FIG-01" 
+   caption="Figure 4: Shared vs Individual Constraint Classification Matrix" 
+   authority="canonical" 
+   epistemicBasis="conceptual" /%}`,
+      svg: `<svg viewBox="0 0 520 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="max-height: 200px;">
+        <rect x="20" y="20" width="230" height="140" fill="#f0ede8" stroke="#1e3a8a" stroke-width="1.5" />
+        <text x="135" y="45" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#1e3a8a">DISCUSSABLE / POOLABLE</text>
+        <text x="40" y="75" font-family="'Work Sans', sans-serif" font-size="9" fill="#0f0f0f">• Budget brackets</text>
+        <text x="40" y="100" font-family="'Work Sans', sans-serif" font-size="9" fill="#0f0f0f">• Date windows (±3d)</text>
+        <text x="40" y="125" font-family="'Work Sans', sans-serif" font-size="9" fill="#0f0f0f">• Destination corridor</text>
+
+        <rect x="270" y="20" width="230" height="140" fill="#f8f7f4" stroke="#dc2626" stroke-width="1.5" />
+        <text x="385" y="45" font-family="'Space Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" fill="#dc2626">STRICTLY INDIVIDUAL</text>
+        <text x="290" y="75" font-family="'Work Sans', sans-serif" font-size="9" fill="#0f0f0f">• Accessibility & Medical</text>
+        <text x="290" y="100" font-family="'Work Sans', sans-serif" font-size="9" fill="#0f0f0f">• Visa & Legal status</text>
+        <text x="290" y="125" font-family="'Work Sans', sans-serif" font-size="9" fill="#0f0f0f">• Irreversible exit rights</text>
+      </svg>`
+    },
+    'pareto-curve': {
+      id: 'M03-FIG-02',
+      title: 'Архетип 5: Економічна крива розпаду вибору (Choice vs Voice Decay Curve)',
+      desc: 'Асимптотичний розпад сили покупця при зростанні штучної дисперсії пропозицій та відновлення через ZK-ескроу.',
+      snippet: `{% diagram 
+   mediaId="M03-FIG-02" 
+   caption="Figure 5: Choice vs Voice Decay Curve and Pareto Optimum" 
+   authority="canonical" 
+   epistemicBasis="analytical" /%}`,
+      svg: `<svg viewBox="0 0 520 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="max-height: 200px;">
+        <line x1="40" y1="150" x2="480" y2="150" stroke="#0f0f0f" stroke-width="1.5" />
+        <line x1="40" y1="150" x2="40" y2="20" stroke="#0f0f0f" stroke-width="1.5" />
+        <text x="480" y="165" font-family="'Space Mono', monospace" font-size="8" text-anchor="end" fill="#71717a">Catalog Dispersion |C| → ∞</text>
+        <text x="35" y="15" font-family="'Space Mono', monospace" font-size="8" text-anchor="start" fill="#71717a">Buyer Voice E[Voice]</text>
+        
+        <path d="M 40 30 Q 150 130 480 145" fill="none" stroke="#dc2626" stroke-width="2.5" />
+        <text x="260" y="115" font-family="'Work Sans', sans-serif" font-size="9" fill="#dc2626">Decay with uncoordinated search</text>
+
+        <line x1="40" y1="60" x2="480" y2="60" stroke="#059669" stroke-width="2" stroke-dasharray="4,4" />
+        <circle cx="280" cy="60" r="5" fill="#059669" />
+        <text x="290" y="55" font-family="'Work Sans', sans-serif" font-size="9" font-weight="700" fill="#059669">Pareto Recovery via ZK-Escrow</text>
+      </svg>`
+    },
+    'payoff-tree': {
+      id: 'M05-FIG-03',
+      title: 'Архетип 6: Дерево виграшів ZK-Ескроу (Game-Theoretic Payoff Tree)',
+      desc: 'Теорія ігор: 3 термінальні стани — успішна ратифікація, валідний нульовий результат (вихід без втрат) та примусовий лок-ін.',
+      snippet: `{% diagram 
+   mediaId="M05-FIG-03" 
+   caption="Figure 6: ZK-Escrow Game-Theoretic Payoff Tree" 
+   authority="derived_noncanonical" 
+   epistemicBasis="analytical" /%}`,
+      svg: `<svg viewBox="0 0 520 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="max-height: 200px;">
+        <circle cx="50" cy="90" r="8" fill="#1e3a8a" />
+        <text x="50" y="70" font-family="'Space Mono', monospace" font-size="8" text-anchor="middle" fill="#1e3a8a">Quorum</text>
+
+        <path d="M 58 90 L 180 40" stroke="#0f0f0f" stroke-width="1.5" />
+        <path d="M 58 90 L 180 90" stroke="#0f0f0f" stroke-width="1.5" />
+        <path d="M 58 90 L 180 140" stroke="#0f0f0f" stroke-width="1.5" />
+
+        <rect x="180" y="25" width="280" height="30" fill="#f8f7f4" stroke="#059669" stroke-width="1.5" />
+        <text x="190" y="45" font-family="'Space Mono', monospace" font-size="9" fill="#059669">1. RATIFIED: ΔU(x_coll, x_out) > 0</text>
+
+        <rect x="180" y="75" width="280" height="30" fill="#f8f7f4" stroke="#1e3a8a" stroke-width="1.5" />
+        <text x="190" y="95" font-family="'Space Mono', monospace" font-size="9" fill="#1e3a8a">2. VALID NULL: 1_{exit} · 0 (Zero Penalty)</text>
+
+        <rect x="180" y="125" width="280" height="30" fill="#f8f7f4" stroke="#dc2626" stroke-width="1.5" />
+        <text x="190" y="145" font-family="'Space Mono', monospace" font-size="9" fill="#dc2626">3. FAIL-04: Coerced Lock-in Decay</text>
+      </svg>`
+    }
+  };
+
+  function updateDiagramLive() {
+    const selector = document.getElementById('diagram-archetype-select');
+    const key = selector?.value || 'rights-gates';
+    const d = diagramPresets[key];
+    if (!d) return;
+
+    const descEl = document.getElementById('diagram-archetype-desc');
+    const idEl = document.getElementById('diagram-preview-id');
+    const canvasEl = document.getElementById('diagram-preview-canvas');
+    const codeEl = document.getElementById('diagram-code-snippet');
+
+    if (descEl) descEl.innerText = d.desc;
+    if (idEl) idEl.innerText = d.id;
+    if (canvasEl) canvasEl.innerHTML = d.svg;
+    if (codeEl) codeEl.innerText = d.snippet;
+  }
+
+  function copyDiagramCode() {
+    const codeEl = document.getElementById('diagram-code-snippet');
+    const btn = document.getElementById('btn-copy-diagram-code');
+    if (codeEl && btn) {
+      navigator.clipboard.writeText(codeEl.innerText);
+      const prev = btn.innerText;
+      btn.innerText = 'КОД ДІАГРАМИ СКОПІЙОВАНО! ✓';
+      setTimeout(() => btn.innerText = prev, 2000);
+    }
+  }
+  window.copyDiagramCode = copyDiagramCode;
+
+  function copyColorHex(hex) {
+    navigator.clipboard.writeText(hex);
+    alert('Колір ' + hex + ' скопійовано в буфер обміну!');
+  }
+  window.copyColorHex = copyColorHex;
+
+  async function dispatchPerplexitySignal() {
+    const btn = document.getElementById('btn-dispatch-signal');
+    const source = document.getElementById('sig-source')?.value || 'Twitter';
+    const author = document.getElementById('sig-author')?.value || '@researcher';
+    const topic = document.getElementById('sig-topic')?.value || 'Coordination Theory';
+    const snippet = document.getElementById('sig-snippet')?.value || '';
+    const url = document.getElementById('sig-url')?.value || 'https://x.com';
+
+    if (btn) { btn.disabled = true; btn.innerText = '📡 ОБРОБКА СИГНАЛУ...'; }
+
+    try {
+      const res = await fetch('/api/ingest-signal', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ source, author, topic, snippet, url })
+      });
+      const data = await res.json();
+
+      if (data.ok) {
+        const queue = document.getElementById('signals-queue-container');
+        if (queue) {
+          const card = document.createElement('div');
+          card.className = 'dc-card';
+          card.style.padding = '0.85rem';
+          card.style.border = '2px solid #059669';
+          card.style.background = '#f0fdf4';
+          card.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <span class="dc-label" style="color: var(--dc-navy); font-weight: 700;">${author} · ${source}</span>
+              <span class="dc-pill dc-pill--in-progress" style="font-size: 0.625rem; background: #dcfce7; color: #166534;">SCORE: ${(data.signal.relevanceScore || 0.9).toFixed(2)} // ${data.signal.canonicalModule}</span>
+            </div>
+            <p style="font-size: 0.8125rem; line-height: 1.4; margin: 0 0 0.5rem; color: var(--dc-ink-2);">
+              "${snippet}"
+            </p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <a href="${url}" target="_blank" style="font-size: 0.6875rem; color: var(--dc-navy);">Відкрити першоджерело ↗</a>
+              <span class="dc-label" style="font-size: 0.625rem; color: #166534;">✓ JUST INGESTED INTO KEYSTATIC</span>
+            </div>
+          `;
+          queue.insertBefore(card, queue.firstChild);
+        }
+        alert(`✓ Сигнал успішно оброблено!\nМодуль: ${data.signal.canonicalModule}\nRelevance Score: ${data.signal.relevanceScore}`);
+      } else {
+        alert('Помилка обробки сигналу: ' + (data.error || 'Unknown error'));
+      }
+    } catch (err) {
+      alert('Помилка мережі при відправці сигналу: ' + err.message);
+    } finally {
+      if (btn) { btn.disabled = false; btn.innerText = '🚀 НАДІСЛАТИ СИГНАЛ В API (/api/ingest-signal)'; }
+    }
+  }
+  window.dispatchPerplexitySignal = dispatchPerplexitySignal;
+
+  // ─── GEMINI STUDIO LOGIC ────────────────────────────────────────────────
+  let currentGeneratedDiagram = null;
+
+  async function generateGeminiDiagram() {
+    const btn = document.getElementById('btn-generate-gemini-diagram');
+    const apiKey = document.getElementById('gemini-api-key')?.value || '';
+    const moduleNumber = parseInt(document.getElementById('gemini-module-select')?.value || '4', 10);
+    const diagramType = document.getElementById('gemini-diagram-type')?.value || 'payoff-tree';
+    const prompt = document.getElementById('gemini-custom-prompt')?.value || '';
+
+    if (btn) { btn.disabled = true; btn.innerText = '⚡ ГЕНЕРАЦІЯ ВЕКТОРУ (GEMINI AI)...'; }
+
+    try {
+      const res = await fetch('/api/generate-diagram', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ apiKey, moduleNumber, diagramType, prompt })
+      });
+      const data = await res.json();
+
+      if (data.ok && data.diagram) {
+        currentGeneratedDiagram = data.diagram;
+        
+        // Update Canvas Preview
+        const canvas = document.getElementById('gemini-canvas-container');
+        if (canvas) canvas.innerHTML = data.diagram.svg;
+
+        // Update Media ID Badge
+        const idBadge = document.getElementById('gemini-generated-media-id');
+        if (idBadge) idBadge.innerText = data.diagram.mediaId;
+
+        // Update Markdoc Snippet
+        const snippetEl = document.getElementById('gemini-markdoc-snippet');
+        if (snippetEl) snippetEl.innerText = data.diagram.markdoc;
+
+        // Update Passport Preview
+        const passportEl = document.getElementById('gemini-passport-preview');
+        if (passportEl) passportEl.innerText = JSON.stringify(data.diagram.passport, null, 2);
+
+        alert(`✓ Векторну діаграму ${data.diagram.mediaId} успішно згенеровано!`);
+      } else {
+        alert('Помилка генерації діаграми: ' + (data.error || 'Unknown error'));
+      }
+    } catch (err) {
+      alert('Помилка мережі при генерації діаграми: ' + err.message);
+    } finally {
+      if (btn) { btn.disabled = false; btn.innerText = '⚡ ЗГЕНЕРУВАТИ ДІАГРАМУ'; }
+    }
+  }
+  window.generateGeminiDiagram = generateGeminiDiagram;
+
+  async function saveGeneratedDiagram() {
+    if (!currentGeneratedDiagram) {
+      alert('Спочатку згенеруйте діаграму натиснувши "ЗГЕНЕРУВАТИ ДІАГРАМУ"!');
+      return;
+    }
+    const btn = document.getElementById('btn-save-generated-diagram');
+    if (btn) { btn.disabled = true; btn.innerText = '💾 ЗБЕРЕЖЕННЯ...'; }
+
+    try {
+      const res = await fetch('/api/save-diagram', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ diagram: currentGeneratedDiagram })
+      });
+      const data = await res.json();
+      if (data.ok) {
+        alert(`✓ ${data.message}\nПаспорт: ${data.paths.passportFile}\nSVG: ${data.paths.svgFile}`);
+      } else {
+        alert('Помилка збереження: ' + (data.error || 'Unknown error'));
+      }
+    } catch (err) {
+      alert('Помилка збереження: ' + err.message);
+    } finally {
+      if (btn) { btn.disabled = false; btn.innerText = '💾 ЗБЕРЕГТИ В РЕПОЗИТОРІЙ'; }
+    }
+  }
+  window.saveGeneratedDiagram = saveGeneratedDiagram;
+
+  function copyGeminiMarkdoc() {
+    const snippetEl = document.getElementById('gemini-markdoc-snippet');
+    const btn = document.getElementById('btn-copy-gemini-markdoc');
+    if (snippetEl && btn) {
+      navigator.clipboard.writeText(snippetEl.innerText);
+      const prev = btn.innerText;
+      btn.innerText = 'СКОПІЙОВАНО! ✓';
+      setTimeout(() => btn.innerText = prev, 2000);
+    }
+  }
+  window.copyGeminiMarkdoc = copyGeminiMarkdoc;
+
+  function downloadGeneratedSvg() {
+    const canvas = document.getElementById('gemini-canvas-container');
+    const idBadge = document.getElementById('gemini-generated-media-id');
+    const svgCode = canvas?.innerHTML;
+    if (!svgCode) {
+      alert('Немає згенерованого SVG для скачування!');
+      return;
+    }
+    const blob = new Blob([svgCode], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${idBadge?.innerText || 'diagram'}.svg`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+  window.downloadGeneratedSvg = downloadGeneratedSvg;
+
+  function generateIllustrationPrompt() {
+    const mod = document.getElementById('gemini-module-select')?.value || '1';
+    const promptBox = document.getElementById('gemini-custom-prompt')?.value || '';
+    const modal = document.getElementById('illustration-prompts-card');
+    const promptText = document.getElementById('illustration-prompt-text');
+
+    const promptThemes = {
+      '1': 'Editorial Bauhaus monochrome architectural blueprint of fragmented isolated user sessions dissolving into a coherent blue demand grid. Style: sharp vector lines, deep navy #1e3a8a and warm cream #f8f7f4, high precision graphic design, academic research publication cover, KaTeX mathematical formulas subtly etched in background, 8k, award-winning illustration.',
+      '2': 'Minimalist Swiss graphic poster contrasting a chaotic scattered crowd of attention dots with a sharp, bold geometric rectangular collective agency boundary. Deep indigo #1e3a8a accents, crisp typography, technical vector aesthetic.',
+      '3': 'Economic mechanism visualization of subadditive scale drag. Diminishing returns curve intersecting with a sharp green Pareto optimum line #059669. Clean mathematical lines, dark background, space mono annotations.',
+      '4': 'Cryptographic ZK-Escrow vault conceptual visualization. Clean isometric geometric boxes with conditional lock keys, transparent zero-knowledge verification proofs, navy and gold metallic accents on warm paper.',
+      '5': 'Constitutional rights gates architecture. A clean horizontal progression of 5 security gates with non-compensable floor barriers and green verification checkmarks. Scientific journal style.',
+      '6': 'Bounded travel stress-test decision matrix. Stylized topographic contour map of flight corridors and hotel booking clusters overlaid with red constraint violation zones #dc2626. High detail.',
+      '7': 'Academic decision tree illustrating null-result validation. A clean branching path leading to a peaceful, zero-penalty "Do Not Aggregate" terminal node highlighted in emerald green #059669.'
+    };
+
+    const generatedPrompt = (promptThemes[mod] || promptThemes['1']) + (promptBox ? ` Context: ${promptBox}` : '');
+    if (promptText) promptText.innerText = generatedPrompt;
+    if (modal) modal.style.display = 'block';
+  }
+  window.generateIllustrationPrompt = generateIllustrationPrompt;
+
+  function copyIllustrationPrompt() {
+    const promptText = document.getElementById('illustration-prompt-text');
+    const btn = document.getElementById('btn-copy-illustration-prompt');
+    if (promptText && btn) {
+      navigator.clipboard.writeText(promptText.innerText);
+      const prev = btn.innerText;
+      btn.innerText = 'ПРОМПТ СКОПІЙОВАНО! ✓';
+      setTimeout(() => btn.innerText = prev, 2000);
+    }
+  }
+  window.copyIllustrationPrompt = copyIllustrationPrompt;
+
+  document.getElementById('diagram-archetype-select')?.addEventListener('change', updateDiagramLive);
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const defaultLatex = presets.pareto.latex;
+    const latexEl = document.getElementById('formula-latex');
+    if (latexEl && !latexEl.value) {
+      latexEl.value = defaultLatex;
+    }
+    setTimeout(updateFormulaLive, 300);
+    setTimeout(updateDiagramLive, 300);
+  });
+</script>

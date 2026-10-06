@@ -1,0 +1,11 @@
+{
+  "methodId": "METH-E0",
+  "name": "E0 — Conceptual Horizon & Analytical Architecture",
+  "description": "Foundational conceptual definitions, taxonomy, and mathematical framing of market isolation and buyer coordination.",
+  "status": "active",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

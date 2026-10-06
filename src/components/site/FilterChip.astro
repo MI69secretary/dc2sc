@@ -1,0 +1,11 @@
+---
+interface Props { label: string; value: string; active?: boolean; }
+const { label, value, active = false } = Astro.props;
+---
+<button
+  class={`dc-filter-chip${active ? ' dc-filter-chip--active' : ''}`}
+  data-filter={value}
+  aria-pressed={active ? 'true' : 'false'}
+>
+  {label}
+</button>

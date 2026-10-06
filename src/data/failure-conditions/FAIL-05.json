@@ -1,0 +1,16 @@
+{
+  "failureId": "FAIL-05",
+  "name": "exit",
+  "category": "Exit",
+  "description": "Coercive lock-in, punitive departure fees, or inability to revert to individual outside options.",
+  "status": "monitored",
+  "relatedModules": [
+    4,
+    5
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

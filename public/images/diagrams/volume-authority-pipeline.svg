@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="100%" height="100%" style="background:#f8f7f4; font-family:'Work Sans', -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e3a8a" />
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#71717a" />
+    </marker>
+  </defs>
+
+  <!-- Title / Eyebrow -->
+  <text x="40" y="38" font-family="'Space Mono', monospace" font-size="11" font-weight="700" fill="#71717a" letter-spacing="0.1em">DC2SC // MODULE 03 SPECIFICATION</text>
+  <text x="40" y="62" font-size="16" font-weight="700" fill="#0f0f0f">The Volume-to-Authority Transformation Pipeline</text>
+
+  <!-- TOP BRANCH: Unstructured Volume (Failure Path) -->
+  <rect x="40" y="90" width="160" height="70" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="55" y="118" font-size="13" font-weight="700" fill="#0f0f0f">Raw Buyer Volume</text>
+  <text x="55" y="138" font-size="11" fill="#71717a">N independent buyers</text>
+
+  <line x1="200" y1="125" x2="310" y2="125" stroke="#71717a" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow-muted)" />
+  <text x="215" y="115" font-family="'Space Mono', monospace" font-size="10" fill="#71717a">NO GOVERNANCE</text>
+
+  <rect x="320" y="90" width="180" height="70" fill="#f0ede8" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="335" y="118" font-size="13" font-weight="700" fill="#71717a">Intermediary Queue</text>
+  <text x="335" y="138" font-size="11" fill="#71717a">Passive Audience Pool</text>
+
+  <line x1="500" y1="125" x2="590" y2="125" stroke="#71717a" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow-muted)" />
+
+  <rect x="600" y="90" width="160" height="70" fill="#fef2f2" stroke="#fecaca" stroke-width="1.5" />
+  <text x="615" y="118" font-size="13" font-weight="700" fill="#dc2626">Zero Leverage</text>
+  <text x="615" y="138" font-size="11" fill="#dc2626">Price-taking atomization</text>
+
+  <!-- BOTTOM BRANCH: Governed Market Position (DC2SC Path) -->
+  <rect x="40" y="210" width="160" height="110" fill="#ffffff" stroke="#1e3a8a" stroke-width="2" />
+  <text x="55" y="238" font-size="13" font-weight="700" fill="#1e3a8a">Governed Pool</text>
+  <text x="55" y="258" font-size="11" fill="#27272a">Shared constraints</text>
+  <text x="55" y="278" font-size="10" font-family="'Space Mono', monospace" fill="#71717a">E0 Spec</text>
+
+  <!-- Gate 1: Representation -->
+  <line x1="200" y1="265" x2="250" y2="265" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="260" y="210" width="130" height="110" fill="#ffffff" stroke="#1e3a8a" stroke-width="1.5" />
+  <text x="275" y="238" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#1e3a8a">GATE 01</text>
+  <text x="275" y="258" font-size="12" font-weight="700" fill="#0f0f0f">Ratified</text>
+  <text x="275" y="276" font-size="12" font-weight="700" fill="#0f0f0f">Mandate</text>
+  <text x="275" y="298" font-size="10" fill="#71717a">Contestable</text>
+
+  <!-- Gate 2: Exit Floor -->
+  <line x1="390" y1="265" x2="440" y2="265" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="450" y="210" width="130" height="110" fill="#ffffff" stroke="#1e3a8a" stroke-width="1.5" />
+  <text x="465" y="238" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#1e3a8a">GATE 02</text>
+  <text x="465" y="258" font-size="12" font-weight="700" fill="#0f0f0f">Credible</text>
+  <text x="465" y="276" font-size="12" font-weight="700" fill="#0f0f0f">Exit Floor</text>
+  <text x="465" y="298" font-size="10" fill="#71717a">Outside option</text>
+
+  <!-- Outcome: Market Position -->
+  <line x1="580" y1="265" x2="630" y2="265" stroke="#1e3a8a" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="640" y="210" width="130" height="110" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="2" />
+  <text x="655" y="242" font-size="13" font-weight="700" fill="#ffffff">Market</text>
+  <text x="655" y="262" font-size="13" font-weight="700" fill="#ffffff">Position</text>
+  <text x="655" y="286" font-size="11" fill="#dbeafe">Countervailing</text>
+  <text x="655" y="302" font-size="11" fill="#dbeafe">Agency</text>
+</svg>

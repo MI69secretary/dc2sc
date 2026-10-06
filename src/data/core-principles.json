@@ -1,0 +1,34 @@
+{
+  "principles": [
+    {
+      "number": 1,
+      "title": "Similarity is not authority",
+      "explanation": "Shared circumstances do not automatically confer the right to represent others or speak in their name."
+    },
+    {
+      "number": 2,
+      "title": "Ratification is not commitment",
+      "explanation": "Approving a collective position is not the same as binding oneself to it unconditionally."
+    },
+    {
+      "number": 3,
+      "title": "Supplier response is not participant value",
+      "explanation": "A supplier acknowledging a collective position does not mean participants benefit from it."
+    },
+    {
+      "number": 4,
+      "title": "Transaction is not success",
+      "explanation": "A completed transaction does not confirm that the collective process improved on individual alternatives."
+    },
+    {
+      "number": 5,
+      "title": "Rights floors are non-compensable",
+      "explanation": "Privacy, exit, and contestability rights cannot be traded away in exchange for better terms."
+    },
+    {
+      "number": 6,
+      "title": "Do not aggregate is a valid result",
+      "explanation": "A decision not to form a collective position is a legitimate and complete research outcome."
+    }
+  ]
+}

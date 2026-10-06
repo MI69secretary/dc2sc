@@ -1,0 +1,37 @@
+---
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+}
+const { headings } = Astro.props;
+const filtered = headings.filter(h => h.depth === 2 || h.depth === 3);
+---
+{filtered.length > 0 && (
+  <nav class="dc-toc" aria-label="Table of contents">
+    <span class="dc-toc__title">Contents</span>
+    <ol class="dc-toc__list">
+      {filtered.map(h => (
+        <li class={`dc-toc__item dc-toc__item--h${h.depth}`}>
+          <a class="dc-toc__link" href={`#${h.slug}`}>{h.text}</a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}
+<script>
+  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.dc-toc__link');
+  if (tocLinks.length > 0 && 'IntersectionObserver' in window) {
+    const headingIds = Array.from(tocLinks).map(l => l.getAttribute('href')?.slice(1)).filter(Boolean) as string[];
+    const headingEls = headingIds.map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const link = document.querySelector<HTMLAnchorElement>(`.dc-toc__link[href="#${id}"]`);
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('dc-toc__link--active'));
+          link?.classList.add('dc-toc__link--active');
+        }
+      });
+    }, { rootMargin: '-10% 0px -80% 0px' });
+    headingEls.forEach(el => observer.observe(el));
+  }
+</script>

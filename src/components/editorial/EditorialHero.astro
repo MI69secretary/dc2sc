@@ -1,0 +1,48 @@
+---
+// EditorialHero.astro — Monograph & Research Hero matching Figma node 53:2
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead: string;
+  arxivId?: string;
+  sha256?: string;
+  license?: string;
+  peerReviewed?: boolean;
+}
+
+const {
+  eyebrow = 'EDITORIAL DISPATCH // НАУКОВА ХРОНІКА',
+  title,
+  lead,
+  arxivId = 'arXiv:2409.12948',
+  sha256 = '7f83b165...e921',
+  license = 'CC BY-NC 4.0',
+  peerReviewed = true,
+} = Astro.props;
+---
+
+<section class="dc-editorial-hero">
+  <div class="dc-container">
+    <div class="dc-editorial-hero__meta">
+      <span class="dc-pill dc-pill--accent">{eyebrow}</span>
+      {peerReviewed && (
+        <span class="dc-pill dc-pill--in-progress">
+          <span class="dc-status-dot" style="margin-right: 4px;"></span>
+          PEER REVIEWED
+        </span>
+      )}
+      <span class="dc-pill dc-pill--default">{license}</span>
+    </div>
+
+    <h1 class="dc-editorial-hero__title">{title}</h1>
+    <p class="dc-editorial-hero__lead">{lead}</p>
+
+    <div class="dc-editorial-hero__verification">
+      <span><strong>REGISTRY ID:</strong> {arxivId}</span>
+      <span>•</span>
+      <span><strong>CONSENSUS HASH:</strong> SHA256:{sha256}</span>
+      <span>•</span>
+      <span><strong>STATUS:</strong> CANONICAL SPECIFICATION</span>
+    </div>
+  </div>
+</section>

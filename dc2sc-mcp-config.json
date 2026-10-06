@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "dc2sc-research": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\mytha\\Documents\\Codex\\2026-09-17\\new-chat\\outputs\\dc2sc\\src\\mcp\\server.mjs"
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+---
+interface Props {
+  claimLevel: string;
+}
+const { claimLevel } = Astro.props;
+
+const labels: Record<string, string> = {
+  'CONCEPT': 'Conceptual',
+  'HYPOTHESIS': 'Hypothesis',
+  'THEORETICAL_SUPPORT': 'Theoretical support',
+  'INTERNAL_OBSERVATION': 'Internal observation',
+  'EXTERNAL_EMPIRICAL_EVIDENCE': 'External evidence',
+  'PREREGISTERED_FIELD_EVIDENCE': 'Pre-registered field',
+  'REPLICATED_EVIDENCE': 'Replicated'
+};
+const label = labels[claimLevel] || claimLevel;
+---
+<span class="dc-claim-badge">{label}</span>
+
+<style is:global>
+.dc-claim-badge { display: inline-flex; font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); padding: 0.2rem 0.625rem; border: 1px solid var(--dc-border); color: var(--dc-muted); background: var(--dc-raised); letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; }
+</style>

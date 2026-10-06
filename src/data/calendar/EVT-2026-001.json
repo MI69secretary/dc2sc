@@ -1,0 +1,14 @@
+{
+  "eventId": "EVT-2026-001",
+  "title": "Freeze Canonical Narrative Body v1.0",
+  "eventType": "canonical_milestone",
+  "scheduledDate": "2026-09-15",
+  "targetArtifactId": "canonical-narrative",
+  "channel": "dc2sc_site",
+  "status": "completed",
+  "description": "Formal freeze of foundational narrative specification and constitutional 6-principle spine.",
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "canonical_seal"
+}

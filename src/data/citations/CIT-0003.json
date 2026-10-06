@@ -1,0 +1,11 @@
+{
+  "citationId": "CIT-0003",
+  "sourceId": "SRC-0003",
+  "apa": "Ostrom, E. (1990). Governing the Commons: The Evolution of Institutions for Collective Action. Cambridge University Press.",
+  "bibtex": "@book{ostrom1990governing, title={Governing the Commons}, author={Ostrom, Elinor}, year={1990}, publisher={Cambridge University Press}}",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

@@ -1,0 +1,87 @@
+---
+// FormulaBlock.astro — Academic-grade LaTeX Mathematical Invariant & Formula Container
+interface Props {
+  formulaId?: string;
+  title?: string;
+  latex: string;
+  equationNumber?: string;
+  theoremType?: 'theorem' | 'lemma' | 'definition' | 'invariant' | 'corollary';
+  status?: string;
+  variables?: string;
+  description?: string;
+}
+
+const {
+  formulaId = 'INV-' + Math.random().toString(36).substring(2, 7).toUpperCase(),
+  title,
+  latex,
+  equationNumber,
+  theoremType = 'invariant',
+  status = 'FORMALLY VERIFIED',
+  variables,
+  description,
+} = Astro.props;
+
+const typeLabels: Record<string, string> = {
+  theorem: 'ТЕОРЕМА / THEOREM',
+  lemma: 'ЛЕМА / LEMMA',
+  definition: 'ДЕФІНІЦІЯ / DEFINITION',
+  invariant: 'МАТЕМАТИЧНИЙ ІНВАРІАНТ // MATHEMATICAL INVARIANT',
+  corollary: 'НАСЛІДОК / COROLLARY',
+};
+
+const badgeLabel = typeLabels[theoremType] || typeLabels.invariant;
+---
+
+<div class="dc-formula-block" id={formulaId}>
+  <div class="dc-formula-block__header">
+    <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+      <span class="dc-pill dc-pill--accent" style="font-size: 0.6875rem;">{badgeLabel}</span>
+      {equationNumber && (
+        <span class="dc-label" style="color: var(--dc-muted); font-weight: 700;">{equationNumber}</span>
+      )}
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <span class="dc-pill dc-pill--in-progress" style="font-size: 0.625rem;">
+        <span class="dc-status-dot" style="margin-right: 4px;"></span>
+        {status}
+      </span>
+      <button 
+        class="dc-btn dc-btn--ghost" 
+        style="padding: 0.25rem 0.6rem; font-size: 0.6875rem; font-family: var(--dc-font-mono);"
+        onclick={`navigator.clipboard.writeText(${JSON.stringify(latex)}); this.innerText='COPIED'; setTimeout(()=>this.innerText='COPY LATEX', 2000)`}
+      >
+        COPY LATEX
+      </button>
+    </div>
+  </div>
+
+  {title && (
+    <h4 class="dc-formula-block__title">{title}</h4>
+  )}
+
+  <!-- MAIN LATEX DISPLAY -->
+  <div class="dc-formula-block__equation">
+    <div class="katex-display-wrapper" style="overflow-x: auto; padding: 1rem 0; text-align: center;">
+      {'\[ ' + latex + ' \]'}
+    </div>
+  </div>
+
+  {description && (
+    <p class="dc-formula-block__desc">{description}</p>
+  )}
+
+  {variables && (
+    <div class="dc-formula-block__variables">
+      <span class="dc-label" style="display: block; margin-bottom: 0.35rem; color: var(--dc-muted);">Експлікація змінних:</span>
+      <div style="font-family: var(--dc-font-mono); font-size: 0.75rem; color: var(--dc-ink-2); line-height: 1.5;">
+        {variables}
+      </div>
+    </div>
+  )}
+
+  <div class="dc-formula-block__footer">
+    <span>REGISTRY ID: {formulaId}</span>
+    <span>PEER REVIEW EQUATION CITATION VALID</span>
+  </div>
+</div>

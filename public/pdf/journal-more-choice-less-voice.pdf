@@ -1,0 +1,192 @@
+%PDF-1.4
+%‚„œ”
+6 0 obj
+<< /Length 3603 >>
+stream
+BT /F2 8 Tf 0.4 0.4 0.4 rg
+50 770 Td (DC2SC RESEARCH PROGRAM   WORKING PAPER SERIES   CANONICAL SPECIFICATION) Tj ET
+0.8 w 0.8 0.8 0.8 RG 50 762 m 545 762 l S
+0.95 0.96 0.98 rg 50 630 495 85 re f
+0.2 0.3 0.6 RG 1.5 w 50 630 495 85 re s
+BT /F3 8 Tf 0.12 0.23 0.54 rg
+65 695 Td (EVIDENCE LEVEL: E0   STATUS: CONCEPTUAL_PREVIEW   MODULE: 1) Tj ET
+BT /F2 16 Tf 0.06 0.06 0.06 rg
+65 670 Td (More Choice, Less Voice) Tj ET
+BT /F1 9 Tf 0.25 0.25 0.25 rg
+65 650 Td (A structural examination of why individual search expansion coexists with) Tj ET
+65 638 Td (declining collective influence over market terms.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 600 Td (This derived research essay is authored under **Editorial Derivation Brief) Tj ET
+50 587 Td (BRIEF-M01-v1.0** and traces directly to frozen **Canonical Module 01 \(More Choice,) Tj ET
+50 574 Td (Less Voice\)**. It operates at **Evidence Level E0 \(Conceptual Horizon\)**. All) Tj ET
+50 561 Td (diagrams and matrices carry derived non-canonical authority and do not alter the) Tj ET
+50 548 Td (frozen canonical specification.) Tj ET
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 514 Td (1. The Paradox of Modern Markets) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 498 Td (Digital markets have dramatically expanded the range of choices available to) Tj ET
+50 485 Td (individual participants. Through platforms, search aggregators, and unbundled) Tj ET
+50 472 Td (service feeds, buyers can explore an unprecedented array of suppliers, price) Tj ET
+50 459 Td (points, and item configurations.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 440 Td (Yet, this abundance of choice frequently coexists with a systemic contraction in) Tj ET
+50 427 Td (collective market influence. While individuals possess extensive tools to navigate) Tj ET
+50 414 Td (*within* the terms established by a marketplace, they possess diminishing) Tj ET
+50 401 Td (structural capacity to shape those terms or contest the baseline assumptions of) Tj ET
+50 388 Td (offer formation.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 369 Td (This is the central tension of market isolation: **abundant individual choice) Tj ET
+50 356 Td (paired with negligible collective voice**.) Tj ET
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 322 Td (2. Access Is Not Authority) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 306 Td (The foundational analytical distinction formulated in DC2SC Module 01 separates) Tj ET
+50 293 Td (**access** from **authority**:) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 274 Td (  **Access \(Choice\):** The capacity to search among and select from an inventory) Tj ET
+50 261 Td (of pre-configured offers under unilateral, take-it-or-leave-it terms.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 242 Td (  **Authority \(Voice\):** The institutional capacity to negotiate, influence, or) Tj ET
+50 229 Td (ratify the terms, constraints, and baseline conditions of market exchange.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 210 Td (Digital platforms excel at optimizing access. They provide real-time filtering,) Tj ET
+50 197 Td (algorithmic sorting, and low-friction checkout. However, this optimization is) Tj ET
+50 184 Td (architecturally atomized: millions of individuals interact with the platform as) Tj ET
+50 171 Td (millions of isolated sessions.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 152 Td (Even when participants share identical household constraints, travel dates, or) Tj ET
+50 139 Td (quality requirements, the market interface treats them as separate, price-taking) Tj ET
+50 126 Td (price-elasticity points.) Tj ET
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 92 Td (3. The Limits of Individual Optimization) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 6 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 4155 >>
+stream
+BT /F2 8 Tf 0.4 0.4 0.4 rg
+50 770 Td (DC2SC RESEARCH PROGRAM   WORKING PAPER SERIES   CANONICAL SPECIFICATION) Tj ET
+0.8 w 0.8 0.8 0.8 RG 50 762 m 545 762 l S
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 735 Td (Individual optimization -- regardless of computational sophistication -- does not) Tj ET
+50 722 Td (aggregate into a collective market position.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 703 Td (When isolated buyers optimize their decisions, they do so strictly within the) Tj ET
+50 690 Td (payoff matrix defined by suppliers. If every individual chooses the least) Tj ET
+50 677 Td (unfavorable option among poor terms, the aggregate telemetry received by the) Tj ET
+50 664 Td (market signals that the terms are acceptable and clearing.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 645 Td (This produces a structural asymmetry:) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 626 Td (  **Supplier Coordination:** Suppliers can establish standardized terms, yield) Tj ET
+50 613 Td (management algorithms, and dynamic cancellation penalties across the entire) Tj ET
+50 600 Td (market.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 581 Td (2. **Buyer Atomization:** Buyers, operating in isolation, cannot pool bargaining) Tj ET
+50 568 Td (commitments, credibly signal collective reservation prices, or execute coordinated) Tj ET
+50 555 Td (exit without formal coordination mechanisms.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 536 Td (Consequently, as the variety of superficial choices expands, buyer fragmentation) Tj ET
+50 523 Td (deepens, further contracting collective agency.) Tj ET
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 489 Td (4. Counterarguments & Failure Tracking) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 473 Td (In accordance with the **DC2SC Failure-First Framework**, this conceptual model) Tj ET
+50 460 Td (explicitly tracks potential objections and failure modes:) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 441 Td (  **Objection: Search algorithms already eliminate price dispersion.**) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 422 Td (*Analytical Clarification:* Algorithmic price matching operates within existing) Tj ET
+50 409 Td (supplier terms; it does not confer voice over non-price terms, rights floors, or) Tj ET
+50 396 Td (cancellation constraints.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 377 Td (  **Objection: Buyer heterogeneity makes coalition formation impossible.**) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 358 Td (*Analytical Clarification:* DC2SC does not require global consensus. It) Tj ET
+50 345 Td (investigates bounded subsets of non-compensable constraint floors where overlap is) Tj ET
+50 332 Td (voluntary and contestable.) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 313 Td (  **Tracked Failure Mode \(FAIL-01\):** *Demand Formation Failure*  --  when) Tj ET
+50 300 Td (coordination overhead or constraint misalignment prevents participants from) Tj ET
+50 287 Td (articulating an intelligible collective position.) Tj ET
+BT /F2 12 Tf 0.1 0.1 0.1 rg
+50 253 Td (5. Research Handoff to Module 02) Tj ET
+BT /F1 9.5 Tf 0.15 0.15 0.15 rg
+50 237 Td (Understanding market isolation establishes the problem space, but raises a) Tj ET
+50 224 Td (critical constitutional question: if multiple buyers share constraints, how do we) Tj ET
+50 211 Td (distinguish between aggregated attention and genuine collective agency?) Tj ET
+0.98 0.98 0.99 rg 50 55 495 125 re f
+0.12 0.23 0.54 RG 1.5 w 50 55 495 125 re s
+0.12 0.23 0.54 rg 50 158 495 22 re f
+BT /F2 9 Tf 1 1 1 rg
+60 165 Td (MATHEMATICAL INVARIANT // INVARIANT 1.1: THE CHOICE-TO-VOICE ASYMMETRY CONDITION  \(Eq. 1.1\)) Tj ET
+0.94 0.96 0.99 rg 65 115 465 35 re f
+0.12 0.23 0.54 RG 0.75 w 65 115 465 35 re s
+BT /F2 11 Tf 0.05 0.15 0.45 rg
+75 127 Td (lim_{|C| -> in fty} E[ Voice\(B\) mid Access\(C\) ] = frac{Phi\(B\)}{1 + alpha * log |C|} -> 0) Tj ET
+BT /F1 8 Tf 0.3 0.3 0.3 rg
+65 101 Td (Formal invariant establishing that as individual catalog options expand unboundedly) Tj ET
+65 91 Td (without formal escrow pooling, effective buyer bargaining power asymptotically) Tj ET
+BT /F2 7.5 Tf 0.02 0.45 0.28 rg
+65 61 Td ([  FORMALLY VERIFIED MATHEMATICAL SPECIFICATION   PEER CITATION READY]) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 8 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 705 >>
+stream
+BT /F2 8 Tf 0.4 0.4 0.4 rg
+50 770 Td (DC2SC RESEARCH PROGRAM   WORKING PAPER SERIES   CANONICAL SPECIFICATION) Tj ET
+0.8 w 0.8 0.8 0.8 RG 50 762 m 545 762 l S
+0.96 0.95 0.93 rg 50 655 495 70 re f
+0.6 0.6 0.6 RG 0.7 w 50 655 495 70 re s
+BT /F2 8 Tf 0.2 0.2 0.2 rg
+60 709 Td (CONSTITUTIONAL RESEARCH BOUNDARY & NON-CLAIM DISCLOSURE) Tj ET
+BT /F1 7.5 Tf 0.35 0.35 0.35 rg
+60 695 Td (This publication presents conceptual research and formal invariants at Evidence Level E0.) Tj ET
+60 684 Td (It does not constitute commercial claims, supplier commitments, or live transaction guarantees.) Tj ET
+60 673 Td (GOLIAF operates strictly as a bounded stress-test environment, not a commercial booking service.) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 10 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> >>
+endobj
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000009074 00000 n 
+0000009123 00000 n 
+0000009193 00000 n 
+0000009263 00000 n 
+0000009338 00000 n 
+0000000015 00000 n 
+0000003670 00000 n 
+0000003816 00000 n 
+0000008023 00000 n 
+0000008169 00000 n 
+0000008926 00000 n 
+trailer
+<< /Size 12 /Root 1 0 R >>
+startxref
+9406
+%%EOF

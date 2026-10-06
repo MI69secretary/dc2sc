@@ -1,0 +1,302 @@
+---
+import SiteShell from '../../layouts/SiteShell.astro'
+import Container from '../../components/site/Container.astro'
+import Section from '../../components/site/Section.astro'
+import Callout from '../../components/site/Callout.astro'
+import EvidenceBadge from '../../components/site/EvidenceBadge.astro'
+import ContentStatusBadge from '../../components/site/ContentStatusBadge.astro'
+import OpenQuestionBlock from '../../components/site/OpenQuestionBlock.astro'
+import ReadingProgress from '../../components/site/ReadingProgress.astro'
+import ModuleBadge from '../../components/site/ModuleBadge.astro'
+import SourceProvenance from '../../components/research/SourceProvenance.astro'
+import Module01DemoCanvas from '../../components/canvas/Module01DemoCanvas.astro'
+import LiveTelemetryBar from '../../components/site/LiveTelemetryBar.astro'
+import DonationTerminal from '../../components/site/DonationTerminal.astro'
+import CitationBox from '../../components/site/CitationBox.astro'
+import { validateProvenance } from '../../lib/validate-provenance'
+import { validateAllCanvasManifests, isCanvasPubliclyEligible } from '../../data/canvases/registry'
+import { validateFrozenCanonIntegrity } from '../../lib/validate-frozen-canon'
+import { validateAllEditorialPlaneEntities } from '../../lib/validate-editorial-plane'
+import { getCollection, render } from 'astro:content'
+
+export async function getStaticPaths() {
+  const entries = await getCollection('research', ({ data }) =>
+    data.visibility !== 'internal' &&
+    data.lifecycleStatus !== 'paused' &&
+    data.lifecycleStatus !== 'draft' &&
+    data.lifecycleStatus !== 'in_review'
+  );
+
+  const sourcesEntries = await getCollection('sources');
+  const authorsEntries = await getCollection('authors');
+
+  // 1. Run build-time provenance validation
+  validateProvenance(entries.map(e => ({ id: e.id.split('/').pop() || e.id, collection: 'research' as const, data: e.data as any })));
+
+  // 2. Run build-time canvas manifests validation
+  validateAllCanvasManifests();
+
+  // 3. Run frozen canon immutability integrity validation
+  validateFrozenCanonIntegrity();
+
+  // 4. Run editorial plane & fixture isolation validation
+  validateAllEditorialPlaneEntities({
+    sources: sourcesEntries.map(s => s.data as any),
+    authors: authorsEntries.map(a => a.data as any),
+  });
+
+  return entries.map(entry => {
+    const slug = entry.id.split('/').pop() || entry.id;
+    return {
+      params: { slug },
+      props: { entry, cleanSlug: slug },
+    };
+  });
+}
+
+const { entry, cleanSlug } = Astro.props;
+const currentSlug = cleanSlug || entry.id.split('/').pop() || entry.id;
+const { Content } = await render(entry);
+const isCanonicalRef = entry.data.contentKind === 'canonical_reference';
+const isCanonicalModule = entry.data.contentKind === 'canonical_module';
+
+// Fetch related items if specified
+const allResearch = await getCollection('research');
+const allGoliaf = await getCollection('goliaf');
+const relatedItems = (entry.data.relatedArtifacts || []).map(relId => {
+  const r = allResearch.find(x => x.id === relId || (x.id.split('/').pop() || x.id) === relId);
+  if (r) return { title: r.data.title, url: `/research/${r.id.split('/').pop() || r.id}`, type: r.data.contentKind.replace(/_/g, ' ') };
+  const g = allGoliaf.find(x => x.id === relId || (x.id.split('/').pop() || x.id) === relId);
+  if (g) return { title: g.data.title, url: `/goliaf/${g.id.split('/').pop() || g.id}`, type: 'GOLIAF artifact' };
+  return null;
+}).filter(Boolean);
+---
+
+<SiteShell title={entry.data.title} description={entry.data.scope}>
+  <LiveTelemetryBar />
+  <ReadingProgress />
+  
+  <!-- BREADCRUMB -->
+  <div style="padding: 1.5rem 0; border-bottom: 1px solid var(--dc-border); background: var(--dc-raised);">
+    <Container>
+      <nav class="dc-breadcrumb">
+        <span class="dc-breadcrumb__item">
+          <a href="/research" class="dc-breadcrumb__link">Research</a>
+          <span class="dc-breadcrumb__sep">›</span>
+        </span>
+        <span class="dc-breadcrumb__current">{entry.data.title}</span>
+      </nav>
+    </Container>
+  </div>
+  
+  <!-- PAGE HERO -->
+  <div class="dc-page-hero">
+    <Container>
+      <div style="display:flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: center;">
+        {isCanonicalRef ? (
+          <span class="dc-pill dc-pill--accent">DC2SC CANONICAL REFERENCE — FROZEN</span>
+        ) : isCanonicalModule ? (
+          <>
+            {entry.data.moduleNumber && <ModuleBadge moduleNumber={entry.data.moduleNumber} />}
+            <span class="dc-pill dc-pill--conceptual">Canonical module architecture</span>
+          </>
+        ) : (
+          <ContentStatusBadge status={entry.data.lifecycleStatus || 'approved_for_dev'} />
+        )}
+        <EvidenceBadge level={entry.data.evidenceLevel} />
+      </div>
+      <h1 class="dc-page-hero__headline">{entry.data.title}</h1>
+      <p class="dc-page-hero__body">{entry.data.scope}</p>
+    </Container>
+  </div>
+  
+  <Section background="white">
+    <Container>
+      <div class="dc-article-layout">
+        <article class="dc-article-main">
+          {isCanonicalModule && (
+            <div style="border: 1px solid var(--dc-border); background: var(--dc-raised); padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+              <span class="dc-label" style="color: var(--dc-ink);">Canonical module specification</span>
+              <span class="dc-label" style="color: var(--dc-muted);">Long-form editorial prose not yet released</span>
+            </div>
+          )}
+
+          <!-- CLAIM STATUS BOX -->
+          <div style="border: 2px solid var(--dc-border); background: var(--dc-raised); padding: 1.5rem; margin-bottom: 2.5rem;">
+            <strong style="display:block; font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--dc-muted); margin-bottom: 0.5rem;">Claim status</strong>
+            <span style="font-size: var(--dc-text-body); color: var(--dc-ink-2);">{entry.data.claimStatus}</span>
+          </div>
+          
+          <!-- CONTENT -->
+          <div class="dc-prose-article">
+            <Content />
+          </div>
+
+          <!-- PHASE 3B.0/3B.1 RESEARCH CANVAS DEMO FOR MODULE 1 -->
+          {isCanvasPubliclyEligible(currentSlug) && currentSlug === 'module-01-more-choice-less-voice' && (
+            <div style="margin-top: 3.5rem; padding-top: 2.5rem; border-top: 2px solid var(--dc-ink);">
+              <div style="background: var(--dc-surface); border: 2px solid var(--dc-ink); padding: 1.5rem; margin-bottom: 2.5rem;">
+                <div style="display:flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+                  <span class="dc-label" style="color: var(--dc-ink); font-weight: 700;">Research Canvas · Typed Media Container System</span>
+                  <span class="dc-pill dc-pill--conceptual">Conceptual Module Preview</span>
+                </div>
+                <p class="dc-body-sm" style="color: var(--dc-ink-2); margin: 0;">
+                  This interactive visual surface demonstrates the DC2SC Phase 3B.0 media-passport architecture. Every diagram, tension matrix, argument table and scenario block carries explicit epistemic status and scope boundaries.
+                </p>
+              </div>
+              <Module01DemoCanvas />
+            </div>
+          )}
+
+          <!-- SOURCE PROVENANCE LAYER -->
+          <SourceProvenance 
+            id={currentSlug} 
+            webAdaptationNotes={entry.data.webAdaptationNotes}
+            sourceOfTruth={entry.data.sourceOfTruth}
+          />
+
+          <!-- WHAT THIS DOES NOT ESTABLISH -->
+          {entry.data.whatThisDoesNotEstablish && entry.data.whatThisDoesNotEstablish.length > 0 && (
+            <div style="border: 1px solid var(--dc-border); background: var(--dc-surface); padding: 1.5rem; margin-top: 2rem;">
+              <strong style="display: block; font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--dc-muted); margin-bottom: 0.75rem;">What this does not establish</strong>
+              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                {entry.data.whatThisDoesNotEstablish.map(w => <li style="font-size: var(--dc-text-body-sm); color: var(--dc-ink-2);">— {w}</li>)}
+              </ul>
+            </div>
+          )}
+          
+          <!-- LIMITATIONS -->
+          {entry.data.limitations && entry.data.limitations.length > 0 && (
+            <div style="border-left: 4px solid var(--dc-muted); padding: 1.25rem 1.5rem; background: var(--dc-raised); margin-top: 2rem;">
+              <strong style="display: block; font-family: var(--dc-font-mono); font-size: var(--dc-text-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--dc-muted); margin-bottom: 0.75rem;">Limitations</strong>
+              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                {entry.data.limitations.map(l => <li style="font-size: var(--dc-text-body-sm); color: var(--dc-ink-2);">— {l}</li>)}
+              </ul>
+            </div>
+          )}
+
+          <!-- DEPENDENCIES & DOWNSTREAM -->
+          {(entry.data.dependencies || entry.data.downstreamHandOff) && (
+            <div style="border: 1px solid var(--dc-border); padding: 1.25rem 1.5rem; margin-top: 2rem; background: var(--dc-raised);">
+              {entry.data.dependencies && (
+                <div style="margin-bottom: 0.75rem;">
+                  <strong class="dc-label" style="color: var(--dc-muted);">Dependencies: </strong>
+                  <span class="dc-body-sm" style="color: var(--dc-ink-2);">{entry.data.dependencies.join('; ')}</span>
+                </div>
+              )}
+              {entry.data.downstreamHandOff && (
+                <div>
+                  <strong class="dc-label" style="color: var(--dc-muted);">Downstream Hand-off: </strong>
+                  <span class="dc-body-sm" style="color: var(--dc-ink-2);">{entry.data.downstreamHandOff}</span>
+                </div>
+              )}
+            </div>
+          )}
+
+          <!-- RELATED CANONICAL MATERIAL -->
+          {relatedItems.length > 0 && (
+            <div style="margin-top: 2.5rem; border: 1px solid var(--dc-border); background: var(--dc-white); padding: 1.5rem;">
+              <h3 style="font-family: var(--dc-font-display); font-size: 1.125rem; margin-bottom: 1rem; color: var(--dc-ink);">Related Canonical Material</h3>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                {relatedItems.map(item => (
+                  <a href={item.url} style="display: flex; justify-content: space-between; align-items: baseline; text-decoration: none; padding: 0.5rem 0.75rem; background: var(--dc-raised); border: 1px solid var(--dc-border);">
+                    <span style="font-size: var(--dc-text-body-sm); font-weight: 600; color: var(--dc-ink);">{item.title}</span>
+                    <span style="font-family: var(--dc-font-mono); font-size: 0.6875rem; text-transform: uppercase; color: var(--dc-muted);">{item.type}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          <!-- OPEN QUESTIONS -->
+          {entry.data.researchQuestions && entry.data.researchQuestions.length > 0 && (
+            <OpenQuestionBlock questions={entry.data.researchQuestions} />
+          )}
+          
+          <!-- RESEARCH POSTURE CALLOUT -->
+          <div style="margin-top: 2.5rem;">
+            <Callout type="boundary" title="Research posture">
+              DC2SC does not assume aggregation is beneficial. This research module tracks failure explicitly. 'Do not aggregate' is a valid result.
+            </Callout>
+          </div>
+
+          <!-- ACADEMIC CITATION BOX -->
+          <CitationBox title={entry.data.title} slug={currentSlug} collection="research" />
+          
+          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--dc-border); display: flex; justify-content: space-between; align-items: center;">
+            <a href="/research" class="dc-btn dc-btn--ghost">← Back to Research Library</a>
+          </div>
+        </article>
+        
+        <aside class="dc-article-sidebar">
+          <div class="dc-research-status-panel">
+            <div class="dc-research-status-panel__header">
+              {isCanonicalRef ? 'Canonical Status' : 'Research Status'}
+            </div>
+            <div class="dc-research-status-panel__body">
+              {isCanonicalRef ? (
+                <>
+                  <div class="dc-research-status-panel__row">
+                    <span class="dc-research-status-panel__key">Document</span>
+                    <span class="dc-research-status-panel__val">Canonical Narrative Body v1.0</span>
+                  </div>
+                  <div class="dc-research-status-panel__row">
+                    <span class="dc-research-status-panel__key">Canon State</span>
+                    <span class="dc-research-status-panel__val" style="font-weight: 700; color: var(--dc-accent);">FROZEN</span>
+                  </div>
+                  <div class="dc-research-status-panel__row">
+                    <span class="dc-research-status-panel__key">Research</span>
+                    <span class="dc-research-status-panel__val">OPEN</span>
+                  </div>
+                  <div class="dc-research-status-panel__row">
+                    <span class="dc-research-status-panel__key">Product</span>
+                    <span class="dc-research-status-panel__val">NONE</span>
+                  </div>
+                  <div class="dc-research-status-panel__row">
+                    <span class="dc-research-status-panel__key">GOLIAF</span>
+                    <span class="dc-research-status-panel__val">Bounded travel stress-test environment</span>
+                  </div>
+                  <div class="dc-research-status-panel__row">
+                    <span class="dc-research-status-panel__key">Authority</span>
+                    <span class="dc-research-status-panel__val">NONE</span>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div class="dc-research-status-panel__row">
+                    <span class="dc-research-status-panel__key">Evidence</span>
+                    <EvidenceBadge level={entry.data.evidenceLevel} />
+                  </div>
+                  <div class="dc-research-status-panel__row">
+                    <span class="dc-research-status-panel__key">Kind</span>
+                    <span class="dc-research-status-panel__val">{entry.data.contentKind.replace(/_/g, ' ')}</span>
+                  </div>
+                  <div class="dc-research-status-panel__row">
+                    <span class="dc-research-status-panel__key">Canon State</span>
+                    <span class="dc-research-status-panel__val" style={entry.data.canonicalState === 'frozen' ? 'font-weight:700; color:var(--dc-accent);' : ''}>{entry.data.canonicalState.toUpperCase()}</span>
+                  </div>
+                  <div class="dc-research-status-panel__row">
+                    <span class="dc-research-status-panel__key">Claim</span>
+                    <span class="dc-research-status-panel__val">{entry.data.claimState.toUpperCase()}</span>
+                  </div>
+                  <div class="dc-research-status-panel__row">
+                    <span class="dc-research-status-panel__key">Role</span>
+                    <span class="dc-research-status-panel__val">{entry.data.researchRole.replace(/_/g, ' ')}</span>
+                  </div>
+                  <div class="dc-research-status-panel__row">
+                    <span class="dc-research-status-panel__key">Product</span>
+                    <span class="dc-research-status-panel__val">None</span>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div style="margin-top: 4rem;">
+        <DonationTerminal />
+      </div>
+    </Container>
+  </Section>
+</SiteShell>

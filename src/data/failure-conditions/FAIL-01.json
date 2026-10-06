@@ -1,0 +1,16 @@
+{
+  "failureId": "FAIL-01",
+  "name": "demand-formation",
+  "category": "Demand formation",
+  "description": "Failure to articulate coherent collective constraints prior to supplier engagement.",
+  "status": "monitored",
+  "relatedModules": [
+    1,
+    2
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

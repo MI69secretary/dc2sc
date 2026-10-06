@@ -1,0 +1,17 @@
+{
+  "moduleId": "module-03-why-more-buyers",
+  "moduleNumber": "03",
+  "title": "Why More Buyers Do Not Automatically Mean a Better Deal",
+  "subtitle": "Volume without ratification, representation or exit rights does not constitute market power.",
+  "authority": "derived_noncanonical",
+  "canvasStatus": "scaffolded",
+  "visibility": "internal",
+  "indexable": false,
+  "canonicalRefs": [
+    "module-03-why-more-buyers"
+  ],
+  "evidenceLevel": "E0",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "publicationAuthority": "none"
+}

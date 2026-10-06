@@ -1,0 +1,47 @@
+{
+  "mediaId": "M07-FIG-01",
+  "title": "Failure-First Evaluation Tree and Outcome Taxonomy",
+  "mediaKind": "structural_model_diagram",
+  "epistemicBasis": "conceptual",
+  "representationRole": "structural_model",
+  "provenanceMode": "canonical_derived",
+  "artifactRole": "diagram",
+  "authority": "derived_noncanonical",
+  "evidenceLevel": "E0",
+  "claimState": "active",
+  "reviewStatus": "reviewed",
+  "canonicalRefs": [
+    "module-07-what-counts-as-success"
+  ],
+  "sourceRefs": [
+    "SRC-0001"
+  ],
+  "scopeLimits": [
+    "Illustrates how DC2SC evaluates coordination outcomes, treating 'Do Not Aggregate' and 'Constraint Rejection' as first-class successes."
+  ],
+  "limitations": [
+    "Conceptual decision tree; does not track live platform transactions."
+  ],
+  "accessibility": {
+    "decorative": false,
+    "altText": "A decision tree contrasting naive transaction metrics with DC2SC failure-first evaluation criteria where non-aggregation is a valid result.",
+    "textEquivalent": "Decision tree: Evaluates constraint satisfaction, outside option superiority, and zero-penalty exit. An orderly 'Do Not Aggregate' is classified as an informative research success.",
+    "colorIndependent": true
+  },
+  "commercialIntent": "none",
+  "containsTransactionalCTA": false,
+  "containsLeadCapture": false,
+  "containsBookingControl": false,
+  "containsPricePromise": false,
+  "containsUnsupportedBenefitClaim": false,
+  "asset": {
+    "type": "svg",
+    "file": "/images/diagrams/success-criteria-decision-tree.svg",
+    "license": "Original DC2SC visual",
+    "rightsStatus": "owned"
+  },
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

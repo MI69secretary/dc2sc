@@ -1,0 +1,56 @@
+{
+  "tableId": "M07-TAB-01",
+  "title": "Naive Commercial Metrics vs. DC2SC Failure-First Evaluation Criteria",
+  "kind": "comparison_matrix",
+  "columns": [
+    { "key": "market", "label": "Naive Commercial / Platform Metric", "description": "Conventional transactional optimization" },
+    { "key": "person", "label": "DC2SC Demand-Side Research Criterion", "description": "Rigorous participant welfare and agency benchmark" }
+  ],
+  "rows": [
+    {
+      "rowId": "r1",
+      "cells": {
+        "market": "1. Transaction Volume / GMV (Gross transactions executed)",
+        "person": "Constraint Satisfaction: Did terms satisfy explicit un-averaged constraint floors?"
+      }
+    },
+    {
+      "rowId": "r2",
+      "cells": {
+        "market": "2. Nominal Discount (Percentage off inflated list price)",
+        "person": "Outside-Option Superiority: Was the offer demonstrably superior to accessible individual alternatives?"
+      }
+    },
+    {
+      "rowId": "r3",
+      "cells": {
+        "market": "3. User Retention / Lock-in (Minimizing participant churn)",
+        "person": "Zero-Penalty Exit: Could participants freely dissolve commitments without residual harm?"
+      }
+    },
+    {
+      "rowId": "r4",
+      "cells": {
+        "market": "4. Drop-off Treated as System Failure",
+        "person": "Orderly 'Do Not Aggregate' Treated as Complete Scientific Success"
+      }
+    }
+  ],
+  "caption": "Comparison of transactional optimization vs. demand-side research success criteria.",
+  "scopeLimits": [
+    "Conceptual framework. Does not measure live commercial metrics."
+  ],
+  "limitations": [
+    "Theoretical evaluation matrix; empirical validation planned in subsequent phases."
+  ],
+  "canonicalRefs": ["module-07-what-counts-as-success"],
+  "sourceRefs": ["canonical-narrative"],
+  "accessibility": {
+    "textEquivalent": "Matrix comparing 4 naive commercial metrics (GMV, Nominal Discount, Retention, Drop-off Penalty) with DC2SC criteria (Constraint Satisfaction, Outside Option Superiority, Zero-Penalty Exit, Do Not Aggregate Validity).",
+    "dataTableFallback": true
+  },
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

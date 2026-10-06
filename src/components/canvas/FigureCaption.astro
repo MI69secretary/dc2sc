@@ -1,0 +1,38 @@
+---
+import type { MediaPassport as PassportType } from '../../types/media-passport';
+
+interface Props {
+  passport?: PassportType;
+  figureNumber?: string | number;
+  caption?: string;
+  scopeLimit?: string;
+  source?: string;
+  class?: string;
+}
+
+const {
+  passport,
+  figureNumber,
+  caption = passport?.caption || passport?.title || '',
+  scopeLimit = passport?.scopeLimit,
+  source = passport?.sourceReference,
+  class: className = '',
+} = Astro.props;
+---
+
+<figcaption class={`dc-figure-caption ${className}`}>
+  <div class="dc-figure-caption__text">
+    {figureNumber && <strong class="dc-figure-caption__num">Fig. {figureNumber} &mdash; </strong>}
+    <span>{caption}</span>
+  </div>
+  {scopeLimit && (
+    <div class="dc-figure-caption__limit">
+      <span class="dc-label dc-label--subtle">Scope boundary:</span> {scopeLimit}
+    </div>
+  )}
+  {source && (
+    <div class="dc-figure-caption__source">
+      <span class="dc-label dc-label--subtle">Source:</span> {source}
+    </div>
+  )}
+</figcaption>

@@ -1,0 +1,15 @@
+{
+  "hypothesisId": "HYP-004",
+  "title": "Commitment Cost Asymmetry Reduces Participation",
+  "statement": "When participants bear asymmetric downside risk upon collective dissolution, rational individuals default to sub-optimal outside options.",
+  "status": "active",
+  "evidenceLevel": "E0",
+  "relatedModules": [
+    4
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

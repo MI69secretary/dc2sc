@@ -1,0 +1,14 @@
+{
+  "eventId": "EVT-2026-005",
+  "title": "Module 01 Substack External Edition Republication",
+  "eventType": "media_republication",
+  "scheduledDate": "2026-09-26",
+  "targetArtifactId": "ED-M01-SUBSTACK",
+  "channel": "substack",
+  "status": "scheduled",
+  "description": "Cross-post derived essay to Substack research publication with citation backlinks.",
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

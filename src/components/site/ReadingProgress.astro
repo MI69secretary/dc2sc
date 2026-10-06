@@ -1,0 +1,15 @@
+---
+---
+<div class="dc-reading-progress" aria-hidden="true">
+  <div class="dc-reading-progress__bar" id="reading-progress-bar"></div>
+</div>
+<script>
+  const bar = document.getElementById('reading-progress-bar');
+  if (bar) {
+    window.addEventListener('scroll', () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+      bar.style.width = Math.min(100, progress) + '%';
+    }, { passive: true });
+  }
+</script>

@@ -1,0 +1,99 @@
+---
+import type { MediaPassport as PassportType } from '../../types/media-passport';
+import MediaPassport from './MediaPassport.astro';
+import FigureCaption from './FigureCaption.astro';
+
+interface Props {
+  passport: PassportType;
+  figureNumber?: string | number;
+  datasetName?: string;
+  methodDescription?: string;
+  populationScope?: string;
+  dataTransformation?: string;
+  baselineComparison?: string;
+  hasApprovedData?: boolean;
+  class?: string;
+}
+
+const {
+  passport,
+  figureNumber,
+  datasetName,
+  methodDescription,
+  populationScope,
+  dataTransformation,
+  baselineComparison,
+  hasApprovedData = false,
+  class: className = '',
+} = Astro.props;
+
+const isEmpiricalApproved = hasApprovedData && passport.epistemicBasis === 'empirical' && (passport.reviewStatus === 'reviewed' || passport.reviewStatus === 'frozen');
+---
+
+<figure class={`dc-media-block dc-media-block--chart ${className}`} id={passport.id} aria-labelledby={`${passport.id}-title`}>
+  <div class="dc-media-block__banner">
+    <span class="dc-label">Evidence Chart &#183;Quantitative Research Metric &#183;E1&#8211;E5 Standard</span>
+  </div>
+
+  <div class="dc-media-block__header">
+    <h3 class="dc-media-block__title" id={`${passport.id}-title`}>{passport.title}</h3>
+  </div>
+
+  {isEmpiricalApproved ? (
+    <div class="dc-evidence-chart__body">
+      <div class="dc-evidence-chart__canvas" role="img" aria-label={passport.altText}>
+        <slot />
+      </div>
+
+      <div class="dc-evidence-chart__metadata">
+        <dl class="dc-evidence-chart__dl">
+          {datasetName && (
+            <>
+              <dt>Dataset:</dt>
+              <dd>{datasetName}</dd>
+            </>
+          )}
+          {methodDescription && (
+            <>
+              <dt>Method:</dt>
+              <dd>{methodDescription}</dd>
+            </>
+          )}
+          {populationScope && (
+            <>
+              <dt>Scope / Period:</dt>
+              <dd>{populationScope}</dd>
+            </>
+          )}
+          {dataTransformation && (
+            <>
+              <dt>Transformation:</dt>
+              <dd>{dataTransformation}</dd>
+            </>
+          )}
+          {baselineComparison && (
+            <>
+              <dt>Counterfactual / Baseline:</dt>
+              <dd>{baselineComparison}</dd>
+            </>
+          )}
+        </dl>
+      </div>
+    </div>
+  ) : (
+    <div class="dc-empty-state dc-empty-state--evidence">
+      <span class="dc-pill dc-pill--conceptual">Level E0 / Conceptual Horizon</span>
+      <h4 class="dc-empty-state__title" style="font-size: 1.125rem; margin-top: 0.75rem;">No empirical visual is shown here</h4>
+      <p class="dc-empty-state__body" style="font-size: 0.9375rem; max-width: 45ch;">
+        This research item currently has conceptual or contextual support only. Quantitative empirical charts require verified field observation protocols (Levels E1&#8211;E5).
+      </p>
+    </div>
+  )}
+
+  <FigureCaption 
+    figureNumber={figureNumber}
+    passport={passport}
+  />
+
+  <MediaPassport passport={passport} />
+</figure>

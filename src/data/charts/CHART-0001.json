@@ -1,0 +1,31 @@
+{
+  "chartId": "CHART-0001",
+  "title": "Theoretical Yield Extraction vs Demand Fragmentation",
+  "chartType": "matrix_grid",
+  "datasetRefs": ["DATASET-0001"],
+  "dataSource": "Analytical simulation model",
+  "derivation": "Theoretical parameter mapping across isolated consumer signals",
+  "empiricalContext": "Level E0 conceptual model; no observed field transactions",
+  "methodology": "Microeconomic game-theoretic payoff modeling under asymmetric search",
+  "dataTableFallback": {
+    "headers": ["Fragmentation Level", "Expected Search Cost", "Supplier Margin Capture"],
+    "rows": [
+      ["High (Isolated)", "High", "High"],
+      ["Medium (Uncoordinated Overlap)", "Medium", "Medium-High"],
+      ["Low (Collective Mandate)", "Low", "Negotiated Floor"]
+    ]
+  },
+  "scopeLimits": [
+    "Applies strictly to analytical game models. Does not constitute observed empirical market telemetry."
+  ],
+  "limitations": [
+    "Assumes rational search behavior and static supplier pricing strategies."
+  ],
+  "epistemicBasis": "analytical",
+  "evidenceLevel": "E0",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

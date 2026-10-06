@@ -1,0 +1,17 @@
+{
+  "moduleId": "module-06-travel-is-a-stress-test",
+  "moduleNumber": "06",
+  "title": "Travel Is a Stress Test",
+  "subtitle": "High stakes, severe time compression, and extreme supplier asymmetry as an empirical testing ground.",
+  "authority": "derived_noncanonical",
+  "canvasStatus": "scaffolded",
+  "visibility": "internal",
+  "indexable": false,
+  "canonicalRefs": [
+    "module-06-travel-is-a-stress-test"
+  ],
+  "evidenceLevel": "E0",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "publicationAuthority": "none"
+}

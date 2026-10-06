@@ -1,0 +1,15 @@
+{
+  "failureId": "FAIL-04",
+  "name": "commitment",
+  "category": "Commitment",
+  "description": "Unilateral defections, asymmetric risk bearing, or premature dissolution of formed positions.",
+  "status": "monitored",
+  "relatedModules": [
+    4
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

@@ -1,0 +1,31 @@
+---
+import type { MediaPassport as PassportType } from '../../types/media-passport';
+import MediaPassport from './MediaPassport.astro';
+import FigureCaption from './FigureCaption.astro';
+
+interface Props {
+  passport: PassportType;
+  figureNumber?: string | number;
+  class?: string;
+}
+
+const { passport, figureNumber, class: className = '' } = Astro.props;
+---
+
+<figure class={`dc-media-block dc-media-block--editorial ${className}`} id={passport.id} aria-labelledby={`${passport.id}-title`}>
+  <div class="dc-media-block__banner">
+    <span class="dc-media-block__badge-dot" aria-hidden="true"></span>
+    <span class="dc-label">Editorial Visual &middot; Not Evidence &middot; Purpose: Orientation</span>
+  </div>
+
+  <div class="dc-editorial-image__surface" role="img" aria-label={passport.altText}>
+    <slot />
+  </div>
+
+  <FigureCaption 
+    figureNumber={figureNumber}
+    passport={passport}
+  />
+
+  <MediaPassport passport={passport} />
+</figure>

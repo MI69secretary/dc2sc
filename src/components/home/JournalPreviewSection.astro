@@ -1,0 +1,39 @@
+---
+import Container from '../site/Container.astro'
+import Section from '../site/Section.astro'
+import SectionHeading from '../site/SectionHeading.astro'
+import Pill from '../site/Pill.astro'
+import { journalArticles } from '../../data/journal.ts'
+
+const previewArticles = journalArticles.slice(0, 3)
+---
+
+<Section>
+  <Container>
+    <SectionHeading headline="Notes from the research" />
+    
+    <div class="dc-grid dc-grid--3" style="margin-top: 3rem; margin-bottom: 3rem;">
+      {previewArticles.map((article) => (
+        <article class="dc-article-card">
+          <div class="dc-article-card__meta">
+            <Pill variant="conceptual" text="Conceptual preview" />
+            <Pill variant="accent" text={article.evidenceBadge || 'E0'} />
+            <span class="dc-mono">{article.type || 'Research essay'}</span>
+          </div>
+          
+          <h3 class="dc-article-card__title">{article.title}</h3>
+          <p class="dc-article-card__dek">{article.dek}</p>
+          
+          <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--dc-border); display: flex; align-items: center; justify-content: space-between;">
+            <Pill variant="default" text={article.topic} />
+            <span class="dc-label" style="color: var(--dc-muted);">Not a live-market claim</span>
+          </div>
+        </article>
+      ))}
+    </div>
+    
+    <div>
+      <a href="/journal" class="dc-btn dc-btn--secondary">Explore all research notes</a>
+    </div>
+  </Container>
+</Section>

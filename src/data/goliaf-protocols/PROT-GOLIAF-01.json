@@ -1,0 +1,12 @@
+{
+  "protocolId": "PROT-GOLIAF-01",
+  "name": "Multi-Stage Travel Journey Mapping Protocol",
+  "scope": "Standardized 8-stage journey mapping protocol for logging constraint evolution in travel environments.",
+  "status": "reviewed",
+  "boundaryNotice": "Bounded travel stress-test environment. Journey mapping does not constitute commercial route planning.",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

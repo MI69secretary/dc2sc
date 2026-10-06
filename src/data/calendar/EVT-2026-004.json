@@ -1,0 +1,14 @@
+{
+  "eventId": "EVT-2026-004",
+  "title": "Module 01 Medium External Edition Republication",
+  "eventType": "media_republication",
+  "scheduledDate": "2026-09-25",
+  "targetArtifactId": "ED-M01-MEDIUM",
+  "channel": "medium",
+  "status": "scheduled",
+  "description": "Cross-post derived essay to Medium with canonical URL pointing back to DC2SC site.",
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

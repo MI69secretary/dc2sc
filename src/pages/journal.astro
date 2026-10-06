@@ -1,0 +1,177 @@
+---
+import SiteShell from '../layouts/SiteShell.astro';
+import Container from '../components/site/Container.astro';
+import Section from '../components/site/Section.astro';
+import Pill from '../components/site/Pill.astro';
+import Eyebrow from '../components/site/Eyebrow.astro';
+import EvidenceBadge from '../components/site/EvidenceBadge.astro';
+import ContentStatusBadge from '../components/site/ContentStatusBadge.astro';
+import EmptyState from '../components/site/EmptyState.astro';
+import LiveTelemetryBar from '../components/site/LiveTelemetryBar.astro';
+import EditorialHero from '../components/editorial/EditorialHero.astro';
+import { getCollection } from 'astro:content';
+
+const publicArticles = await getCollection('journal', ({ data }) =>
+  data.visibility !== 'internal' &&
+  data.lifecycleStatus !== 'paused' &&
+  data.lifecycleStatus !== 'draft' &&
+  data.lifecycleStatus !== 'in_review'
+);
+
+const featured = publicArticles.find(a => a.data.featured) || publicArticles[0];
+const articles = publicArticles;
+
+const topics = ['All', 'Market isolation', 'Collective agency', 'Quantity and scale', 'Commitment', 'Coordination rights', 'Travel stress test', 'Success and failure'];
+const evidenceLevels = [
+  { label: 'All evidence', value: 'all' },
+  { label: 'E0 Conceptual', value: 'E0' },
+  { label: 'E1 Contextual theory', value: 'E1' },
+  { label: 'E2 Internal observation', value: 'E2' },
+  { label: 'E3 External evidence', value: 'E3' },
+  { label: 'E4 Field evidence', value: 'E4' },
+  { label: 'E5 Replication', value: 'E5' },
+];
+---
+<SiteShell title="Журнал депеш та рецензій" description="Галузеві депеші, рецензовані есеї та аналітика ринкових структур від консорціуму DC2SC.">
+  <LiveTelemetryBar />
+  
+  <EditorialHero 
+    eyebrow="LEX.AI // РЕГУЛЯТОРНИЙ РЕЄСТР ДЕПЕШ"
+    title="Галузеві депеші: Реєстр регуляторних бюлетенів, судових прецедентів та наукових рецензій"
+    lead="Систематизований аналітичний стрім міжнародних антимонопольних розслідувань, настанов FTC/DOJ, процедур Єврокомісії DG COMP та наукових аудитів алгоритмічного картелювання й цінової дисперсії."
+    arxivId="ISSN 2956-4821"
+    sha256="92b41f8c...11a0"
+  />
+
+  <Section background="white">
+    <Container>
+      {articles.length === 0 ? (
+        <div style="max-width: 640px; margin: 0 auto; text-align: center; padding: 4rem 1rem;">
+          <div style="margin-bottom: 1.5rem;">
+            <Pill variant="conceptual" text="Editorial in development" />
+          </div>
+          <h2 class="dc-display-lg" style="margin-bottom: 1.5rem;">Editorial work in development</h2>
+          <p class="dc-body-lg" style="color: var(--dc-ink-2); margin-bottom: 2.5rem; line-height: 1.65;">
+            Canonical research modules are available in the <a href="/research" style="color: var(--dc-accent); text-decoration: underline;">Research library</a>. Derived editorial essays will appear here following independent review and approval.
+          </p>
+          <div class="dc-btn-group" style="justify-content: center;">
+            <a href="/research" class="dc-btn dc-btn--primary">Explore Canonical Research</a>
+            <a href="/about" class="dc-btn dc-btn--secondary">About DC2SC</a>
+          </div>
+        </div>
+      ) : (
+        <>
+          <!-- FEATURED -->
+          {featured && (
+            <a href={`/journal/${featured.id}`} class="dc-article-card-link" style="display:block; margin-bottom: 3rem;">
+              <div class="dc-card" style="border: 2px solid var(--dc-border);">
+                <Eyebrow text="Featured essay" />
+                <h2 class="dc-display-lg" style="margin: 1rem 0 1.5rem;">{featured.data.title}</h2>
+                <p class="dc-body-lg" style="margin-bottom: 2rem; color: var(--dc-ink-2); max-width: 60ch;">{featured.data.dek}</p>
+                <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap; margin-bottom: 2rem;">
+                  <ContentStatusBadge status={featured.data.lifecycleStatus || 'conceptual_preview'} />
+                  <EvidenceBadge level={featured.data.evidenceLevel} />
+                  <span class="dc-mono">Editorial essay</span>
+                </div>
+                <div style="padding-top: 1.5rem; border-top: 1px solid var(--dc-border); display:flex; justify-content:space-between; align-items:center;">
+                  <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                    {featured.data.topics.map(t => <Pill variant="default" text={t} />)}
+                  </div>
+                  <span class="dc-label" style="color:var(--dc-muted);">Not a live-market claim</span>
+                </div>
+              </div>
+            </a>
+          )}
+          
+          <!-- TOPIC FILTER BAR -->
+          <div class="dc-filter-bar" id="topic-filter-bar" role="group" aria-label="Filter by topic" style="margin-bottom: 1rem;">
+            {topics.map((t, i) => (
+              <button
+                class={`dc-filter-chip${i === 0 ? ' dc-filter-chip--active' : ''}`}
+                data-topic={t === 'All' ? 'all' : t}
+                aria-pressed={i === 0 ? 'true' : 'false'}
+              >{t}</button>
+            ))}
+          </div>
+          
+          <!-- EVIDENCE FILTER BAR -->
+          <div class="dc-filter-bar" id="evidence-filter-bar" role="group" aria-label="Filter by evidence level" style="margin-bottom: 2rem;">
+            {evidenceLevels.map((e, i) => (
+              <button
+                class={`dc-filter-chip${i === 0 ? ' dc-filter-chip--active' : ''}`}
+                data-evidence={e.value}
+                aria-pressed={i === 0 ? 'true' : 'false'}
+              >{e.label}</button>
+            ))}
+            <span class="dc-label" style="color:var(--dc-muted); margin-left:auto;">Local filter · conceptual preview only</span>
+          </div>
+          
+          <!-- ARTICLE LIST -->
+          <div id="journal-list">
+            {articles.map(article => (
+              <a href={`/journal/${article.id}`} class="dc-article-card-link" data-topics={JSON.stringify(article.data.topics)} data-evidence={article.data.evidenceLevel}>
+                <article class="dc-article-card">
+                  <div class="dc-article-card__meta">
+                    <ContentStatusBadge status={article.data.lifecycleStatus || 'conceptual_preview'} />
+                    <EvidenceBadge level={article.data.evidenceLevel} />
+                    <span class="dc-mono">Editorial essay</span>
+                  </div>
+                  <h2 class="dc-article-card__title">{article.data.title}</h2>
+                  <p class="dc-article-card__dek">{article.data.dek}</p>
+                  <div class="dc-article-card__footer">
+                    <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                      {article.data.topics.map(t => <Pill variant="default" text={t} />)}
+                    </div>
+                    <span class="dc-label" style="color:var(--dc-muted);">Not a live-market claim</span>
+                  </div>
+                </article>
+              </a>
+            ))}
+          </div>
+        </>
+      )}
+    </Container>
+  </Section>
+</SiteShell>
+
+<script>
+  // Topic filter
+  const topicBar = document.getElementById('topic-filter-bar');
+  const evidenceBar = document.getElementById('evidence-filter-bar');
+  const list = document.getElementById('journal-list');
+  if (!list) {}
+  else {
+    let activeTopicFilter = 'all';
+    let activeEvidenceFilter = 'all';
+
+    function applyFilters() {
+      const items = list!.querySelectorAll<HTMLElement>('[data-topics]');
+      items.forEach(item => {
+        const topicsRaw = item.getAttribute('data-topics') || '[]';
+        const itemTopics: string[] = JSON.parse(topicsRaw);
+        const evidence = item.getAttribute('data-evidence') || '';
+        const topicMatch = activeTopicFilter === 'all' || itemTopics.includes(activeTopicFilter);
+        const evidenceMatch = activeEvidenceFilter === 'all' || evidence === activeEvidenceFilter;
+        item.style.display = (topicMatch && evidenceMatch) ? '' : 'none';
+      });
+    }
+
+    topicBar?.addEventListener('click', e => {
+      const btn = (e.target as HTMLElement).closest('[data-topic]') as HTMLButtonElement | null;
+      if (!btn) return;
+      topicBar.querySelectorAll('[data-topic]').forEach(b => { b.classList.remove('dc-filter-chip--active'); b.setAttribute('aria-pressed','false'); });
+      btn.classList.add('dc-filter-chip--active'); btn.setAttribute('aria-pressed','true');
+      activeTopicFilter = btn.getAttribute('data-topic') || 'all';
+      applyFilters();
+    });
+
+    evidenceBar?.addEventListener('click', e => {
+      const btn = (e.target as HTMLElement).closest('[data-evidence]') as HTMLButtonElement | null;
+      if (!btn) return;
+      evidenceBar.querySelectorAll('[data-evidence]').forEach(b => { b.classList.remove('dc-filter-chip--active'); b.setAttribute('aria-pressed','false'); });
+      btn.classList.add('dc-filter-chip--active'); btn.setAttribute('aria-pressed','true');
+      activeEvidenceFilter = btn.getAttribute('data-evidence') || 'all';
+      applyFilters();
+    });
+  }
+</script>

@@ -1,0 +1,15 @@
+{
+  "hypothesisId": "HYP-005",
+  "title": "Non-Compensable Rights Floors Prevent Predatory Convergence",
+  "statement": "Inalienable floors on exit, privacy, and contestability prevent collective bargaining positions from degenerating into coercive cartels.",
+  "status": "active",
+  "evidenceLevel": "E0",
+  "relatedModules": [
+    5
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

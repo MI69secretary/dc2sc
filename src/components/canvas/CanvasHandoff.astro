@@ -1,0 +1,45 @@
+---
+import type { MediaPassport as PassportType } from '../../types/media-passport';
+import MediaPassport from './MediaPassport.astro';
+
+interface Props {
+  question: string;
+  targetModuleTitle: string;
+  targetModuleUrl: string;
+  targetModuleNumber?: string;
+  passport?: PassportType;
+  class?: string;
+}
+
+const {
+  question,
+  targetModuleTitle,
+  targetModuleUrl,
+  targetModuleNumber,
+  passport,
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`dc-canvas-handoff ${className}`} id={passport?.id}>
+  <div class="dc-canvas-handoff__inner">
+    <div class="dc-canvas-handoff__badge">
+      <span class="dc-label" style="color: var(--dc-accent);">Downstream Research Handoff</span>
+    </div>
+
+    <h3 class="dc-canvas-handoff__question">
+      &ldquo;{question}&rdquo;
+    </h3>
+
+    <div class="dc-canvas-handoff__target">
+      <span class="dc-label dc-label--subtle">Next Research Module:</span>
+      <a href={targetModuleUrl} class="dc-canvas-handoff__link">
+        {targetModuleNumber && <span class="dc-canvas-handoff__num">{targetModuleNumber}</span>}
+        <span class="dc-canvas-handoff__name">{targetModuleTitle}</span>
+        <span class="dc-canvas-handoff__arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </div>
+
+  {passport && <MediaPassport passport={passport} />}
+</div>

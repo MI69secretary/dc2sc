@@ -1,0 +1,11 @@
+{
+  "citationId": "CIT-0002",
+  "sourceId": "SRC-0002",
+  "apa": "Hirschman, A. O. (1970). Exit, Voice, and Loyalty: Responses to Decline in Firms, Organizations, and States. Harvard University Press.",
+  "bibtex": "@book{hirschman1970exit, title={Exit, Voice, and Loyalty}, author={Hirschman, Albert O.}, year={1970}, publisher={Harvard University Press}}",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

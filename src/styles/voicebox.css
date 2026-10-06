@@ -1,0 +1,168 @@
+/* VoiceBox: editorial typography, flat surfaces, one red navigation accent. */
+:root,
+:root[data-theme='light'],
+:root[data-theme='dark'] {
+  color-scheme: light;
+  --vb-black: #0a0a0a;
+  --vb-red: #ef4444;
+  --vb-white: #fafafa;
+  --vb-surface: #f5f5f5;
+  --vb-raised: #e5e5e5;
+  --vb-muted: #525252;
+  --vb-border: #d4d4d4;
+  --vb-heading: 'Archivo Black', Impact, 'Arial Black', sans-serif;
+  --sl-font: 'Work Sans', -apple-system, 'Segoe UI', Helvetica, sans-serif;
+  --sl-font-mono: 'Space Mono', 'Courier New', Consolas, monospace;
+  --sl-color-white: var(--vb-black);
+  --sl-color-black: var(--vb-white);
+  --sl-color-gray-1: #262626;
+  --sl-color-gray-2: #525252;
+  --sl-color-gray-3: #737373;
+  --sl-color-gray-4: #a3a3a3;
+  --sl-color-gray-5: #d4d4d4;
+  --sl-color-gray-6: #e5e5e5;
+  --sl-color-gray-7: #f5f5f5;
+  --sl-color-text: var(--vb-black);
+  --sl-color-text-accent: var(--vb-black);
+  --sl-color-text-invert: var(--vb-white);
+  --sl-color-accent: var(--vb-black);
+  --sl-color-accent-low: var(--vb-surface);
+  --sl-color-accent-high: var(--vb-black);
+  --sl-color-bg: var(--vb-white);
+  --sl-color-bg-nav: var(--vb-white);
+  --sl-color-bg-sidebar: var(--vb-white);
+  --sl-color-bg-inline-code: var(--vb-surface);
+  --sl-color-bg-accent: var(--vb-black);
+  --sl-color-hairline: var(--vb-border);
+  --sl-color-hairline-light: var(--vb-raised);
+  --sl-color-hairline-shade: var(--vb-border);
+  --sl-shadow-sm: none;
+  --sl-shadow-md: none;
+  --sl-shadow-lg: none;
+  --sl-text-h1: clamp(2.375rem, 5vw, 3.5rem);
+  --sl-text-h2: 1.5rem;
+  --sl-text-h3: 1.5rem;
+  --sl-line-height: 1.7;
+  --sl-content-width: 48rem;
+}
+
+body { background: var(--vb-white); }
+::selection { background: var(--vb-black); color: var(--vb-white); }
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--vb-black);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 2px var(--vb-white);
+}
+:where(button, input, textarea, select, dialog, .card, .sl-link-card, .starlight-aside, pre, code, kbd) {
+  border-radius: 0 !important;
+  box-shadow: none;
+}
+header.header { border-bottom: 2px solid var(--vb-black); }
+.site-title {
+  font-family: var(--vb-heading);
+  font-size: 1.5rem;
+  letter-spacing: -.04em;
+  color: var(--vb-black);
+}
+.site-title:hover { opacity: .7; }
+starlight-lang-select select {
+  min-height: 44px;
+  font-family: var(--sl-font);
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--vb-black);
+  background-color: var(--vb-white);
+}
+.sidebar-pane { border-inline-end: 1px solid var(--vb-border); }
+.sidebar-content summary {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.sidebar-content a {
+  border-radius: 0;
+  padding: .65rem .75rem;
+  color: var(--vb-muted);
+}
+.sidebar-content a:hover { background: var(--vb-surface); color: var(--vb-black); }
+.sidebar-content a[aria-current='page'] {
+  background: var(--vb-black);
+  color: var(--vb-white);
+  border-bottom: 3px solid var(--vb-red);
+  font-weight: 700;
+}
+.content-panel { border-bottom-color: var(--vb-border); }
+.content-panel:first-child { padding-block: 3rem; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--vb-heading);
+  font-weight: 400;
+  color: var(--vb-black);
+}
+h1 { line-height: 1.05; letter-spacing: -.03em; overflow-wrap: anywhere; }
+.sl-markdown-content :is(h2, h3, h4) { line-height: 1.2; letter-spacing: -.01em; }
+.sl-markdown-content h2 { padding-top: 1.5rem; border-top: 2px solid var(--vb-black); }
+.sl-markdown-content p { max-width: 68ch; }
+.sl-markdown-content a:not(.sl-anchor-link) {
+  color: var(--vb-black);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.sl-markdown-content a:hover { text-decoration-style: double; }
+.sl-markdown-content blockquote {
+  border-inline-start: 4px solid var(--vb-red);
+  background: var(--vb-surface);
+  padding: 1.5rem;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--vb-black);
+}
+/* A pull quote takes over the single persistent red accent when present. */
+body:has(.sl-markdown-content blockquote) .sidebar-content a[aria-current='page'] { border-bottom-color: var(--vb-black); }
+.sl-markdown-content :is(th, td) { border-color: var(--vb-border); }
+.sl-markdown-content th { background: var(--vb-surface); font-weight: 700; }
+.card, .sl-link-card {
+  border: 2px solid var(--vb-raised);
+  background: var(--vb-white);
+  padding: 1.5rem;
+  box-shadow: none;
+}
+.card:hover, .sl-link-card:hover { border-color: var(--vb-black); }
+.pagination-links a {
+  border: 2px solid var(--vb-black);
+  border-radius: 0;
+  box-shadow: none;
+}
+.pagination-links a:hover { background: var(--vb-surface); }
+.pagination-links .link-title { font-family: var(--vb-heading); font-size: 1.5rem; }
+starlight-toc a[aria-current='true'] { color: var(--vb-black); font-weight: 700; }
+starlight-toc h2 { font: 700 .75rem/1.5 var(--sl-font); text-transform: uppercase; letter-spacing: .08em; }
+site-search button[data-open-modal] {
+  border: 2px solid var(--vb-border);
+  border-radius: 0;
+  background: var(--vb-white);
+  color: var(--vb-muted);
+  min-height: 44px;
+}
+site-search button[data-open-modal]:hover { border-color: var(--vb-black); }
+site-search dialog { border: 2px solid var(--vb-black); }
+.sl-link-button {
+  border: 2px solid var(--vb-black);
+  border-radius: 0;
+  padding: 10px 24px;
+  font: 700 .875rem/1.5 var(--sl-font);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.sl-link-button.primary { background: var(--vb-black); color: var(--vb-white); }
+.sl-link-button.primary:hover { background: var(--vb-red); border-color: var(--vb-red); }
+.sl-link-button.primary:active { background: #dc2626; border-color: #dc2626; }
+.sl-link-button.secondary:hover { background: var(--vb-black); color: var(--vb-white); }
+@media (min-width: 72rem) {
+  .content-panel:first-child { padding-block: 4rem; }
+}
+@media (max-width: 49.99rem) {
+  .content-panel:first-child { padding-block: 2rem; }
+  .sl-markdown-content blockquote { padding: 1rem; }
+  .pagination-links .link-title { font-size: 1rem; }
+}

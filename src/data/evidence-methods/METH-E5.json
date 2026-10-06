@@ -1,0 +1,11 @@
+{
+  "methodId": "METH-E5",
+  "name": "E5 — Multi-Site Replicated Field Evidence",
+  "description": "Replicated, multi-site empirical field evidence across diverse market sectors verifying sustained coordination efficacy.",
+  "status": "proposed",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

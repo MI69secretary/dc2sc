@@ -1,0 +1,92 @@
+---
+// AcademicXStream.astro — Scholarly commentary tweet matrix
+interface TweetItem {
+  name: string;
+  handle: string;
+  avatar: string;
+  affiliation: string;
+  text: string;
+  citations: string;
+  date: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  items?: TweetItem[];
+}
+
+const defaultItems: TweetItem[] = [
+  {
+    name: 'Dr. Evelyn Vance',
+    handle: '@evance_econ',
+    avatar: 'EV',
+    affiliation: 'Oxford Dept of Economics',
+    text: '«Концепція "Dispersion Trap" наочно пояснює, чому штучна волатильність та фрагментація цін парадоксально позбавляє покупця координаційної спроможності.»',
+    citations: '42 Peer Citations',
+    date: 'Sep 2026'
+  },
+  {
+    name: 'Prof. Marcus Brody',
+    handle: '@mbrody_ox',
+    avatar: 'MB',
+    affiliation: 'Stanford Cyber Policy Lab',
+    text: '«Ми переходимо від ери пасивного антимонопольного захисту до ери формальних криптографічних протоколів зворотного попиту.»',
+    citations: '89 Peer Citations',
+    date: 'Sep 2026'
+  },
+  {
+    name: 'Dr. Aris Thorne',
+    handle: '@thorne_algo',
+    avatar: 'AT',
+    affiliation: 'MIT Algorithmic Game Theory',
+    text: '«Синхронізована верифікація доводить: наявність хоча б одного раціонального агента з ескроу руйнує мовчазний картель монополії.»',
+    citations: '61 Peer Citations',
+    date: 'Aug 2026'
+  },
+  {
+    name: 'Elena Rostova',
+    handle: '@erostova_law',
+    avatar: 'ER',
+    affiliation: 'EUI Centre for Judicial Studies',
+    text: '«Правове регулювання algorithmic pricing вимагає верифікованих математичних інваріантів замість декларативних регуляторних настанов.»',
+    citations: '34 Peer Citations',
+    date: 'Aug 2026'
+  }
+];
+
+const {
+  title = 'АКАДЕМІЧНИЙ X-STREAM // SCHOLARLY COMMENTARY',
+  subtitle = 'Рецензії провідних дослідників ринкових структур та алгоритмічної координації',
+  items = defaultItems,
+} = Astro.props;
+---
+
+<section class="dc-section dc-section--white" style="border-top: 1px solid var(--dc-border); border-bottom: 1px solid var(--dc-border);">
+  <div class="dc-container">
+    <div class="dc-section-heading">
+      <div class="dc-section-heading__eyebrow">{title}</div>
+      <h2 class="dc-section-heading__headline">Академічний дискурс та експертні рефлексії</h2>
+      <p class="dc-section-heading__body">{subtitle}</p>
+    </div>
+
+    <div class="dc-tweet-matrix">
+      {items.map((item) => (
+        <div class="dc-tweet-card">
+          <div class="dc-tweet-card__author">
+            <div class="dc-tweet-card__avatar">{item.avatar}</div>
+            <div class="dc-tweet-card__author-info">
+              <span class="dc-tweet-card__name">{item.name}</span>
+              <span class="dc-tweet-card__handle">{item.handle} • {item.affiliation}</span>
+            </div>
+          </div>
+          <p class="dc-tweet-card__text">{item.text}</p>
+          <div class="dc-tweet-card__footer">
+            <span>{item.citations}</span>
+            <span>{item.date}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

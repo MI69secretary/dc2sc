@@ -1,0 +1,15 @@
+{
+  "hypothesisId": "HYP-003",
+  "title": "Buyer Volume Without Ratification Entrains Lock-In",
+  "statement": "Increasing group volume without participant ratification or exit rights transfers bargaining power to intermediaries rather than buyers.",
+  "status": "active",
+  "evidenceLevel": "E0",
+  "relatedModules": [
+    3
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

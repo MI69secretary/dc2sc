@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="100%" height="100%" style="background:#f8f7f4; font-family:'Work Sans', -apple-system, sans-serif;">
+  <!-- Header -->
+  <text x="40" y="38" font-family="'Space Mono', monospace" font-size="11" font-weight="700" fill="#71717a" letter-spacing="0.1em">DC2SC // MODULE 05 SPECIFICATION</text>
+  <text x="40" y="62" font-size="16" font-weight="700" fill="#0f0f0f">The Non-Compensable Rights Floors Architecture</text>
+
+  <!-- Ground Floor Baseline -->
+  <rect x="40" y="240" width="720" height="50" fill="#1e3a8a" stroke="#1e3a8a" stroke-width="1.5" />
+  <text x="55" y="270" font-family="'Space Mono', monospace" font-size="12" font-weight="700" fill="#ffffff">CONSTITUTIONAL RIGHTS FLOOR // NON-COMPENSABLE BASELINE</text>
+
+  <!-- Pillar 1: Exit -->
+  <rect x="40" y="95" width="130" height="135" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="55" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#1e3a8a">RIGHT 01</text>
+  <text x="55" y="146" font-size="13" font-weight="700" fill="#0f0f0f">Unconditional</text>
+  <text x="55" y="164" font-size="13" font-weight="700" fill="#0f0f0f">Exit</text>
+  <line x1="55" y1="178" x2="155" y2="178" stroke="#f0ede8" stroke-width="1" />
+  <text x="55" y="198" font-size="10" fill="#71717a">Zero penalty</text>
+  <text x="55" y="214" font-size="10" fill="#71717a">pre-execution</text>
+
+  <!-- Pillar 2: Contestability -->
+  <rect x="185" y="95" width="130" height="135" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="200" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#1e3a8a">RIGHT 02</text>
+  <text x="200" y="146" font-size="13" font-weight="700" fill="#0f0f0f">Continuous</text>
+  <text x="200" y="164" font-size="13" font-weight="700" fill="#0f0f0f">Contest</text>
+  <line x1="200" y1="178" x2="300" y2="178" stroke="#f0ede8" stroke-width="1" />
+  <text x="200" y="198" font-size="10" fill="#71717a">Revocable</text>
+  <text x="200" y="214" font-size="10" fill="#71717a">mandate</text>
+
+  <!-- Pillar 3: Intelligibility -->
+  <rect x="330" y="95" width="135" height="135" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="345" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#1e3a8a">RIGHT 03</text>
+  <text x="345" y="146" font-size="13" font-weight="700" fill="#0f0f0f">Constraint</text>
+  <text x="345" y="164" font-size="13" font-weight="700" fill="#0f0f0f">Clarity</text>
+  <line x1="345" y1="178" x2="450" y2="178" stroke="#f0ede8" stroke-width="1" />
+  <text x="345" y="198" font-size="10" fill="#71717a">No black-box</text>
+  <text x="345" y="214" font-size="10" fill="#71717a">intermediation</text>
+
+  <!-- Pillar 4: Privacy -->
+  <rect x="480" y="95" width="130" height="135" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="495" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#1e3a8a">RIGHT 04</text>
+  <text x="495" y="146" font-size="13" font-weight="700" fill="#0f0f0f">Telemetry</text>
+  <text x="495" y="164" font-size="13" font-weight="700" fill="#0f0f0f">Privacy</text>
+  <line x1="495" y1="178" x2="595" y2="178" stroke="#f0ede8" stroke-width="1" />
+  <text x="495" y="198" font-size="10" fill="#71717a">Zero ad tracking</text>
+  <text x="495" y="214" font-size="10" fill="#71717a">or profiling</text>
+
+  <!-- Pillar 5: Outside Option -->
+  <rect x="625" y="95" width="135" height="135" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="640" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#1e3a8a">RIGHT 05</text>
+  <text x="640" y="146" font-size="13" font-weight="700" fill="#0f0f0f">Outside</text>
+  <text x="640" y="164" font-size="13" font-weight="700" fill="#0f0f0f">Option</text>
+  <line x1="640" y1="178" x2="745" y2="178" stroke="#f0ede8" stroke-width="1" />
+  <text x="640" y="198" font-size="10" fill="#71717a">Do not aggregate</text>
+  <text x="640" y="214" font-size="10" fill="#71717a">is valid result</text>
+</svg>

@@ -1,0 +1,18 @@
+{
+  "reviewId": "REV-M01-01",
+  "artifactId": "module-01-more-choice-less-voice",
+  "reviewType": "media_constitution_review",
+  "reviewer": "DC2SC Editorial Board",
+  "reviewDate": "2026-09-17",
+  "result": "pass",
+  "findings": "All 7 visual components pass 5-axis Media Passport validation and accessible text equivalent checks. Derived non-canonical authority correctly labeled.",
+  "evidenceReview": "Level E0 conceptual horizontal framing confirmed.",
+  "rightsReview": "Original DC2SC visual assets confirmed.",
+  "provenanceReview": "Traceable to Module 1 frozen canon.",
+  "accessibilityReview": "All figures have altText and accessibleEquiv.",
+  "publicationAuthority": "none",
+  "visibility": "internal",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "indexable": false
+}

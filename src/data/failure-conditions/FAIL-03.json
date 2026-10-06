@@ -1,0 +1,16 @@
+{
+  "failureId": "FAIL-03",
+  "name": "ratification",
+  "category": "Ratification",
+  "description": "Lack of intelligible voting or informed confirmation prior to binding commitments.",
+  "status": "monitored",
+  "relatedModules": [
+    3,
+    5
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

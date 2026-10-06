@@ -1,0 +1,20 @@
+name: dc2sc
+services:
+  site:
+    build: .
+    init: true
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4321:4321"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./keystatic.config.ts:/app/keystatic.config.ts
+      - ./astro.config.mjs:/app/astro.config.mjs
+      - ./markdoc.config.mjs:/app/markdoc.config.mjs
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4321/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+      retries: 3

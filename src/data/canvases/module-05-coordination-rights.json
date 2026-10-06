@@ -1,0 +1,17 @@
+{
+  "moduleId": "module-05-coordination-rights",
+  "moduleNumber": "05",
+  "title": "Coordination Rights",
+  "subtitle": "Constitutional floors on exit, privacy, and contestability as inalienable buyer rights.",
+  "authority": "derived_noncanonical",
+  "canvasStatus": "scaffolded",
+  "visibility": "internal",
+  "indexable": false,
+  "canonicalRefs": [
+    "module-05-coordination-rights"
+  ],
+  "evidenceLevel": "E0",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "publicationAuthority": "none"
+}

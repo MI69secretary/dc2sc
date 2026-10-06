@@ -1,0 +1,48 @@
+{
+  "mediaId": "M01-FIG-02",
+  "title": "Collective Market Position Formation Pipeline",
+  "mediaKind": "coordination_pipeline_diagram",
+  "epistemicBasis": "conceptual",
+  "representationRole": "workflow_scenario",
+  "provenanceMode": "canonical_derived",
+  "artifactRole": "diagram",
+  "authority": "derived_noncanonical",
+  "evidenceLevel": "E0",
+  "claimState": "active",
+  "reviewStatus": "reviewed",
+  "canonicalRefs": [
+    "module-01-more-choice-less-voice"
+  ],
+  "sourceRefs": [
+    "SRC-0001"
+  ],
+  "scopeLimits": [
+    "Illustrates sequential progression from private intent to collective ratification."
+  ],
+  "limitations": [
+    "Conceptual model; does not represent automated transaction logic."
+  ],
+  "accessibility": {
+    "decorative": false,
+    "altText": "Flow diagram showing progression from private constraint declaration to ratification and supplier response.",
+    "textEquivalent": "Step 1: Private intent. Step 2: Constraint declaration. Step 3: Collective position. Step 4: Ratification. Step 5: Supplier response.",
+    "colorIndependent": true
+  },
+  "commercialIntent": "none",
+  "containsTransactionalCTA": false,
+  "containsLeadCapture": false,
+  "containsBookingControl": false,
+  "containsPricePromise": false,
+  "containsUnsupportedBenefitClaim": false,
+  "asset": {
+    "type": "svg",
+    "file": "/images/diagrams/pipeline-formation.svg",
+    "license": "Original DC2SC visual",
+    "rightsStatus": "owned"
+  },
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

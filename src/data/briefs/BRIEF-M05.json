@@ -1,0 +1,64 @@
+{
+  "briefId": "BRIEF-M05",
+  "targetArtifactId": "coordination-rights",
+  "targetModule": "05",
+  "status": "approved",
+  "lifecycleStatus": "approved_for_dev",
+  "primaryReader": "Competition law theorist / institutional economist / platform governance researcher",
+  "readerProblem": "Treating coordination as an ad-hoc privilege rather than establishing non-compensable rights floors that prevent collective coercion.",
+  "canonicalDependencies": [
+    "module-05-coordination-rights",
+    "canonical-narrative",
+    "continuous-rights-gates"
+  ],
+  "sourceCorpus": [
+    "SRC-0001",
+    "SRC-0003"
+  ],
+  "propositionLedger": [
+    {
+      "id": "M5-P01",
+      "statement": "Rights floors are strictly non-compensable: material benefits cannot justify the surrender of exit or contestability.",
+      "canonicalRef": "module-05-coordination-rights",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M5-P02",
+      "statement": "The right to not aggregate (choosing independent outside options) is an equal, protected outcome of the coordination process.",
+      "canonicalRef": "module-05-coordination-rights",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M5-P03",
+      "statement": "Contestability must operate continuously across proposal formulation, ratification, and pre-execution review.",
+      "canonicalRef": "module-05-coordination-rights",
+      "kind": "canon_restatement"
+    }
+  ],
+  "mediaPlan": [
+    "M05-FIG-01",
+    "M05-TAB-01"
+  ],
+  "rightsDependencies": [
+    "Right to exit",
+    "Right to contest",
+    "Right to not aggregate",
+    "Right to constraint privacy"
+  ],
+  "representationDependencies": [
+    "Revocable mandate"
+  ],
+  "outsideOptionDependencies": [
+    "Unconditional outside option fallback"
+  ],
+  "prohibitedInterpretations": [
+    "Do not claim coordination rights currently exist in statutory consumer law.",
+    "Do not offer legal counsel or compliance advice."
+  ],
+  "claimBoundary": "Conceptual research framework at Evidence Level E0. Non-statutory architectural principles.",
+  "handoff": "Provides constitutional validation criteria to Module 06 (Travel Stress Test).",
+  "visibility": "internal",
+  "isFixture": false,
+  "publicationAuthority": "none",
+  "indexable": false
+}

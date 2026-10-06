@@ -1,0 +1,15 @@
+{
+  "failureId": "FAIL-10",
+  "name": "measurement",
+  "category": "Measurement",
+  "description": "Using deceptive proxy metrics (gross transaction value, click volume) rather than genuine buyer welfare.",
+  "status": "monitored",
+  "relatedModules": [
+    7
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

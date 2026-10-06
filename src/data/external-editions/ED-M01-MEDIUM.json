@@ -1,0 +1,16 @@
+{
+  "editionId": "ED-M01-MEDIUM",
+  "artifactId": "module-01-more-choice-less-voice",
+  "platform": "medium",
+  "status": "not_linked",
+  "url": "",
+  "canonicalUrl": "https://dc2sc.org/research/module-01-more-choice-less-voice",
+  "titleAtPublication": "More Choice, Less Voice",
+  "authorId": "AUTH-0001",
+  "notes": "External publication unlinked pending formal editorial release.",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

@@ -1,0 +1,17 @@
+{
+  "moduleId": "module-01-more-choice-less-voice",
+  "moduleNumber": "01",
+  "title": "More Choice, Less Voice",
+  "subtitle": "Individual access to offers expands while structural capacity to influence terms contracts.",
+  "authority": "derived_noncanonical",
+  "canvasStatus": "scaffolded",
+  "visibility": "internal",
+  "indexable": false,
+  "canonicalRefs": [
+    "module-01-more-choice-less-voice"
+  ],
+  "evidenceLevel": "E0",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "publicationAuthority": "none"
+}

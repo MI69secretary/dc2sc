@@ -1,0 +1,63 @@
+{
+  "tableId": "M03-TAB-01",
+  "title": "Unstructured Buyer Volume vs. Structured Market Position",
+  "kind": "argument_table",
+  "columns": [
+    { "key": "market", "label": "Unstructured Buyer Pool (Audience)", "description": "Naive aggregation without governance or exit rights" },
+    { "key": "person", "label": "Structured Market Position (DC2SC)", "description": "Ratified coordination with enforceable constraint floors" }
+  ],
+  "rows": [
+    {
+      "rowId": "r1",
+      "cells": {
+        "market": "Representation: None / Intermediary algorithmic capture",
+        "person": "Representation: Explicit ratified mandate from participants"
+      }
+    },
+    {
+      "rowId": "r2",
+      "cells": {
+        "market": "Exit Credibility: Fragmented individual churn",
+        "person": "Exit Credibility: Coordinated conditional walkaway"
+      }
+    },
+    {
+      "rowId": "r3",
+      "cells": {
+        "market": "Surplus Capture: Extracted as platform commission or seller margin",
+        "person": "Surplus Capture: Retained as participant constraint satisfaction"
+      }
+    },
+    {
+      "rowId": "r4",
+      "cells": {
+        "market": "Information Parity: Supplier sees volume; buyers remain blind",
+        "person": "Information Parity: Intelligible shared constraint visibility"
+      }
+    },
+    {
+      "rowId": "r5",
+      "cells": {
+        "market": "Failure Mode: Lock-in to suboptimal bulk contract",
+        "person": "Failure Mode: Orderly fallback to independent outside option"
+      }
+    }
+  ],
+  "caption": "Comparison of structural dynamics between passive buyer volume and participant-governed market positions.",
+  "scopeLimits": [
+    "Conceptual framework comparison. Does not assert empirical commission percentages or price differentials."
+  ],
+  "limitations": [
+    "Theoretical distinction; live empirical performance depends on supplier market concentration."
+  ],
+  "canonicalRefs": ["module-03-why-more-buyers"],
+  "sourceRefs": ["canonical-narrative"],
+  "accessibility": {
+    "textEquivalent": "Matrix contrasting unstructured buyer pools with structured market positions across representation, exit, surplus, information, and failure modes.",
+    "dataTableFallback": true
+  },
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

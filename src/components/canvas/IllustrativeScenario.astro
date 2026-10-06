@@ -1,0 +1,48 @@
+---
+import type { MediaPassport as PassportType, ScenarioStep } from '../../types/media-passport';
+import MediaPassport from './MediaPassport.astro';
+import FigureCaption from './FigureCaption.astro';
+
+interface Props {
+  passport: PassportType;
+  steps: ScenarioStep[];
+  figureNumber?: string | number;
+  class?: string;
+}
+
+const {
+  passport,
+  steps = [],
+  figureNumber,
+  class: className = '',
+} = Astro.props;
+---
+
+<figure class={`dc-media-block dc-media-block--scenario ${className}`} id={passport.id} aria-labelledby={`${passport.id}-title`}>
+  <div class="dc-media-block__banner">
+    <span class="dc-media-block__badge-dot" aria-hidden="true"></span>
+    <span class="dc-label">Illustrative Scenario &middot; Non-Empirical Narrative Walkthrough</span>
+  </div>
+
+  <div class="dc-media-block__header">
+    <h3 class="dc-media-block__title" id={`${passport.id}-title`}>{passport.title}</h3>
+  </div>
+
+  <div class="dc-scenario-timeline">
+    {steps.map((step, idx) => (
+      <div class="dc-scenario-step">
+        <div class="dc-scenario-step__marker">
+          <span class="dc-scenario-step__badge">{step.step || `0${idx + 1}`}</span>
+          {idx < steps.length - 1 && <div class="dc-scenario-step__connector" aria-hidden="true"></div>}
+        </div>
+        <div class="dc-scenario-step__content">
+          <h4 class="dc-scenario-step__title">{step.title}</h4>
+          <p class="dc-scenario-step__desc">{step.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <FigureCaption passport={passport} figureNumber={figureNumber} />
+  <MediaPassport passport={passport} />
+</figure>

@@ -1,0 +1,47 @@
+{
+  "mediaId": "M02-FIG-01",
+  "title": "Attention Pool vs Market Agency Structural Contrast",
+  "mediaKind": "structural_contrast_diagram",
+  "epistemicBasis": "conceptual",
+  "representationRole": "argument_contrast",
+  "provenanceMode": "canonical_derived",
+  "artifactRole": "diagram",
+  "authority": "derived_noncanonical",
+  "evidenceLevel": "E0",
+  "claimState": "active",
+  "reviewStatus": "reviewed",
+  "canonicalRefs": [
+    "module-02-crowd-is-attention"
+  ],
+  "sourceRefs": [
+    "SRC-0001"
+  ],
+  "scopeLimits": [
+    "Contrasts platform audience capture with participant-ratified market position."
+  ],
+  "limitations": [
+    "Conceptual representation."
+  ],
+  "accessibility": {
+    "decorative": false,
+    "altText": "Two-panel comparison illustrating centralized audience attention versus decentralized participant mandate.",
+    "textEquivalent": "Left: Platform aggregates user clicks into attention rent. Right: Independent buyers ratify collective terms before supplier engagement.",
+    "colorIndependent": true
+  },
+  "commercialIntent": "none",
+  "containsTransactionalCTA": false,
+  "containsLeadCapture": false,
+  "containsBookingControl": false,
+  "containsPricePromise": false,
+  "containsUnsupportedBenefitClaim": false,
+  "asset": {
+    "type": "svg",
+    "file": "/images/diagrams/attention-vs-agency.svg",
+    "license": "Original DC2SC visual",
+    "rightsStatus": "owned"
+  },
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

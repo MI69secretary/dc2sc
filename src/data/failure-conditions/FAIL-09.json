@@ -1,0 +1,16 @@
+{
+  "failureId": "FAIL-09",
+  "name": "quality",
+  "category": "Quality",
+  "description": "Degradation of non-compensable terms in exchange for superficial price concessions.",
+  "status": "monitored",
+  "relatedModules": [
+    4,
+    6
+  ],
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

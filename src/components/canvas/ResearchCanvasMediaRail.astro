@@ -1,0 +1,12 @@
+---
+interface Props {
+  width?: 'default' | 'wide' | 'full';
+  class?: string;
+}
+
+const { width = 'wide', class: className = '' } = Astro.props;
+---
+
+<div class={`dc-canvas-media-rail dc-canvas-media-rail--${width} ${className}`}>
+  <slot />
+</div>

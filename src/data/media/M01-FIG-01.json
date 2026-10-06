@@ -1,0 +1,50 @@
+{
+  "mediaId": "M01-FIG-01",
+  "title": "Many signals, no shared voice",
+  "mediaKind": "conceptual_diagram",
+  "epistemicBasis": "conceptual",
+  "representationRole": "structural_model",
+  "provenanceMode": "canonical_derived",
+  "artifactRole": "diagram",
+  "authority": "derived_noncanonical",
+  "evidenceLevel": "E0",
+  "claimState": "active",
+  "reviewStatus": "reviewed",
+  "canonicalRefs": ["module-01-more-choice-less-voice"],
+  "sourceRefs": ["canonical-narrative"],
+  "derivation": {
+    "method": "Original visual interpretation of canon-traced propositions",
+    "transformation": "Abstract vector pathway diagram; no empirical data"
+  },
+  "scopeLimits": [
+    "This diagram does not claim that all markets work the same way or that people should coordinate."
+  ],
+  "limitations": [
+    "Conceptual visual; no observed dataset or empirical telemetry."
+  ],
+  "accessibility": {
+    "decorative": false,
+    "altText": "Abstract individual points follow different paths toward separate offer surfaces. Some points have overlapping markers, but they are not merged into a group.",
+    "textEquivalent": "Independent participant searches route to siloed supplier offer surfaces without forming shared positions or demand-side representation.",
+    "colorIndependent": true
+  },
+  "commercialIntent": "none",
+  "containsTransactionalCTA": false,
+  "containsLeadCapture": false,
+  "containsBookingControl": false,
+  "containsPricePromise": false,
+  "containsUnsupportedBenefitClaim": false,
+  "asset": {
+    "type": "svg",
+    "file": "/media/diagrams/m01-many-signals.svg",
+    "license": "Original DC2SC visual",
+    "rightsStatus": "owned"
+  },
+  "relatedModules": [1],
+  "relatedCanvas": "module-01-more-choice-less-voice",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

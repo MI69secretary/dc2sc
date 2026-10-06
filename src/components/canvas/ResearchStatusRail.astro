@@ -1,0 +1,85 @@
+---
+interface Props {
+  contentKind: string;
+  canonicalState: string;
+  claimState: string;
+  researchRole: string;
+  evidenceLevel: string;
+  sourceOfTruth?: string;
+  limitations?: string[];
+  whatThisDoesNotEstablish?: string[];
+  class?: string;
+}
+
+const {
+  contentKind,
+  canonicalState,
+  claimState,
+  researchRole,
+  evidenceLevel,
+  sourceOfTruth,
+  limitations = [],
+  whatThisDoesNotEstablish = [],
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`dc-status-rail ${className}`}>
+  <div class="dc-status-rail__card">
+    <div class="dc-status-rail__header">
+      <span class="dc-label">Research Status Rail</span>
+      <span class="dc-pill dc-pill--accent">{evidenceLevel}</span>
+    </div>
+
+    <dl class="dc-status-rail__dl">
+      <div class="dc-status-rail__field">
+        <dt>Content Kind</dt>
+        <dd><span class="dc-pill dc-pill--default">{contentKind.replace(/_/g, ' ')}</span></dd>
+      </div>
+
+      <div class="dc-status-rail__field">
+        <dt>Canonical State</dt>
+        <dd><span class="dc-pill dc-pill--conceptual">{canonicalState}</span></dd>
+      </div>
+
+      <div class="dc-status-rail__field">
+        <dt>Claim State</dt>
+        <dd><span class="dc-pill dc-pill--default">{claimState}</span></dd>
+      </div>
+
+      <div class="dc-status-rail__field">
+        <dt>Research Role</dt>
+        <dd><span class="dc-mono" style="font-size: 0.8125rem;">{researchRole.replace(/_/g, ' ')}</span></dd>
+      </div>
+
+      {sourceOfTruth && (
+        <div class="dc-status-rail__field">
+          <dt>Source Authority</dt>
+          <dd><span class="dc-mono" style="font-size: 0.75rem; word-break: break-all;">{sourceOfTruth}</span></dd>
+        </div>
+      )}
+    </dl>
+
+    {limitations.length > 0 && (
+      <div class="dc-status-rail__section">
+        <span class="dc-label dc-label--subtle">Scope Boundaries & Limits:</span>
+        <ul class="dc-status-rail__list">
+          {limitations.map(item => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {whatThisDoesNotEstablish.length > 0 && (
+      <div class="dc-status-rail__section dc-status-rail__section--warning">
+        <span class="dc-label dc-label--subtle" style="color: var(--dc-error);">What this does not establish:</span>
+        <ul class="dc-status-rail__list dc-status-rail__list--warning">
+          {whatThisDoesNotEstablish.map(item => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+</div>

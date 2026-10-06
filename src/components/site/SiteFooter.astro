@@ -1,0 +1,71 @@
+---
+import { footerNav, socialLinks } from '../../data/site';
+---
+
+<footer class="dc-footer">
+  <div class="dc-footer__inner">
+    <div>
+      <h3 class="dc-footer__group-title">Explore</h3>
+      <ul>
+        {footerNav.explore.map((link) => (
+          <li><a href={link.href} class="dc-footer__link">{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+    
+    <div>
+      <h3 class="dc-footer__group-title">Project</h3>
+      <ul>
+        {footerNav.project.map((link) => (
+          <li><a href={link.href} class="dc-footer__link">{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+    
+    <div>
+      <h3 class="dc-footer__group-title">Standards</h3>
+      <ul>
+        {footerNav.standards.map((link) => (
+          <li><a href={link.href} class="dc-footer__link">{link.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="dc-footer__bottom">
+    <div class="dc-container">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem;">
+        <p class="dc-footer__disclosure">
+          DC2SC Consortium функціонує як відкрита академічна ініціатива (Open Access). 
+          Усі формальні інваріанти, математичні докази та симуляції публікуються за стандартом відкритої науки без комерційних обмежень.
+          <br><br>
+          © 2026 DC2SC Research Program • CC BY-NC 4.0 International
+        </p>
+        <div class="dc-footer__social">
+          {socialLinks.map((social) => (
+            <span class="dc-footer__social-item">{social.label}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dc-colophon-strip">
+    <div class="dc-container">
+      <div class="dc-colophon-strip__inner">
+        <div class="dc-colophon-strip__links">
+          <strong style="color: var(--dc-navy);">DC2SC // RESEARCH PROTOCOL</strong>
+          <span>•</span>
+          <a href="/research">OPEN ACCESS REGISTRY</a>
+          <span>•</span>
+          <a href="/journal">PRE-PRINT SERVER</a>
+          <span>•</span>
+          <a href="/support">SAFE MULTISIG VAULT</a>
+        </div>
+        <div>
+          <span>Архів підтримується за стандартом <strong>ISO 14721 (OAIS)</strong> • SHA256: 7f83b165...e921</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

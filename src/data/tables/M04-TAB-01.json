@@ -1,0 +1,56 @@
+{
+  "tableId": "M04-TAB-01",
+  "title": "Taxonomy of Commitment Stages and Dissolution Burdens",
+  "kind": "argument_table",
+  "columns": [
+    { "key": "market", "label": "Commitment Stage & Character", "description": "Degree of structural resource allocation" },
+    { "key": "person", "label": "Dissolution Rule & Participant Burden", "description": "Who bears the cost if the collective position fails" }
+  ],
+  "rows": [
+    {
+      "rowId": "r1",
+      "cells": {
+        "market": "1. Expressed Interest (Non-binding query)",
+        "person": "Zero cost; immediate frictionless exit without residual obligation"
+      }
+    },
+    {
+      "rowId": "r2",
+      "cells": {
+        "market": "2. Ratification (Alignment with proposed position)",
+        "person": "Signal of shared constraint; outside option remains 100% active"
+      }
+    },
+    {
+      "rowId": "r3",
+      "cells": {
+        "market": "3. Conditional Commitment (Contingent on seller terms)",
+        "person": "Escrowed intent; automatic full refund if supplier fails constraint gate"
+      }
+    },
+    {
+      "rowId": "r4",
+      "cells": {
+        "market": "4. Binding Execution (Unconditional contract)",
+        "person": "Contractual lock-in; mutual liability governed by statutory consumer rights"
+      }
+    }
+  ],
+  "caption": "Taxonomy showing that ratification is not commitment, and establishing zero-penalty dissolution floors prior to binding execution.",
+  "scopeLimits": [
+    "Conceptual framework. Does not specify payment rail implementations."
+  ],
+  "limitations": [
+    "Theoretical distinction; real-world enforcement depends on legal jurisdiction."
+  ],
+  "canonicalRefs": ["module-04-cost-of-commitment"],
+  "sourceRefs": ["canonical-narrative"],
+  "accessibility": {
+    "textEquivalent": "Table categorizing 4 commitment stages from Expressed Interest to Binding Execution alongside their corresponding dissolution rules and participant burdens.",
+    "dataTableFallback": true
+  },
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

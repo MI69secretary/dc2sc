@@ -1,0 +1,17 @@
+{
+  "moduleId": "module-07-what-counts-as-success",
+  "moduleNumber": "07",
+  "title": "What Counts as Success?",
+  "subtitle": "Legitimizing null results, negative outcomes, and the decision not to aggregate.",
+  "authority": "derived_noncanonical",
+  "canvasStatus": "scaffolded",
+  "visibility": "internal",
+  "indexable": false,
+  "canonicalRefs": [
+    "module-07-what-counts-as-success"
+  ],
+  "evidenceLevel": "E0",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "publicationAuthority": "none"
+}

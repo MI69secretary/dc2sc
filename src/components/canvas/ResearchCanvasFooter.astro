@@ -1,0 +1,47 @@
+---
+interface Props {
+  moduleNumber?: string;
+  title?: string;
+  canonicalState?: string;
+  sourceReference?: string;
+  sourceVersion?: string;
+  provenanceNotes?: string;
+  class?: string;
+}
+
+const {
+  moduleNumber,
+  title,
+  canonicalState,
+  sourceReference,
+  sourceVersion,
+  provenanceNotes = 'Research Canvas presentation adhering to DC2SC Phase 3B.0 media-passport standards.',
+  class: className = '',
+} = Astro.props;
+---
+
+<footer class={`dc-canvas-footer ${className}`}>
+  <div class="dc-canvas-footer__inner">
+    <div class="dc-canvas-footer__boundary">
+      <strong class="dc-label">Epistemic Horizon & Boundary</strong>
+      <p class="dc-body-sm" style="color: var(--dc-ink-2); margin-top: 0.25rem;">
+        This canvas documents analytical models and conceptual distinctions at Evidence Level E0. It does not present empirical market proof, transactional offers or platform claims.
+      </p>
+    </div>
+
+    <div class="dc-canvas-footer__meta">
+      {sourceReference && (
+        <div class="dc-canvas-footer__row">
+          <span class="dc-label dc-label--subtle">Canonical Source:</span>
+          <span class="dc-mono" style="font-size: 0.8125rem;">{sourceReference} {sourceVersion ? `(v${sourceVersion})` : ''}</span>
+        </div>
+      )}
+      {provenanceNotes && (
+        <div class="dc-canvas-footer__row">
+          <span class="dc-label dc-label--subtle">Provenance:</span>
+          <span class="dc-body-sm" style="color: var(--dc-muted);">{provenanceNotes}</span>
+        </div>
+      )}
+    </div>
+  </div>
+</footer>

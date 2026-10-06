@@ -1,0 +1,43 @@
+{
+  "briefId": "BRIEF-M02",
+  "targetArtifactId": "module-02-crowd-is-attention",
+  "targetModule": "02",
+  "status": "approved",
+  "lifecycleStatus": "approved_for_dev",
+  "primaryReader": "Market systems designer / economic researcher",
+  "readerProblem": "Confusing platform audience aggregation with genuine buyer coordination authority.",
+  "canonicalDependencies": [
+    "module-02-crowd-is-attention",
+    "canonical-narrative"
+  ],
+  "sourceCorpus": [
+    "SRC-0001",
+    "SRC-0002"
+  ],
+  "propositionLedger": [
+    {
+      "id": "M2-P01",
+      "statement": "Attention aggregation pools data for the intermediary, not agency for the participant.",
+      "canonicalRef": "module-02-crowd-is-attention",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M2-P02",
+      "statement": "A market position requires explicit representational mandate, ratification and contestability.",
+      "canonicalRef": "module-02-crowd-is-attention",
+      "kind": "canon_restatement"
+    },
+    {
+      "id": "M2-P03",
+      "statement": "Sheer audience volume without exit rights or bargaining floors yields zero countervailing market power.",
+      "canonicalRef": "module-02-crowd-is-attention",
+      "kind": "canon_restatement"
+    }
+  ],
+  "claimBoundary": "Conceptual analysis only. Does not analyze live platform user metrics.",
+  "handoff": "Prepares the volume without representation analysis for Module 03.",
+  "visibility": "internal",
+  "isFixture": false,
+  "publicationAuthority": "none",
+  "indexable": false
+}

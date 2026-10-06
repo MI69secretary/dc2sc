@@ -1,0 +1,54 @@
+---
+import type { MediaPassport as PassportType } from '../../types/media-passport';
+import MediaPassport from './MediaPassport.astro';
+
+interface Props {
+  passport?: PassportType;
+  objection: string;
+  implication: string;
+  unresolvedAspect?: string;
+  sourceOrRedTeam?: string;
+  class?: string;
+}
+
+const {
+  passport,
+  objection,
+  implication,
+  unresolvedAspect,
+  sourceOrRedTeam = 'Methodological Red-Team Review',
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`dc-media-block dc-media-block--objection ${className}`} id={passport?.id}>
+  <div class="dc-media-block__banner">
+    <span class="dc-media-block__badge-dot" aria-hidden="true"></span>
+    <span class="dc-label">Counterargument / Red-Team Objection</span>
+  </div>
+
+  <div class="dc-counterargument">
+    <div class="dc-counterargument__objection">
+      <strong class="dc-label dc-label--subtle">Objection / Critical Challenge:</strong>
+      <p class="dc-counterargument__text">{objection}</p>
+    </div>
+
+    <div class="dc-counterargument__implication">
+      <strong class="dc-label dc-label--subtle">Epistemic Implication:</strong>
+      <p class="dc-body-sm">{implication}</p>
+    </div>
+
+    {unresolvedAspect && (
+      <div class="dc-counterargument__unresolved">
+        <strong class="dc-label dc-label--subtle">Unresolved Research Horizon:</strong>
+        <p class="dc-body-sm">{unresolvedAspect}</p>
+      </div>
+    )}
+
+    <div class="dc-counterargument__footer">
+      <span class="dc-label" style="color: var(--dc-muted);">Source / Context: {sourceOrRedTeam}</span>
+    </div>
+  </div>
+
+  {passport && <MediaPassport passport={passport} compact={true} />}
+</div>

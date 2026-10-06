@@ -1,0 +1,17 @@
+{
+  "moduleId": "module-04-cost-of-commitment",
+  "moduleNumber": "04",
+  "title": "The Cost of Commitment",
+  "subtitle": "Asymmetric risk bearing and the structural costs of binding oneself to a collective position.",
+  "authority": "derived_noncanonical",
+  "canvasStatus": "scaffolded",
+  "visibility": "internal",
+  "indexable": false,
+  "canonicalRefs": [
+    "module-04-cost-of-commitment"
+  ],
+  "evidenceLevel": "E0",
+  "isFixture": true,
+  "fixturePurpose": "Keystatic schema / validator demonstration",
+  "publicationAuthority": "none"
+}

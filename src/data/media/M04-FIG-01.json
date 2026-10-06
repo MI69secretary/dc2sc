@@ -1,0 +1,47 @@
+{
+  "mediaId": "M04-FIG-01",
+  "title": "The Four-Stage Commitment Spectrum",
+  "mediaKind": "structural_model_diagram",
+  "epistemicBasis": "conceptual",
+  "representationRole": "structural_model",
+  "provenanceMode": "canonical_derived",
+  "artifactRole": "diagram",
+  "authority": "derived_noncanonical",
+  "evidenceLevel": "E0",
+  "claimState": "active",
+  "reviewStatus": "reviewed",
+  "canonicalRefs": [
+    "module-04-cost-of-commitment"
+  ],
+  "sourceRefs": [
+    "SRC-0001"
+  ],
+  "scopeLimits": [
+    "Distinguishes stages from costless interest to binding execution with associated dissolution risks."
+  ],
+  "limitations": [
+    "Conceptual model; does not quantify monetary escrow thresholds."
+  ],
+  "accessibility": {
+    "decorative": false,
+    "altText": "A four-stage progression from Expressed Interest, to Ratification, to Conditional Commitment, to Binding Execution.",
+    "textEquivalent": "Four stages: 1. Expressed Interest (zero cost), 2. Ratification (alignment signal), 3. Conditional Commitment (contingent on terms), 4. Binding Execution (contractual lock-in). Dissolution risks shift across the spectrum.",
+    "colorIndependent": true
+  },
+  "commercialIntent": "none",
+  "containsTransactionalCTA": false,
+  "containsLeadCapture": false,
+  "containsBookingControl": false,
+  "containsPricePromise": false,
+  "containsUnsupportedBenefitClaim": false,
+  "asset": {
+    "type": "svg",
+    "file": "/images/diagrams/commitment-spectrum.svg",
+    "license": "Original DC2SC visual",
+    "rightsStatus": "owned"
+  },
+  "isFixture": false,
+  "visibility": "public",
+  "indexable": true,
+  "publicationAuthority": "release_approved"
+}

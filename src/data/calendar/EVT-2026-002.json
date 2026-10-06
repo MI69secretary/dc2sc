@@ -1,0 +1,14 @@
+{
+  "eventId": "EVT-2026-002",
+  "title": "Module 01 Media Constitution & Accessibility Audit",
+  "eventType": "editorial_review",
+  "scheduledDate": "2026-09-18",
+  "targetArtifactId": "module-01-more-choice-less-voice",
+  "channel": "internal_archive",
+  "status": "scheduled",
+  "description": "Formal review of M01-FIG-01 diagram and M01-TAB-01 matrix against 5-axis Media Constitution.",
+  "isFixture": false,
+  "visibility": "internal",
+  "indexable": false,
+  "publicationAuthority": "none"
+}

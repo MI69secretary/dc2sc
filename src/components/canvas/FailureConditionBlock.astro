@@ -1,0 +1,50 @@
+---
+import type { MediaPassport as PassportType } from '../../types/media-passport';
+import MediaPassport from './MediaPassport.astro';
+
+interface Props {
+  passport?: PassportType;
+  failureName: string;
+  category: string;
+  mechanism: string;
+  boundaryNote: string;
+  class?: string;
+}
+
+const {
+  passport,
+  failureName,
+  category,
+  mechanism,
+  boundaryNote,
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`dc-media-block dc-media-block--failure ${className}`} id={passport?.id}>
+  <div class="dc-media-block__banner">
+    <span class="dc-media-block__badge-dot" aria-hidden="true"></span>
+    <span class="dc-label">Failure Mode Analysis &middot; Constitutional Boundary</span>
+  </div>
+
+  <div class="dc-failure-condition">
+    <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+      <h4 class="dc-h3" style="margin: 0; color: var(--dc-error);">{failureName}</h4>
+      <span class="dc-pill dc-pill--warning">{category}</span>
+    </div>
+
+    <div class="dc-failure-condition__body">
+      <div style="margin-bottom: 0.75rem;">
+        <strong class="dc-label dc-label--subtle">Failure Mechanism:</strong>
+        <p class="dc-body-sm">{mechanism}</p>
+      </div>
+
+      <div class="dc-callout dc-callout--boundary" style="margin-top: 0.75rem; padding: 0.875rem 1rem;">
+        <strong class="dc-callout__title" style="font-size: 0.8125rem;">Constitutional Protection / Boundary:</strong>
+        <p style="font-size: 0.875rem;">{boundaryNote}</p>
+      </div>
+    </div>
+  </div>
+
+  {passport && <MediaPassport passport={passport} compact={true} />}
+</div>

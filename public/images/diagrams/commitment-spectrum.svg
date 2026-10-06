@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="100%" height="100%" style="background:#f8f7f4; font-family:'Work Sans', -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e3a8a" />
+    </marker>
+  </defs>
+
+  <!-- Header -->
+  <text x="40" y="38" font-family="'Space Mono', monospace" font-size="11" font-weight="700" fill="#71717a" letter-spacing="0.1em">DC2SC // MODULE 04 SPECIFICATION</text>
+  <text x="40" y="62" font-size="16" font-weight="700" fill="#0f0f0f">The Spectrum of Commitment & Dissolution Risk</text>
+
+  <!-- Step 1 -->
+  <rect x="40" y="95" width="160" height="150" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="55" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#71717a">STAGE 01</text>
+  <text x="55" y="144" font-size="13" font-weight="700" fill="#0f0f0f">Expressed</text>
+  <text x="55" y="162" font-size="13" font-weight="700" fill="#0f0f0f">Interest</text>
+  <line x1="55" y1="175" x2="185" y2="175" stroke="#f0ede8" stroke-width="1" />
+  <text x="55" y="195" font-size="11" fill="#71717a">Cost: Zero</text>
+  <text x="55" y="213" font-size="11" fill="#71717a">Risk: None</text>
+  <text x="55" y="231" font-size="10" font-family="'Space Mono', monospace" fill="#059669">Frictionless Exit</text>
+
+  <!-- Arrow 1 -->
+  <line x1="200" y1="170" x2="225" y2="170" stroke="#1e3a8a" stroke-width="1.5" marker-end="url(#arrow)" />
+
+  <!-- Step 2 -->
+  <rect x="230" y="95" width="160" height="150" fill="#ffffff" stroke="#1e3a8a" stroke-width="2" />
+  <text x="245" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#1e3a8a">STAGE 02</text>
+  <text x="245" y="144" font-size="13" font-weight="700" fill="#1e3a8a">Ratification</text>
+  <text x="245" y="162" font-size="13" font-weight="700" fill="#1e3a8a">(Alignment)</text>
+  <line x1="245" y1="175" x2="375" y2="175" stroke="#dbeafe" stroke-width="1" />
+  <text x="245" y="195" font-size="11" fill="#27272a">Cost: Cognitive</text>
+  <text x="245" y="213" font-size="11" fill="#27272a">Risk: Minimal</text>
+  <text x="245" y="231" font-size="10" font-family="'Space Mono', monospace" fill="#1e3a8a">Active Outside Option</text>
+
+  <!-- Arrow 2 -->
+  <line x1="390" y1="170" x2="415" y2="170" stroke="#1e3a8a" stroke-width="1.5" marker-end="url(#arrow)" />
+
+  <!-- Step 3 -->
+  <rect x="420" y="95" width="160" height="150" fill="#ffffff" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="435" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#71717a">STAGE 03</text>
+  <text x="435" y="144" font-size="13" font-weight="700" fill="#0f0f0f">Conditional</text>
+  <text x="435" y="162" font-size="13" font-weight="700" fill="#0f0f0f">Commitment</text>
+  <line x1="435" y1="175" x2="565" y2="175" stroke="#f0ede8" stroke-width="1" />
+  <text x="435" y="195" font-size="11" fill="#71717a">Cost: Escrowed</text>
+  <text x="435" y="213" font-size="11" fill="#71717a">Risk: Contingent</text>
+  <text x="435" y="231" font-size="10" font-family="'Space Mono', monospace" fill="#059669">Auto-Refund Floor</text>
+
+  <!-- Arrow 3 -->
+  <line x1="580" y1="170" x2="605" y2="170" stroke="#1e3a8a" stroke-width="1.5" marker-end="url(#arrow)" />
+
+  <!-- Step 4 -->
+  <rect x="610" y="95" width="150" height="150" fill="#f0ede8" stroke="#d4d4d8" stroke-width="1.5" />
+  <text x="625" y="122" font-family="'Space Mono', monospace" font-size="10" font-weight="700" fill="#71717a">STAGE 04</text>
+  <text x="625" y="144" font-size="13" font-weight="700" fill="#0f0f0f">Binding</text>
+  <text x="625" y="162" font-size="13" font-weight="700" fill="#0f0f0f">Execution</text>
+  <line x1="625" y1="175" x2="745" y2="175" stroke="#d4d4d8" stroke-width="1" />
+  <text x="625" y="195" font-size="11" fill="#71717a">Cost: Full</text>
+  <text x="625" y="213" font-size="11" fill="#71717a">Risk: Contractual</text>
+  <text x="625" y="231" font-size="10" font-family="'Space Mono', monospace" fill="#71717a">Legal Recourse</text>
+
+  <!-- Core Distinction Callout -->
+  <rect x="40" y="265" width="720" height="35" fill="#dbeafe" stroke="#bfdbfe" stroke-width="1" />
+  <text x="55" y="287" font-family="'Space Mono', monospace" font-size="11" font-weight="700" fill="#1e3a8a">CONSTITUTIONAL RULE:</text>
+  <text x="215" y="287" font-size="12" fill="#1e3a8a">Ratification (Stage 02) is NOT commitment (Stage 03/04). Outside options remain active.</text>
+</svg>

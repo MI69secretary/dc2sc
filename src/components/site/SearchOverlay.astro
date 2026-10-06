@@ -1,0 +1,214 @@
+---
+---
+<div class="dc-search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search" aria-hidden="true">
+  <div class="dc-search-overlay__backdrop" id="search-backdrop"></div>
+  <div class="dc-search-overlay__panel">
+    <div class="dc-search-overlay__input-row">
+      <svg class="dc-search-overlay__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <circle cx="7" cy="7" r="5"/><path d="M10.5 10.5L14 14"/>
+      </svg>
+      <input
+        class="dc-search-overlay__input"
+        id="search-input"
+        type="search"
+        placeholder="Search research, journal, GOLIAF…"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Search"
+      />
+      <button class="dc-search-overlay__close" id="search-close" aria-label="Close search">Esc</button>
+    </div>
+    <div class="dc-search-overlay__results" id="search-results" role="listbox"></div>
+    <div class="dc-search-overlay__note">
+      <span>Local search — conceptual preview content only</span>
+      <span>↑↓ navigate · Enter select · Esc close</span>
+    </div>
+  </div>
+</div>
+<script>
+type ManifestItem = {
+  id: string;
+  slug: string;
+  route: string;
+  url: string;
+  title: string;
+  contentKind: string;
+  canonicalState: string;
+  lifecycleStatus: string;
+  visibility: string;
+  claimState: string;
+  researchRole: string;
+  evidenceLevel: string;
+  indexable: boolean;
+  scopeLabel: string;
+  topics?: string[];
+  dek?: string;
+};
+
+let manifestMap = new Map<string, ManifestItem>();
+let manifestLoaded = false;
+let pagefindInstance: any = null;
+let pagefindLoaded = false;
+
+const overlay = document.getElementById('search-overlay')!;
+const input = document.getElementById('search-input') as HTMLInputElement;
+const resultsEl = document.getElementById('search-results')!;
+const closeBtn = document.getElementById('search-close')!;
+const backdrop = document.getElementById('search-backdrop')!;
+
+function normalizeUrl(u: string): string {
+  if (!u) return '';
+  return u
+    .replace(/^https?:\/\/[^\/]+/, '')
+    .replace(/\/index\.html$/, '')
+    .replace(/\.html$/, '')
+    .replace(/\/$/, '') || '/';
+}
+
+async function loadManifestAndPagefind() {
+  if (!manifestLoaded) {
+    try {
+      const res = await fetch('/search-index.json');
+      const items: ManifestItem[] = await res.json();
+      manifestMap.clear();
+      for (const item of items) {
+        manifestMap.set(normalizeUrl(item.url), item);
+        manifestMap.set(normalizeUrl(item.route), item);
+        manifestMap.set(item.id, item);
+        manifestMap.set(item.slug, item);
+      }
+      manifestLoaded = true;
+    } catch {
+      manifestMap = new Map();
+    }
+  }
+
+  if (!pagefindLoaded) {
+    try {
+      // Dynamic import that bypasses Vite dev-time static analysis
+      const pagefindUrl = '/pagefind/pagefind.js';
+      const dynamicImport = new Function('url', 'return import(url)');
+      pagefindInstance = await dynamicImport(pagefindUrl);
+      if (pagefindInstance?.init) {
+        await pagefindInstance.init();
+      }
+      pagefindLoaded = true;
+    } catch {
+      pagefindInstance = null;
+      pagefindLoaded = true;
+    }
+  }
+}
+
+function openSearch() {
+  overlay.classList.add('dc-search-overlay--open');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  input.focus();
+  loadManifestAndPagefind();
+}
+
+function closeSearch() {
+  overlay.classList.remove('dc-search-overlay--open');
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  input.value = '';
+  resultsEl.innerHTML = '';
+}
+
+async function renderResults(query: string) {
+  if (!query.trim()) { resultsEl.innerHTML = ''; return; }
+  const q = query.trim();
+
+  // 1. Full-text search via Pagefind (Canonical Full-Text Engine)
+  if (pagefindInstance && typeof pagefindInstance.search === 'function') {
+    try {
+      const searchRes = await pagefindInstance.search(q);
+      const rawResults = await Promise.all(
+        searchRes.results.slice(0, 10).map((r: any) => r.data())
+      );
+
+      const unifiedResults: { manifest: ManifestItem; excerpt?: string }[] = [];
+
+      for (const res of rawResults) {
+        const norm = normalizeUrl(res.url);
+        const manifestEntry = manifestMap.get(norm);
+
+        // Authoritative gate: Suppress any result that is not in the public manifest
+        if (!manifestEntry || !manifestEntry.indexable || manifestEntry.visibility !== 'public') {
+          continue;
+        }
+
+        unifiedResults.push({
+          manifest: manifestEntry,
+          excerpt: res.excerpt,
+        });
+      }
+
+      if (unifiedResults.length > 0) {
+        resultsEl.innerHTML = unifiedResults.slice(0, 8).map(({ manifest, excerpt }) => `
+          <a class="dc-search-overlay__result" href="${manifest.url}" role="option">
+            <div style="display:flex; flex-direction:column; gap:0.25rem; min-width:6.5rem; flex-shrink:0;">
+              <span class="dc-search-overlay__result-type">${manifest.scopeLabel || manifest.contentKind.replace(/_/g, ' ')}</span>
+              <div style="display:flex; gap:0.25rem; font-family:var(--dc-font-mono); font-size:0.625rem; color:var(--dc-muted);">
+                <span>${manifest.evidenceLevel}</span>
+                ${manifest.canonicalState && manifest.canonicalState !== 'none' ? `<span>· ${manifest.canonicalState}</span>` : ''}
+              </div>
+            </div>
+            <div style="flex:1; min-width:0;">
+              <div class="dc-search-overlay__result-title">${manifest.title}</div>
+              <div class="dc-search-overlay__result-dek">${excerpt || manifest.dek || ''}</div>
+            </div>
+          </a>
+        `).join('');
+        return;
+      }
+    } catch (err) {
+      console.warn('Pagefind search error, falling back to manifest discovery:', err);
+    }
+  }
+
+  // 2. Fallback to manifest metadata search (if Pagefind is unavailable)
+  const qLower = q.toLowerCase();
+  const manifestValues = Array.from(new Set(manifestMap.values()));
+  const matches = manifestValues.filter(item =>
+    item.indexable &&
+    item.visibility === 'public' &&
+    (item.title.toLowerCase().includes(qLower) ||
+     item.dek?.toLowerCase().includes(qLower) ||
+     item.topics?.some(t => t.toLowerCase().includes(qLower)))
+  ).slice(0, 8);
+
+  if (matches.length === 0) {
+    resultsEl.innerHTML = `<div class="dc-search-overlay__empty">No results for "${query}"</div>`;
+    return;
+  }
+
+  resultsEl.innerHTML = matches.map(item => `
+    <a class="dc-search-overlay__result" href="${item.url}" role="option">
+      <div style="display:flex; flex-direction:column; gap:0.25rem; min-width:6.5rem; flex-shrink:0;">
+        <span class="dc-search-overlay__result-type">${item.scopeLabel || item.contentKind.replace(/_/g, ' ')}</span>
+        <div style="display:flex; gap:0.25rem; font-family:var(--dc-font-mono); font-size:0.625rem; color:var(--dc-muted);">
+          <span>${item.evidenceLevel}</span>
+          ${item.canonicalState && item.canonicalState !== 'none' ? `<span>· ${item.canonicalState}</span>` : ''}
+        </div>
+      </div>
+      <div style="flex:1; min-width:0;">
+        <div class="dc-search-overlay__result-title">${item.title}</div>
+        <div class="dc-search-overlay__result-dek">${item.dek || ''}</div>
+      </div>
+    </a>
+  `).join('');
+}
+
+closeBtn.addEventListener('click', closeSearch);
+backdrop.addEventListener('click', closeSearch);
+input.addEventListener('input', e => renderResults((e.target as HTMLInputElement).value));
+
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+  if (e.key === 'Escape' && overlay.classList.contains('dc-search-overlay--open')) closeSearch();
+});
+
+(window as any).__dcOpenSearch = openSearch;
+</script>
