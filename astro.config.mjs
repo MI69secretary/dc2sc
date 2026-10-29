@@ -5,10 +5,17 @@ import react from '@astrojs/react';
 import keystatic from '@keystatic/astro';
 
 export default defineConfig({
+  site: process.env.GITHUB_PAGES ? 'https://mi69secretary.github.io' : undefined,
+  base: process.env.GITHUB_PAGES ? '/dc2sc' : '/',
   redirects: { '/en': '/', '/en/about': '/about/' },
   integrations: [
     starlight({
       title: 'dc2sc',
+      social: [
+        { icon: 'github', label: 'GitHub', link: 'https://github.com/MI69secretary/dc2sc' },
+        { icon: 'external', label: 'UCOMM', link: 'https://ucomm.space' },
+        { icon: 'external', label: 'GOLIAF', link: 'https://goliaf.tours' }
+      ],
       customCss: ['./src/styles/voicebox.css'],
       components: { ThemeSelect: './src/components/VoiceBoxTheme.astro' },
       head: [
