@@ -12,9 +12,10 @@ export default defineConfig({
     starlight({
       title: 'dc2sc',
       social: [
-        { icon: 'github', label: 'GitHub', link: 'https://github.com/MI69secretary/dc2sc' },
-        { icon: 'external', label: 'UCOMM', link: 'https://ucomm.space' },
-        { icon: 'external', label: 'GOLIAF', link: 'https://goliaf.tours' }
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/MI69secretary/dc2sc' },
+        { icon: 'external', label: 'UCOMM', href: 'https://ucomm.space' },
+        { icon: 'external', label: 'GOLIAF', href: 'https://goliaf.tours' },
+        { icon: 'external', label: 'LEM-TGM', href: 'https://mi69secretary.github.io/lem-tgm' }
       ],
       customCss: ['./src/styles/voicebox.css'],
       components: { ThemeSelect: './src/components/VoiceBoxTheme.astro' },
